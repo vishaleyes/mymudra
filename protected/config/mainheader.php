@@ -40,7 +40,7 @@ $baseUrl="";
 if($is_live)
 {
     //Local
-    define('WEB_HOST_NAME','mymudra.com');
+    define('WEB_HOST_NAME','52.26.228.156');
     define('SITE_NAME','MyMudra');
     //$baseUrl.=WEB_HOST_NAME.'/viia';
     $baseUrl.=WEB_HOST_NAME.'/mymudra';
@@ -75,9 +75,9 @@ else
 
     //Local
     define('WEB_HOST_NAME','localhost');
-    define('SITE_NAME','MyMudra');
-    $baseUrl.=WEB_HOST_NAME.'/MyMudra';
-    $filename="D:/wamp/www/MyMudra";
+    define('SITE_NAME','mymudra');
+    $baseUrl.=WEB_HOST_NAME.'/mymudra';
+    $filename="D:/wamp/www/mymudra";
     if (file_exists($filename)) {
 
         /*define('FILE_UPLOAD', 'C:/wamp64/www/viia/assets/upload/');
@@ -86,7 +86,7 @@ else
         define('DEFAULT_FILE_PATH','C:/wamp64/www/viia/');*/
 
         define('FILE_UPLOAD', 'D:/wamp/www/mymudra/assets/upload/');
-        define('FILE_PATH','D:/wamp/www/MyMudra/');
+        define('FILE_PATH','D:/wamp/www/mymudra/');
         define('LOGS_PATH','D:/wamp/www/mymudra/dlogs/');
         define('DEFAULT_FILE_PATH','D:/wamp/www/mymudra/');
     }
@@ -104,10 +104,10 @@ else
         define('LOGS_PATH','D:/wamp/www/viia/dlogs/');
         define('DEFAULT_FILE_PATH','D:/wamp/www/viia/');*/
 
-        define('FILE_UPLOAD', 'D:/wamp/www/MyMudra/assets/upload/');
-        define('FILE_PATH','D:/wamp/www/MyMudra/');
-        define('LOGS_PATH','D:/wamp/www/MyMudra/dlogs/');
-        define('DEFAULT_FILE_PATH','D:/wamp/www/MyMudra/');
+        define('FILE_UPLOAD', 'D:/wamp/www/mymudra/assets/upload/');
+        define('FILE_PATH','D:/wamp/www/mymudra/');
+        define('LOGS_PATH','D:/wamp/www/mymudra/dlogs/');
+        define('DEFAULT_FILE_PATH','D:/wamp/www/mymudra/');
     }
 
     // Data base
