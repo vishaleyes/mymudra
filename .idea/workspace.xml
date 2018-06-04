@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="efa52f71-153d-49e6-be13-4a18aaeb4824" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/aws/composer.json</pharConfigPath>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/controllers/AdminController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="609">
+              <caret line="1239" selection-start-line="1239" selection-end-line="1239" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/protected/controllers/ApiController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3799">
+              <caret line="1772" column="4" selection-start-line="1772" selection-start-column="4" selection-end-line="1772" selection-end-column="4" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#font#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#font#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+                <element signature="n#actionbankLoanList#0;n#ApiController#0;n#!!top" />
+                <element signature="n#actioninvestmentAdvisoryList#0;n#ApiController#0;n#!!top" />
+                <element signature="n#actionrealEstateList#0;n#ApiController#0;n#!!top" />
+                <element signature="n#actionbankList#0;n#ApiController#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TblInvTypeMaster.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/models/TblInvTypeMaster.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="141" column="23" lean-forward="true" selection-start-line="141" selection-start-column="23" selection-end-line="141" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TblLoanTypeMaster.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/models/TblLoanTypeMaster.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="367">
+              <caret line="149" column="23" lean-forward="true" selection-start-line="149" selection-start-column="23" selection-end-line="149" selection-end-column="23" />
+              <folding>
+                <element signature="n#setData#0;n#TblLoanTypeMaster#0;n#!!top" />
+                <element signature="n#insertData#0;n#TblLoanTypeMaster#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TblPropertyTypeMaster.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/models/TblPropertyTypeMaster.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userListing.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/admin/userListing.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2288">
+              <caret line="104" column="140" selection-start-line="104" selection-start-column="140" selection-end-line="104" selection-end-column="140" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/admin/dashboard.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1672">
+              <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="registration.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/admin/registration.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="990">
+              <caret line="45" column="87" selection-start-line="45" selection-start-column="87" selection-end-line="45" selection-end-column="87" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bankLoanListing.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/admin/bankLoanListing.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4400">
+              <caret line="200" column="37" selection-start-line="200" selection-start-column="37" selection-end-line="200" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protected/views/layouts/main.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3586">
+              <caret line="163" column="36" selection-start-line="163" selection-start-column="36" selection-end-line="163" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>form-group</find>
+      <find>border-bottom:2px solid #ed6b75!important</find>
+      <find>checkAdminEmailId</find>
+      <find>checkMobilenumberExists</find>
+      <find>checkEmailExists</find>
+      <find>getUserdetailsbyId</find>
+      <find>&lt;img class=&quot;login-logo img-responsive&quot; style=&quot;position: relative; top:0px; left:0px;height: 50px;width:200px;&quot; src=&quot;http://localhost/mymudra/assets/pages/img/login_logo.png&quot;&gt;</find>
+      <find>logi</find>
+      <find>.font-blue-madison</find>
+      <find>font-blue-madison</find>
+      <find>login_logo.png</find>
+      <find>.page-header</find>
+      <find>3B3F51</find>
+      <find>#e18b69</find>
+      <find>.user-login-5 .login-container &gt;</find>
+      <find>f2f6f9</find>
+      <find>forget-password</find>
+      <find>_EMAIL_TMP_FORGOT_PASSWORD_VERIFICATION_CODE_</find>
+      <find>_EMAIL_TMP_FORGOT_PASSWORD_HELLO</find>
+      <find>forgotpass</find>
+      <find>_TMP_USER_HELLO_</find>
+      <find>reset</find>
+      <find>aveResetPassword</find>
+      <find>resetPasswordSuccess</find>
+      <find>getAllInvAdvisoryListPaginated</find>
+      <find>page header</find>
+      <find>ndashboard</find>
+      <find>action</find>
+      <find>page-header</find>
+      <find>cancel</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>viia</replace>
+      <replace>partner</replace>
+      <replace>store/</replace>
+      <replace>sort12</replace>
+      <replace>sort11</replace>
+      <replace>sort13</replace>
+      <replace>$partnerData</replace>
+      <replace>partner_id</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/protected/models/TblPartner.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/partnerTotalOrderListing.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/customerReportListing.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblCustomer.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/newstoreListing.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/orderDetail.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblOtherOrder.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/carrierReportListing.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/reportListing.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/carrierSettlementListing.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblCarrier.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblCarrierType.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/getCarrierReport.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblCarrierSettlement.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/getCarrierOrders.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/reassignCarrier.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/CustomerController.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblApiCalls.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/test.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblMenu.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblUsersession.php" />
+        <option value="$PROJECT_DIR$/protected/vendors/Smarty/languages/eng/global.php" />
+        <option value="$PROJECT_DIR$/protected/config/main.php" />
+        <option value="$PROJECT_DIR$/protected/config/mainheader.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/signUp.php" />
+        <option value="$PROJECT_DIR$/assets/pages/css/login-5.css" />
+        <option value="$PROJECT_DIR$/protected/models/Validation.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblUserRefrence.php" />
+        <option value="$PROJECT_DIR$/protected/views/layouts/main-login.php" />
+        <option value="$PROJECT_DIR$/assets/global/css/components-md.css" />
+        <option value="$PROJECT_DIR$/protected/views/admin/index.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/registration.php" />
+        <option value="$PROJECT_DIR$/protected/vendors/Smarty/languages/eng/global.lng" />
+        <option value="$PROJECT_DIR$/protected/views/templatemaster/forgot-password-api.php" />
+        <option value="$PROJECT_DIR$/protected/views/api/set_new_password.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblUser.php" />
+        <option value="$PROJECT_DIR$/protected/views/api/success.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblBankMaster.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblLoanTransaction.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblInvestmentTransaction.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblLoanTypeMaster.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/invAdvisoryListing.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/realEstateListing.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/bankLoanListing.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/userListing.php" />
+        <option value="$PROJECT_DIR$/protected/views/layouts/main.php" />
+        <option value="$PROJECT_DIR$/protected/views/admin/dashboard.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/AdminController.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblInvTypeMaster.php" />
+        <option value="$PROJECT_DIR$/protected/models/TblPropertyTypeMaster.php" />
+        <option value="$PROJECT_DIR$/protected/controllers/ApiController.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/assets/bower_components/flot/package.json" />
+      <path value="$PROJECT_DIR$/assets/global/plugins/bootstrap-markdown/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/aws/vendor/guzzle/guzzle" />
+      <path value="$PROJECT_DIR$/aws/vendor/composer" />
+      <path value="$PROJECT_DIR$/aws/vendor/aws/aws-sdk-php" />
+      <path value="$PROJECT_DIR$/aws/vendor/symfony/event-dispatcher" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="mymudra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mymudra" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mymudra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mymudra" type="462c0819:PsiDirectoryNode" />
+              <item name="protected" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mymudra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mymudra" type="462c0819:PsiDirectoryNode" />
+              <item name="protected" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mymudra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mymudra" type="462c0819:PsiDirectoryNode" />
+              <item name="protected" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mymudra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mymudra" type="462c0819:PsiDirectoryNode" />
+              <item name="protected" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mymudra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mymudra" type="462c0819:PsiDirectoryNode" />
+              <item name="protected" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mymudra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mymudra" type="462c0819:PsiDirectoryNode" />
+              <item name="protected" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mymudra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mymudra" type="462c0819:PsiDirectoryNode" />
+              <item name="protected" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mymudra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mymudra" type="462c0819:PsiDirectoryNode" />
+              <item name="protected" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="templatemaster" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\mymudra\protected\views\templatemaster" />
+      <recent name="C:\wamp64\www\viia\protected\views\admin" />
+      <recent name="C:\wamp64\www\viia\protected\controllers" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\ABC\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="efa52f71-153d-49e6-be13-4a18aaeb4824" name="Default" comment="" />
+      <created>1503375521871</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1503375521871</updated>
+      <workItem from="1503375523156" duration="21084000" />
+      <workItem from="1503402778590" duration="5121000" />
+      <workItem from="1503463320155" duration="23778000" />
+      <workItem from="1504697848814" duration="1395000" />
+      <workItem from="1506004149874" duration="1022000" />
+      <workItem from="1506059995612" duration="14252000" />
+      <workItem from="1506321741621" duration="2336000" />
+      <workItem from="1506401442383" duration="609000" />
+      <workItem from="1506402874582" duration="587000" />
+      <workItem from="1506411898831" duration="496000" />
+      <workItem from="1506490021387" duration="15139000" />
+      <workItem from="1506578339213" duration="13003000" />
+      <workItem from="1506664405764" duration="19541000" />
+      <workItem from="1506919897554" duration="4441000" />
+      <workItem from="1507007987719" duration="7546000" />
+      <workItem from="1507100557927" duration="16393000" />
+      <workItem from="1507185120769" duration="15174000" />
+      <workItem from="1507264030383" duration="23063000" />
+      <workItem from="1507524045292" duration="12771000" />
+      <workItem from="1507616056137" duration="21074000" />
+      <workItem from="1507699284600" duration="25138000" />
+      <workItem from="1507786145468" duration="13430000" />
+      <workItem from="1507871938313" duration="13160000" />
+      <workItem from="1507959456495" duration="12618000" />
+      <workItem from="1508130375069" duration="20292000" />
+      <workItem from="1508215153165" duration="18673000" />
+      <workItem from="1508303396834" duration="8049000" />
+      <workItem from="1508733731238" duration="16341000" />
+      <workItem from="1508819998291" duration="16792000" />
+      <workItem from="1508909680037" duration="18539000" />
+      <workItem from="1508997922044" duration="874000" />
+      <workItem from="1509013242559" duration="1844000" />
+      <workItem from="1509086728359" duration="10408000" />
+      <workItem from="1509168496772" duration="14001000" />
+      <workItem from="1509338411735" duration="8070000" />
+      <workItem from="1509425184648" duration="6804000" />
+      <workItem from="1509514698650" duration="3850000" />
+      <workItem from="1509598486532" duration="16338000" />
+      <workItem from="1509683603501" duration="12745000" />
+      <workItem from="1509947314105" duration="22996000" />
+      <workItem from="1510029347532" duration="10181000" />
+      <workItem from="1510202195735" duration="1523000" />
+      <workItem from="1510204044902" duration="6331000" />
+      <workItem from="1510211184834" duration="21390000" />
+      <workItem from="1510241647859" duration="299000" />
+      <workItem from="1510288496545" duration="25903000" />
+      <workItem from="1510375495636" duration="19800000" />
+      <workItem from="1510548562914" duration="18192000" />
+      <workItem from="1510634727620" duration="14720000" />
+      <workItem from="1510721968681" duration="21821000" />
+      <workItem from="1510807148985" duration="19254000" />
+      <workItem from="1510897535115" duration="9732000" />
+      <workItem from="1511152592916" duration="11275000" />
+      <workItem from="1511239451150" duration="13611000" />
+      <workItem from="1511587050858" duration="13390000" />
+      <workItem from="1511755785620" duration="1707000" />
+      <workItem from="1511779976859" duration="13021000" />
+      <workItem from="1511842422779" duration="27324000" />
+      <workItem from="1511928736231" duration="22381000" />
+      <workItem from="1512017273251" duration="632000" />
+      <workItem from="1512030920931" duration="13649000" />
+      <workItem from="1512102270548" duration="2505000" />
+      <workItem from="1512117353658" duration="11375000" />
+      <workItem from="1512360965610" duration="16099000" />
+      <workItem from="1512462515361" duration="1593000" />
+      <workItem from="1512471267800" duration="6774000" />
+      <workItem from="1512533351932" duration="27257000" />
+      <workItem from="1512620559659" duration="27549000" />
+      <workItem from="1512707841372" duration="29256000" />
+      <workItem from="1512793144482" duration="10872000" />
+      <workItem from="1512813365712" duration="12012000" />
+      <workItem from="1512965715732" duration="13718000" />
+      <workItem from="1512985115086" duration="16624000" />
+      <workItem from="1513052834523" duration="30819000" />
+      <workItem from="1513138877599" duration="9015000" />
+      <workItem from="1513148828869" duration="20266000" />
+      <workItem from="1513229561938" duration="18219000" />
+      <workItem from="1513311687353" duration="26612000" />
+      <workItem from="1513570970626" duration="32646000" />
+      <workItem from="1513657653918" duration="30241000" />
+      <workItem from="1513746685011" duration="12533000" />
+      <workItem from="1513764468226" duration="13835000" />
+      <workItem from="1513830145574" duration="25348000" />
+      <workItem from="1513865241276" duration="10000" />
+      <workItem from="1513865322865" duration="422000" />
+      <workItem from="1513916384929" duration="30329000" />
+      <workItem from="1514002674412" duration="21222000" />
+      <workItem from="1514175857607" duration="27848000" />
+      <workItem from="1514261936167" duration="28471000" />
+      <workItem from="1514349167975" duration="1233000" />
+      <workItem from="1514351849196" duration="239000" />
+      <workItem from="1514356780073" duration="7977000" />
+      <workItem from="1514374373162" duration="4411000" />
+      <workItem from="1514435279789" duration="3461000" />
+      <workItem from="1514443632344" duration="241000" />
+      <workItem from="1514461452552" duration="1086000" />
+      <workItem from="1514525707437" duration="188000" />
+      <workItem from="1514544498159" duration="3002000" />
+      <workItem from="1514553076769" duration="1223000" />
+      <workItem from="1514608559760" duration="729000" />
+      <workItem from="1514613811480" duration="1484000" />
+      <workItem from="1514626809086" duration="1688000" />
+      <workItem from="1514781626668" duration="24000" />
+      <workItem from="1514786873860" duration="55000" />
+      <workItem from="1514806211225" duration="7919000" />
+      <workItem from="1514867631955" duration="19641000" />
+      <workItem from="1526883399422" duration="7594000" />
+      <workItem from="1527503515305" duration="2300000" />
+      <workItem from="1527654973457" duration="1416000" />
+      <workItem from="1527670160706" duration="16892000" />
+      <workItem from="1527739899660" duration="6028000" />
+      <workItem from="1527747376476" duration="2679000" />
+      <workItem from="1527756182549" duration="2518000" />
+      <workItem from="1527769262663" duration="6212000" />
+      <workItem from="1527828243289" duration="23767000" />
+      <workItem from="1528085657053" duration="37000" />
+      <workItem from="1528112505287" duration="3046000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1396483000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15833333" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32900432" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32900432" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3298122" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32900432" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32900432" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="115" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/protected/controllers/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27324">
+          <caret line="1242" column="5" lean-forward="true" selection-start-line="1242" selection-start-column="5" selection-end-line="1242" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/userListing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2288">
+          <caret line="104" column="140" selection-start-line="104" selection-start-column="140" selection-end-line="104" selection-end-column="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1672">
+          <caret line="76" column="18" lean-forward="true" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/realEstateListing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4004">
+          <caret line="182" column="45" lean-forward="true" selection-start-line="182" selection-start-column="45" selection-end-line="182" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/TblPropertyTypeMaster.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2354">
+          <caret line="107" column="38" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/invAdvisoryListing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/registration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="45" column="87" selection-start-line="45" selection-start-column="87" selection-end-line="45" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/bankLoanListing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4400">
+          <caret line="200" column="37" lean-forward="true" selection-start-line="200" selection-start-column="37" selection-end-line="200" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/layouts/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3586">
+          <caret line="163" column="36" lean-forward="true" selection-start-line="163" selection-start-column="36" selection-end-line="163" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/TblCarrierSettlement.php" />
+    <entry file="file://$PROJECT_DIR$/protected/models/TblCarrier.php" />
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/CarrierListing.php" />
+    <entry file="file://$PROJECT_DIR$/protected/models/TblSystemConfig.php" />
+    <entry file="file://$PROJECT_DIR$/protected/models/TblStore.php" />
+    <entry file="file://$PROJECT_DIR$/protected/controllers/CustomerController.php" />
+    <entry file="file://$PROJECT_DIR$/protected/models/TblCustomer.php" />
+    <entry file="file://$PROJECT_DIR$/protected/models/TblApiCalls.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="90" column="34" lean-forward="true" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/test.php" />
+    <entry file="file://$PROJECT_DIR$/protected/models/TblMenu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2222">
+          <caret line="101" column="5" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/vendors/Smarty/languages/eng/global.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="902">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/config/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6974">
+          <caret line="317" column="33" selection-start-line="317" selection-start-column="29" selection-end-line="317" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/config/mainheader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2420">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/TblUsersession.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3080">
+          <caret line="179" column="13" selection-start-line="179" selection-start-column="13" selection-end-line="179" selection-end-column="13" />
+          <folding>
+            <element signature="n#setData#0;n#TblUsersession#0;n#!!top" />
+            <element signature="n#insertData#0;n#TblUsersession#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/signUp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/Validation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50380">
+          <caret line="2324" column="13" selection-start-line="2324" selection-start-column="13" selection-end-line="2324" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-140">
+          <caret line="22" column="208" lean-forward="true" selection-start-line="22" selection-start-column="208" selection-end-line="22" selection-end-column="208" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/global/css/components-md.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="19945" lean-forward="true" selection-start-line="19945" selection-end-line="19945" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/pages/css/login-5.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="77" column="68" lean-forward="true" selection-start-line="77" selection-start-column="68" selection-end-line="77" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/layouts/layout4/css/themes/default.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="189" column="20" lean-forward="true" selection-start-line="189" selection-start-column="20" selection-end-line="189" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="19" column="208" lean-forward="true" selection-start-line="19" selection-start-column="208" selection-end-line="19" selection-end-column="208" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/vendors/Smarty/languages/eng/global.lng">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/templatemaster/forgot-password-api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="77" column="220" selection-start-line="77" selection-start-column="220" selection-end-line="77" selection-end-column="220" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/api/success.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="33" column="10" lean-forward="true" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/TblBankMaster.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="653">
+          <caret line="95" column="29" selection-start-line="95" selection-start-column="29" selection-end-line="95" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/TblUserRefrence.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="654">
+          <caret line="169" column="5" lean-forward="true" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/TblLoanTransaction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="156" column="5" lean-forward="true" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/TblInvestmentTransaction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="107" column="24" lean-forward="true" selection-start-line="107" selection-start-column="24" selection-end-line="107" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/api/set_new_password.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29">
+          <caret line="63" column="57" selection-start-line="63" selection-start-column="57" selection-end-line="63" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/TblUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="310" column="3" selection-start-line="310" selection-start-column="3" selection-end-line="310" selection-end-column="3" />
+          <folding>
+            <element signature="n#setData#0;n#TblUser#0;n#!!top" />
+            <element signature="n#insertData#0;n#TblUser#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/invAdvisoryListing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/realEstateListing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4004">
+          <caret line="182" column="45" selection-start-line="182" selection-start-column="45" selection-end-line="182" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/bankLoanListing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4400">
+          <caret line="200" column="37" selection-start-line="200" selection-start-column="37" selection-end-line="200" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/userListing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2288">
+          <caret line="104" column="140" selection-start-line="104" selection-start-column="140" selection-end-line="104" selection-end-column="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/layouts/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3586">
+          <caret line="163" column="36" selection-start-line="163" selection-start-column="36" selection-end-line="163" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/registration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="45" column="87" selection-start-line="45" selection-start-column="87" selection-end-line="45" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/views/admin/dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1672">
+          <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="1239" selection-start-line="1239" selection-end-line="1239" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/TblLoanTypeMaster.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="149" column="23" lean-forward="true" selection-start-line="149" selection-start-column="23" selection-end-line="149" selection-end-column="23" />
+          <folding>
+            <element signature="n#setData#0;n#TblLoanTypeMaster#0;n#!!top" />
+            <element signature="n#insertData#0;n#TblLoanTypeMaster#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/TblInvTypeMaster.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="141" column="23" lean-forward="true" selection-start-line="141" selection-start-column="23" selection-end-line="141" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/models/TblPropertyTypeMaster.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protected/controllers/ApiController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3799">
+          <caret line="1772" column="4" selection-start-line="1772" selection-start-column="4" selection-end-line="1772" selection-end-column="4" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#font#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#font#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#actionbankLoanList#0;n#ApiController#0;n#!!top" />
+            <element signature="n#actioninvestmentAdvisoryList#0;n#ApiController#0;n#!!top" />
+            <element signature="n#actionrealEstateList#0;n#ApiController#0;n#!!top" />
+            <element signature="n#actionbankList#0;n#ApiController#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,29 @@
+//Global
+
+// support  email
+_EMAIL_TMP_SUPPORT_TEXT_ = كنا نحب أن نسمع منكء
+_EMAIL_TMP_SUPPORT_HEADER_= الدعم.
+_EMAIL_TMP_CARRIER_SUPPORT_HELLO_ = فييا الناقل طلب الدعمt.
+
+// customer delete email
+_EMAIL_DELETE_CUSTOMER_ACCOUNT_TEXT_= تم حذف حسابك بواسطة المشرف.
+_EMAIL_UNDELETE_CUSTOMER_ACCOUNT_TEXT_=  تم إلغاء حذف حسابك بواسطة المشرف
+_EMAIL_DELETE_CUSTOMER_RELOGIN_CONTACT_ADMIN_ = ل ريلوجين في النظام، يرجى الاتصال إلى المشرف
+_EMAIL_UNDELETE_CUSTOMER_ACONTACT_ADMIN_ = يرجى ريلوجين في التطبيق
+_EMAIL_CUSTOMER_UNDELETE_HEADER_ = حساب أونديليت إمايل
+_EMAIL_CUSTOMER_DELETE_HEADER_ = حساب حذف البريد الإلكتروني
+
+//carrier delete email
+_EMAIL_CARRIER_DELETE_HEADER_ = حساب أونديليت إمايل
+_EMAIL_DELETE_CARRIER_ACCOUNT_TEXT_ = تم حذف حسابك بواسطة المشرف.
+_EMAIL_UNDELETE_CARRIER_ACCOUNT_TEXT_=  تم إلغاء حذف حسابك بواسطة المشرف
+_EMAIL_DELETE_CARRIER_RELOGIN_CONTACT_ADMIN_ = ل ريلوجين في النظام، يرجى الاتصال إلى المشرف
+_EMAIL_UNDELETE_CARRIER_CONTACT_ADMIN_ = يرجى ريلوجين في التطبيق
+_EMAIL_CARRIER_UNDELETE_HEADER_ = حساب أونديليت إمايل
+_EMAIL_CARRIER_DELETE_HEADER_ = حساب حذف البريد الإلكتروني
+
+
+//Forgot Password
+_EMAIL_TMP_FORGOT_PASSWORD_HELLO1_ = لقد تلقينا طلبا لإعادة تعيين كلمة المرور الخاصة بك.إذا لم تقدم الطلب، فقم بتخطي هذه الرسالة الإلكترونية.
+_EMAIL_TMP_FORGOT_PASSWORD_HELLO2_ =  وإلا يمكنك إعادة تعيين كلمة المرور باستخدام الرمز أدناه.
+_EMAIL_TMP_FORGOT_PASSWORD_VERIFICATION_CODE_ = رمز التحقق

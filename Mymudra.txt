@@ -1,0 +1,72 @@
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 13:57:46</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 13:59:57</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 14:00:06</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 14:00:16</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 14:00:16</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 14:00:37</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 14:01:11</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 14:01:33</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>

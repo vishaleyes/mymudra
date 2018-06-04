@@ -1,0 +1,38 @@
+//Global
+
+// support  email
+_EMAIL_TMP_SUPPORT_HEADER_= Support.
+_EMAIL_TMP_SUPPORT_TEXT_= We would love to hear  from you.
+_EMAIL_TMP_CARRIER_SUPPORT_HELLO_ = ViiA Carrier Request for Support.
+
+// customer delete email
+_EMAIL_DELETE_CUSTOMER_ACCOUNT_TEXT_= your account has been deleted by admin.
+_EMAIL_UNDELETE_CUSTOMER_ACCOUNT_TEXT_= your account has been undeleted by admin.
+_EMAIL_DELETE_CUSTOMER_RELOGIN_CONTACT_ADMIN_ = To relogin in the system , please contact to admin.
+_EMAIL_UNDELETE_CUSTOMER_ACONTACT_ADMIN_ = Please ReLogin in the Application.
+_EMAIL_CUSTOMER_UNDELETE_HEADER_ = Account UnDelete Email
+_EMAIL_CUSTOMER_DELETE_HEADER_ = Account Delete Email
+
+//carrier delete email
+_EMAIL_CARRIER_DELETE_HEADER_ =Account Delete Email
+_EMAIL_DELETE_CARRIER_ACCOUNT_TEXT_ =  your account has been deleted by admin.
+_EMAIL_UNDELETE_CARRIER_ACCOUNT_TEXT_= your account has been undeleted by admin.
+_EMAIL_DELETE_CARRIER_RELOGIN_CONTACT_ADMIN_ =  To relogin in the system , please contact to admin.
+_EMAIL_UNDELETE_CARRIER_CONTACT_ADMIN_ = Please ReLogin in the Application.
+_EMAIL_CARRIER_UNDELETE_HEADER_ = Account UnDelete Email
+_EMAIL_CARRIER_DELETE_HEADER_ = Account Delete Email
+
+//Forgot Password
+_EMAIL_TMP_FORGOT_PASSWORD_HELLO1_ = We have  received a request to  reset your password.If you didn't make the request just igone this email.
+_EMAIL_TMP_FORGOT_PASSWORD_HELLO2_ =  Otherwise you can reset your password using with the below code.
+_EMAIL_TMP_FORGOT_PASSWORD_VERIFICATION_CODE_ = Your verification code
+
+_EMAIL_TMP_FORGOT_PASSWORD_HELLO_ = You requested to reset your pasword
+
+
+
+
+
+
+
+

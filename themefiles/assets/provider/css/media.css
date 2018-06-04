@@ -1,0 +1,309 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+
+@media (min-width:320px) and (max-width:767px) {
+html {
+	font-size: 14px;
+}
+.topbar {
+	height: auto;
+}
+.down-arrow {
+	width: 100%;
+	text-align: center;
+	background: #fff;
+	height: 20px;
+	display: block;
+	border-top: 2px solid #66b4c0;
+}
+.down-arrow img {
+	position: absolute;
+	left: calc(50% - 20px);
+	cursor: pointer;
+	z-index: 9;
+}
+.topbar ul li {
+	display: inline-block;
+	text-align: center;
+	margin-right: 0;
+	line-height: 30px;
+}
+.topbar ul li:first-child {
+	float: left;
+}
+.topbar ul li:nth-child(3) {
+	float: right;
+}
+ul.topbar-left {
+	float: none;
+	margin-bottom: 0;
+}
+ul.topbar-right {
+	float: none;
+	margin-bottom: 0;
+}
+ul.topbar-right li .dropdown ul.dropdown-menu {
+	min-width: 100%;
+	left: 0;
+}
+.login-logo {
+	padding: 15px 0;
+}
+.login-logo img {
+	max-width: 30%;
+}
+.footer-content {
+	margin-bottom: 40px;
+}
+.footer-divider {
+	margin-top: 0;
+}
+footer {
+	margin-top: 10px;
+}
+.step-icon {
+	font-size: 1.0rem;
+	width: 30px;
+	height: 30px;
+	line-height: 25px;
+	margin-bottom: 5px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.step-title {
+	font-size: 0.8rem;
+}
+li.step-dot {
+	width: 3px;
+	height: 3px;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-top: 17px;
+}
+.autho-btn .btn, .un-autho-btn .btn {
+	font-size: 0.8rem;
+}
+.autho-btn {
+	margin-bottom: 20px;
+	margin-top: 0;
+}
+.green-btn {
+	margin-bottom: 50px;
+}
+.red-btn .btn {
+	margin-bottom: 50px;
+}
+.link {
+	margin-bottom: 25px;
+}
+.back-btn {
+	margin-bottom: 0;
+	margin-top: 20px;
+}
+h1.login-title {
+	font-size: 1.8rem;
+}
+.navbar-nav {
+	margin: 25px -15px 15px 0;
+}
+.navbar-toggle {
+	float: left;
+	margin-left: 5px;
+	border: none;
+	margin-top: 10px;
+}
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #fff;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+	background-color: transparent;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border: none;
+}
+.table {
+	text-align: center;
+}
+.table > tbody > tr > td {
+	vertical-align: top;
+}
+/* Force table to not be like tables anymore */
+table, thead, tbody, th, td, tr {
+	display: block;
+}
+/* Hide table headers (but not display: none;, for accessibility) */
+thead tr {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+tr td:nth-of-type(1) {
+	background: #c7f8ff;
+}
+tr {
+	margin-bottom: 25px;
+}
+td {
+	/* Behave  like a "row" */
+	border: none;
+	position: relative;
+	padding-left: 50%;
+}
+td:before {
+	/* Now like a table header */
+	position: absolute;
+	/* Top/left values mimic padding */
+	top: 0px;
+	left: 6px;
+	width: 45%;
+	padding-right: 10px;
+	white-space: nowrap;
+}
+.table .dropdown-menu {
+	left: 45%;
+}
+.pro-thumb {
+	margin-top: 0;
+}
+.pro-thumb img {
+	max-height: 100%;
+	height: auto;
+}
+.pro-thumb a {
+	height: auto;
+}
+.p-mgmt h3 {
+	margin: 5px 0;
+}
+.p-mgmt h4 {
+	text-align: center;
+	margin-bottom: 15px;
+}
+.cta .green-btn {
+	float: none;
+	text-align: center;
+}
+.cta .green-btn .btn {
+	margin: 0 auto;
+}
+.pagination {
+	margin-top: 0;
+}
+.pagination > li > a, .pagination > li > span {
+	margin-left: 2px;
+	margin-right: 2px;
+}
+.pro-img {
+	max-width: 100%;
+}
+}
+
+@media (min-width:768px) and (max-width:990px) {
+html {
+	font-size: 15px;
+}
+.login-logo img {
+	max-width: 60%;
+}
+footer {
+	margin-top: 10px;
+}
+.footer-content {
+	margin-bottom: 40px;
+}
+.footer-divider {
+	margin-top: 0;
+}
+.autho-btn {
+	margin-bottom: 20px;
+	margin-top: 0;
+}
+.green-btn {
+	margin-bottom: 50px;
+}
+.red-btn .btn {
+	margin-bottom: 50px;
+}
+.link {
+	margin-bottom: 25px;
+}
+.back-btn {
+	margin-bottom: 0;
+	margin-top: 20px;
+}
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #fff;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+	background-color: transparent;
+}
+.navbar-toggle {
+	float: left;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border: none;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+	background-color: transparent;
+}
+.navbar-header {
+	float: none;
+}
+.mega-dropdown-menu ul {
+	display: block;
+	position: relative;
+}
+.navbar .navbar-toggle {
+	float: left;
+	border: none;
+}
+.navbar-toggle {
+	display: block;
+}
+.dropdown-menu {
+	text-align: left;
+}
+.navbar-right .dropdown-menu {
+	left: 0;
+	right: auto;
+}
+.navbar-collapse.collapse {
+	display: none!important;
+}
+.navbar-nav {
+	margin: 25px -15px 15px 0;
+	float: none !important;
+}
+.navbar-nav>li {
+	float: none;
+}
+.navbar-nav>li>a {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.navbar-text {
+	float: none;
+	margin: 15px 0;
+}
+/* since 3.1.0 */
+.navbar-collapse.collapse.in {
+	display: block!important;
+}
+.collapsing {
+	overflow: hidden!important;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border: none;
+}
+.pro-img {
+	max-width: 100%;
+}
+}
+
+@media (min-width:991px) and (max-width:1199px) {
+html {
+	font-size: 15px;
+}
+}

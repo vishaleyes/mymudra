@@ -1,0 +1,319 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media (min-width:320px) and (max-width:767px) {
+	/* Global */
+html{
+	font-size: 14px;
+}
+	.navbar-nav > li > a{
+		padding-bottom: 0;
+	}
+	.navbar-default {
+    background-color: rgba(0,0,0,0.9);
+}
+	.navbar-toggle{
+		margin-top: 12px;
+		border: #333;
+		float: left;
+		margin-right: 0;
+	}
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+		border: none;
+	}
+	.navbar-default .navbar-toggle .icon-bar{
+		background-color: #66b4c0;
+	}
+	.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
+		background-color: transparent;
+	}
+	.dropdown-menu{
+		text-align: left;
+	}
+	.search-wrapper h4{
+	font-size: 1.1rem; /*20px*/
+		margin-bottom: 10px;
+}
+	.jumbotron{
+		padding: 15px 0;
+		margin-bottom: 25px;
+	}
+	.search-wrapper{
+		padding: 10px 0;
+	}
+	.search-wrapper .btn-default{
+		height: 45px;
+		padding: 0 14px;
+	}
+	.search-wrapper .form-control{
+		height: 45px;
+	}
+	.welcome h1{
+		margin-bottom: 8px;
+	}
+
+/*Footer*/
+.footer-content {
+	margin-bottom: 40px;
+}
+.footer-divider {
+	margin-top: 0;
+}
+footer {
+	margin-top: 10px;
+}
+	
+	a.fogotpassword-link{
+		padding-top: 3px;
+	}
+	.lr-modal .nav > li{
+	display: inline-block;
+	width: 49.0%;
+}
+	.p-img{
+		height: auto;
+	}
+	.p-img img{
+		width: 100%;
+	}
+	.p-cont{
+		padding: 10px;
+	}
+	.p-price{
+		height: auto;
+	}
+	.p-price h3{
+		padding-top: 0;
+	}
+	a.b-n-btn{
+		margin-top: 5px;
+	}
+	.pagination > li > a, .pagination > li > span{
+		padding: 4px 10px;
+	}
+	/*Multi Dropdown*/
+	.multiselect-native-select .dropdown-menu{
+	width: 90%;
+	margin-left: 15px;
+	max-height: 250px;
+	overflow-y: scroll;
+}
+		.multiselect-container > li > a {
+    padding: 0 6px;
+}
+	
+	/*Venue Details page*/
+	.venue-title{
+		height: auto;
+	}
+	a.b-s-link{
+		margin-top: 0;
+		margin-left: 0;
+		margin-right: 15px;
+	}
+	.pull-right {
+    float: none !important;
+}
+	.price-from{
+		margin-bottom: 15px;
+	}
+	.vf-block h5, .vf-block h4{
+		text-align: center;
+	}
+	.comment-box{
+		margin-top: 15px;
+	}
+	.r-setup{
+		margin-bottom: 12px;
+	}
+}
+
+/*For landscap*/
+@media all and (orientation:landscape) {
+ 	.jumbotron{
+	height: calc(100vh - 100px);
+	margin-bottom: 50px;
+}
+	.search-outer{
+	display: table;
+	width: 100%;
+	
+	height: calc(100vh - 100px);
+}
+}
+
+@media (min-width:768px) and (max-width: 991px) {
+	html{
+	font-size: 14px;
+}
+		.navbar-nav > li > a{
+		padding-bottom: 0;
+	}
+	.navbar-default {
+    background-color: rgba(0,0,0,0.9);
+}
+	.navbar-toggle{
+		margin-top: 12px;
+		border: #333;
+		float: left;
+		margin-right: 0;
+	}
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+		border: none;
+	}
+	.navbar-default .navbar-toggle .icon-bar{
+		background-color: #66b4c0;
+	}
+	.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
+		background-color: transparent;
+	}
+  .navbar-header {
+    float: none;
+  }
+  .mega-dropdown-menu ul {
+    display: block;
+    position: relative;
+  }
+  .navbar .navbar-toggle {
+    float: left;
+   
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  	.dropdown-menu{
+		text-align: left;
+	}
+	.navbar-right .dropdown-menu {
+    left: 0;
+    right: auto;
+}
+  .navbar-collapse.collapse {
+    display: none!important;
+  }
+  .navbar-nav {
+    float: none!important;
+    margin: 7.5px -15px;
+  }
+  .navbar-nav>li {
+    float: none;
+  }
+  .navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .navbar-text {
+    float: none;
+    margin: 15px 0;
+  }
+  /* since 3.1.0 */
+  .navbar-collapse.collapse.in {
+    display: block!important;
+  }
+  .collapsing {
+    overflow: hidden!important;
+  }
+	.p-img{
+		margin-bottom: 15px;
+		height: auto;
+	}
+	.p-img img{
+		width: 100%;
+	}
+	.p-cont{
+		padding: 10px;
+	}
+	.p-price{
+		height: auto;
+	}
+	.p-price h3{
+		padding-top: 0;
+	}
+	a.b-n-btn{
+		margin-top: 5px;
+	}
+	.p-cont{
+		padding-top: 0;
+	}
+	/*Multi Dropdown*/
+	.multiselect-native-select .dropdown-menu{
+	width: 90%;
+	margin-left: 15px;
+	max-height: 250px;
+	overflow-y: scroll;
+}
+	.multiselect-container > li > a {
+    padding: 0 6px;
+}
+	/*Venue Details page*/
+	.venue-title{
+		height: auto;
+	}
+	a.b-s-link{
+		margin-top: 0;
+		margin-left: 0;
+		margin-right: 15px;
+	}
+	.pull-right {
+    float: none !important;
+}
+	.price-from{
+		margin-bottom: 15px;
+	}
+	.vf-block h5, .vf-block h4{
+		text-align: center;
+	}
+	.comment-box{
+		margin-top: 15px;
+	}
+	.r-setup{
+		margin-bottom: 12px;
+	}
+}
+
+@media (min-width:992px) and (max-width: 1024px){
+		html{
+	font-size: 14px;
+}
+	.navbar-default .navbar-nav > li > a{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+		.p-list{
+	margin-top: 30px;
+	background-color: transparent;
+	border-bottom: 1px solid #ccc;
+}
+	.p-price{
+	background-color: transparent;
+	
+}
+		#sticky.stick {
+	width: 940px;
+}
+	.p-cont{
+		padding-top: 0;
+	}
+}
+@media (min-width:1025px) and (max-width: 1199px){
+	html{
+	font-size: 14px;
+}
+	.navbar-default .navbar-nav > li > a{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+	.p-list{
+	margin-top: 30px;
+	background-color: transparent;
+	border-bottom: 1px solid #ccc;
+}
+	.p-price{
+	background-color: transparent;
+	
+}
+	#sticky.stick {
+	width: 940px;
+}
+}
+
