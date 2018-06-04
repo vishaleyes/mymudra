@@ -40,7 +40,7 @@ $baseUrl="";
 if($is_live)
 {
     //Local
-    define('WEB_HOST_NAME','mymudra.com');
+    define('WEB_HOST_NAME','52.26.228.156');
     define('SITE_NAME','MyMudra');
     //$baseUrl.=WEB_HOST_NAME.'/viia';
     $baseUrl.=WEB_HOST_NAME.'/mymudra';
