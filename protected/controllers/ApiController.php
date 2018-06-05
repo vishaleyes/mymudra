@@ -106,596 +106,6 @@ class ApiController extends Controller {
     }
 /* =========================================== Start  Customer API ==============================================    */
 
-    public function actionresendOTP()
-    {
-        $this->setLanguage(isset($_REQUEST['app_language'])?$_REQUEST['app_language']:1);
-        if (!empty($_REQUEST)) {
-            $validationObj = new Validation();
-            $res = $validationObj->reSendOTP($_REQUEST);
-            //$transaction = Yii::app()->db->beginTransaction();
-            try{
-                if ($res['status'] == 0) {
-                    $userType =$_REQUEST['user_type'];
-                    $device_token = $_REQUEST['device_token'];
-                    $endpoint_arn = $_REQUEST['endpoint_arn'];
-
-                    $TblCustomerObj = new TblCustomer();
-                    $res = $TblCustomerObj->checkMobilenumberExists($_REQUEST['mobile_number']);
-                    if (!empty($res)) {
-
-
-                        if ($res['status'] == 0) {
-                            $this->response(array("status" => $this->errorCode['_ACCOUNT_DEACTIVATE_'], "message" => $this->msg['_ACCOUNT_DEACTIVATE_'], 'data' => array()));
-                        }
-
-                                $otp_code = rand(1111, 9999);
-                                if(isset($_REQUEST['is_forgot']) && $_REQUEST['is_forgot'] == 1)
-                                {
-                                    $this->customerForgotPassword($res['email']);
-                                }
-                                else
-                                {
-                                   if(isset($_REQUEST['new_mobile_number']) && $_REQUEST['new_mobile_number'] != '')
-                                   {
-                                       //send OTP to new mobile number
-                                   }
-                                   else
-                                   {
-                                       //send OTP to existing mobile number
-
-                                   }
-                                    $postData['otp_code'] = $otp_code;
-                                    $postData['modified_at'] = date('Y-m-d H:i:s');
-                                    $TblCustomerObj = new TblCustomer();
-                                    $TblCustomerObj->setData($postData);
-                                    $TblCustomerObj->insertData($res['customer_id']);
-                                    //$transaction->commit();
-
-                                    $TblCustomerObj = new TblCustomer();
-                                    $customer_Data = $TblCustomerObj->getCustomerdetailsbyId($res['customer_id']);
-                                    if (!empty($customer_Data)) {
-                                        $this->response(array("status" => $this->errorCode['_SUCCESS_'], "message" => $this->msg['_SUCCESS_'], 'data' => $customer_Data));
-                                    } else {
-                                        $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" => $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
-                                    }
-
-                                }
-
-
-                    }else{
-                        $this->response(array("status" => $this->errorCode['_INVALID_MOBILE_NUMBER_'], "message" =>  $this->msg['_INVALID_MOBILE_NUMBER_'], 'data' => array()));
-                    }
-                } else {
-                    $this->response(array('status' => $res['status'], 'message' => $res['message'], 'data' => array()));
-                }
-            }catch (Exception $e)
-            {
-                //$transaction->rollback();
-                $data = array();
-                $data['status'] = -111;
-                $data['message'] = $e->getMessage();
-                $data['data'] = array();
-                $this->response($data);
-            }
-        } else {
-            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" =>  $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
-        }
-    }
-
-    public function actionverifyOTP()
-    {
-        $this->setLanguage(isset($_REQUEST['app_language'])?$_REQUEST['app_language']:1);
-        if (!empty($_REQUEST)) {
-            //$transaction = Yii::app()->db->beginTransaction();
-            try {
-                $validationObj = new Validation();
-                $res = $validationObj->verifyOTP($_REQUEST);
-
-                if ($res['status'] == 0)
-                {
-                    $userType = $_REQUEST['user_type'];
-                    $deviceToken = $_REQUEST['device_token'];
-                    $mobile_number = $_REQUEST['mobile_number'];
-                    $new_mobile_number = '';
-                    //print_r($_REQUEST);die;
-                    if(isset($_REQUEST['new_mobile_number']) && $_REQUEST['new_mobile_number'] != '')
-                    {
-                        $new_mobile_number  = $_REQUEST['new_mobile_number'];
-                    }
-
-
-                    $postData = array();
-                    $postData['modified_at'] = date('Y-m-d H:i:s');
-                    //$postData['device_token'] = $deviceToken;
-                    if ($userType == 1)
-                    { // user is customer
-                        //check phone_number is registered or not
-                        $TblCustomerObj = new TblCustomer();
-                        $is_exist = $TblCustomerObj->checkMobilenumberExists($mobile_number);
-                        if (!empty($is_exist))
-                        {
-
-                            if ($is_exist['status'] == 2) {
-                                $this->response(array("status" => $this->errorCode['_ACCOUNT_DENIED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DENIED_BY_ADMIN_'], 'data' => (object)array()));
-                            } else if ($is_exist['status'] == 3) {
-                                $this->response(array("status" => $this->errorCode['_ACCOUNT_DELETED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DELETED_BY_ADMIN_'], 'data' => (object)array()));
-                            }
-                            // save new updated mobile number after verify OTP
-                            //echo $new_mobilenumber;die;
-                            if(isset($new_mobile_number) && $new_mobile_number != '')
-                            {
-                                $isnew = $TblCustomerObj->checkMobilenumberExists($new_mobile_number);
-                                if (!empty($isnew))
-                                {
-                                    $this->response(array("status" => $this->errorCode['_MOBILE_NUMBER_ALREADY_EXIST_'], "message" => $this->msg['_MOBILE_NUMBER_ALREADY_EXIST_'], 'data' => (object)array()));
-                                }
-                                $postData['mobile_number'] = $new_mobile_number;
-                                $mobile_number = $new_mobile_number;
-                            }
-
-                            if ($is_exist['otp_code'] == $_REQUEST['otp_code']) {
-                                $postData['otp_code'] = '';
-                                $postData['status'] = 1;
-                            } else {
-                                $this->response(array("status" => $this->errorCode['_OTP_PARAMS_NOT_VALID_'], "message" => $this->msg['_OTP_PARAMS_NOT_VALID_'], 'data' => (object)array()));
-                            }
-
-                            $postData['device_type'] = $_REQUEST['device_type'];
-                            if(isset($_REQUEST['endpoint_arn']) && $_REQUEST['endpoint_arn']!=''){
-                                $endpoint_arn = $_REQUEST['endpoint_arn'];
-                            }
-                            else{
-                                $endpoint_arn = "";
-                            }
-
-                            if (isset($_REQUEST['build_version']) && $_REQUEST['build_version'] != '') {
-                                $postdata['build_version'] = $_REQUEST['build_version'];
-                            }
-
-                            $userId = $is_exist['customer_id'];
-                            $postData['is_mobile_verified'] = 1;
-                           // print_r($postData);die;
-                            //update OTP in Customer table
-                            $TblCustomerObj = new TblCustomer();
-                            $TblCustomerObj->setData($postData);
-                            $TblCustomerObj->insertData($userId);
-
-                            // delete all previous session
-                            $this->deleteSession($userId, $userType);
-                            //create session for serviceProvider
-                            $session_data = $this->createSession($userId, $userType, $deviceToken, $endpoint_arn);
-                            //end code
-
-                            //$transaction->commit();
-                            $TblCustomerObj = new TblCustomer();
-                            $customer_data = $TblCustomerObj->checkMobilenumberExists($mobile_number);
-                            $customer_data['session_data'] = $session_data;
-
-                            $data = array();
-                            $data['status'] = $this->errorCode['_SUCCESS_'];
-                            $data['message'] = $this->msg['_SUCCESS_'];
-                            $data['data'] = $customer_data;
-                            $this->response($data);
-
-                        } else {
-                            $this->response(array("status" => $this->errorCode['_MOBILE_NUMBER_NO_NOT_REGISTERED_'], "message" => $this->msg['_MOBILE_NUMBER_NO_NOT_REGISTERED_'], 'data' => (object)array()));
-                        }
-                    }
-                } else {
-                    $this->response(array("status" => $res['status'], "message" => $res['message'], 'data' => array()));
-                }
-            } catch (Exception $ex) {
-                //$transaction->rollback();
-                //echo $ex->getMessage();
-
-                $result['status'] = $this->errorCode['_GETTING_ERROR_VERIFY_OTP_'];
-                $result['message'] = $this->msg['_GETTING_ERROR_VERIFY_OTP_'] . $ex->getMessage();
-                $this->response(array("status" =>  $result['status'] , "message" =>  $result['message'], 'data' => array()));
-            }
-        } else {
-            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
-        }
-    }
-
-    function actionchangePassword()
-    {
-        $this->setLanguage(isset($_REQUEST['app_language'])?$_REQUEST['app_language']:1);
-        if (!empty($_REQUEST)) {
-            $validationObj = new Validation();
-            $res = $validationObj->updateUserPassword($_REQUEST);
-
-            if ($res['status'] == 0) {
-                $user_type = $_REQUEST['user_type'];
-                $user_id = $_REQUEST['user_id'];
-                $TblUsersessionObj = new TblUsersession();
-                $user = $TblUsersessionObj->checksession($user_id, $_REQUEST['session_code'], $user_type);
-                //print_r($user);die;
-                if (!empty($user)) {
-                    if(trim($_POST['new_password'])!=trim($_POST['new_password_confirm']))
-                    {
-                        $this->response(array("status" => $this->errorCode['_CONFIRM_NEW_PASSWORD_NOT_MATCH_'], "message" => $this->msg['_CONFIRM_NEW_PASSWORD_NOT_MATCH_'], 'data' => array()));
-
-                    }
-                    //check old password is valid or not
-                    if ($user_type == 1) // user is customer
-                    {
-                        $TblCustomerObj = new TblCustomer();
-                        $res = $TblCustomerObj->getCustomerdetailsbyId($user_id);
-                        $generalObj = new General();
-                        $isValid = $generalObj->validate_password($_REQUEST['old_password'], $res['password']);
-                     // print_r($isValid);die;
-                       if ($isValid) {
-
-                            if (!empty($res)) {
-                                $update_data = array();
-                                $password = $generalObj->encrypt_password($_REQUEST['new_password']);
-                                $update_data['password'] = $password;
-                                $update_data['modified_at'] = date('Y-m-d H:i:s');
-                                $TblCustomerObj->setData($update_data);
-                                $TblCustomerObj->insertData($user_id);
-                            } else {
-                                $this->response(array("status" => $this->errorCode['_USER_NOT_EXIST_'], "message" => $this->msg['_USER_NOT_EXIST_'], 'data' => array()));
-                            }
-                        } else {
-                            $this->response(array("status" => $this->errorCode['_OLD_PASSWORD_INVALID_'], "message" => $this->msg['_OLD_PASSWORD_INVALID_'], 'data' => array()));
-                        }
-                    }
-                    elseif ($user_type == 2) // user is Carrier
-                    {
-                        $TblCarrierObj = new TblCarrier();
-                        $res = $TblCarrierObj->getCarrierdetailsbyId($user_id);
-                        $generalObj = new General();
-                        $isValid = $generalObj->validate_password($_REQUEST['old_password'], $res['password']);
-
-                        if ($isValid) {
-                                if (!empty($res))
-                                {
-                                $update_data = array();
-                                $password = $generalObj->encrypt_password($_REQUEST['new_password']);
-                                $update_data['password'] =$password;
-                                $update_data['modified_at'] = date('Y-m-d H:i:s');
-                                $TblCarrierObj->setData($update_data);
-                                $TblCarrierObj->insertData($user_id);
-                            } else {
-                                $this->response(array("status" => $this->errorCode['_USER_NOT_EXIST_'], "message" => $this->msg['_USER_NOT_EXIST_'], 'data' => array()));
-                            }
-                        } else {
-                            $this->response(array("status" => $this->errorCode['_OLD_PASSWORD_INVALID_'], "message" => $this->msg['_OLD_PASSWORD_INVALID_'], 'data' => array()));
-                        }
-                    }
-                    elseif ($user_type == 3) // user is Partner
-                    {
-                        $TblPartnerObj = new TblPartner();
-                        $res = $TblPartnerObj->getPartnerdetailsbyId($user_id);
-                        $generalObj = new General();
-                        $isValid = $generalObj->validate_password($_REQUEST['old_password'], $res['password']);
-                        if ($isValid) {
-
-                            if (!empty($res)) {
-                                $update_data = array();
-                                $password = $generalObj->encrypt_password($_REQUEST['new_password']);
-                                $update_data['password'] = $password ;
-                                $update_data['modified_at'] = date('Y-m-d H:i:s');
-                                $TblPartnerObj->setData($update_data);
-                                $TblPartnerObj->insertData($user_id);
-                            } else {
-                                $this->response(array("status" => $this->errorCode['_USER_NOT_EXIST_'], "message" => $this->msg['_USER_NOT_EXIST_'], 'data' => array()));
-                            }
-                        } else {
-                            $this->response(array("status" => $this->errorCode['_OLD_PASSWORD_INVALID_'], "message" => $this->msg['_OLD_PASSWORD_INVALID_'], 'data' => array()));
-                        }
-                    }
-                    $this->response(array("status" => $this->errorCode['_PASSWORD_CHANGE_SUCCESS_'], "message" => $this->msg['_PASSWORD_CHANGE_SUCCESS_'], 'data' => array()));
-
-
-
-                }
-                else {
-                    $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
-                }
-            } else {
-                $this->response(array('status' => $res['status'], 'message' => $res['message']));
-            }
-
-        }
-       else{
-                $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
-            }
-    }
-
-    public function actionverifyForgotPasswordCode()
-    {
-        $this->setLanguage(isset($_REQUEST['app_language'])?$_REQUEST['app_language']:1);
-        if (!empty($_REQUEST)) {
-            $transaction = Yii::app()->db->beginTransaction();
-            try {
-                $validationObj = new Validation();
-                $res = $validationObj->verifyForgotPasswordCode($_REQUEST);
-
-                if ($res['status'] == 0)
-                {
-                    $userType = $_REQUEST['user_type'];
-                    $user_id = $_REQUEST['user_id'];
-
-                    $postData = array();
-                    $postData['modified_at'] = date('Y-m-d H:i:s');
-                    //$postData['device_token'] = $deviceToken;
-                    if ($userType == 1) { // user is customer
-                        //check phone_number is registered or not
-                        $TblCustomerObj = new TblCustomer();
-                        $is_exist = $TblCustomerObj->getCustomerdetailsbyId($user_id);
-                        if (!empty($is_exist)) {
-
-                            if ($is_exist['status'] == 2) {
-                                $this->response(array("status" => $this->errorCode['_ACCOUNT_DENIED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DENIED_BY_ADMIN_'], 'data' => (object)array()));
-                            } else if ($is_exist['status'] == 3) {
-                                $this->response(array("status" => $this->errorCode['_ACCOUNT_DELETED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DELETED_BY_ADMIN_'], 'data' => (object)array()));
-                            }
-
-                            if ($is_exist['fConfirmPasscode'] == $_REQUEST['verify_code']) {
-                                $postData['fConfirmPasscode'] = '';
-
-                            } else {
-                                $this->response(array("status" => $this->errorCode['_VERIFY_CODE_PARAMS_NOT_VALID_'], "message" => $this->msg['_VERIFY_CODE_PARAMS_NOT_VALID_'], 'data' => (object)array()));
-                            }
-
-                            $userId = $is_exist['customer_id'];
-
-                            //update OTP in Customer table
-                            $TblCustomerObj = new TblCustomer();
-                            $TblCustomerObj->setData($postData);
-                            $TblCustomerObj->insertData($userId);
-
-
-                            $transaction->commit();
-                            $TblCustomerObj = new TblCustomer();
-                            $customer_data = $TblCustomerObj->getCustomerdetailsbyId($userId);
-
-                            $data = array();
-                            $data['status'] = $this->errorCode['_SUCCESS_'];
-                            $data['message'] = $this->msg['_SUCCESS_'];
-                            $data['data'] = $customer_data;
-                            $this->response($data);
-
-                        } else {
-                            $this->response(array("status" => $this->errorCode['_CUSTOMER_NOT_EXIST_'], "message" => $this->msg['_CUSTOMER_NOT_EXIST_'], 'data' => (object)array()));
-                        }
-                    }
-                    else if ($userType == 2) { // user is carrier
-                        //check phone_number is registered or not
-                        $TblCarrierObj = new TblCarrier();
-                        $is_exist = $TblCarrierObj->getCarrierdetailsbyId($user_id);
-                        if (!empty($is_exist)) {
-
-                            if ($is_exist['status'] == 2) {
-                                $this->response(array("status" => $this->errorCode['_ACCOUNT_DENIED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DENIED_BY_ADMIN_'], 'data' => (object)array()));
-                            } else if ($is_exist['status'] == 3) {
-                                $this->response(array("status" => $this->errorCode['_ACCOUNT_DELETED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DELETED_BY_ADMIN_'], 'data' => (object)array()));
-                            }
-
-                            if ($is_exist['fConfirmPasscode'] == $_REQUEST['verify_code']) {
-                                $postData['fConfirmPasscode'] = '';
-
-                            } else {
-                                $this->response(array("status" => $this->errorCode['_VERIFY_CODE_PARAMS_NOT_VALID_'], "message" => $this->msg['_VERIFY_CODE_PARAMS_NOT_VALID_'], 'data' => (object)array()));
-                            }
-
-                            $userId = $is_exist['carrier_id'];
-
-                            //update OTP in carrier table
-                            $TblCarrierObj = new TblCarrier();
-                            $TblCarrierObj->setData($postData);
-                            $TblCarrierObj->insertData($userId);
-
-
-                            $transaction->commit();
-                            $TblCarrierObj = new TblCarrier();
-                            $carrier_data = $TblCarrierObj->getCarrierdetailsbyId($userId);
-
-                            $data = array();
-                            $data['status'] = $this->errorCode['_SUCCESS_'];
-                            $data['message'] = $this->msg['_SUCCESS_'];
-                            $data['data'] = $carrier_data ;
-                            $this->response($data);
-
-                        } else {
-                            $this->response(array("status" => $this->errorCode['_CARRIER_NOT_EXIST_'], "message" => $this->msg['_CARRIER_NOT_EXIST_'], 'data' => (object)array()));
-                        }
-                    }
-                    else if ($userType == 3) { // user is partner
-                        //check phone_number is registered or not
-                        $TblPartnerObj = new TblPartner();
-                        $is_exist = $TblPartnerObj->getPartnerdetailsbyId($user_id);
-                        if (!empty($is_exist)) {
-
-                            if ($is_exist['status'] == 2) {
-                                $this->response(array("status" => $this->errorCode['_ACCOUNT_DENIED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DENIED_BY_ADMIN_'], 'data' => (object)array()));
-                            } else if ($is_exist['status'] == 3) {
-                                $this->response(array("status" => $this->errorCode['_ACCOUNT_DELETED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DELETED_BY_ADMIN_'], 'data' => (object)array()));
-                            }
-
-                            if ($is_exist['fConfirmPasscode'] == $_REQUEST['verify_code']) {
-                                $postData['fConfirmPasscode'] = '';
-
-                            } else {
-                                $this->response(array("status" => $this->errorCode['_VERIFY_CODE_PARAMS_NOT_VALID_'], "message" => $this->msg['_VERIFY_CODE_PARAMS_NOT_VALID_'], 'data' => (object)array()));
-                            }
-
-                            $userId = $is_exist['partner_id'];
-
-                            //update OTP in partner table
-                            $TblPartnerObj = new TblPartner();
-                            $TblPartnerObj->setData($postData);
-                            $TblPartnerObj->insertData($userId);
-
-                            $transaction->commit();
-                            $TblPartnerObj = new TblPartner();
-                            $partner_data = $TblPartnerObj->getPartnerdetailsbyId($userId);
-
-                            $data = array();
-                            $data['status'] = $this->errorCode['_SUCCESS_'];
-                            $data['message'] = $this->msg['_SUCCESS_'];
-                            $data['data'] = $partner_data;
-                            $this->response($data);
-
-                        } else {
-                            $this->response(array("status" => $this->errorCode['_PARTNER_NOT_EXIST_'], "message" => $this->msg['_PARTNER_NOT_EXIST_'], 'data' => (object)array()));
-                        }
-                    }
-                }
-                else {
-                    $this->response(array("status" => $res['status'], "message" => $res['message'], 'data' => array()));
-                }
-            } catch (Exception $ex) {
-                $transaction->rollback();
-                //echo $ex->getMessage();
-
-                $result['status'] = $this->errorCode['_GETTING_ERROR_VERIFY_OTP_'];
-                $result['message'] = $this->msg['_GETTING_ERROR_VERIFY_OTP_'] . $ex->getMessage();
-                $this->response(array("status" =>  $result['status'] , "message" =>  $result['message'], 'data' => array()));
-            }
-        } else {
-            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
-        }
-    }
-
-
-
-    public function actionexpireOTP()
-    {
-        $this->setLanguage(isset($_REQUEST['app_language'])?$_REQUEST['app_language']:1);
-        if (!empty($_REQUEST)) {
-            $transaction = Yii::app()->db->beginTransaction();
-            try {
-
-                    $userType = $_REQUEST['user_type'];
-                    $deviceToken = $_REQUEST['device_token'];
-                    $mobile_number = $_REQUEST['mobile_number'];
-                    $postData = array();
-                    $postData['modified_at'] = date('Y-m-d H:i:s');
-                    $postData['otp_code'] = 0;
-                    $postData['fConfirmPasscode'] = 0;
-                    $postData['modified_at'] = date('Y-m-d H:i:s');
-                    $postData['device_type'] = $_REQUEST['device_type'];
-                    if(isset($_REQUEST['endpoint_arn']) && $_REQUEST['endpoint_arn']!=''){
-                        $endpoint_arn = $_REQUEST['endpoint_arn'];
-                    }
-                    else{
-                        $endpoint_arn = "";
-                    }
-
-                    if (isset($_REQUEST['build_version']) && $_REQUEST['build_version'] != '') {
-                        $postdata['build_version'] = $_REQUEST['build_version'];
-                    }
-                    //$postData['device_token'] = $deviceToken;
-                    if ($userType == 1)
-                    {
-                        // user is customer
-                        //check phone_number is registered or not
-                        $TblCustomerObj = new TblCustomer();
-                        $is_exist = $TblCustomerObj->checkMobilenumberExists($mobile_number);
-                        if (!empty($is_exist))
-                        {
-
-                            if ($is_exist['status'] == 2) {
-                                $this->response(array("status" => $this->errorCode['_ACCOUNT_DENIED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DENIED_BY_ADMIN_'], 'data' => (object)array()));
-                            } else if ($is_exist['status'] == 3) {
-                                $this->response(array("status" => $this->errorCode['_ACCOUNT_DELETED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DELETED_BY_ADMIN_'], 'data' => (object)array()));
-                            }
-                            $userId = $is_exist['customer_id'];
-                            //update OTP in Customer table
-                            $TblCustomerObj = new TblCustomer();
-                            $TblCustomerObj->setData($postData);
-                            $TblCustomerObj->insertData($userId);
-                            $transaction->commit();
-                            $TblCustomerObj = new TblCustomer();
-                            $customer_data = $TblCustomerObj->checkMobilenumberExists($mobile_number);
-                            $data = array();
-                            $data['status'] = $this->errorCode['_SUCCESS_'];
-                            $data['message'] = $this->msg['_SUCCESS_'];
-                            $data['data'] = $customer_data;
-                            $this->response($data);
-
-                        } else {
-                            $this->response(array("status" => $this->errorCode['_MOBILE_NUMBER_NO_NOT_REGISTERED_'], "message" => $this->msg['_MOBILE_NUMBER_NO_NOT_REGISTERED_'], 'data' => (object)array()));
-                        }
-                    }
-               else if ($userType == 2)
-                {
-                    // user is carrier
-                    //check phone_number is registered or not
-                    $TblCarrierObj = new TblCarrier();
-                    $is_exist = $TblCarrierObj->checkMobilenumberExists($mobile_number);
-                    if (!empty($is_exist))
-                    {
-
-                        if ($is_exist['status'] == 2) {
-                            $this->response(array("status" => $this->errorCode['_ACCOUNT_DENIED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DENIED_BY_ADMIN_'], 'data' => (object)array()));
-                        } else if ($is_exist['status'] == 3) {
-                            $this->response(array("status" => $this->errorCode['_ACCOUNT_DELETED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DELETED_BY_ADMIN_'], 'data' => (object)array()));
-                        }
-                        $userId = $is_exist['carrier_id'];
-                        //update OTP in Customer table
-
-                        $TblCarrierObj->setData($postData);
-                        $TblCarrierObj->insertData($userId);
-                        $transaction->commit();
-                        $carrier_data = $TblCarrierObj->checkMobilenumberExists($mobile_number);
-                        $data = array();
-                        $data['status'] = $this->errorCode['_SUCCESS_'];
-                        $data['message'] = $this->msg['_SUCCESS_'];
-                        $data['data'] = $carrier_data;
-                        $this->response($data);
-
-                    } else {
-                        $this->response(array("status" => $this->errorCode['_MOBILE_NUMBER_NO_NOT_REGISTERED_'], "message" => $this->msg['_MOBILE_NUMBER_NO_NOT_REGISTERED_'], 'data' => (object)array()));
-                    }
-                }
-
-               else if ($userType == 3)
-               {
-                   // user is Partner
-                   //check phone_number is registered or not
-                   $TblPartnerObj = new TblPartner();
-                   $is_exist = $TblPartnerObj->checkMobilenumberExists($mobile_number);
-                   if (!empty($is_exist))
-                   {
-
-                       if ($is_exist['status'] == 2) {
-                           $this->response(array("status" => $this->errorCode['_ACCOUNT_DENIED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DENIED_BY_ADMIN_'], 'data' => (object)array()));
-                       } else if ($is_exist['status'] == 3) {
-                           $this->response(array("status" => $this->errorCode['_ACCOUNT_DELETED_BY_ADMIN_'], "message" => $this->msg['_ACCOUNT_DELETED_BY_ADMIN_'], 'data' => (object)array()));
-                       }
-                       $userId = $is_exist['partner_id'];
-                       //update OTP in Customer table
-
-                       $TblPartnerObj->setData($postData);
-                       $TblPartnerObj->insertData($userId);
-                       $transaction->commit();
-                       $partner_data = $TblPartnerObj->checkMobilenumberExists($mobile_number);
-                       $data = array();
-                       $data['status'] = $this->errorCode['_SUCCESS_'];
-                       $data['message'] = $this->msg['_SUCCESS_'];
-                       $data['data'] = $partner_data;
-                       $this->response($data);
-
-                   } else {
-                       $this->response(array("status" => $this->errorCode['_MOBILE_NUMBER_NO_NOT_REGISTERED_'], "message" => $this->msg['_MOBILE_NUMBER_NO_NOT_REGISTERED_'], 'data' => (object)array()));
-                   }
-               }
-
-            } catch (Exception $ex) {
-                $transaction->rollback();
-                //echo $ex->getMessage();
-
-                $result['status'] = $this->errorCode['_GETTING_ERROR_VERIFY_OTP_'];
-                $result['message'] = $this->msg['_GETTING_ERROR_VERIFY_OTP_'] . $ex->getMessage();
-                $this->response(array("status" =>  $result['status'] , "message" =>  $result['message'], 'data' => array()));
-            }
-        } else {
-            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
-        }
-    }
 
     function actionshowLogs() {
         $handle = @fopen(_SITENAME_ . '.txt', "r");
@@ -948,6 +358,152 @@ class ApiController extends Controller {
 
     /*=============================  User  Defined Function End===============================*/
 
+    /*api for listing of bank loan type*/ /*not in use*/
+    public function actionbankLoanList()
+    {
+        if (!empty($_REQUEST) && isset($_REQUEST['user_id']) && $_REQUEST['user_id'] != '' && isset($_REQUEST['session_code']) && $_REQUEST['session_code'] != '' && isset($_REQUEST['loan_type_id']) && $_REQUEST['loan_type_id']!='')
+        {
+            $TblUserSessionObj = new TblUserSession();
+            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
+            //print_r($user);die;
+            if (!empty($user)){
+                $transaction = Yii::app()->db->beginTransaction();
+                try{
+                    $user_id = $_REQUEST['user_id'];
+                    $loan_type_id = $_REQUEST['loan_type_id'];
+                    $tblLoanTypeObj = new TblLoanTypeMaster();
+                    $LoanList = $tblLoanTypeObj->getLoanTypeList();
+
+                    if(!empty($LoanList))
+                    {
+                        $transaction->commit();
+                        $data = array();
+                        $data['status'] =  $this->errorCode['_SUCCESS_'];
+                        $data['message'] =  $this->msg['_SUCCESS_'];
+                        $data['data'] = $LoanList;
+                        $this->response($data);
+                    }
+                    else
+                    {
+                        $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" =>  $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
+                    }
+                }
+                catch(Exception $e)
+                {
+                    $transaction->rollback();
+                    $data = array();
+                    $data['status'] = -111;
+                    $data['message'] = $e->getMessage();
+                    $data['data'] = array();
+                    $this->response($data);
+                }
+            }
+            else
+            {
+                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
+            }
+        }else{
+            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
+        }
+    }
+
+    /*api for listing of investment advisory type*/ /*not in use*/
+    public function actioninvestmentAdvisoryList()
+    {
+        if (!empty($_REQUEST) && isset($_REQUEST['user_id']) && $_REQUEST['user_id'] != '' && isset($_REQUEST['session_code']) && $_REQUEST['session_code'] != '' && isset($_REQUEST['loan_type_id']) && $_REQUEST['loan_type_id']!='')
+        {
+            $TblUserSessionObj = new TblUserSession();
+            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
+            //print_r($user);die;
+            if (!empty($user)){
+                $transaction = Yii::app()->db->beginTransaction();
+                try{
+                    $user_id = $_REQUEST['user_id'];
+                    $loan_type_id = $_REQUEST['loan_type_id'];
+                    $tblInvestmentTypeObj = new TblInvTypeMaster();
+                    $InvAdvisoryList = $tblInvestmentTypeObj->getInvAdvisoryTypeList($loan_type_id);
+
+                    if(!empty($InvAdvisoryList))
+                    {
+                        $transaction->commit();
+                        $data = array();
+                        $data['status'] =  $this->errorCode['_SUCCESS_'];
+                        $data['message'] =  $this->msg['_SUCCESS_'];
+                        $data['data'] = $InvAdvisoryList;
+                        $this->response($data);
+                    }
+                    else
+                    {
+                        $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" =>  $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
+                    }
+                }
+                catch(Exception $e)
+                {
+                    $transaction->rollback();
+                    $data = array();
+                    $data['status'] = -111;
+                    $data['message'] = $e->getMessage();
+                    $data['data'] = array();
+                    $this->response($data);
+                }
+            }
+            else
+            {
+                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
+            }
+        }else{
+            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
+        }
+    }
+
+    /*api for listing of real estate type*/ /*not in use*/
+    public function actionrealEstateList()
+    {
+        if (!empty($_REQUEST) && isset($_REQUEST['user_id']) && $_REQUEST['user_id'] != '' && isset($_REQUEST['session_code']) && $_REQUEST['session_code'] != '' && isset($_REQUEST['loan_type_id']) && $_REQUEST['loan_type_id']!='')
+        {
+            $TblUserSessionObj = new TblUserSession();
+            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
+            //print_r($user);die;
+            if (!empty($user)){
+                $transaction = Yii::app()->db->beginTransaction();
+                try{
+                    $user_id = $_REQUEST['user_id'];
+                    $loan_type_id = $_REQUEST['loan_type_id'];
+                    $tblPropertyTypeObj = new TblPropertyTypeMaster();
+                    $realEstateList = $tblPropertyTypeObj->getRealEstateTypeList($loan_type_id);
+
+                    if(!empty($realEstateList))
+                    {
+                        $transaction->commit();
+                        $data = array();
+                        $data['status'] =  $this->errorCode['_SUCCESS_'];
+                        $data['message'] =  $this->msg['_SUCCESS_'];
+                        $data['data'] = $realEstateList;
+                        $this->response($data);
+                    }
+                    else
+                    {
+                        $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" =>  $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
+                    }
+                }
+                catch(Exception $e)
+                {
+                    $transaction->rollback();
+                    $data = array();
+                    $data['status'] = -111;
+                    $data['message'] = $e->getMessage();
+                    $data['data'] = array();
+                    $this->response($data);
+                }
+            }
+            else
+            {
+                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
+            }
+        }else{
+            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
+        }
+    }
 
 
     /*====================Bhoomi code start here for mymudra project=====================================*/
@@ -1396,153 +952,6 @@ class ApiController extends Controller {
         }
     }
 
-    /*api for listing of bank loan type*/ /*not in use*/
-    public function actionbankLoanList()
-    {
-        if (!empty($_REQUEST) && isset($_REQUEST['user_id']) && $_REQUEST['user_id'] != '' && isset($_REQUEST['session_code']) && $_REQUEST['session_code'] != '' && isset($_REQUEST['loan_type_id']) && $_REQUEST['loan_type_id']!='')
-        {
-            $TblUserSessionObj = new TblUserSession();
-            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
-            //print_r($user);die;
-            if (!empty($user)){
-                $transaction = Yii::app()->db->beginTransaction();
-                try{
-                    $user_id = $_REQUEST['user_id'];
-                    $loan_type_id = $_REQUEST['loan_type_id'];
-                    $tblLoanTypeObj = new TblLoanTypeMaster();
-                    $LoanList = $tblLoanTypeObj->getBankLoanTypeList($loan_type_id);
-
-                    if(!empty($LoanList))
-                    {
-                        $transaction->commit();
-                        $data = array();
-                        $data['status'] =  $this->errorCode['_SUCCESS_'];
-                        $data['message'] =  $this->msg['_SUCCESS_'];
-                        $data['data'] = $LoanList;
-                        $this->response($data);
-                    }
-                    else
-                    {
-                        $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" =>  $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
-                    }
-                }
-                catch(Exception $e)
-                {
-                    $transaction->rollback();
-                    $data = array();
-                    $data['status'] = -111;
-                    $data['message'] = $e->getMessage();
-                    $data['data'] = array();
-                    $this->response($data);
-                }
-            }
-            else
-            {
-                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
-            }
-        }else{
-            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
-        }
-    }
-
-    /*api for listing of investment advisory type*/ /*not in use*/
-    public function actioninvestmentAdvisoryList()
-    {
-        if (!empty($_REQUEST) && isset($_REQUEST['user_id']) && $_REQUEST['user_id'] != '' && isset($_REQUEST['session_code']) && $_REQUEST['session_code'] != '' && isset($_REQUEST['loan_type_id']) && $_REQUEST['loan_type_id']!='')
-        {
-            $TblUserSessionObj = new TblUserSession();
-            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
-            //print_r($user);die;
-            if (!empty($user)){
-                $transaction = Yii::app()->db->beginTransaction();
-                try{
-                    $user_id = $_REQUEST['user_id'];
-                    $loan_type_id = $_REQUEST['loan_type_id'];
-                    $tblInvestmentTypeObj = new TblInvTypeMaster();
-                    $InvAdvisoryList = $tblInvestmentTypeObj->getInvAdvisoryTypeList($loan_type_id);
-
-                    if(!empty($InvAdvisoryList))
-                    {
-                        $transaction->commit();
-                        $data = array();
-                        $data['status'] =  $this->errorCode['_SUCCESS_'];
-                        $data['message'] =  $this->msg['_SUCCESS_'];
-                        $data['data'] = $InvAdvisoryList;
-                        $this->response($data);
-                    }
-                    else
-                    {
-                        $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" =>  $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
-                    }
-                }
-                catch(Exception $e)
-                {
-                    $transaction->rollback();
-                    $data = array();
-                    $data['status'] = -111;
-                    $data['message'] = $e->getMessage();
-                    $data['data'] = array();
-                    $this->response($data);
-                }
-            }
-            else
-            {
-                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
-            }
-        }else{
-            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
-        }
-    }
-
-    /*api for listing of real estate type*/ /*not in use*/
-    public function actionrealEstateList()
-    {
-        if (!empty($_REQUEST) && isset($_REQUEST['user_id']) && $_REQUEST['user_id'] != '' && isset($_REQUEST['session_code']) && $_REQUEST['session_code'] != '' && isset($_REQUEST['loan_type_id']) && $_REQUEST['loan_type_id']!='')
-        {
-            $TblUserSessionObj = new TblUserSession();
-            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
-            //print_r($user);die;
-            if (!empty($user)){
-                $transaction = Yii::app()->db->beginTransaction();
-                try{
-                    $user_id = $_REQUEST['user_id'];
-                    $loan_type_id = $_REQUEST['loan_type_id'];
-                    $tblPropertyTypeObj = new TblPropertyTypeMaster();
-                    $realEstateList = $tblPropertyTypeObj->getRealEstateTypeList($loan_type_id);
-
-                    if(!empty($realEstateList))
-                    {
-                        $transaction->commit();
-                        $data = array();
-                        $data['status'] =  $this->errorCode['_SUCCESS_'];
-                        $data['message'] =  $this->msg['_SUCCESS_'];
-                        $data['data'] = $realEstateList;
-                        $this->response($data);
-                    }
-                    else
-                    {
-                        $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" =>  $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
-                    }
-                }
-                catch(Exception $e)
-                {
-                    $transaction->rollback();
-                    $data = array();
-                    $data['status'] = -111;
-                    $data['message'] = $e->getMessage();
-                    $data['data'] = array();
-                    $this->response($data);
-                }
-            }
-            else
-            {
-                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
-            }
-        }else{
-            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
-        }
-    }
-
     /*api for list of loan sub type based on three type*/
     public function actionloanTypeList()
     {
@@ -1605,9 +1014,9 @@ class ApiController extends Controller {
         }
     }
 
-    /*save user for particular loan type*/
-    public function actionuserReference()
-    {
+    /*save user for particular bank loan type user reference*/
+    public function actionbankLoanUserReference()
+    {   //echo "<pre>"; print_r($_REQUEST); die;
         if (isset($_REQUEST['user_id']) && $_REQUEST['user_id']!='' && isset($_REQUEST['session_code']) && $_REQUEST['session_code']!='' && isset($_REQUEST['loan_type_id']) && $_REQUEST['loan_type_id']!='') {
 
             $postData = array();
@@ -1615,7 +1024,7 @@ class ApiController extends Controller {
             try {
 
                 $validationObj = new Validation();
-                $res = $validationObj->userSignUp($_REQUEST);
+                $res = $validationObj->userReferenceSignUp($_REQUEST);
 
                 if ($res['status'] == 0)
                 {
@@ -1634,7 +1043,7 @@ class ApiController extends Controller {
                             $this->response(array("status" => $this->errorCode['_EMAIL_ALREADY_REGISTER_'], "message" => $this->msg['_EMAIL_ALREADY_REGISTER_'], 'data' => array()));
                         }
                     }
-                    $postData['password'] = $_REQUEST['password'];
+                    //$postData['password'] = $_REQUEST['password'];
                     $postData['street'] = $_REQUEST['street'];
                     $postData['city'] = $_REQUEST['city'];
                     $postData['state'] = $_REQUEST['state'];
@@ -1646,62 +1055,14 @@ class ApiController extends Controller {
 
                     $postData['status'] = 1;
                     $postData['created_at'] = date("Y-m-d H:i:s");
-                    $postData['modified_at'] = date("Y-m-d H:i:s");
-
+                    //$postData['modified_at'] = date("Y-m-d H:i:s");
+                    //echo "<pre>"; print_r($postData); die;
                     $TblUserRefObj = new TblUserRefrence();
                     $TblUserRefObj->setData($postData);
                     $user_ref_id = $TblUserRefObj->insertData();
 
-                    if(isset($type_id) && $type_id == 1)
-                    {
-                        $loanData = array();
-                        if(isset($_REQUEST['bank_id']) && $_REQUEST['bank_id']!='')
-                        {
-                            $loanData['bank_id'] = $_REQUEST['bank_id'];
-                        }
-                        $loanData['loan_type'] = $_REQUEST['loan_type_id'];
-                        if(isset($_REQUEST['loan_amount']) && $_REQUEST['loan_amount']!='')
-                        {
-                            $loanData['loan_amount'] = $_REQUEST['loan_amount'];
-                        }
-                        $loanData['user_ref_id'] = $user_ref_id;
-                        $loanData['load_transaction_date'] = date("Y-m-d H:i:s");
-                        $loanData['status'] = 1;
-                        $loanData['created_at'] = date("Y-m-d H:i:s");
-
-                        $TblLoanTransactionObj = new TblLoanTransaction();
-                        $TblLoanTransactionObj->setData($loanData);
-                        $loan_id = $TblLoanTransactionObj->insertData();
-                    }
-                    else if (isset($type_id) && $type_id == 2)
-                    {
-                        $investmentData = array();
-
-                        if(isset($_REQUEST['inv_type']) && $_REQUEST['inv_type']!='')
-                        {
-                            $investmentData['inv_type'] = $_REQUEST['inv_type'];
-                        }
-                        if(isset($_REQUEST['inv_amount']) && $_REQUEST['inv_amount']!='')
-                        {
-                            $investmentData['inv_amount'] = $_REQUEST['inv_amount'];
-                        }
-                        $investmentData['user_ref_id'] = $user_ref_id;
-                        $investmentData['inv_transaction_date'] = date("Y-m-d H:i:s");
-                        $investmentData['status'] = 1;
-                        $investmentData['created_at'] = date("Y-m-d H:i:s");
-
-                        $TblInvTransactionObj = new TblInvestmentTransaction();
-                        $TblInvTransactionObj->setData($investmentData);
-                        $loan_transaction_id = $TblInvTransactionObj->insertData();
-                    }
-                    else
-                    {
-                        if(isset($_REQUEST['loan_sub_type_id']) && $_REQUEST['loan_sub_type_id']!='')
-                        {
-                            $residentialData = array();
-                        }
-                    }
-                    /*$loanData = array();
+                    //echo "<pre>"; print_r($user_ref_id); die;
+                    $loanData = array();
                     if(isset($_REQUEST['bank_id']) && $_REQUEST['bank_id']!='')
                     {
                         $loanData['bank_id'] = $_REQUEST['bank_id'];
@@ -1714,16 +1075,18 @@ class ApiController extends Controller {
                     $loanData['user_ref_id'] = $user_ref_id;
                     $loanData['load_transaction_date'] = date("Y-m-d H:i:s");
                     $loanData['status'] = 1;
+                    $loanData['created_at'] = date("Y-m-d H:i:s");
 
                     $TblLoanTransactionObj = new TblLoanTransaction();
                     $TblLoanTransactionObj->setData($loanData);
-                    $loan_transaction_id = $TblLoanTransactionObj->insertData();*/
+                    $loan_id = $TblLoanTransactionObj->insertData();
+                    //echo "<pre>"; print_r($loan_id); die;
 
-
+                    $transaction->commit();
                     if ($user_ref_id != '') {
                         $user_Data = $TblUserRefObj->getUserdetailsbyId($user_ref_id);
                         if (!empty($user_Data)) {
-                            $transaction->commit();
+
 
                             $result['status'] = $this->errorCode['_SUCCESS_'];
                             $result['message'] = $this->msg['_SUCCESS_'];
@@ -1743,6 +1106,252 @@ class ApiController extends Controller {
                         $this->response($result);
                     }
 
+                }
+                else
+                {
+                    $this->response(array("status" => $res['status'], "message" => $res['message'], 'data' => array()));
+
+                }
+            }
+            catch (Exception $ex) {
+                $transaction->rollback();
+                //echo $ex->getMessage();
+                if (strpos($ex->getMessage(), '1062') !== false) {
+                    $result['status'] = -8;
+                    $result['message'] = $this->msg['_EMAIL_ALREADY_REGISTER_'];
+                    $result['data'] = (object) array();
+                    $this->response($result);
+                } else {
+                    $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
+                    $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'] . $ex->getMessage();
+                    $this->response(array("status" =>  $result['status'] , "message" =>  $result['message'], 'data' => array()));
+                }
+            }
+        } else {
+            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" =>  $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
+        }
+    }
+
+    /*save user for particular investment loan type user reference*/
+    public function actioninvAdvisoryUserReference()
+    {
+        if (isset($_REQUEST['user_id']) && $_REQUEST['user_id']!='' && isset($_REQUEST['session_code']) && $_REQUEST['session_code']!='' && isset($_REQUEST['inv_type_id']) && $_REQUEST['inv_type_id']!='') {
+
+            $postData = array();
+            $transaction = Yii::app()->db->beginTransaction();
+            try {
+
+                $validationObj = new Validation();
+                $res = $validationObj->invUserReferenceSignUp($_REQUEST);
+
+                if ($res['status'] == 0)
+                {
+                    $TblUserRefObj = new TblUserRefrence();
+                    $bool = $TblUserRefObj->checkMobilenumberExists($_REQUEST['mobile_number']);
+
+                    if (!empty($bool)) {
+                        $this->response(array("status" => $this->errorCode['_MOBILE_NUMBER_ALREADY_EXIST_'], "message" => $this->msg['_MOBILE_NUMBER_ALREADY_EXIST_'], 'data' => array()));
+                    }
+                    $postData['full_name'] = $_REQUEST['name'];
+                    if (isset($_REQUEST['email']) && $_REQUEST['email'] != '') {
+                        $postData['email'] = $_REQUEST['email'];
+
+                        $bool = $TblUserRefObj->checkEmailExists($_REQUEST['email']);
+                        if (!empty($bool)) {
+                            $this->response(array("status" => $this->errorCode['_EMAIL_ALREADY_REGISTER_'], "message" => $this->msg['_EMAIL_ALREADY_REGISTER_'], 'data' => array()));
+                        }
+                    }
+                    //$postData['password'] = $_REQUEST['password'];
+                    $postData['street'] = $_REQUEST['street'];
+                    $postData['city'] = $_REQUEST['city'];
+                    $postData['state'] = $_REQUEST['state'];
+                    $postData['pincode'] = $_REQUEST['pincode'];
+                    $postData['phone_number'] = $_REQUEST['mobile_number'];
+                    $postData['employment_type'] = $_REQUEST['employment_type'];
+                    $postData['annual_income'] = $_REQUEST['annual_income'];
+                    $postData['user_id'] = $_REQUEST['user_id'];
+
+                    $postData['status'] = 1;
+                    $postData['created_at'] = date("Y-m-d H:i:s");
+                    $postData['modified_at'] = date("Y-m-d H:i:s");
+
+                    $TblUserRefObj = new TblUserRefrence();
+                    $TblUserRefObj->setData($postData);
+                    $user_ref_id = $TblUserRefObj->insertData();
+                    //echo "<pre>"; print_r($user_ref_id); die;
+
+                    $loanData = array();
+                    if(isset($_REQUEST['inv_type_id']) && $_REQUEST['inv_type_id']!='')
+                    {
+                        $loanData['inv_type'] = $_REQUEST['inv_type_id'];
+                    }
+
+                    if(isset($_REQUEST['inv_amount']) && $_REQUEST['inv_amount']!='')
+                    {
+                        $loanData['inv_amount'] = $_REQUEST['inv_amount'];
+                    }
+
+                    if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
+                    {
+                        $loanData['description'] = $_REQUEST['description'];
+                    }
+                    $loanData['user_ref_id'] = $user_ref_id;
+                    $loanData['inv_transaction_date'] = date("Y-m-d H:i:s");
+                    //$loanData['status'] = 1;
+                    $loanData['created_at'] = date("Y-m-d H:i:s");
+                    //echo "<pre>"; print_r($loanData); die;
+                    $TblInvTransactionObj = new TblInvestmentTransaction();
+                    $TblInvTransactionObj->setData($loanData);
+                    $loan_id = $TblInvTransactionObj->insertData();
+
+                    $transaction->commit();
+
+                    if ($user_ref_id != '') {
+                        $user_Data = $TblUserRefObj->getUserdetailsbyId($user_ref_id);
+                        if (!empty($user_Data)) {
+                            $result['status'] = $this->errorCode['_SUCCESS_'];
+                            $result['message'] = $this->msg['_SUCCESS_'];
+                            $result['data'] = $user_Data;
+                            $this->response($result);
+                        } else {
+                            $result['status'] = $this->errorCode['_DATA_NOT_FOUND_'];
+                            $result['message'] = $this->msg['_DATA_NOT_FOUND_'];
+                            $result['data'] = array();
+                            $this->response($result);
+                        }
+                    }
+                    else {
+                        $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
+                        $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'];
+                        $result['data'] = array();
+                        $this->response($result);
+                    }
+
+                }
+                else
+                {
+                    $this->response(array("status" => $res['status'], "message" => $res['message'], 'data' => array()));
+
+                }
+            }
+            catch (Exception $ex) {
+                $transaction->rollback();
+                //echo $ex->getMessage();
+                if (strpos($ex->getMessage(), '1062') !== false) {
+                    $result['status'] = -8;
+                    $result['message'] = $this->msg['_EMAIL_ALREADY_REGISTER_'];
+                    $result['data'] = (object) array();
+                    $this->response($result);
+                } else {
+                    $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
+                    $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'] . $ex->getMessage();
+                    $this->response(array("status" =>  $result['status'] , "message" =>  $result['message'], 'data' => array()));
+                }
+            }
+        } else {
+            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" =>  $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
+        }
+    }
+
+    /*save user for particular property loan type user reference*/
+    public function actionpropertyUserReference()
+    {
+        if (isset($_REQUEST['user_id']) && $_REQUEST['user_id']!='' && isset($_REQUEST['session_code']) && $_REQUEST['session_code']!='' && isset($_REQUEST['property_type_id']) && $_REQUEST['property_type_id']!='') {
+
+            $postData = array();
+            $transaction = Yii::app()->db->beginTransaction();
+            try {
+
+                $validationObj = new Validation();
+                $res = $validationObj->propertyUserReference($_REQUEST);
+
+                if ($res['status'] == 0)
+                {
+                    $TblUserRefObj = new TblUserRefrence();
+                    $bool = $TblUserRefObj->checkMobilenumberExists($_REQUEST['mobile_number']);
+
+                    if (!empty($bool)) {
+                        $this->response(array("status" => $this->errorCode['_MOBILE_NUMBER_ALREADY_EXIST_'], "message" => $this->msg['_MOBILE_NUMBER_ALREADY_EXIST_'], 'data' => array()));
+                    }
+                    $postData['full_name'] = $_REQUEST['name'];
+                    if (isset($_REQUEST['email']) && $_REQUEST['email'] != '') {
+                        $postData['email'] = $_REQUEST['email'];
+
+                        $bool = $TblUserRefObj->checkEmailExists($_REQUEST['email']);
+                        if (!empty($bool)) {
+                            $this->response(array("status" => $this->errorCode['_EMAIL_ALREADY_REGISTER_'], "message" => $this->msg['_EMAIL_ALREADY_REGISTER_'], 'data' => array()));
+                        }
+                    }
+
+                    $postData['street'] = $_REQUEST['street'];
+                    $postData['city'] = $_REQUEST['city'];
+                    $postData['state'] = $_REQUEST['state'];
+                    $postData['pincode'] = $_REQUEST['pincode'];
+                    $postData['phone_number'] = $_REQUEST['mobile_number'];
+                    $postData['employment_type'] = $_REQUEST['employment_type'];
+                    $postData['annual_income'] = $_REQUEST['annual_income'];
+                    $postData['user_id'] = $_REQUEST['user_id'];
+
+                    $postData['status'] = 1;
+                    $postData['created_at'] = date("Y-m-d H:i:s");
+                    $postData['modified_at'] = date("Y-m-d H:i:s");
+
+                    $TblUserRefObj = new TblUserRefrence();
+                    $TblUserRefObj->setData($postData);
+                    $user_ref_id = $TblUserRefObj->insertData();
+
+                    $loanData = array();
+                    if(isset($_REQUEST['property_type_id']) && $_REQUEST['property_type_id']!='')
+                    {
+                        $loanData['property_transaction_type'] = $_REQUEST['property_type_id'];
+                    }
+
+                    if(isset($_REQUEST['size']) && $_REQUEST['size']!='')
+                    {
+                        $loanData['property_size'] = $_REQUEST['size'];
+                    }
+
+                    if(isset($_REQUEST['size_type']) && $_REQUEST['size_type']!='')
+                    {
+                        $loanData['property_size_type'] = $_REQUEST['size_type'];
+                    }
+
+                    if(isset($_REQUEST['property_type']) && $_REQUEST['property_type']!='')
+                    {
+                        $loanData['property_type'] = $_REQUEST['property_type'];
+                    }
+                    $loanData['user_ref_id'] = $user_ref_id;
+                    $loanData['property_transaction_date'] = date("Y-m-d H:i:s");
+                    //$loanData['status'] = 1;
+                    $loanData['created_at'] = date("Y-m-d H:i:s");
+
+                    $TblPropertyTransactionObj = new TblPropertyTransaction();
+                    $TblPropertyTransactionObj->setData($loanData);
+                    $loan_id = $TblPropertyTransactionObj->insertData();
+
+                    $transaction->commit();
+
+                    if ($user_ref_id != '') {
+                        $user_Data = $TblUserRefObj->getUserdetailsbyId($user_ref_id);
+                        if (!empty($user_Data)) {
+
+                            $result['status'] = $this->errorCode['_SUCCESS_'];
+                            $result['message'] = $this->msg['_SUCCESS_'];
+                            $result['data'] = $user_Data;
+                            $this->response($result);
+                        } else {
+                            $result['status'] = $this->errorCode['_DATA_NOT_FOUND_'];
+                            $result['message'] = $this->msg['_DATA_NOT_FOUND_'];
+                            $result['data'] = array();
+                            $this->response($result);
+                        }
+                    }
+                    else {
+                        $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
+                        $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'];
+                        $result['data'] = array();
+                        $this->response($result);
+                    }
                 }
                 else
                 {
@@ -1806,6 +1415,110 @@ class ApiController extends Controller {
                         $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" => $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
                     }
 
+                }
+                catch (Exception $e) {
+                    $transaction->rollback();
+                    $data = array();
+                    $data['status'] = -111;
+                    $data['message'] = $e->getMessage();
+                    $data['data'] = array();
+                    $this->response($data);
+                }
+
+            }
+
+        }
+    }
+
+    /*bank loan registered user listing*/
+    public function actionregisteredUserListForBankLoan()
+    {
+        if (isset($_REQUEST['user_id']) && $_REQUEST['user_id']!='' && isset($_REQUEST['session_code']) && $_REQUEST['session_code']!='')
+        {
+            $TblUserSessionObj = new TblUsersession();
+            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
+
+            if(!empty($user))
+            {
+                $transaction = Yii::app()->db->beginTransaction();
+
+                try {
+                    $user_id = $_REQUEST['user_id'];
+
+                    $tblUserObj = new TblUser();
+                    $bankLoanUserData = $tblUserObj->getRegisteredUserForBankLoanList();
+
+                    //echo "<pre>"; print_r($bankLoanUserData); die;
+                    if (!empty($bankLoanUserData)) {
+                        $bankArr = array();
+                        $i = 0;
+                        foreach ($bankLoanUserData as $bankUser) {
+                            $bankArr[$i] = $bankUser;
+                            $i++;
+                        }
+
+                        //print_r($projectArr); die;
+                        $transaction->commit();
+                        $data = array();
+                        $data['status'] = $this->errorCode['_SUCCESS_'];
+                        $data['message'] = $this->msg['_SUCCESS_'];
+                        $data['data'] = $bankArr;
+                        $this->response($data);
+                    } else {
+                        $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" => $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
+                    }
+
+                }
+                catch (Exception $e) {
+                    $transaction->rollback();
+                    $data = array();
+                    $data['status'] = -111;
+                    $data['message'] = $e->getMessage();
+                    $data['data'] = array();
+                    $this->response($data);
+                }
+
+            }
+
+        }
+    }
+
+    /*registered user listing for investment loan*/
+    public function actionregisteredUserListForInvestmentLoan()
+    {
+        if (isset($_REQUEST['user_id']) && $_REQUEST['user_id']!='' && isset($_REQUEST['session_code']) && $_REQUEST['session_code']!='')
+        {
+            $TblUserSessionObj = new TblUsersession();
+            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
+
+            if(!empty($user))
+            {
+                $transaction = Yii::app()->db->beginTransaction();
+                try {
+                    $user_id = $_REQUEST['user_id'];
+
+                    $tblUserObj = new TblUser();
+                    $invLoanUserData = $tblUserObj->getRegisteredUserForInvLoanList();
+
+                    //echo "<pre>"; print_r($bankLoanUserData); die;
+                    if (!empty($invLoanUserData)) {
+                        $invArr = array();
+                        $i = 0;
+                        foreach ($invLoanUserData as $invUser) {
+                            $invArr[$i] = $invUser;
+                            $i++;
+                        }
+
+                        //print_r($projectArr); die;
+                        $transaction->commit();
+                        $data = array();
+                        $data['status'] = $this->errorCode['_SUCCESS_'];
+                        $data['message'] = $this->msg['_SUCCESS_'];
+                        $data['data'] = $invArr;
+                        $this->response($data);
+                    } else {
+                        $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" => $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
+                    }
                 }
                 catch (Exception $e) {
                     $transaction->rollback();

@@ -2398,5 +2398,113 @@ class Validation extends CFormModel
         }
     }
 
+
+    function userReferenceSignUp($post,$isBulkUpload=0)
+    {
+
+        $_POST = $post;
+        $validator = new FormValidator();
+        $generalObj	= new General();
+
+        $validator->addValidation("name","req",'_REQ_NAME_');
+        $validator->addValidation("email","req",'_REQ_EMAIL_ID_');
+        $validator->addValidation("email","email",'_VALID_EMAIL_');
+        $validator->addValidation("mobile_number","req",'_REQ_MOBILE_NUMBER_');
+        $validator->addValidation("employment_type","req",'_REQ_EMPLOYMENT_TYPE_');
+        $validator->addValidation("annual_income","req",'_REQ_ANNUAL_INCOME_');
+        //$validator->addValidation("password","maxlen=50",'_REQ_PASSWORD_');
+        //$validator->addValidation("confirm_password","maxlen=50",'_REQ_CONFIRM_PASSWORD_');
+        $validator->addValidation("street","req",'_REQ_ADDRESS_');
+        $validator->addValidation("city","req",'_REQ_CITY_');
+        $validator->addValidation("state","req",'_REQ_STATE_');
+        $validator->addValidation("pincode","req",'_REQ_PINCODE_');
+        $validator->addValidation("loan_amount","req",'_REQ_LOAN_AMOUNT_');
+        $validator->addValidation("loan_type_id","req",'_REQ_LOAN_TYPE_ID_');
+
+        if(!$validator->ValidateForm())
+        {
+            $error_hash = $validator->GetError();
+            $status = array('status'=>$this->errorCode[$error_hash],'message'=>$this->msg[$error_hash]);
+            return $status;
+        }
+        else
+        {
+            return array('status'=>0,'message'=>'success');
+        }
+
+    }
+
+    function invUserReferenceSignUp($post,$isBulkUpload=0)
+    {
+
+        $_POST = $post;
+        $validator = new FormValidator();
+        $generalObj	= new General();
+
+        $validator->addValidation("name","req",'_REQ_NAME_');
+        $validator->addValidation("email","req",'_REQ_EMAIL_ID_');
+        $validator->addValidation("email","email",'_VALID_EMAIL_');
+        $validator->addValidation("mobile_number","req",'_REQ_MOBILE_NUMBER_');
+        $validator->addValidation("employment_type","req",'_REQ_EMPLOYMENT_TYPE_');
+        $validator->addValidation("annual_income","req",'_REQ_ANNUAL_INCOME_');
+        //$validator->addValidation("password","maxlen=50",'_REQ_PASSWORD_');
+        //$validator->addValidation("confirm_password","maxlen=50",'_REQ_CONFIRM_PASSWORD_');
+        $validator->addValidation("street","req",'_REQ_ADDRESS_');
+        $validator->addValidation("city","req",'_REQ_CITY_');
+        $validator->addValidation("state","req",'_REQ_STATE_');
+        $validator->addValidation("pincode","req",'_REQ_PINCODE_');
+        $validator->addValidation("inv_amount","req",'_REQ_INV_AMOUNT_');
+        $validator->addValidation("inv_type_id","req",'_REQ_INV_TYPE_ID_');
+
+        if(!$validator->ValidateForm())
+        {
+            $error_hash = $validator->GetError();
+            $status = array('status'=>$this->errorCode[$error_hash],'message'=>$this->msg[$error_hash]);
+            return $status;
+        }
+        else
+        {
+            return array('status'=>0,'message'=>'success');
+        }
+
+    }
+
+    function propertyUserReference($post,$isBulkUpload=0)
+    {
+
+        $_POST = $post;
+        $validator = new FormValidator();
+        $generalObj	= new General();
+
+        $validator->addValidation("name","req",'_REQ_NAME_');
+        $validator->addValidation("property_type_id","req",'_REQ_PROPERTY_TYPE_ID_');
+        $validator->addValidation("email","req",'_REQ_EMAIL_ID_');
+        $validator->addValidation("email","email",'_VALID_EMAIL_');
+        $validator->addValidation("mobile_number","req",'_REQ_MOBILE_NUMBER_');
+        $validator->addValidation("employment_type","req",'_REQ_EMPLOYMENT_TYPE_');
+        $validator->addValidation("annual_income","req",'_REQ_ANNUAL_INCOME_');
+        //$validator->addValidation("password","maxlen=50",'_REQ_PASSWORD_');
+        //$validator->addValidation("confirm_password","maxlen=50",'_REQ_CONFIRM_PASSWORD_');
+        $validator->addValidation("street","req",'_REQ_ADDRESS_');
+        $validator->addValidation("city","req",'_REQ_CITY_');
+        $validator->addValidation("state","req",'_REQ_STATE_');
+        $validator->addValidation("pincode","req",'_REQ_PINCODE_');
+        $validator->addValidation("size","req",'_REQ_SIZE_');
+        $validator->addValidation("size_type","req",'_REQ_SIZE_TYPE_');
+        $validator->addValidation("property_type","req",'_REQ_PROPERTY_TYPE_');
+
+        if(!$validator->ValidateForm())
+        {
+            $error_hash = $validator->GetError();
+            $status = array('status'=>$this->errorCode[$error_hash],'message'=>$this->msg[$error_hash]);
+            return $status;
+        }
+        else
+        {
+            return array('status'=>0,'message'=>'success');
+        }
+
+    }
+
 }
 
