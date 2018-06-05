@@ -1132,6 +1132,7 @@ class ApiController extends Controller {
     }
 
     /*save user for particular investment loan type user reference*/
+    
     public function actioninvAdvisoryUserReference()
     {
         if (isset($_REQUEST['user_id']) && $_REQUEST['user_id']!='' && isset($_REQUEST['session_code']) && $_REQUEST['session_code']!='' && isset($_REQUEST['inv_type_id']) && $_REQUEST['inv_type_id']!='') {
