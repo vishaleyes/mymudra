@@ -2364,8 +2364,8 @@ class Validation extends CFormModel
 
         $validator->addValidation("email","req",'_REQ_EMAIL_');
         $validator->addValidation("password","req",'_REQ_PASSWORD_');
-        $validator->addValidation("device_token","req",'_REQ_DEVICE_TOKEN_');
-        $validator->addValidation("endpointArn","req",'_REQ_ENDPOINT_');
+        //$validator->addValidation("device_token","req",'_REQ_DEVICE_TOKEN_');
+        //$validator->addValidation("endpointArn","req",'_REQ_ENDPOINT_');
 
         if(!$validator->ValidateForm())
         {   //echo "if"; die;

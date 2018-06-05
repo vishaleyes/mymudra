@@ -639,7 +639,7 @@ class ApiController extends Controller {
             $transaction = Yii::app()->db->beginTransaction();
             try{
                 if ($res['status'] == 0) {
-                    $device_token = $_REQUEST['device_token'];
+                    //$device_token = $_REQUEST['device_token'];
                     //$endpointArn['endpointArn'] = $_REQUEST['endpointArn'];
 
                     $TblUserObj = new TblUser();
@@ -660,6 +660,12 @@ class ApiController extends Controller {
                                 $this->response(array("status" => $this->errorCode['_ACCOUNT_DEACTIVATE_'], "message" =>  $this->msg['_ACCOUNT_DEACTIVATE_'], 'data' => array()));
                             }
 
+                            if(isset($_REQUEST['device_token']) && $_REQUEST['device_token']!=''){
+                                $device_token = $_REQUEST['device_token'];
+                            }
+                            else{
+                                $device_token = "";
+                            }
                             if(isset($_REQUEST['endpointArn']) && $_REQUEST['endpointArn']!=''){
                                 $endpointArn = $_REQUEST['endpointArn'];
                             }
@@ -957,7 +963,7 @@ class ApiController extends Controller {
     {
         if (!empty($_REQUEST) && isset($_REQUEST['user_id']) && $_REQUEST['user_id'] != '' && isset($_REQUEST['session_code']) && $_REQUEST['session_code'] != '' && isset($_REQUEST['loan_type']) && $_REQUEST['loan_type']!='')
         {
-            $TblUserSessionObj = new TblUserSession();
+            $TblUserSessionObj = new TblUsersession();
             $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
             //print_r($user);die;
             if (!empty($user)){
@@ -1132,7 +1138,7 @@ class ApiController extends Controller {
     }
 
     /*save user for particular investment loan type user reference*/
-    
+
     public function actioninvAdvisoryUserReference()
     {
         if (isset($_REQUEST['user_id']) && $_REQUEST['user_id']!='' && isset($_REQUEST['session_code']) && $_REQUEST['session_code']!='' && isset($_REQUEST['inv_type_id']) && $_REQUEST['inv_type_id']!='') {
