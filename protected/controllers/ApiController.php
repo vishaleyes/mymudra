@@ -347,7 +347,7 @@ class ApiController extends Controller {
         $mail->Password = MANDRILL_PASSWORD; // SMTP password
         //$mail->SMTPDebug  = 4;
         $mail->SMTPSecure = MANDRILL_SMTPSECURE;
-        $mail->SetFrom('no-reply@viia.com', 'viia');
+        $mail->SetFrom('no-reply@mymudra.com', 'mymudra');
         $mail->Subject = $subject;
         $mail->MsgHTML($message);
         //$address = RIDE_APPROVAL_ADMIN;
@@ -640,7 +640,7 @@ class ApiController extends Controller {
             try{
                 if ($res['status'] == 0) {
                     $device_token = $_REQUEST['device_token'];
-                    $endpointArn['endpointArn'] = $_REQUEST['endpointArn'];
+                    //$endpointArn['endpointArn'] = $_REQUEST['endpointArn'];
 
                     $TblUserObj = new TblUser();
                     $res = $TblUserObj->checkEmailExists($_REQUEST['email']);
@@ -963,7 +963,6 @@ class ApiController extends Controller {
             if (!empty($user)){
                 $transaction = Yii::app()->db->beginTransaction();
                 try{
-
                     if(isset($_REQUEST['loan_type']) && $_REQUEST['loan_type']==1)
                     {
                         $tblLoanTypeObj = new TblLoanTypeMaster();

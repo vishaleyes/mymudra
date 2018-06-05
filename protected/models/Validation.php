@@ -2329,10 +2329,10 @@ class Validation extends CFormModel
         $validator = new FormValidator();
         $generalObj	= new General();
 
-        $validator->addValidation("full_name","req",'_REQ_NAME_');
+        $validator->addValidation("name","req",'_REQ_NAME_');
         $validator->addValidation("email","req",'_REQ_EMAIL_ID_');
         $validator->addValidation("email","email",'_VALID_EMAIL_');
-        $validator->addValidation("phone_number","req",'_REQ_MOBILE_NUMBER_');
+        $validator->addValidation("mobile_number","req",'_REQ_MOBILE_NUMBER_');
         $validator->addValidation("employment_type","req",'_REQ_EMPLOYMENT_TYPE_');
         $validator->addValidation("annual_income","req",'_REQ_ANNUAL_INCOME_');
         $validator->addValidation("password","maxlen=50",'_REQ_PASSWORD_');

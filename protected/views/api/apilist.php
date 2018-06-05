@@ -84,12 +84,12 @@ $(document).ready(function(){
                   <tr>
                     <td width="70">Name</td>
                     <td width="10">:</td>
-                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/customerRegistration">customerRegistration</a></td>
+                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/userSignUp">userSignUp</a></td>
                   </tr>
                   <tr>
                     <td>Required Params</td>
                     <td>:</td>
-                    <td>name,email,mobile_number,password</td>
+                    <td>name,email,mobile_number,password,employment_type,annual_income.street,city,state,pincode</td>
                   </tr>
                   <tr>
                     <td>Optional Params</td>
@@ -120,17 +120,17 @@ $(document).ready(function(){
                   <tr>
                     <td width="70">Name</td>
                     <td width="10">:</td>
-                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/verifyOTP">verifyOTP</a></td>
+                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/login">login</a></td>
                   </tr>
                   <tr>
                     <td>Required Params</td>
                     <td>:</td>
-                    <td>user_type,mobile_number,otp_code,device_token,device_type</td>
+                    <td>email,password,device_token</td>
                   </tr>
                   <tr>
                     <td>Optional Params</td>
                     <td>:</td>
-                    <td>endpoint_arn</td>
+                    <td>endpointArn</td>
                   </tr>
                   <tr>
                     <td>Method</td>
@@ -146,47 +146,7 @@ $(document).ready(function(){
                     <td>Notes</td>
                     <td>:</td>
                     <td><b>device_type</b>:1- Android , 2 - IOS
-                        <br/>
-                        <b>user_type</b>:1- customer , 2- Carrier , 3 - Partner
                     </td>
-                  </tr>
-                </table>
-            </div>
-            <br/>
-            <div class="apidetail">
-                <table width="940">
-                  <tr>
-                    <td width="70">Name</td>
-                    <td width="10">:</td>
-                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/customerLogin">customerLogin</a></td>
-                  </tr>
-                  <tr>
-                    <td>Required Params</td>
-                    <td>:</td>
-                    <td>user_type,mobile_number,password,device_token,device_type</td>
-                  </tr>
-                  <tr>
-                    <td>Optional Params</td>
-                    <td>:</td>
-                    <td>endpoint_arn,os_version,device_model,app_version</td>
-                  </tr>
-                  <tr>
-                    <td>Method</td>
-                    <td>:</td>
-                    <td>GET and POST</td>
-                  </tr>
-                  <tr>
-                    <td>Fields</td>
-                    <td>:</td>
-                    <td>-</td>
-                  </tr>
-                  <tr>
-                    <td>Notes</td>
-                    <td>:</td>
-                    <td><b>device_type</b>:1- Android , 2 - IOS
-
-                    </td>
-
                   </tr>
                 </table>
             </div>
@@ -201,7 +161,43 @@ $(document).ready(function(){
                   <tr>
                     <td>Required Params</td>
                     <td>:</td>
-                    <td>email,user_type</td>
+                    <td>email</td>
+                  </tr>
+                  <tr>
+                    <td>Optional Params</td>
+                    <td>:</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>Method</td>
+                    <td>:</td>
+                    <td>GET and POST</td>
+                  </tr>
+                  <tr>
+                    <td>Fields</td>
+                    <td>:</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>Notes</td>
+                    <td>:</td>
+                    <td>
+                    </td>
+                  </tr>
+                </table>
+            </div>
+            <br/>
+            <div class="apidetail">
+                <table width="940">
+                  <tr>
+                    <td width="70">Name</td>
+                    <td width="10">:</td>
+                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/loanTypeList">loanTypeList</a></td>
+                  </tr>
+                  <tr>
+                    <td>Required Params</td>
+                    <td>:</td>
+                    <td>user_id,session_code,loan_type</td>
                   </tr>
                   <tr>
                     <td>Optional Params</td>
@@ -217,10 +213,7 @@ $(document).ready(function(){
                   <tr>
                     <td>Notes</td>
                     <td>:</td>
-                    <td>  <b>user_type: </b>1- customer , 2- Carrier , 3 - Partner<br/>
-                        <p>Check Response Params 'is_mobile' for identify verification type mobile number or email</p>
-                        <b>is_mobile : </b> 1- mobile verify , 0- for email verify
-                      </td>
+                    <td></td>
                   </tr>
                 </table>
             </div>
@@ -230,22 +223,22 @@ $(document).ready(function(){
                 <tr>
                     <td width="70">Name</td>
                     <td width="10">:</td>
-                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/carrierLogin">carrierLogin</a></td>
+                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/bankLoanUserReference">bankLoanUserReference</a></td>
                 </tr>
                 <tr>
                     <td>Required Params</td>
                     <td>:</td>
-                    <td>user_type,mobile_number,password,device_token,device_type</td>
+                    <td>user_id,session_code,name,email,mobile_number,employment_type,annual_income,street,city,state,pincode,loan_amount,loan_type_id</td>
                 </tr>
                 <tr>
                     <td>Optional Params</td>
                     <td>:</td>
-                    <td>endpoint_arn,os_version,device_model,app_version</td>
+                    <td>bank_id</td>
                 </tr>
                 <tr>
                     <td>Method</td>
                     <td>:</td>
-                    <td>GET and POST</td>
+                    <td>POST</td>
                 </tr>
                 <tr>
                     <td>Fields</td>
@@ -255,7 +248,7 @@ $(document).ready(function(){
                 <tr>
                     <td>Notes</td>
                     <td>:</td>
-                    <td><b>device_type</b>:1- Android , 2 - IOS
+                    <td>
                     </td>
                 </tr>
             </table>
@@ -266,22 +259,22 @@ $(document).ready(function(){
                 <tr>
                     <td width="70">Name</td>
                     <td width="10">:</td>
-                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/partnerLogin">partnerLogin</a></td>
+                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/invAdvisoryUserReference">invAdvisoryUserReference</a></td>
                 </tr>
                 <tr>
                     <td>Required Params</td>
                     <td>:</td>
-                    <td>user_type,mobile_number,password,device_token,device_type</td>
+                    <td>user_id,session_code,name,email,mobile_number,employment_type,annual_income,street,city,state,pincode,inv_amount,inv_type_id</td>
                 </tr>
                 <tr>
                     <td>Optional Params</td>
                     <td>:</td>
-                    <td>endpoint_arn,os_version,device_model,app_version</td>
+                    <td>description</td>
                 </tr>
                 <tr>
                     <td>Method</td>
                     <td>:</td>
-                    <td>GET and POST</td>
+                    <td>POST</td>
                 </tr>
                 <tr>
                     <td>Fields</td>
@@ -291,7 +284,7 @@ $(document).ready(function(){
                 <tr>
                     <td>Notes</td>
                     <td>:</td>
-                    <td><b>device_type</b>:1- Android , 2 - IOS
+                    <td>
                     </td>
                 </tr>
             </table>
@@ -302,12 +295,44 @@ $(document).ready(function(){
                 <tr>
                     <td width="70">Name</td>
                     <td width="10">:</td>
-                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/changePassword">changePassword</a></td>
+                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/propertyUserReference">propertyUserReference</a></td>
                 </tr>
                 <tr>
                     <td>Required Params</td>
                     <td>:</td>
-                    <td>user_id,session_code,user_type,old_password,new_password,new_password_confirm</td>
+                    <td>user_id,session_code,property_type_id,name,email,mobile_number,employment_type,annual_income,street,city,state,pincode,size,size_type,property_type</td>
+                </tr>
+                <tr>
+                    <td>Optional Params</td>
+                    <td>:</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Method</td>
+                    <td>:</td>
+                    <td>POST</td>
+                </tr>
+
+                <tr>
+                    <td>Notes</td>
+                    <td>:</td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+        </div>
+            <br/>
+            <div class="apidetail">
+            <table width="940">
+                <tr>
+                    <td width="70">Name</td>
+                    <td width="10">:</td>
+                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/bankList">bankList</a></td>
+                </tr>
+                <tr>
+                    <td>Required Params</td>
+                    <td>:</td>
+                    <td>user_id,session_code</td>
                 </tr>
                 <tr>
                     <td>Optional Params</td>
@@ -323,7 +348,7 @@ $(document).ready(function(){
                 <tr>
                     <td>Notes</td>
                     <td>:</td>
-                    <td>  <b>user_type:: </b>:1- customer , 2- Carrier , 3 - Partner
+                    <td>-
                     </td>
                 </tr>
             </table>
@@ -334,12 +359,12 @@ $(document).ready(function(){
                 <tr>
                     <td width="70">Name</td>
                     <td width="10">:</td>
-                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/verifyForgotPasswordCode">verifyForgotPasswordCode</a></td>
+                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/registeredUserListForBankLoan">registeredUserListForBankLoan</a></td>
                 </tr>
                 <tr>
                     <td>Required Params</td>
                     <td>:</td>
-                    <td>user_id,user_type,verify_code</td>
+                    <td>user_id,session_code</td>
                 </tr>
                 <tr>
                     <td>Optional Params</td>
@@ -355,23 +380,23 @@ $(document).ready(function(){
                 <tr>
                     <td>Notes</td>
                     <td>:</td>
-                    <td>  <b>user_type:: </b>:1- customer , 2- Carrier , 3 - Partner
+                    <td>-
                     </td>
                 </tr>
             </table>
         </div>
             <br/>
-            <div class="apidetail">
+        <div class="apidetail">
             <table width="940">
                 <tr>
                     <td width="70">Name</td>
                     <td width="10">:</td>
-                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/resetPassword">resetPassword</a></td>
+                    <td width="846"><a target="_blank" href="<?php echo Yii::app()->params->base_path; ?>api/registeredUserListForInvestmentLoan">registeredUserListForInvestmentLoan</a></td>
                 </tr>
                 <tr>
                     <td>Required Params</td>
                     <td>:</td>
-                    <td>user_id,user_type,password,device_token,endpoint_arn</td>
+                    <td>user_id,session_code</td>
                 </tr>
                 <tr>
                     <td>Optional Params</td>
@@ -387,13 +412,10 @@ $(document).ready(function(){
                 <tr>
                     <td>Notes</td>
                     <td>:</td>
-                    <td>  <b>user_type:: </b>:1- customer , 2- Carrier , 3 - Partner
-                    </td>
+                    <td>-</td>
                 </tr>
             </table>
         </div>
-            <br/>
-            
             <br/>
            
 
