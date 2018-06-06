@@ -339,38 +339,38 @@ class TblUser extends CActiveRecord
         return $result;
     }
 
-    function getRegisteredUserForBankLoanList()
+    function getRegisteredUserForBankLoanListById($user_id=NULL)
     {
         $sql = "SELECT u.*,ltrans.*,ltmast.description as loan_type_name FROM tbl_user u INNER JOIN `tbl_user_refrence` ur
                 ON ur.`user_id` = u.`user_id` 
                 INNER JOIN `tbl_loan_transaction` ltrans 
                 ON ltrans.`user_ref_id` = ur.`user_ref_id`
                 INNER JOIN `tbl_loan_type_master` ltmast 
-                ON ltmast.`loan_type_id` = ltrans.`loan_type`";
+                ON ltmast.`loan_type_id` = ltrans.`loan_type` WHERE u.user_id = ".$user_id;
         $result	=Yii::app()->db->createCommand($sql)->queryAll();
         return $result;
     }
 
-    function getRegisteredUserForInvLoanList()
+    function getRegisteredUserForInvLoanListById($user_id=NULL)
     {
-        $sql = "SELECT u.*,itmast.*,ittrans.* FROM tbl_user u INNER JOIN `tbl_user_refrence` ur
+        $sql = "SELECT u.*,ittrans.*,itmast.description as inv_type_name FROM tbl_user u INNER JOIN `tbl_user_refrence` ur
                 ON ur.`user_id` = u.`user_id` 
                 INNER JOIN `tbl_investment_transaction` ittrans 
                 ON ittrans.`user_ref_id` = ur.`user_ref_id`
                 INNER JOIN `tbl_inv_type_master` itmast 
-                ON itmast.`inv_type_id` = ittrans.`inv_type`";
+                ON itmast.`inv_type_id` = ittrans.`inv_type` WHERE u.user_id = ".$user_id;
         $result	=Yii::app()->db->createCommand($sql)->queryAll();
         return $result;
     }
 
-    function getRegisteredUserForPropLoanList()
+    function getRegisteredUserForPropLoanListById($user_id=NULL)
     {
-        $sql = "SELECT u.*,pmast.*,ptrans.* FROM tbl_user u INNER JOIN `tbl_user_refrence` ur
+        $sql = "SELECT u.*,ptrans.*,pmast.description as prop_type_name FROM tbl_user u INNER JOIN `tbl_user_refrence` ur
                 ON ur.`user_id` = u.`user_id` 
                 INNER JOIN `tbl_property_transaction` ptrans 
                 ON ptrans.`user_ref_id` = ur.`user_ref_id`
                 INNER JOIN `tbl_property_type_master` pmast 
-                ON pmast.`property_type_id` = ptrans.`property_transaction_type`";
+                ON pmast.`property_type_id` = ptrans.`property_transaction_type` WHERE u.user_id = ".$user_id;
         $result	=Yii::app()->db->createCommand($sql)->queryAll();
         return $result;
     }

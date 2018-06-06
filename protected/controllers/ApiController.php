@@ -1436,7 +1436,7 @@ class ApiController extends Controller {
                     $user_id = $_REQUEST['user_id'];
 
                     $tblUserObj = new TblUser();
-                    $bankLoanUserData = $tblUserObj->getRegisteredUserForBankLoanList();
+                    $bankLoanUserData = $tblUserObj->getRegisteredUserForBankLoanListById($user_id);
 
                     //echo "<pre>"; print_r($bankLoanUserData); die;
                     if (!empty($bankLoanUserData)) {
@@ -1488,7 +1488,7 @@ class ApiController extends Controller {
                     $user_id = $_REQUEST['user_id'];
 
                     $tblUserObj = new TblUser();
-                    $invLoanUserData = $tblUserObj->getRegisteredUserForInvLoanList();
+                    $invLoanUserData = $tblUserObj->getRegisteredUserForInvLoanListById($user_id);
 
                     //echo "<pre>"; print_r($bankLoanUserData); die;
                     if (!empty($invLoanUserData)) {
@@ -1539,7 +1539,7 @@ class ApiController extends Controller {
                     $user_id = $_REQUEST['user_id'];
 
                     $tblUserObj = new TblUser();
-                    $propLoanUserData = $tblUserObj->getRegisteredUserForPropLoanList();
+                    $propLoanUserData = $tblUserObj->getRegisteredUserForPropLoanListById($user_id);
 
                     //echo "<pre>"; print_r($bankLoanUserData); die;
                     if (!empty($propLoanUserData)) {

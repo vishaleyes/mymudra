@@ -50,7 +50,6 @@ $(document).ready(function(){
                         <input type="text" name="token" id="token" class="form-control" placeholder="verification code"  <?php if( isset($token) ) {?>value="<?php echo $token;?>" readonly<?php }?>/>
                     </div>
                 </div>
-
                 <div class="input-group">
                     <div class="form-line">
                         <label class="control-label" id="lbl_newpassword">New Password:<span style="color:red;">*</span></label>
@@ -64,6 +63,8 @@ $(document).ready(function(){
                         <input type="password"  name="new_password_confirm" id="new_password_confirm" placeholder="confirm password" class="form-control" value="" />
                     </div>
                 </div>
+
+
 
                 <div class="row">
 
