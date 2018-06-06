@@ -73,7 +73,7 @@ $(document).ready(function(){
                 </div>
                 <div class="row">
                     <div class="col-xs-4 ">
-                        <button class="btn btn-block bg-pink waves-effect" type="submit" name="submit_reset_password_btn">Submit</button>
+                        <button class="btn btn-block bg-orange waves-effect" type="submit" name="submit_reset_password_btn">Submit</button>
 
                         <input type="hidden" id="user_type" name="user_type" value="<?php echo $user_type; ?>" >
                     </div>

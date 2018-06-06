@@ -337,7 +337,7 @@ class ApiController extends Controller {
     }
 
     function emailSend($message=NULL,$email=NULL,$subject=NULL)
-    {
+    {   //echo "hi"; die;
         $mail = new PHPMailer;
         $mail->Host = MANDRILL_HOST;      // Specify main and backup server
         $mail->Port = MANDRILL_PORT;      // Set the SMTP port
@@ -356,6 +356,11 @@ class ApiController extends Controller {
         return $result;
     }
 
+    /*function actiontestone()
+    {
+       $data = $this->emailSend("sdfsdsdsfs","bhoomi.patel@bypeopletechnologies.com","test");
+       echo "<pre>"; print_r($data); die;
+    }*/
     /*=============================  User  Defined Function End===============================*/
 
     /*api for listing of bank loan type*/ /*not in use*/
@@ -566,6 +571,53 @@ class ApiController extends Controller {
         }
     }
 
+    /*api for dashboard icons*/
+    public function actiondashboard()
+    {
+        if (!empty($_REQUEST) && isset($_REQUEST['user_id']) && $_REQUEST['user_id'] != '' && isset($_REQUEST['session_code']) && $_REQUEST['session_code'] != '')
+        {
+            $TblUserSessionObj = new TblUsersession();
+            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
+            //print_r($user);die;
+            if (!empty($user)){
+                $transaction = Yii::app()->db->beginTransaction();
+                try{
+                    $user_id = $_REQUEST['user_id'];
+                    $tblLoanTypeObj = new TblLoanTypeMaster();
+                    $loanList = $tblLoanTypeObj->getLoanTypeList();
+
+                    if(!empty($loanList))
+                    {
+                        $transaction->commit();
+                        $data = array();
+                        $data['status'] =  $this->errorCode['_SUCCESS_'];
+                        $data['message'] =  $this->msg['_SUCCESS_'];
+                        $data['data'] = $loanList;
+                        $this->response($data);
+                    }
+                    else
+                    {
+                        $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" =>  $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
+                    }
+                }
+                catch(Exception $e)
+                {
+                    $transaction->rollback();
+                    $data = array();
+                    $data['status'] = -111;
+                    $data['message'] = $e->getMessage();
+                    $data['data'] = array();
+                    $this->response($data);
+                }
+            }
+            else
+            {
+                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
+            }
+        }else{
+            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
+        }
+    }
 
     /*====================Bhoomi code start here for mymudra project=====================================*/
 
@@ -840,13 +892,14 @@ class ApiController extends Controller {
 
                             /* ---------------------------------------------email finish------------------------------------------------ */
                             if (!empty($send_email)) {
-                                $this->response(array("status" => $this->errorCode['_SUCCESS_'], "message" =>  $this->msg['_FORGOT_MAIL_SUCCESS_'], 'data' => $data));
+                                //echo "if"; die;
+                                $this->response(array("status" => $this->errorCode['_SUCCESS_'], "message" => $this->msg['_SUCCESS_'], 'data' => $data));
 
-                            } else {
+                            } else { //echo "else"; die;
                                 $this->response(array("status" => $this->errorCode['_MAIL_SEND_FAIL_'], "message" =>  $this->msg['_MAIL_SEND_FAIL_'], 'data' => $data));
                             }
                         } catch (Exception $e) {
-
+                            //echo "exception"; die;
                             $this->response(array("status" => $this->errorCode['_MAIL_SEND_FAIL_'], "message" =>  $this->msg['_MAIL_SEND_FAIL_'], 'data' => (object) array()));
                         }
                     } else {
@@ -971,53 +1024,7 @@ class ApiController extends Controller {
         }
     }
 
-    /*api for dashboard icons*/
-    public function actiondashboard()
-    {
-        if (!empty($_REQUEST) && isset($_REQUEST['user_id']) && $_REQUEST['user_id'] != '' && isset($_REQUEST['session_code']) && $_REQUEST['session_code'] != '')
-        {
-            $TblUserSessionObj = new TblUsersession();
-            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
-            //print_r($user);die;
-            if (!empty($user)){
-                $transaction = Yii::app()->db->beginTransaction();
-                try{
-                    $user_id = $_REQUEST['user_id'];
-                    $tblLoanTypeObj = new TblLoanTypeMaster();
-                    $loanList = $tblLoanTypeObj->getLoanTypeList();
 
-                    if(!empty($loanList))
-                    {
-                        $transaction->commit();
-                        $data = array();
-                        $data['status'] =  $this->errorCode['_SUCCESS_'];
-                        $data['message'] =  $this->msg['_SUCCESS_'];
-                        $data['data'] = $loanList;
-                        $this->response($data);
-                    }
-                    else
-                    {
-                        $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" =>  $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
-                    }
-                }
-                catch(Exception $e)
-                {
-                    $transaction->rollback();
-                    $data = array();
-                    $data['status'] = -111;
-                    $data['message'] = $e->getMessage();
-                    $data['data'] = array();
-                    $this->response($data);
-                }
-            }
-            else
-            {
-                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
-            }
-        }else{
-            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
-        }
-    }
 
     /*save user for particular bank loan type user reference*/
     public function actionbankLoanUserReference()
@@ -1033,20 +1040,10 @@ class ApiController extends Controller {
 
                 if ($res['status'] == 0)
                 {
-                    $TblUserRefObj = new TblUserRefrence();
-                    $bool = $TblUserRefObj->checkMobilenumberExists($_REQUEST['mobile_number']);
-
-                    if (!empty($bool)) {
-                        $this->response(array("status" => $this->errorCode['_MOBILE_NUMBER_ALREADY_EXIST_'], "message" => $this->msg['_MOBILE_NUMBER_ALREADY_EXIST_'], 'data' => array()));
-                    }
                     $postData['full_name'] = $_REQUEST['name'];
                     if (isset($_REQUEST['email']) && $_REQUEST['email'] != '') {
                         $postData['email'] = $_REQUEST['email'];
 
-                        $bool = $TblUserRefObj->checkEmailExists($_REQUEST['email']);
-                        if (!empty($bool)) {
-                            $this->response(array("status" => $this->errorCode['_EMAIL_ALREADY_REGISTER_'], "message" => $this->msg['_EMAIL_ALREADY_REGISTER_'], 'data' => array()));
-                        }
                     }
                     //$postData['password'] = $_REQUEST['password'];
                     $postData['street'] = $_REQUEST['street'];
@@ -1156,20 +1153,9 @@ class ApiController extends Controller {
 
                 if ($res['status'] == 0)
                 {
-                    $TblUserRefObj = new TblUserRefrence();
-                    $bool = $TblUserRefObj->checkMobilenumberExists($_REQUEST['mobile_number']);
-
-                    if (!empty($bool)) {
-                        $this->response(array("status" => $this->errorCode['_MOBILE_NUMBER_ALREADY_EXIST_'], "message" => $this->msg['_MOBILE_NUMBER_ALREADY_EXIST_'], 'data' => array()));
-                    }
                     $postData['full_name'] = $_REQUEST['name'];
                     if (isset($_REQUEST['email']) && $_REQUEST['email'] != '') {
                         $postData['email'] = $_REQUEST['email'];
-
-                        $bool = $TblUserRefObj->checkEmailExists($_REQUEST['email']);
-                        if (!empty($bool)) {
-                            $this->response(array("status" => $this->errorCode['_EMAIL_ALREADY_REGISTER_'], "message" => $this->msg['_EMAIL_ALREADY_REGISTER_'], 'data' => array()));
-                        }
                     }
                     //$postData['password'] = $_REQUEST['password'];
                     $postData['street'] = $_REQUEST['street'];
@@ -1277,20 +1263,9 @@ class ApiController extends Controller {
 
                 if ($res['status'] == 0)
                 {
-                    $TblUserRefObj = new TblUserRefrence();
-                    $bool = $TblUserRefObj->checkMobilenumberExists($_REQUEST['mobile_number']);
-
-                    if (!empty($bool)) {
-                        $this->response(array("status" => $this->errorCode['_MOBILE_NUMBER_ALREADY_EXIST_'], "message" => $this->msg['_MOBILE_NUMBER_ALREADY_EXIST_'], 'data' => array()));
-                    }
                     $postData['full_name'] = $_REQUEST['name'];
                     if (isset($_REQUEST['email']) && $_REQUEST['email'] != '') {
                         $postData['email'] = $_REQUEST['email'];
-
-                        $bool = $TblUserRefObj->checkEmailExists($_REQUEST['email']);
-                        if (!empty($bool)) {
-                            $this->response(array("status" => $this->errorCode['_EMAIL_ALREADY_REGISTER_'], "message" => $this->msg['_EMAIL_ALREADY_REGISTER_'], 'data' => array()));
-                        }
                     }
 
                     $postData['street'] = $_REQUEST['street'];

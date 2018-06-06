@@ -29,13 +29,13 @@
 <!-- End Dialog Popup Js -->
 <div class="login-box col-lg-12 col-md-12 col-sm-12 col-xs-12" >
     <div class="logo">
-        <a href="javascript:void(0);" class=""><img src="<?php Yii::app()->params->base_url; ?>assets/img/login_logo.png" alt="MyMudra" class="" style="width: 150px; height: 90px!important; margin:0px auto;margin-top:15px;"/></a>
+        <a href="javascript:void(0);" class=""><img src="<?php Yii::app()->params->base_url; ?>assets/pages/img/login_logo.png" alt="MyMudra" class="" style="width: 150px; height: 90px !important; margin:0px auto; margin-top:15px;"/></a>
         <!-- <a href="javascript:void(0);">Admin<b>BSB</b></a>-->
     </div>
 
     <div class="row">
         <div class="text" align="center" >
-            <strong>Welcome back to Viia.</strong><br/>
+            <strong>Welcome back to MyMudra.</strong><br/>
             <strong>Your password has been reset. </strong><br/>
             <strong>Please login with your new password.</strong>
         </div>

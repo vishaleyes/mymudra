@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Viia</title>
+    <title>MyMudra</title>
     <meta name="description" content="Book your events or meetings" />
     <meta name="keywords" content="Meetings, Events, Book, Bookings, Book your events, Book your meeting" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -14,7 +14,7 @@
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Viia">
+    <meta name="apple-mobile-web-app-title" content="MyMudra">
     <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
