@@ -362,4 +362,16 @@ class TblUser extends CActiveRecord
         $result	=Yii::app()->db->createCommand($sql)->queryAll();
         return $result;
     }
+
+    function getRegisteredUserForPropLoanList()
+    {
+        $sql = "SELECT u.*,pmast.*,ptrans.* FROM tbl_user u INNER JOIN `tbl_user_refrence` ur
+                ON ur.`user_id` = u.`user_id` 
+                INNER JOIN `tbl_property_transaction` ptrans 
+                ON ptrans.`user_ref_id` = ur.`user_ref_id`
+                INNER JOIN `tbl_property_type_master` pmast 
+                ON pmast.`property_type_id` = ptrans.`property_transaction_type`";
+        $result	=Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+    }
 }
