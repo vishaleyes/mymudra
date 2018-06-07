@@ -149,4 +149,12 @@ class TblInvestmentTransaction extends CActiveRecord
             return Yii::app()->db->getLastInsertID();
         }
     }
+
+    public function getDetailsByUserRefId($user_ref_id=NULL)
+    {
+        $sql = "select * from tbl_investment_transaction where user_ref_id = ".$user_ref_id;
+        $result	=Yii::app()->db->createCommand($sql)->queryRow();
+        return $result;
+    }
+
 }

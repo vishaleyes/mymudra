@@ -28,7 +28,7 @@
 
 <div class="row">
     <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
-        <a class="dashboard-stat dashboard-stat-v2 blue" href="javascript:void(0);" data-toggle="modal" data-target="#myModalNewShift">
+        <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo Yii::app()->params->base_path; ?>admin/bankLoanUserListing">
             <div class="visual">
                 <i class="fa fa-users"></i>
             </div>
@@ -39,43 +39,6 @@
                 <div class="desc"> Bank Loan </div>
             </div>
         </a>
-
-        <div id="myModalNewShift" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <!--<h4 class="modal-title">New Shift</h4>-->
-                    </div>
-                    <div class="modal-body">
-                        <form action="<?php echo Yii::app()->params->base_path ; ?>admin/addUser" class="form-horizontal col-md-12" method="post" id="new_shift_form" name="new_shift_form">
-                            <div class="col-md-12">
-                                <div class="form-group form-md-line-input  ">
-                                    <!--<label class="control-label">First Week OF<span class="text-error">* </span>:</label>-->
-                                    <div class="controls">
-                                        <select class="form-control bs-select" name="for" id="for">
-                                            <option value="">Select</option>
-                                            <option value="1">For Self</option>
-                                            <option value="2">For Others</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-actions align-right">
-                                <button type="submit" name="FormSubmit" class="btn btn-large btn-success">Submit</button>
-                                <button type="button" class="btn btn-large btn-danger"  data-dismiss="modal">Cancel</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </div>
     <!--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <a class="dashboard-stat dashboard-stat-v2 red" href="#">
@@ -90,7 +53,7 @@
         </a>
     </div>-->
     <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
-        <a class="dashboard-stat dashboard-stat-v2 yellow-casablanca" href="#">
+        <a class="dashboard-stat dashboard-stat-v2 yellow-casablanca" href="<?php echo Yii::app()->params->base_path; ?>admin/invAdvisoryUserListing">
             <div class="visual">
                 <i class="fa fa-suitcase"></i>
             </div>
@@ -102,7 +65,7 @@
         </a>
     </div>
     <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
-        <a class="dashboard-stat dashboard-stat-v2 green" href="#">
+        <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo Yii::app()->params->base_path; ?>admin/realEstateUserListing">
             <div class="visual">
                 <i class="fa fa-usd"></i>
             </div>

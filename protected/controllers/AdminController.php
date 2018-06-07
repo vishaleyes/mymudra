@@ -908,12 +908,64 @@ class AdminController extends Controller {
     }
 
     /*
-    * Function Name : userListing
-    * Description : For list of registered users
+    * Function Name : registerUser
+    * Description : For sign up users
     * Developer : Bhoomi Patel
     * Changed Date : 30-05-2018
     */
 
+    function actionregisterUser()
+    {   //echo "<pre>"; print_r($_POST); die;
+        $validationObj = new Validation();
+        $response = $validationObj->userSignUp($_POST);
+        if($response['status'] == 0)
+        {
+            $data = array();
+            $data['full_name'] =$_POST['full_name'];
+            $data['phone_number'] =$_POST['phone_number'];
+            $data['employment_type'] =$_POST['employment_type'];
+            $data['email'] =$_POST['email'];
+            $data['annual_income'] =$_POST['annual_income'];
+            $data['street'] =$_POST['street'];
+            $data['city'] =$_POST['city'];
+            $data['state'] =$_POST['state'];
+            $data['pincode'] =$_POST['pincode'];
+            $generalObj = new General;
+            $data['password'] = $generalObj->encrypt_password($_POST['password']);
+            $everify_code = $generalObj->encrypt_password(rand(0,99).rand(0,99).rand(0,99).rand(0,99));
+            $data['status'] = 1;
+
+            if(isset($_POST['user_id'])&& $_POST['user_id'] != "")
+            {
+                $data['modified_at'] = date("Y-m-d H:i:s");
+                $TblUserObj = new TblUser();
+                $TblUserObj->setData($data);
+                $TblUserObj->insertData($_POST['user_id']);
+
+                Yii::app()->user->setFlash("success", "Successfully updated user");
+            }
+            else
+            {
+                $data['created_at'] = date("Y-m-d H:i:s");
+                $data['is_verified'] = $everify_code;
+                $TblUserObj = new TblUser();
+                $TblUserObj->setData($data);
+                $user_id = $TblUserObj->insertData();
+
+                Yii::app()->session['full_name'] = $_POST['full_name'];
+
+                Yii::app()->user->setFlash("success", "You are successfully registered.");
+            }
+            $this->redirect(array('admin/adminLogin','email'=>$_POST['email']));
+        }
+        else
+        {
+            Yii::app()->user->setFlash("error",$response['message']);
+            $this->redirect(array('admin/signUp'));
+        }
+    }
+
+    /*not in use*/
     function actionuserListing()
     {
         $this->isLogin();
@@ -979,57 +1031,6 @@ class AdminController extends Controller {
         else
         {
             $this->render("userListing", array("data"=>$data,'ext'=>$ext ));
-        }
-    }
-
-    function actionregisterUser()
-    {   //echo "<pre>"; print_r($_POST); die;
-        $validationObj = new Validation();
-        $response = $validationObj->userSignUp($_POST);
-        if($response['status'] == 0)
-        {
-            $data = array();
-            $data['full_name'] =$_POST['full_name'];
-            $data['phone_number'] =$_POST['phone_number'];
-            $data['employment_type'] =$_POST['employment_type'];
-            $data['email'] =$_POST['email'];
-            $data['annual_income'] =$_POST['annual_income'];
-            $data['street'] =$_POST['street'];
-            $data['city'] =$_POST['city'];
-            $data['state'] =$_POST['state'];
-            $data['pincode'] =$_POST['pincode'];
-            $generalObj = new General;
-            $data['password'] = $generalObj->encrypt_password($_POST['password']);
-            $everify_code = $generalObj->encrypt_password(rand(0,99).rand(0,99).rand(0,99).rand(0,99));
-            $data['status'] = 1;
-
-            if(isset($_POST['user_id'])&& $_POST['user_id'] != "")
-            {
-                $data['modified_at'] = date("Y-m-d H:i:s");
-                $TblUserObj = new TblUser();
-                $TblUserObj->setData($data);
-                $TblUserObj->insertData($_POST['user_id']);
-
-                Yii::app()->user->setFlash("success", "Successfully updated user");
-            }
-            else
-            {
-                $data['created_at'] = date("Y-m-d H:i:s");
-                $data['is_verified'] = $everify_code;
-                $TblUserObj = new TblUser();
-                $TblUserObj->setData($data);
-                $user_id = $TblUserObj->insertData();
-
-                Yii::app()->session['full_name'] = $_POST['full_name'];
-
-                Yii::app()->user->setFlash("success", "You are successfully registered.");
-            }
-            $this->redirect(array('admin/adminLogin','email'=>$_POST['email']));
-        }
-        else
-        {
-            Yii::app()->user->setFlash("error",$response['message']);
-            $this->redirect(array('admin/signUp'));
         }
     }
 
@@ -1236,8 +1237,543 @@ class AdminController extends Controller {
             $this->render("realEstateListing", array("data"=>$data,'ext'=>$ext ));
         }
     }
+    /*not in use code end here*/
 
 
+    /*bank loan applied user listing, edit, chnage stage status code start here*/
+    function actionbankLoanUserListing()
+    {
+        //echo "<pre>"; print_r($_REQUEST); die;
+        $this->isLogin();
+        if(isset($_REQUEST['menu_id']) && $_REQUEST['menu_id'] != "")
+        {
+            Yii::app()->session['current_menu_id'] = $_REQUEST['menu_id'];
+        }
+
+        if(isset($_REQUEST['menu_id']) && $_REQUEST['menu_id']  != '')
+        {
+            Yii::app()->session['menu_id'] = $_REQUEST['menu_id'];
+        }
+
+        Yii::app()->session['current'] = 'bankUserList';
+        Yii::app()->session['breadcums'] = 'bankUserList';
+        if(!isset($_REQUEST['sortType']))
+        {
+            $_REQUEST['sortType']='asc';
+        }
+        if(!isset($_REQUEST['sortBy']))
+        {
+            $_REQUEST['sortBy']='ur.user_ref_id';
+        }
+        if(!isset($_REQUEST['keyword']))
+        {
+            $_REQUEST['keyword']='';
+        }
+
+        $_REQUEST['currentSortType'] = $_REQUEST['sortType'];
+
+        if($_REQUEST['sortType'] == 'asc')
+        {
+            $ext['sortType']='desc';
+        }
+        if($_REQUEST['sortType'] == 'desc')
+        {
+            $ext['sortType']='asc';
+        }
+
+        $ext['page'] = "";
+
+        if(isset($_REQUEST['page']) && $_REQUEST['page']!=''){
+            $ext['page'] = $_REQUEST['page'];
+        }
+
+        $ext['keyword'] = $_REQUEST['keyword'];
+        $ext['sortBy'] = $_REQUEST['sortBy'];
+        $ext['currentSortType'] = $_REQUEST['currentSortType'];
+
+        $TbluserRefObj = new TblUserRefrence();
+        $bankLoanAppliedUserData = $TbluserRefObj->getAllBankLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword']);
+
+        $data['pagination']	= $bankLoanAppliedUserData['pagination'];
+        $data['bankUserList'] = $bankLoanAppliedUserData['bankUserList'];
+
+        //print "<pre>"; print_r($data); die;
+
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
+        {
+            //$this->renderPartial("projectListingAjax", array('data'=>$data,'ext'=>$ext));
+            $this->renderPartial("bankAppliedUserListing", array('data'=>$data,'ext'=>$ext));
+        }
+        else
+        {
+            $this->render("bankAppliedUserListing", array("data"=>$data,'ext'=>$ext ));
+        }
+    }
+
+    public function actionchangeStageStatus()
+    {
+        //echo "<pre>"; print_r($_REQUEST); die;
+        try{
+            if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!="") {
+                $user_ref_id = $_REQUEST['user_ref_id'];
+                    //$loan_transaction_id = $_REQUEST['loan_transaction_id'];
+                $loan_stage_id = $_REQUEST['loan_stage_id'];
+
+                $tblLoanTransObj = new TblLoanTransaction();
+                $data = $tblLoanTransObj->getDetailsByUserRefId($user_ref_id);
+                    //echo "<pre>"; print_r($data); die;
+                $transactionData = array();
+                $transactionData['loan_id'] = $data['loan_id'];
+                $transactionData['loan_stage_id'] = $loan_stage_id;
+                $transactionData['stage_transaction_date'] = date("Y-m-d H:i:s");
+
+
+                if(isset($_REQUEST['loan_tran_ref_id']) && $_REQUEST['loan_tran_ref_id']!='')
+                {   //echo "if"; die;
+                    $loan_tran_ref_id = $_REQUEST['loan_tran_ref_id'];
+                    $transactionData['created_at'] = date("Y-m-d H:i:s");
+
+                    $tblTransRefObj = new TblLoanTransReference();
+                    $tblTransRefObj->setData($transactionData);
+                    $tblTransRefObj->insertData($loan_tran_ref_id);
+                }
+                else {  //echo "else"; die;
+                    $transactionData['modified_at'] = date("Y-m-d H:i:s");
+
+                    $tblTransRefObj = new TblLoanTransReference();
+                    $tblTransRefObj->setData($transactionData);
+                    $loan_tran_ref_id = $tblTransRefObj->insertData();
+                }
+            }
+                Yii::app()->user->setFlash('success', "Successfully changed status");
+            $this->redirect(array("admin/bankLoanUserListing"));
+        }
+        catch(Exception $e)
+        {
+            //$transaction->rollback();
+            Yii::app()->user->setFlash('error', $e->getMessage());
+            $this->redirect(array("admin/bankLoanUserListing"));
+        }
+    }
+
+    public function actioneditUserDetails()
+    {
+        $this->isLogin();
+        Yii::app()->session['current'] = 'userDetails';
+        Yii::app()->session['breadcums'] = 'userDetails';
+
+        $userData = array();
+        $user_id = Yii::app()->session[_SITENAME_ . '_admin'];
+
+        if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!='')
+        {
+            $user_ref_id = $_REQUEST['user_ref_id'];
+
+            $tblUserRefObj = new TblUserRefrence();
+            $userData = $tblUserRefObj->getUserdetailsbyId($user_ref_id);
+
+            $tblLoanTransactionObj = new TblLoanTransaction();
+            $userData['loan_data'] = $tblLoanTransactionObj->getDetailsByUserRefId($user_ref_id);
+
+            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+
+                $this->renderPartial("editUserDetails", array('userData' => $userData));
+            } else {
+                $this->render("editUserDetails", array('userData' => $userData));
+            }
+            //echo "<pre>"; print_r($userData); die;
+
+
+        }
+    }
+
+    public function actionupdateUserDetails()
+    {
+        //echo "<pre>"; print_r($_REQUEST); die;
+
+        $this->isLogin();
+        try {
+            $userDetails = array();
+            $loanDetails = array();
+
+            if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!='')
+            {
+                $user_ref_id = $_REQUEST['user_ref_id'];
+
+                $userDetails['user_ref_id'] = $user_ref_id;
+                $userDetails['full_name'] = $_REQUEST['fullName'];
+                $userDetails['phone_number'] = $_REQUEST['phoneNumber'];
+                $userDetails['email'] = $_REQUEST['email'];
+                $userDetails['annual_income'] = $_REQUEST['annualIncome'];
+                $userDetails['street'] = $_REQUEST['street'];
+                $userDetails['city'] = $_REQUEST['city'];
+                $userDetails['state'] = $_REQUEST['state'];
+                $userDetails['pincode'] = $_REQUEST['pincode'];
+                $userDetails['modified_at'] = date("Y-m-d H:i:s");
+
+                $tblUserRefObj = new TblUserRefrence();
+                $tblUserRefObj->setData($userDetails);
+                $tblUserRefObj->insertData($user_ref_id);
+
+            }
+
+            if(isset($_REQUEST['loan_id']) && $_REQUEST['loan_id'])
+            {
+                $loan_id = $_REQUEST['loan_id'];
+
+                $loanDetails['loan_id'] = $loan_id;
+                $loanDetails['loan_amount'] = $_REQUEST['loanAmount'];
+                $loanDetails['bank_id'] = $_REQUEST['bank_id'];
+
+                if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
+                {
+                    $loanDetails['description'] = $_REQUEST['description'];
+                }
+                $loanDetails['modified_at'] = date("Y-m-d H:i:s");
+
+                $tblLoanTransObj = new TblLoanTransaction();
+                $tblLoanTransObj->setData($loanDetails);
+                $tblLoanTransObj->insertData($loan_id);
+            }
+
+            Yii::app()->user->setFlash('success', "Successfully updated user details");
+            $this->redirect(array("admin/bankLoanUserListing"));
+        }
+        catch(Exception $e)
+        {
+            //$transaction->rollback();
+            Yii::app()->user->setFlash('error', $e->getMessage());
+            $this->redirect(array("admin/bankLoanUserListing"));
+        }
+
+    }
+    /*bank loan applied user listing, edit, change stage status code end here*/
+
+    /*investment advisory applied user listing, edit, change stage status code start here*/
+
+    public function actioninvAdvisoryUserListing()
+    {
+        //echo "<pre>"; print_r($_REQUEST); die;
+        $this->isLogin();
+        if(isset($_REQUEST['menu_id']) && $_REQUEST['menu_id'] != "")
+        {
+            Yii::app()->session['current_menu_id'] = $_REQUEST['menu_id'];
+        }
+
+        if(isset($_REQUEST['menu_id']) && $_REQUEST['menu_id']  != '')
+        {
+            Yii::app()->session['menu_id'] = $_REQUEST['menu_id'];
+        }
+
+        Yii::app()->session['current'] = 'invAdvisoryUserList';
+        Yii::app()->session['breadcums'] = 'invAdvisoryUserList';
+        if(!isset($_REQUEST['sortType']))
+        {
+            $_REQUEST['sortType']='asc';
+        }
+        if(!isset($_REQUEST['sortBy']))
+        {
+            $_REQUEST['sortBy']='ur.user_ref_id';
+        }
+        if(!isset($_REQUEST['keyword']))
+        {
+            $_REQUEST['keyword']='';
+        }
+
+        $_REQUEST['currentSortType'] = $_REQUEST['sortType'];
+
+        if($_REQUEST['sortType'] == 'asc')
+        {
+            $ext['sortType']='desc';
+        }
+        if($_REQUEST['sortType'] == 'desc')
+        {
+            $ext['sortType']='asc';
+        }
+
+        $ext['page'] = "";
+
+        if(isset($_REQUEST['page']) && $_REQUEST['page']!=''){
+            $ext['page'] = $_REQUEST['page'];
+        }
+
+        $ext['keyword'] = $_REQUEST['keyword'];
+        $ext['sortBy'] = $_REQUEST['sortBy'];
+        $ext['currentSortType'] = $_REQUEST['currentSortType'];
+
+        $TbluserRefObj = new TblUserRefrence();
+        $invAdvisoryAppliedUserData = $TbluserRefObj->getAllinvAdvisoryLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword']);
+
+        $data['pagination']	= $invAdvisoryAppliedUserData['pagination'];
+        $data['invAdvisoryUserList'] = $invAdvisoryAppliedUserData['invAdvisoryUserList'];
+
+        //print "<pre>"; print_r($data); die;
+
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
+        {
+            //$this->renderPartial("projectListingAjax", array('data'=>$data,'ext'=>$ext));
+            $this->renderPartial("invAdvisoryAppliedUserListing", array('data'=>$data,'ext'=>$ext));
+        }
+        else
+        {
+            $this->render("invAdvisoryAppliedUserListing", array("data"=>$data,'ext'=>$ext ));
+        }
+    }
+
+    public function actionchangeinvStageStatus()
+    {
+        //echo "<pre>"; print_r($_REQUEST); die;
+        try{
+            if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!="") {
+                $user_ref_id = $_REQUEST['user_ref_id'];
+                //$loan_transaction_id = $_REQUEST['loan_transaction_id'];
+                $inv_stage_id = $_REQUEST['inv_stage_id'];
+
+                $tblInvTransObj = new TblInvestmentTransaction();
+                $data = $tblInvTransObj->getDetailsByUserRefId($user_ref_id);
+                //echo "<pre>"; print_r($data); die;
+                $transactionData = array();
+                $transactionData['inv_id'] = $data['inv_id'];
+                $transactionData['inv_stage_id'] = $inv_stage_id;
+                $transactionData['stage_transaction_date'] = date("Y-m-d H:i:s");
+                $transactionData['status'] = 1;
+
+                if(isset($_REQUEST['inv_tran_ref_id']) && $_REQUEST['inv_tran_ref_id']!='')
+                {   //echo "if"; die;
+                    $inv_tran_ref_id = $_REQUEST['inv_tran_ref_id'];
+                    $transactionData['created_at'] = date("Y-m-d H:i:s");
+
+                    $tblTransRefObj = new TblInvTransReference();
+                    $tblTransRefObj->setData($transactionData);
+                    $tblTransRefObj->insertData($inv_tran_ref_id);
+                }
+                else {  //echo "else"; die;
+                    $transactionData['modified_at'] = date("Y-m-d H:i:s");
+
+                    $tblTransRefObj = new TblInvTransReference();
+                    $tblTransRefObj->setData($transactionData);
+                    $inv_tran_ref_id = $tblTransRefObj->insertData();
+                }
+            }
+            Yii::app()->user->setFlash('success', "Successfully changed status");
+            $this->redirect(array("admin/invAdvisoryUserListing"));
+        }
+        catch(Exception $e)
+        {
+            //$transaction->rollback();
+            Yii::app()->user->setFlash('error', $e->getMessage());
+            $this->redirect(array("admin/invAdvisoryUserListing"));
+        }
+    }
+
+    public function actioneditInvAdvisoryUserDetails()
+    {
+        $this->isLogin();
+        Yii::app()->session['current'] = 'userDetails';
+        Yii::app()->session['breadcums'] = 'userDetails';
+
+        $userData = array();
+        $user_id = Yii::app()->session[_SITENAME_ . '_admin'];
+
+        if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!='')
+        {
+            $user_ref_id = $_REQUEST['user_ref_id'];
+
+            $tblUserRefObj = new TblUserRefrence();
+            $userData = $tblUserRefObj->getUserdetailsbyId($user_ref_id);
+
+            $tblInvTransactionObj = new TblInvestmentTransaction();
+            $userData['inv_data'] = $tblInvTransactionObj->getDetailsByUserRefId($user_ref_id);
+
+            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+
+                $this->renderPartial("editInvAdvisoryUserDetails", array('userData' => $userData));
+            } else {
+                $this->render("editInvAdvisoryUserDetails", array('userData' => $userData));
+            }
+            //echo "<pre>"; print_r($userData); die;
+
+
+        }
+    }
+
+    public function actionupdateInvAdvisoryUserDetails()
+    {   //echo "<pre>"; print_r($_REQUEST); die;
+        $this->isLogin();
+        try {
+            $userDetails = array();
+            $loanDetails = array();
+
+            if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!='')
+            {
+                $user_ref_id = $_REQUEST['user_ref_id'];
+
+                $userDetails['user_ref_id'] = $user_ref_id;
+                $userDetails['full_name'] = $_REQUEST['fullName'];
+                $userDetails['phone_number'] = $_REQUEST['phoneNumber'];
+                $userDetails['email'] = $_REQUEST['email'];
+                $userDetails['annual_income'] = $_REQUEST['annualIncome'];
+                $userDetails['street'] = $_REQUEST['street'];
+                $userDetails['city'] = $_REQUEST['city'];
+                $userDetails['state'] = $_REQUEST['state'];
+                $userDetails['pincode'] = $_REQUEST['pincode'];
+                $userDetails['modified_at'] = date("Y-m-d H:i:s");
+
+                $tblUserRefObj = new TblUserRefrence();
+                $tblUserRefObj->setData($userDetails);
+                $tblUserRefObj->insertData($user_ref_id);
+
+            }
+
+            if(isset($_REQUEST['inv_id']) && $_REQUEST['inv_id'])
+            {
+                $inv_id = $_REQUEST['inv_id'];
+
+                $loanDetails['inv_id'] = $inv_id;
+                $loanDetails['inv_amount'] = $_REQUEST['invAmount'];
+
+                if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
+                {
+                    $loanDetails['description'] = $_REQUEST['description'];
+                }
+                $loanDetails['modified_at'] = date("Y-m-d H:i:s");
+
+                $tblInvTransObj = new TblInvestmentTransaction();
+                $tblInvTransObj->setData($loanDetails);
+                $tblInvTransObj->insertData($inv_id);
+            }
+
+            Yii::app()->user->setFlash('success', "Successfully updated user details");
+            $this->redirect(array("admin/invAdvisoryUserListing"));
+        }
+        catch(Exception $e)
+        {
+            //$transaction->rollback();
+            Yii::app()->user->setFlash('error', $e->getMessage());
+            $this->redirect(array("admin/invAdvisoryUserListing"));
+        }
+    }
+
+    /*investment advisory applied user listing, edit, change stage status code end here*/
+
+
+    /*Real estate or property applied user listing, edit, change stage status code start here*/
+
+    public function actionrealEstateUserListing()
+    {
+        //echo "<pre>"; print_r($_REQUEST); die;
+        $this->isLogin();
+        if(isset($_REQUEST['menu_id']) && $_REQUEST['menu_id'] != "")
+        {
+            Yii::app()->session['current_menu_id'] = $_REQUEST['menu_id'];
+        }
+
+        if(isset($_REQUEST['menu_id']) && $_REQUEST['menu_id']  != '')
+        {
+            Yii::app()->session['menu_id'] = $_REQUEST['menu_id'];
+        }
+
+        Yii::app()->session['current'] = 'realEstateUserList';
+        Yii::app()->session['breadcums'] = 'realEstateUserList';
+        if(!isset($_REQUEST['sortType']))
+        {
+            $_REQUEST['sortType']='asc';
+        }
+        if(!isset($_REQUEST['sortBy']))
+        {
+            $_REQUEST['sortBy']='ur.user_ref_id';
+        }
+        if(!isset($_REQUEST['keyword']))
+        {
+            $_REQUEST['keyword']='';
+        }
+
+        $_REQUEST['currentSortType'] = $_REQUEST['sortType'];
+
+        if($_REQUEST['sortType'] == 'asc')
+        {
+            $ext['sortType']='desc';
+        }
+        if($_REQUEST['sortType'] == 'desc')
+        {
+            $ext['sortType']='asc';
+        }
+
+        $ext['page'] = "";
+
+        if(isset($_REQUEST['page']) && $_REQUEST['page']!=''){
+            $ext['page'] = $_REQUEST['page'];
+        }
+
+        $ext['keyword'] = $_REQUEST['keyword'];
+        $ext['sortBy'] = $_REQUEST['sortBy'];
+        $ext['currentSortType'] = $_REQUEST['currentSortType'];
+
+        $TbluserRefObj = new TblUserRefrence();
+        $realEstateAppliedUserData = $TbluserRefObj->getAllrealEstateLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword']);
+
+        $data['pagination']	= $realEstateAppliedUserData['pagination'];
+        $data['realEstateUserList'] = $realEstateAppliedUserData['realEstateUserList'];
+
+        //print "<pre>"; print_r($data); die;
+
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
+        {
+            //$this->renderPartial("projectListingAjax", array('data'=>$data,'ext'=>$ext));
+            $this->renderPartial("realEstateAppliedUserListing", array('data'=>$data,'ext'=>$ext));
+        }
+        else
+        {
+            $this->render("realEstateAppliedUserListing", array("data"=>$data,'ext'=>$ext ));
+        }
+    }
+
+    public function actionchangeRealEstateStageStatus()
+    {
+        try{
+            if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!="") {
+                $user_ref_id = $_REQUEST['user_ref_id'];
+                //$loan_transaction_id = $_REQUEST['loan_transaction_id'];
+                $prop_stage_id = $_REQUEST['prop_stage_id'];
+
+                $tblpropTransObj = new TblPropertyTransaction();
+                $data = $tblpropTransObj->getDetailsByUserRefId($user_ref_id);
+                //echo "<pre>"; print_r($data); die;
+                $transactionData = array();
+                $transactionData['property_id'] = $data['property_id'];
+                $transactionData['property_stage_id'] = $prop_stage_id;
+                $transactionData['prop_stage_transaction_date'] = date("Y-m-d H:i:s");
+                //$transactionData['status'] = 1;
+
+                if(isset($_REQUEST['prop_tran_ref_id']) && $_REQUEST['prop_tran_ref_id']!='')
+                {   //echo "if"; die;
+                    $prop_tran_ref_id = $_REQUEST['prop_tran_ref_id'];
+                    $transactionData['created_at'] = date("Y-m-d H:i:s");
+
+                    $tblTransRefObj = new TblPropTransReference();
+                    $tblTransRefObj->setData($transactionData);
+                    $tblTransRefObj->insertData($prop_tran_ref_id);
+                }
+                else {  //echo "else"; die;
+                    $transactionData['modified_at'] = date("Y-m-d H:i:s");
+
+                    $tblTransRefObj = new TblPropTransReference();
+                    $tblTransRefObj->setData($transactionData);
+                    $prop_tran_ref_id = $tblTransRefObj->insertData();
+                }
+            }
+            Yii::app()->user->setFlash('success', "Successfully changed status");
+            $this->redirect(array("admin/realEstateUserListing"));
+        }
+        catch(Exception $e)
+        {
+            //$transaction->rollback();
+            Yii::app()->user->setFlash('error', $e->getMessage());
+            $this->redirect(array("admin/realEstateUserListing"));
+        }
+    }
+
+    /*Real estate or property applied user listing, edit, change stage status code end here*/
 
 }
 

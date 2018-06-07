@@ -1,25 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "tbl_property_transaction".
+ * This is the model class for table "tbl_loan_trans_reference".
  *
- * The followings are the available columns in table 'tbl_property_transaction':
- * @property string $property_id
- * @property string $property_transaction_type
- * @property double $property_size
- * @property string $property_size_type
- * @property string $property_type
- * @property string $user_ref_id
- * @property string $property_transaction_date
+ * The followings are the available columns in table 'tbl_loan_trans_reference':
+ * @property string $loan_tran_ref_id
+ * @property string $loan_id
+ * @property string $loan_stage_id
+ * @property string $stage_transaction_date
  * @property string $created_at
  * @property string $modified_at
  */
-class TblPropertyTransaction extends CActiveRecord
+class TblLoanTransReference extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return TblPropertyTransaction the static model class
+	 * @return TblLoanTransReference the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -31,7 +28,7 @@ class TblPropertyTransaction extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_property_transaction';
+		return 'tbl_loan_trans_reference';
 	}
 
 	/**
@@ -42,13 +39,11 @@ class TblPropertyTransaction extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('property_size', 'numerical'),
-			array('property_transaction_type, user_ref_id', 'length', 'max'=>22),
-			array('property_size_type, property_type', 'length', 'max'=>20),
-			array('property_transaction_date, created_at, modified_at', 'safe'),
+			array('loan_id, loan_stage_id', 'length', 'max'=>22),
+			array('stage_transaction_date, created_at, modified_at', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('property_id, property_transaction_type, property_size, property_size_type, property_type, user_ref_id, property_transaction_date, created_at, modified_at', 'safe', 'on'=>'search'),
+			array('loan_tran_ref_id, loan_id, loan_stage_id, stage_transaction_date, created_at, modified_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,13 +64,10 @@ class TblPropertyTransaction extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'property_id' => 'Property',
-			'property_transaction_type' => 'Property Transaction Type',
-			'property_size' => 'Property Size',
-			'property_size_type' => 'Property Size Type',
-			'property_type' => 'Property Type',
-			'user_ref_id' => 'User Ref',
-			'property_transaction_date' => 'Property Transaction Date',
+			'loan_tran_ref_id' => 'Loan Tran Ref',
+			'loan_id' => 'Loan',
+			'loan_stage_id' => 'Loan Stage',
+			'stage_transaction_date' => 'Stage Transaction Date',
 			'created_at' => 'Created At',
 			'modified_at' => 'Modified At',
 		);
@@ -92,13 +84,10 @@ class TblPropertyTransaction extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('property_id',$this->property_id,true);
-		$criteria->compare('property_transaction_type',$this->property_transaction_type,true);
-		$criteria->compare('property_size',$this->property_size);
-		$criteria->compare('property_size_type',$this->property_size_type,true);
-		$criteria->compare('property_type',$this->property_type,true);
-		$criteria->compare('user_ref_id',$this->user_ref_id,true);
-		$criteria->compare('property_transaction_date',$this->property_transaction_date,true);
+		$criteria->compare('loan_tran_ref_id',$this->loan_tran_ref_id,true);
+		$criteria->compare('loan_id',$this->loan_id,true);
+		$criteria->compare('loan_stage_id',$this->loan_stage_id,true);
+		$criteria->compare('stage_transaction_date',$this->stage_transaction_date,true);
 		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('modified_at',$this->modified_at,true);
 
@@ -150,12 +139,5 @@ class TblPropertyTransaction extends CActiveRecord
             $this->save(false);
             return Yii::app()->db->getLastInsertID();
         }
-    }
-
-    public function getDetailsByUserRefId($user_ref_id=NULL)
-    {
-        $sql = "select * from tbl_property_transaction where user_ref_id = ".$user_ref_id;
-        $result	=Yii::app()->db->createCommand($sql)->queryRow();
-        return $result;
     }
 }

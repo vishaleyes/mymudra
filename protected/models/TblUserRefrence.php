@@ -203,4 +203,149 @@ class TblUserRefrence extends CActiveRecord
         $result	= Yii::app()->db->createCommand($sql)->queryRow();
         return $result;
     }
+
+    function getAllBankLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL)
+    {
+        $criteria = new CDbCriteria();
+
+        $search = " ";
+
+        if(isset($keyword) && $keyword != NULL )
+        {
+            $search .= " where (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
+            or loan_amount like '%".$keyword."%' or ltm.description like '%".$keyword."%' or lsm.loan_stage_name like '%".$keyword."%')";
+        }
+
+        $sql = "SELECT ur.*, ltrans.*,ltr.*,lsm.loan_stage_name,ltrans.loan_id As loan_transaction_id,
+            ltm.description AS loan_type_name,ur.`created_at` AS createdDate
+            FROM `tbl_user_refrence` ur INNER JOIN `tbl_loan_transaction` ltrans
+            ON ur.`user_ref_id` = ltrans.`user_ref_id`
+            LEFT JOIN `tbl_loan_type_master` ltm
+            ON ltm.loan_type_id = ltrans.`loan_type`
+            LEFT JOIN `tbl_loan_trans_reference` ltr
+            ON ltrans.`loan_id` = ltr.`loan_id`
+            LEFT JOIN `tbl_loan_stage_master` lsm
+            ON lsm.`loan_stage_id` = ltr.`loan_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
+
+        $sql_count = "SELECT COUNT(*) FROM `tbl_user_refrence` ur INNER JOIN `tbl_loan_transaction` ltrans
+            ON ur.`user_ref_id` = ltrans.`user_ref_id`
+            LEFT JOIN `tbl_loan_type_master` ltm
+            ON ltm.loan_type_id = ltrans.`loan_type`
+            LEFT JOIN `tbl_loan_trans_reference` ltr
+            ON ltrans.`loan_id` = ltr.`loan_id`
+            LEFT JOIN `tbl_loan_stage_master` lsm
+            ON lsm.`loan_stage_id` = ltr.`loan_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
+
+        //echo $sql_count; die;
+
+        $count	=	Yii::app()->db->createCommand($sql_count)->queryScalar();
+        //echo $sql_count;
+        $result	=	new CSqlDataProvider($sql, array(
+            'totalItemCount'=>$count,
+            'pagination'=>array(
+                'pageSize'=>$limit,
+            ),
+        ));
+
+        $index = 0;
+        return array('pagination'=>$result->pagination, 'bankUserList'=>$result->getData());
+    }
+
+    function getAllinvAdvisoryLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL)
+    {
+        $criteria = new CDbCriteria();
+
+        $search = " ";
+
+        if(isset($keyword) && $keyword != NULL )
+        {
+            $search .= " where (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
+            or loan_amount like '%".$keyword."%' or ltm.description like '%".$keyword."%' or lsm.loan_stage_name like '%".$keyword."%')";
+        }
+
+        $sql = "SELECT ur.*, iatrans.*,itr.*,ism.inv_stage_name,iatrans.inv_id AS inv_transaction_id,
+            itm.description AS inv_type_name,ur.`created_at` AS createdDate
+            FROM `tbl_user_refrence` ur 
+            INNER JOIN `tbl_investment_transaction` iatrans
+            ON ur.`user_ref_id` = iatrans.`user_ref_id`
+            LEFT JOIN `tbl_inv_type_master` itm
+            ON itm.inv_type_id = iatrans.`inv_type`
+            LEFT JOIN `tbl_inv_trans_reference` itr
+            ON iatrans.`inv_id` = itr.`inv_id`
+            LEFT JOIN `tbl_inv_stage_master` ism
+            ON ism.`inv_stage_id` = itr.`inv_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
+
+        $sql_count = "SELECT COUNT(*) FROM `tbl_user_refrence` ur 
+            INNER JOIN `tbl_investment_transaction` iatrans
+            ON ur.`user_ref_id` = iatrans.`user_ref_id`
+            LEFT JOIN `tbl_inv_type_master` itm
+            ON itm.inv_type_id = iatrans.`inv_type`
+            LEFT JOIN `tbl_inv_trans_reference` itr
+            ON iatrans.`inv_id` = itr.`inv_id`
+            LEFT JOIN `tbl_inv_stage_master` ism
+            ON ism.`inv_stage_id` = itr.`inv_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
+
+        //echo $sql_count; die;
+
+        $count	=	Yii::app()->db->createCommand($sql_count)->queryScalar();
+        //echo $sql_count;
+        $result	=	new CSqlDataProvider($sql, array(
+            'totalItemCount'=>$count,
+            'pagination'=>array(
+                'pageSize'=>$limit,
+            ),
+        ));
+
+        $index = 0;
+        return array('pagination'=>$result->pagination, 'invAdvisoryUserList'=>$result->getData());
+    }
+
+    function getAllrealEstateLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL)
+    {
+        $criteria = new CDbCriteria();
+
+        $search = " ";
+
+        if(isset($keyword) && $keyword != NULL )
+        {
+            $search .= " where (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
+            or loan_amount like '%".$keyword."%' or ltm.description like '%".$keyword."%' or lsm.loan_stage_name like '%".$keyword."%')";
+        }
+
+        $sql = "SELECT ur.*, ptrans.*,ptr.*,psm.prop_stage_name,ptrans.property_id AS prop_transaction_id,
+            ptm.description AS prop_type_name,ur.`created_at` AS createdDate
+            FROM `tbl_user_refrence` ur 
+            INNER JOIN `tbl_property_transaction` ptrans
+            ON ur.`user_ref_id` = ptrans.`user_ref_id`
+            LEFT JOIN `tbl_property_type_master` ptm
+            ON ptm.property_type_id = ptrans.`property_transaction_type`
+            LEFT JOIN `tbl_prop_trans_reference` ptr
+            ON ptrans.`property_id` = ptr.`property_id`
+            LEFT JOIN `tbl_property_stage_master` psm
+            ON psm.`property_stage_id` = ptr.`property_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
+
+        $sql_count = "SELECT COUNT(*) FROM `tbl_user_refrence` ur 
+            INNER JOIN `tbl_property_transaction` ptrans
+            ON ur.`user_ref_id` = ptrans.`user_ref_id`
+            LEFT JOIN `tbl_property_type_master` ptm
+            ON ptm.property_type_id = ptrans.`property_transaction_type`
+            LEFT JOIN `tbl_prop_trans_reference` ptr
+            ON ptrans.`property_id` = ptr.`property_id`
+            LEFT JOIN `tbl_property_stage_master` psm
+            ON psm.`property_stage_id` = ptr.`property_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
+
+        //echo $sql_count; die;
+
+        $count	=	Yii::app()->db->createCommand($sql_count)->queryScalar();
+        //echo $sql_count;
+        $result	=	new CSqlDataProvider($sql, array(
+            'totalItemCount'=>$count,
+            'pagination'=>array(
+                'pageSize'=>$limit,
+            ),
+        ));
+
+        $index = 0;
+        return array('pagination'=>$result->pagination, 'realEstateUserList'=>$result->getData());
+    }
 }

@@ -159,7 +159,7 @@
 
 <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md">
 <!-- BEGIN HEADER -->
-<div class="page-header navbar navbar-fixed-top" style="background: #ecbfae;!important;">
+<div class="page-header navbar navbar-fixed-top" >
     <!-- BEGIN HEADER INNER -->
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->

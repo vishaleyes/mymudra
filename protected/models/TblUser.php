@@ -374,4 +374,6 @@ class TblUser extends CActiveRecord
         $result	=Yii::app()->db->createCommand($sql)->queryAll();
         return $result;
     }
+
+
 }

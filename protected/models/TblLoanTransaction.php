@@ -156,4 +156,11 @@ class TblLoanTransaction extends CActiveRecord
         }
     }
 
+    public function getDetailsByUserRefId($user_ref_id=NULL)
+    {
+        $sql = "select * from tbl_loan_transaction where user_ref_id = ".$user_ref_id;
+        $result	=Yii::app()->db->createCommand($sql)->queryRow();
+        return $result;
+    }
+
 }
