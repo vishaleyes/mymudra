@@ -32,6 +32,7 @@ $messages['_ACCOUNT_NOT_VERIFIED_'] = "Account is not verified.";
 $messages['_ACCOUNT_DEACTIVATE_'] = "Account is deactivate.";
 $messages['_INVALID_PASSWORD_'] = "Please enter valid password.";
 $messages['_INVALID_USERNAME_'] = 'Invalid Username';
+$messages['_INVALID_SESSION_'] = 'Invalid Session';
 
 $messages['_MAIL_SEND_FAIL_'] = "Getting issue while sending email.";
 $messages['_USER_NOT_EXIST_'] = "User details not exist.";

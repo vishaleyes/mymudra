@@ -645,6 +645,18 @@ class ApiController extends Controller {
                     $postData['app_version'] = $_REQUEST['app_version'];
 
                 }
+                if(isset($_REQUEST['device_token']) && $_REQUEST['device_token']!=''){
+                    $device_token = $_REQUEST['device_token'];
+                }
+                else{
+                    $device_token = "";
+                }
+                if(isset($_REQUEST['endpointArn']) && $_REQUEST['endpointArn']!=''){
+                    $endpointArn = $_REQUEST['endpointArn'];
+                }
+                else{
+                    $endpointArn = "";
+                }
                 /* End optional parameters */
 
                 $validationObj = new Validation();
@@ -695,6 +707,7 @@ class ApiController extends Controller {
 
                     if ($user_id != '') {
                         $user_Data = $TblUserObj->getUserdetailsbyId($user_id);
+                        $user_Data['sessionData'] = $this->createSession($user_id,1,$device_token,$endpointArn);
                         if (!empty($user_Data)) {
                             $transaction->commit();
 
@@ -1023,7 +1036,6 @@ class ApiController extends Controller {
             $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
         }
     }
-
 
 
     /*save user for particular bank loan type user reference*/
@@ -1414,9 +1426,15 @@ class ApiController extends Controller {
                     $data['data'] = array();
                     $this->response($data);
                 }
-
             }
-
+            else
+            {
+                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
+            }
+        }
+        else
+        {
+            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
         }
     }
 
@@ -1435,8 +1453,11 @@ class ApiController extends Controller {
                 try {
                     $user_id = $_REQUEST['user_id'];
 
-                    $tblUserObj = new TblUser();
-                    $bankLoanUserData = $tblUserObj->getRegisteredUserForBankLoanListById($user_id);
+                    /*$tblUserObj = new TblUser();
+                    $bankLoanUserData = $tblUserObj->getRegisteredUserForBankLoanListById($user_id);*/
+
+                    $tblUserRefObj = new TblUserRefrence();
+                    $bankLoanUserData = $tblUserRefObj->getRegisteredUserForBankLoanListById($user_id);
 
                     //echo "<pre>"; print_r($bankLoanUserData); die;
                     if (!empty($bankLoanUserData)) {
@@ -1467,9 +1488,15 @@ class ApiController extends Controller {
                     $data['data'] = array();
                     $this->response($data);
                 }
-
             }
-
+            else
+            {
+                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
+            }
+        }
+        else
+        {
+            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
         }
     }
 
@@ -1487,8 +1514,11 @@ class ApiController extends Controller {
                 try {
                     $user_id = $_REQUEST['user_id'];
 
-                    $tblUserObj = new TblUser();
-                    $invLoanUserData = $tblUserObj->getRegisteredUserForInvLoanListById($user_id);
+                    /*$tblUserObj = new TblUser();
+                    $invLoanUserData = $tblUserObj->getRegisteredUserForInvLoanListById($user_id);*/
+
+                    $tblUserRefObj = new TblUserRefrence();
+                    $invLoanUserData = $tblUserRefObj->getRegisteredUserForInvLoanListById($user_id);
 
                     //echo "<pre>"; print_r($bankLoanUserData); die;
                     if (!empty($invLoanUserData)) {
@@ -1518,9 +1548,15 @@ class ApiController extends Controller {
                     $data['data'] = array();
                     $this->response($data);
                 }
-
             }
-
+            else
+            {
+                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
+            }
+        }
+        else
+        {
+            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
         }
     }
 
@@ -1538,8 +1574,11 @@ class ApiController extends Controller {
                 try {
                     $user_id = $_REQUEST['user_id'];
 
-                    $tblUserObj = new TblUser();
-                    $propLoanUserData = $tblUserObj->getRegisteredUserForPropLoanListById($user_id);
+                    /*$tblUserObj = new TblUser();
+                    $propLoanUserData = $tblUserObj->getRegisteredUserForPropLoanListById($user_id);*/
+
+                    $tblUserRefObj = new TblUserRefrence();
+                    $propLoanUserData = $tblUserRefObj->getRegisteredUserForPropLoanListById($user_id);
 
                     //echo "<pre>"; print_r($bankLoanUserData); die;
                     if (!empty($propLoanUserData)) {
@@ -1571,7 +1610,14 @@ class ApiController extends Controller {
                 }
 
             }
-
+            else
+            {
+                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
+            }
+        }
+        else
+        {
+            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
         }
     }
 }

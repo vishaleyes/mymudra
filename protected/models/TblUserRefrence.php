@@ -348,4 +348,55 @@ class TblUserRefrence extends CActiveRecord
         $index = 0;
         return array('pagination'=>$result->pagination, 'realEstateUserList'=>$result->getData());
     }
+
+    function getRegisteredUserForBankLoanListById($user_id=NULL)
+    {
+        $sql = "SELECT ur.*, ltrans.*,ltr.*,lsm.loan_stage_name,ltrans.loan_id AS loan_transaction_id,
+            ltm.description AS loan_type_name,ur.`created_at` AS createdDate
+            FROM `tbl_user_refrence` ur INNER JOIN `tbl_loan_transaction` ltrans
+            ON ur.`user_ref_id` = ltrans.`user_ref_id`
+            LEFT JOIN `tbl_loan_type_master` ltm
+            ON ltm.loan_type_id = ltrans.`loan_type`
+            LEFT JOIN `tbl_loan_trans_reference` ltr
+            ON ltrans.`loan_id` = ltr.`loan_id`
+            LEFT JOIN `tbl_loan_stage_master` lsm
+            ON lsm.`loan_stage_id` = ltr.`loan_stage_id` WHERE ur.user_id = ".$user_id;
+        $result	= Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+
+    }
+
+    function getRegisteredUserForInvLoanListById($user_id=NULL)
+    {
+        $sql = "SELECT ur.*, iatrans.*,itr.*,ism.inv_stage_name,iatrans.inv_id AS inv_transaction_id,
+            itm.description AS inv_type_name,ur.`created_at` AS createdDate
+            FROM `tbl_user_refrence` ur 
+            INNER JOIN `tbl_investment_transaction` iatrans
+            ON ur.`user_ref_id` = iatrans.`user_ref_id`
+            LEFT JOIN `tbl_inv_type_master` itm
+            ON itm.inv_type_id = iatrans.`inv_type`
+            LEFT JOIN `tbl_inv_trans_reference` itr
+            ON iatrans.`inv_id` = itr.`inv_id`
+            LEFT JOIN `tbl_inv_stage_master` ism
+            ON ism.`inv_stage_id` = itr.`inv_stage_id` WHERE ur.`user_id` = ".$user_id;
+        $result	= Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+    }
+
+    function getRegisteredUserForPropLoanListById($user_id=NULL)
+    {
+        $sql = "SELECT ur.*, ptrans.*,ptr.*,psm.prop_stage_name,ptrans.property_id AS prop_transaction_id,
+            ptm.description AS prop_type_name,ur.`created_at` AS createdDate
+            FROM `tbl_user_refrence` ur 
+            INNER JOIN `tbl_property_transaction` ptrans
+            ON ur.`user_ref_id` = ptrans.`user_ref_id`
+            LEFT JOIN `tbl_property_type_master` ptm
+            ON ptm.property_type_id = ptrans.`property_transaction_type`
+            LEFT JOIN `tbl_prop_trans_reference` ptr
+            ON ptrans.`property_id` = ptr.`property_id`
+            LEFT JOIN `tbl_property_stage_master` psm
+            ON psm.`property_stage_id` = ptr.`property_stage_id` WHERE ur.`user_id` = ".$user_id;
+        $result	= Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+    }
 }
