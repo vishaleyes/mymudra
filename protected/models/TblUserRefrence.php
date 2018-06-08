@@ -385,11 +385,24 @@ class TblUserRefrence extends CActiveRecord
 
     function getRegisteredUserForPropLoanListById($user_id=NULL)
     {
-        $sql = "SELECT ur.*, ptrans.*,ptr.*,psm.prop_stage_name,ptrans.property_id AS prop_transaction_id,
+        /*$sql = "SELECT ur.*, ptrans.*,ptr.*,psm.prop_stage_name,ptrans.property_id AS prop_transaction_id,
             ptm.description AS prop_type_name,ur.`created_at` AS createdDate
             FROM `tbl_user_refrence` ur 
             INNER JOIN `tbl_property_transaction` ptrans
             ON ur.`user_ref_id` = ptrans.`user_ref_id`
+            LEFT JOIN `tbl_property_type_master` ptm
+            ON ptm.property_type_id = ptrans.`property_transaction_type`
+            LEFT JOIN `tbl_prop_trans_reference` ptr
+            ON ptrans.`property_id` = ptr.`property_id`
+            LEFT JOIN `tbl_property_stage_master` psm
+            ON psm.`property_stage_id` = ptr.`property_stage_id` WHERE ur.`user_id` = ".$user_id;*/
+        $sql = "SELECT ur.*,ptrans.*,ptr.*,psm.prop_stage_name,ptrans.property_id AS prop_transaction_id,
+            ptm.description AS prop_type_name,ur.`created_at` AS createdDate,pst.`size_type_name`
+            FROM `tbl_user_refrence` ur 
+            INNER JOIN `tbl_property_transaction` ptrans
+            ON ur.`user_ref_id` = ptrans.`user_ref_id`
+            LEFT JOIN `tbl_property_size_type` pst
+            ON pst.`property_size_type_id` = ptrans.`property_size_type`
             LEFT JOIN `tbl_property_type_master` ptm
             ON ptm.property_type_id = ptrans.`property_transaction_type`
             LEFT JOIN `tbl_prop_trans_reference` ptr

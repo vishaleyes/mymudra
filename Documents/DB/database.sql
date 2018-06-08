@@ -29,3 +29,12 @@ INSERT INTO `mymudra`.`tbl_property_stage_master` (`prop_stage_name`, `status`, 
 INSERT INTO `mymudra`.`tbl_property_stage_master` (`prop_stage_name`, `status`, `created_at`) VALUES ('Property Visit', '1', '2018-06-07 10:36:58');
 INSERT INTO `mymudra`.`tbl_property_stage_master` (`prop_stage_name`, `status`, `created_at`) VALUES ('Deal Finalised', '1', '2018-06-07 10:37:10');
 
+
+
+/*08-06-2018*/
+
+CREATE TABLE `mymudra`.`tbl_property_size_type`( `property_size_type_id` BIGINT(22) NOT NULL AUTO_INCREMENT, `size_type_name` VARCHAR(255), `status` TINYINT(1), `created_at` DATETIME, `modified_at` DATETIME, PRIMARY KEY (`property_size_type_id`) );
+
+INSERT INTO `mymudra`.`tbl_property_size_type` (`size_type_name`, `status`, `created_at`) VALUES ('sq mt', '1', '2018-06-08 15:36:23');
+INSERT INTO `mymudra`.`tbl_property_size_type` (`size_type_name`, `status`, `created_at`) VALUES ('sq yad', '1', '2018-06-08 15:36:30');
+INSERT INTO `mymudra`.`tbl_property_size_type` (`size_type_name`, `status`, `created_at`) VALUES ('sq ft', '1', '2018-06-08 15:36:38');
