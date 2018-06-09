@@ -1,5 +1,5 @@
 <style>
-    .form-group.form-md-line-input .help-block
+    .form-group.form-md-line-input
     {
         opacity: 10 !important;
     }
@@ -8,6 +8,11 @@
     }
     #second_weekoff-error,#second_weekoff_rule-error{
         top: 33px;
+    }
+    .help-block
+    {
+        color: 	#FF0000;
+        text-align: left;
     }
 </style>
 <script>
@@ -79,7 +84,7 @@
 <script src="<?php echo Yii::app()->params->base_url; ?>/assets/pages/scripts/components-bootstrap-select.min.js" type="text/javascript"></script>
 <section class="content portlet light bordered">
     <div class="portlet-title">
-        <div class="caption"> <i class="icon-bubble font-dark hide"></i> <span class="caption-subject font-hide bold uppercase">Investment Advisory User Listing</span> </div>
+        <div class="caption"> <i class="icon-bubble font-dark hide"></i> <span class="caption-subject font-hide bold uppercase">Real Estate User Listing</span> </div>
 
         <?php
 
@@ -310,7 +315,7 @@
 
                                     <td style="text-align:center;width: 75px;">
 
-                                        <a class="sort" title="Edit" lang='<?php echo Yii::app()->params->base_path;?>admin/editInvAdvisoryUserDetails/user_ref_id/<?php echo $row['user_ref_id']; ?>'><i class="glyphicon glyphicon-edit"></i></a>
+                                        <a class="sort" title="Edit" lang='<?php echo Yii::app()->params->base_path;?>admin/editRealEstateUserDetails/user_ref_id/<?php echo $row['user_ref_id']; ?>'><i class="glyphicon glyphicon-edit"></i></a>
 
                                         <a href="javascript:;" class="" data-toggle="modal" data-target="#ModalStageStatus_<?php echo $row['user_ref_id']; ?>" title="change stage status"><i class="glyphicon glyphicon-ok"></i></a>
 
@@ -323,7 +328,7 @@
                                                         <h4 class="modal-title text-center"><?php echo $row['full_name'];?>'s status details</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="<?php echo Yii::app()->params->base_path; ?>admin/changeRealEstateStageStatus/user_ref_id/<?php echo $row['user_ref_id'];?>/prop_tran_ref_id/<?php echo $row['prop_tran_ref_id']; ?>" class="form-horizontal col-md-12" method="post" id="stageStatus_form_<?php echo $row['user_ref_id']; ?>" name="stageStatus_form_<?php echo $row['user_ref_id']; ?>">
+                                                        <form action="" class="form-horizontal col-md-12" method="post" id="stageStatus_form_<?php echo $row['user_ref_id']; ?>" name="stageStatus_form_<?php echo $row['user_ref_id']; ?>">
 
                                                             <div class="row">
                                                                 <div class="col-md-12">
@@ -354,9 +359,9 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="row" style="margin-top: 20px; text-align: left;">
+                                                            <div class="row" style="margin-top: 30px; text-align: left;">
                                                                 <div class="col-md-12">
-                                                                    <button type="submit" class="btn btn-large btn-success">Submit</button>
+                                                                    <button type="submit" name="FormSubmit" class="btn btn-large btn-success" onclick="updateStage('<?php echo $row['user_ref_id'];?>','<?php echo $row['prop_tran_ref_id']; ?>');">Submit</button>
                                                                     <button type="button" name="FormSubmit" class="btn btn-large btn-danger" data-dismiss="modal">Cancel</button>
                                                                 </div>
                                                             </div>
@@ -410,6 +415,7 @@
 
 
 </section>
+
 <script>
 
     $(document).ready(function()
@@ -439,7 +445,93 @@
             var url	=	$(this).attr('lang');
             loadBoxContent(url+'<?php echo $extraPaginationPara ; ?>','mainContainer');
         });
+
     });
+
+    function updateStage(user_ref_id,prop_tran_ref_id){
+
+        $('#stageStatus_form_'+user_ref_id+'').validate({
+            errorElement: 'span', //default input error message container
+            errorClass: 'help-block', // default input error message class
+            focusInvalid: false, // do not focus the last invalid input
+            rules: {
+                prop_stage_id: {
+                    required: true,
+                },
+            },
+            messages: {
+                prop_stage_id: {
+                    required: "Please select stage",
+                },
+            },
+            invalidHandler: function (event, validator) { //display error alert on form submit
+                $('.alert-danger', $('.form-horizontal')).show();
+            },
+            highlight: function (element) { // hightlight error inputs
+                $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+            },
+            onfocusout: function (element) {
+                $(element).valid();
+            },
+            success: function (label) {
+                label.closest('.form-group').removeClass('has-error');
+                label.remove();
+            },
+            errorPlacement: function (error, element) {
+                error.insertAfter(element.closest('.form-control'));
+                $("#name-error").css("position","absolute");
+            },
+            submitHandler: function (form) {
+
+                submitUpdatedStage(user_ref_id,prop_tran_ref_id);
+            }
+        });
+    }
+
+    function submitUpdatedStage(user_ref_id,prop_tran_ref_id)
+    {
+        //alert(user_ref_id);
+        //alert(prop_tran_ref_id);
+
+        $("#Loaderaction").css('display', 'inline-block');
+        $( "#mainContainer" ).css( 'opacity', '0.5' );
+        $("html, body").animate({scrollTop: 0}, "slow");
+
+        var prop_stage_id = $('#prop_stage_id').val();
+        var datastring = "user_ref_id="+user_ref_id+"&prop_tran_ref_id="+prop_tran_ref_id+"&prop_stage_id="+prop_stage_id;
+        //alert(datastring);
+
+        $.ajax ({
+            url: '<?php echo Yii::app()->params->base_path; ?>admin/changeRealEstateStageStatus',
+            data: datastring,
+            method: 'post',
+            cache: false,
+            dataType: 'json',
+            success: function(response)
+            {   //alert(response.message_type);
+                if(response.message_type == "success")
+                {
+                    $("#update_message").addClass("custom-alerts alert alert-success");
+                }
+                else
+                {
+                    $("#update_message").addClass("custom-alerts alert alert-danger");
+                }
+                $(".fade").remove();
+                $("#Loaderaction").css('display','block');
+                $.get(this.href,{ajax:true},function(html){
+                    $('#mainContainer').html(html);
+                    $("#Loaderaction").css('display','none');
+                    $( "#mainContainer" ).css( 'opacity', '1' );
+                    $("html, body").animate({scrollTop: 0}, "slow");
+                    $("#msg").html(response.message);
+                    $("#update_message").fadeIn();
+                    setTimeout(function() { $("#update_message").fadeOut('2000');}, 60000 );
+                });
+
+            }
+        });
+    }
 
     function loadBoxContent(urlData,boxid)
     {

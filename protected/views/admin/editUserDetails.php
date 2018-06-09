@@ -27,7 +27,7 @@
 
                 <div class="body">
                     <!-- Default form -->
-                    <form id="update_user_details_form" name="update_user_details_form" action="<?php echo Yii::app()->params->base_path;?>admin/updateInvAdvisoryUserDetails" method="post" enctype="multipart/form-data">
+                    <form id="update_user_details_form" name="update_user_details_form" action="<?php echo Yii::app()->params->base_path;?>admin/updateUserDetails" method="post" enctype="multipart/form-data">
                         <div class="widget">
                             <div class="row">
                                 <div class="form-group form-md-line-input  col-md-4">
@@ -101,12 +101,66 @@
                                         ?>
                                     </select>
                                 </div>
+                                <div class="form-group form-md-line-input  col-md-4">
+                                    <label class="control-label">Loan Type<span class="text-error">*</span>:</label>
+                                    <select class="form-control edited bs-select" id="loan_type" name="loan_type" data-actions-box="true" data-search="true">
+                                        <option value="">Select Loan Type</option>
+                                        <?php
+                                        $TblBankLoanTypeObj = new TblLoanTypeMaster();
+                                        $loanTypeData = $TblBankLoanTypeObj->getLoanTypeList();
+                                        foreach ($loanTypeData as $type)
+                                        {
+                                            if($userData['loan_data']['loan_type'] == $type['loan_type_id'])
+                                            {
+                                                $selected = "selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
+                                            ?>
+                                            <option value="<?php echo $type['loan_type_id']; ?>" <?php echo $selected; ?>>
+                                                <?php echo $type['description']; ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group form-md-line-input  col-md-4">
+                                    <label class="control-label">Stage<span class="text-error">*</span>:</label>
+                                    <select class="form-control edited bs-select" id="loan_stage" name="loan_stage" data-actions-box="true" data-search="true">
+                                        <option value="">Select Stage</option>
+                                        <?php
+                                        $TblLoanStageObj = new TblLoanStageMaster();
+                                        $loanStageData = $TblLoanStageObj->getLoanStage();
+                                        foreach ($loanStageData as $stage)
+                                        {
+                                            if($userData['loan_data']['loan_stage_id'] == $stage['loan_stage_id'])
+                                            {
+                                                $selected = "selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
+                                            ?>
+                                            <option value="<?php echo $stage['loan_stage_id']; ?>" <?php echo $selected; ?>>
+                                                <?php echo $stage['loan_stage_name']; ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                             </div>
 
                             <!--<div class="row">-->
                             <div class="form-actions align-right col-md-6">
                                 <input type="hidden" name="user_ref_id" id="user_ref_id" value="<?php if(isset($userData['user_ref_id']) && $userData['user_ref_id'] != "") { echo $userData['user_ref_id'];}?>"/>
                                 <input type="hidden" name="loan_id" id="loan_id" value="<?php if(isset($userData['loan_data']['loan_id']) && $userData['loan_data']['loan_id'] != "") { echo $userData['loan_data']['loan_id'];}?>"/>
+                                <input type="hidden" name="loan_tran_ref_id" id="loan_tran_ref_id" value="<?php if(isset($userData['loan_data']['loan_tran_ref_id']) && $userData['loan_data']['loan_tran_ref_id'] != "") { echo $userData['loan_data']['loan_tran_ref_id'];}?>"/>
 
 
                                 <a class="" style="margin-top:5px;" title="Save" type="submit">

@@ -15,13 +15,13 @@
         </h1>
     </div>
 
-    <div class="page-toolbar">
+    <!--<div class="page-toolbar">
         <div id="dashboard-report-range1" data-display-range="0" class="pull-right tooltips btn btn-fit-height green" data-placement="left" >
             <i class="icon-calendar"></i>&nbsp;
             <span class="thin uppercase hidden-xs"></span>&nbsp;
             <i class="fa fa-angle-down"></i>
         </div>
-    </div>
+    </div>-->
 
 </div>
 

@@ -1395,6 +1395,7 @@ class AdminController extends Controller {
         try {
             $userDetails = array();
             $loanDetails = array();
+            $loanRefDetails = array();
 
             if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!='')
             {
@@ -1414,16 +1415,19 @@ class AdminController extends Controller {
                 $tblUserRefObj = new TblUserRefrence();
                 $tblUserRefObj->setData($userDetails);
                 $tblUserRefObj->insertData($user_ref_id);
-
             }
 
             if(isset($_REQUEST['loan_id']) && $_REQUEST['loan_id'])
             {
                 $loan_id = $_REQUEST['loan_id'];
 
-                $loanDetails['loan_id'] = $loan_id;
+                //$loanDetails['loan_id'] = $loan_id;
                 $loanDetails['loan_amount'] = $_REQUEST['loanAmount'];
                 $loanDetails['bank_id'] = $_REQUEST['bank_id'];
+                $loanDetails['load_transaction_date'] = date("Y-m-d H:i:s");
+                $loanDetails['modified_at'] = date("Y-m-d H:i:s");
+                $loanDetails['user_ref_id'] = $_REQUEST['user_ref_id'];
+                $loanDetails['loan_type'] = $_REQUEST['loan_type'];
 
                 if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
                 {
@@ -1434,6 +1438,46 @@ class AdminController extends Controller {
                 $tblLoanTransObj = new TblLoanTransaction();
                 $tblLoanTransObj->setData($loanDetails);
                 $tblLoanTransObj->insertData($loan_id);
+            }
+            else
+            {
+                $loanDetails['loan_amount'] = $_REQUEST['loanAmount'];
+                $loanDetails['bank_id'] = $_REQUEST['bank_id'];
+                $loanDetails['load_transaction_date'] = date("Y-m-d H:i:s");
+                $loanDetails['created_at'] = date("Y-m-d H:i:s");
+                $loanDetails['user_ref_id'] = $_REQUEST['user_ref_id'];
+                $loanDetails['loan_type'] = $_REQUEST['loan_type'];
+
+                $tblLoanTransObj = new TblLoanTransaction();
+                $tblLoanTransObj->setData($loanDetails);
+                $loan_id = $tblLoanTransObj->insertData();
+            }
+
+            //echo  $loan_id; die;
+            if(isset($_REQUEST['loan_tran_ref_id']) && $_REQUEST['loan_tran_ref_id']!='')
+            {
+                $loan_tran_ref_id = $_REQUEST['loan_tran_ref_id'];
+                $loanRefDetails['loan_id'] = $loan_id;
+                $loanRefDetails['loan_stage_id'] = $_REQUEST['loan_stage'];
+                $loanRefDetails['stage_transaction_date'] = date("Y-m-d H:i:s");
+
+                $loanRefDetails['modified_at'] = date("Y-m-d H:i:s");
+
+                $tblLoanTransRefObj = new TblLoanTransReference();
+                $tblLoanTransRefObj->setData($loanRefDetails);
+                $tblLoanTransRefObj->insertData($loan_tran_ref_id);
+            }
+            else
+            {
+                $loanRefDetails['loan_id'] = $loan_id;
+                $loanRefDetails['loan_stage_id'] = $_REQUEST['loan_stage'];
+                $loanRefDetails['stage_transaction_date'] = date("Y-m-d H:i:s");
+
+                $loanRefDetails['created_at'] = date("Y-m-d H:i:s");
+
+                $tblLoanTransRefObj = new TblLoanTransReference();
+                $tblLoanTransRefObj->setData($loanRefDetails);
+                $prop_tran_ref_id = $tblLoanTransRefObj->insertData();
             }
 
             Yii::app()->user->setFlash('success', "Successfully updated user details");
@@ -1603,6 +1647,7 @@ class AdminController extends Controller {
         try {
             $userDetails = array();
             $loanDetails = array();
+            $invRefDetails = array();
 
             if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!='')
             {
@@ -1631,16 +1676,62 @@ class AdminController extends Controller {
 
                 $loanDetails['inv_id'] = $inv_id;
                 $loanDetails['inv_amount'] = $_REQUEST['invAmount'];
+                $loanDetails['inv_type'] = $_REQUEST['inv_type'];
+                $loanDetails['inv_transaction_date'] = date("Y-m-d H:i:s");
 
                 if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
                 {
                     $loanDetails['description'] = $_REQUEST['description'];
                 }
                 $loanDetails['modified_at'] = date("Y-m-d H:i:s");
+                $loanDetails['status'] = 1;
 
                 $tblInvTransObj = new TblInvestmentTransaction();
                 $tblInvTransObj->setData($loanDetails);
                 $tblInvTransObj->insertData($inv_id);
+            }
+            else
+            {
+                $loanDetails['inv_amount'] = $_REQUEST['invAmount'];
+                $loanDetails['inv_type'] = $_REQUEST['inv_type'];
+                $loanDetails['inv_transaction_date'] = date("Y-m-d H:i:s");
+
+                if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
+                {
+                    $loanDetails['description'] = $_REQUEST['description'];
+                }
+                $loanDetails['created_at'] = date("Y-m-d H:i:s");
+                $loanDetails['status'] = 1;
+
+                $tblInvTransObj = new TblInvestmentTransaction();
+                $tblInvTransObj->setData($loanDetails);
+                $inv_id = $tblInvTransObj->insertData();
+            }
+
+            if(isset($_REQUEST['inv_tran_ref_id']) && $_REQUEST['inv_tran_ref_id']!='')
+            {
+                $inv_tran_ref_id = $_REQUEST['inv_tran_ref_id'];
+                $invRefDetails['inv_id'] = $inv_id;
+                $invRefDetails['inv_stage_id'] = $_REQUEST['prop_stage'];
+                $invRefDetails['stage_transaction_date'] = date("Y-m-d H:i:s");
+
+                $invRefDetails['modified_at'] = date("Y-m-d H:i:s");
+
+                $tblInvTransRefObj = new TblInvTransReference();
+                $tblInvTransRefObj->setData($invRefDetails);
+                $tblInvTransRefObj->insertData($inv_tran_ref_id);
+            }
+            else
+            {
+                $invRefDetails['inv_id'] = $inv_id;
+                $invRefDetails['inv_stage_id'] = $_REQUEST['prop_stage'];
+                $invRefDetails['stage_transaction_date'] = date("Y-m-d H:i:s");
+
+                $propRefDetails['created_at'] = date("Y-m-d H:i:s");
+
+                $tblInvTransRefObj = new TblInvTransReference();
+                $tblInvTransRefObj->setData($propRefDetails);
+                $inv_tran_ref_id = $tblInvTransRefObj->insertData();
             }
 
             Yii::app()->user->setFlash('success', "Successfully updated user details");
@@ -1729,40 +1820,190 @@ class AdminController extends Controller {
     }
 
     public function actionchangeRealEstateStageStatus()
-    {
-        try{
-            if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!="") {
-                $user_ref_id = $_REQUEST['user_ref_id'];
-                //$loan_transaction_id = $_REQUEST['loan_transaction_id'];
-                $prop_stage_id = $_REQUEST['prop_stage_id'];
+    {   //echo "<pre>"; print_r($_REQUEST); die;
+        if(!empty($_REQUEST))
+        {
+            try{
+                if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!="") {
+                    $user_ref_id = $_REQUEST['user_ref_id'];
+                    //$loan_transaction_id = $_REQUEST['loan_transaction_id'];
+                    $prop_stage_id = $_REQUEST['prop_stage_id'];
 
-                $tblpropTransObj = new TblPropertyTransaction();
-                $data = $tblpropTransObj->getDetailsByUserRefId($user_ref_id);
-                //echo "<pre>"; print_r($data); die;
-                $transactionData = array();
-                $transactionData['property_id'] = $data['property_id'];
-                $transactionData['property_stage_id'] = $prop_stage_id;
-                $transactionData['prop_stage_transaction_date'] = date("Y-m-d H:i:s");
-                //$transactionData['status'] = 1;
+                    $tblpropTransObj = new TblPropertyTransaction();
+                    $data = $tblpropTransObj->getDetailsByUserRefId($user_ref_id);
+                    //echo "<pre>"; print_r($data); die;
+                    $transactionData = array();
+                    $transactionData['property_id'] = $data['property_id'];
+                    $transactionData['property_stage_id'] = $prop_stage_id;
+                    $transactionData['prop_stage_transaction_date'] = date("Y-m-d H:i:s");
+                    //$transactionData['status'] = 1;
 
-                if(isset($_REQUEST['prop_tran_ref_id']) && $_REQUEST['prop_tran_ref_id']!='')
-                {   //echo "if"; die;
-                    $prop_tran_ref_id = $_REQUEST['prop_tran_ref_id'];
-                    $transactionData['created_at'] = date("Y-m-d H:i:s");
+                    if(isset($_REQUEST['prop_tran_ref_id']) && $_REQUEST['prop_tran_ref_id']!='')
+                    {   //echo "if"; die;
+                        $prop_tran_ref_id = $_REQUEST['prop_tran_ref_id'];
+                        $transactionData['created_at'] = date("Y-m-d H:i:s");
 
-                    $tblTransRefObj = new TblPropTransReference();
-                    $tblTransRefObj->setData($transactionData);
-                    $tblTransRefObj->insertData($prop_tran_ref_id);
+                        $tblTransRefObj = new TblPropTransReference();
+                        $tblTransRefObj->setData($transactionData);
+                        $tblTransRefObj->insertData($prop_tran_ref_id);
+                    }
+                    else {  //echo "else"; die;
+                        $transactionData['modified_at'] = date("Y-m-d H:i:s");
+
+                        $tblTransRefObj = new TblPropTransReference();
+                        $tblTransRefObj->setData($transactionData);
+                        $prop_tran_ref_id = $tblTransRefObj->insertData();
+                    }
                 }
-                else {  //echo "else"; die;
-                    $transactionData['modified_at'] = date("Y-m-d H:i:s");
-
-                    $tblTransRefObj = new TblPropTransReference();
-                    $tblTransRefObj->setData($transactionData);
-                    $prop_tran_ref_id = $tblTransRefObj->insertData();
-                }
+                $this->response(array("message" => "Successfully changed status", "message_type" => "success"));
+                //Yii::app()->user->setFlash('success', "Successfully changed status");
+                $this->redirect(array("admin/realEstateUserListing"));
             }
-            Yii::app()->user->setFlash('success', "Successfully changed status");
+            catch(Exception $e)
+            {
+                //$transaction->rollback();
+                $this->response(array("message" => $e->getMessage(), "message_type" => "error"));
+                //Yii::app()->user->setFlash('error', $e->getMessage());
+                $this->redirect(array("admin/realEstateUserListing"));
+            }
+        }
+
+    }
+
+    public function actioneditRealEstateUserDetails()
+    {
+        $this->isLogin();
+        Yii::app()->session['current'] = 'userDetails';
+        Yii::app()->session['breadcums'] = 'userDetails';
+
+        $userData = array();
+        $user_id = Yii::app()->session[_SITENAME_ . '_admin'];
+
+        if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!='')
+        {
+            $user_ref_id = $_REQUEST['user_ref_id'];
+
+            $tblUserRefObj = new TblUserRefrence();
+            $userData = $tblUserRefObj->getUserdetailsbyId($user_ref_id);
+
+            $tblPropTransactionObj = new TblPropertyTransaction();
+            $userData['prop_data'] = $tblPropTransactionObj->getDetailsByUserRefId($user_ref_id);
+
+            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+
+                $this->renderPartial("editRealEstateUserDetails", array('userData' => $userData));
+            } else {
+                $this->render("editRealEstateUserDetails", array('userData' => $userData));
+            }
+            //echo "<pre>"; print_r($userData); die;
+
+        }
+    }
+
+    public function actionupdateRealEstateUserDetails()
+    {   //echo "<pre>"; print_r($_REQUEST); die;
+        $this->isLogin();
+        try {
+            $userDetails = array();
+            $propDetails = array();
+            $propRefDetails =  array();
+
+            if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!='')
+            {
+                $user_ref_id = $_REQUEST['user_ref_id'];
+
+                $userDetails['user_ref_id'] = $user_ref_id;
+                $userDetails['full_name'] = $_REQUEST['fullName'];
+                $userDetails['phone_number'] = $_REQUEST['phoneNumber'];
+                $userDetails['email'] = $_REQUEST['email'];
+                $userDetails['annual_income'] = $_REQUEST['annualIncome'];
+                $userDetails['street'] = $_REQUEST['street'];
+                $userDetails['city'] = $_REQUEST['city'];
+                $userDetails['state'] = $_REQUEST['state'];
+                $userDetails['pincode'] = $_REQUEST['pincode'];
+                $userDetails['modified_at'] = date("Y-m-d H:i:s");
+
+                $tblUserRefObj = new TblUserRefrence();
+                $tblUserRefObj->setData($userDetails);
+                $tblUserRefObj->insertData($user_ref_id);
+
+            }
+
+            $tblPropertyTransObj = new TblPropertyTransaction();
+            $propTransData = $tblPropertyTransObj->getDetailsByUserRefId($user_ref_id);
+            //echo "<pre>"; print_r($propTransData); die;
+
+            if(isset($_REQUEST['property_id']) && $_REQUEST['property_id']!='')
+            {   //echo "if"; die;
+                $property_id = $_REQUEST['property_id'];
+
+                //$propDetails['property_id'] = $property_id;
+                $propDetails['property_size'] = $_REQUEST['propSize'];
+                $propDetails['property_size_type'] = $_REQUEST['prop_size_type'];
+                $propDetails['property_type'] = $_REQUEST['prop_type'];
+                $propDetails['user_ref_id'] = $_REQUEST['user_ref_id'];
+                $propDetails['property_transaction_type'] = $_REQUEST['loan_type'];
+                $propDetails['status'] = 1;
+
+                if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
+                {
+                    $propDetails['description'] = $_REQUEST['description'];
+                }
+                $propDetails['modified_at'] = date("Y-m-d H:i:s");
+
+                $tblPropertyTransObj = new TblPropertyTransaction();
+                $tblPropertyTransObj->setData($propDetails);
+                $tblPropertyTransObj->insertData($property_id);
+            }
+            else
+            {
+                $propDetails['property_size'] = $_REQUEST['propSize'];
+                $propDetails['property_size_type'] = $_REQUEST['prop_size_type'];
+                $propDetails['property_type'] = $_REQUEST['prop_type'];
+                $propDetails['user_ref_id'] = $_REQUEST['user_ref_id'];
+                $propDetails['property_transaction_type'] = $_REQUEST['loan_type'];
+                $propDetails['status'] = 1;
+
+                if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
+                {
+                    $propDetails['description'] = $_REQUEST['description'];
+                }
+                $propDetails['created_at'] = date("Y-m-d H:i:s");
+
+                $tblPropertyTransObj = new TblPropertyTransaction();
+                $tblPropertyTransObj->setData($propDetails);
+                $property_id = $tblPropertyTransObj->insertData();
+            }
+
+            //echo $property_id; die;
+
+            if(isset($_REQUEST['prop_tran_ref_id']) && $_REQUEST['prop_tran_ref_id']!='')
+            {
+                $prop_tran_ref_id = $_REQUEST['prop_tran_ref_id'];
+                $propRefDetails['property_id'] = $property_id;
+                $propRefDetails['property_stage_id'] = $_REQUEST['prop_stage'];
+                $propRefDetails['prop_stage_transaction_date'] = date("Y-m-d H:i:s");
+
+                $propRefDetails['modified_at'] = date("Y-m-d H:i:s");
+
+                $tblPropertyTransRefObj = new TblPropTransReference();
+                $tblPropertyTransRefObj->setData($propRefDetails);
+                $tblPropertyTransRefObj->insertData($prop_tran_ref_id);
+            }
+            else
+            {
+                $propRefDetails['property_id'] = $property_id;
+                $propRefDetails['property_stage_id'] = $_REQUEST['prop_stage'];
+                $propRefDetails['prop_stage_transaction_date'] = date("Y-m-d H:i:s");
+
+                $propRefDetails['created_at'] = date("Y-m-d H:i:s");
+
+                $tblPropertyTransRefObj = new TblPropTransReference();
+                $tblPropertyTransRefObj->setData($propRefDetails);
+                $prop_tran_ref_id = $tblPropertyTransRefObj->insertData();
+            }
+            //echo $prop_tran_ref_id; die;
+            Yii::app()->user->setFlash('success', "Successfully updated user details");
             $this->redirect(array("admin/realEstateUserListing"));
         }
         catch(Exception $e)

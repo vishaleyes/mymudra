@@ -76,16 +76,16 @@
                                     <label class="control-label">Description:</label>
                                     <div class="controls"><input type="text" class="form-control" name="description" placeholder="Enter description" value="<?php if(isset($userData['inv_data']['description']) && $userData['inv_data']['description'] != "") { echo $userData['inv_data']['description']; } ?>" id="description" /><span id="descriptionErr"></span></div>
                                 </div>
-                                <!--<div class="form-group form-md-line-input  col-md-4">
-                                    <label class="control-label">bank<span class="text-error">*</span>:</label>
-                                    <select class="form-control edited bs-select" id="bank_id" name="bank_id" data-actions-box="true" data-search="true">
-                                        <option value="">Select Bank</option>
+                                <div class="form-group form-md-line-input  col-md-4">
+                                    <label class="control-label">Investment Type<span class="text-error">*</span>:</label>
+                                    <select class="form-control edited bs-select" id="inv_type" name="inv_type" data-actions-box="true" data-search="true">
+                                        <option value="">Select Type</option>
                                         <?php
-/*                                        $TblbankObj = new TblBankMaster();
-                                        $bankData = $TblbankObj->getAllBankList();
-                                        foreach ($bankData as $bank)
+                                        $TblInvTypeObj = new TblInvTypeMaster();
+                                        $invTypeData = $TblInvTypeObj->getInvTypeList();
+                                        foreach ($invTypeData as $type)
                                         {
-                                            if($userData['loan_data']['bank_id'] == $bank['bank_id'])
+                                            if($userData['inv_data']['inv_type'] == $type['inv_type_id'])
                                             {
                                                 $selected = "selected";
                                             }
@@ -93,20 +93,21 @@
                                             {
                                                 $selected = "";
                                             }
-                                            */?>
-                                            <option value="<?php /*echo $bank['bank_id']; */?>" <?php /*echo $selected; */?>>
-                                                <?php /*echo $bank['bank_name']; */?></option>
+                                            ?>
+                                            <option value="<?php echo $type['inv_type_id']; ?>" <?php echo $selected; ?>>
+                                                <?php echo $type['description']; ?></option>
                                             <?php
-/*                                        }
-                                        */?>
+                                        }
+                                        ?>
                                     </select>
-                                </div>-->
+                                </div>
                             </div>
 
                             <!--<div class="row">-->
                             <div class="form-actions align-right col-md-6">
                                 <input type="hidden" name="user_ref_id" id="user_ref_id" value="<?php if(isset($userData['user_ref_id']) && $userData['user_ref_id'] != "") { echo $userData['user_ref_id'];}?>"/>
                                 <input type="hidden" name="inv_id" id="inv_id" value="<?php if(isset($userData['inv_data']['inv_id']) && $userData['inv_data']['inv_id'] != "") { echo $userData['inv_data']['inv_id'];}?>"/>
+                                <input type="hidden" name="inv_tran_ref_id" id="inv_tran_ref_id" value="<?php if(isset($userData['inv_data']['inv_tran_ref_id']) && $userData['inv_data']['inv_tran_ref_id'] != "") { echo $userData['inv_data']['inv_tran_ref_id'];}?>"/>
 
 
                                 <a class="" style="margin-top:5px;" title="Save" type="submit">

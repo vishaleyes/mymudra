@@ -93,4 +93,11 @@ class TblPropertySizeType extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    function getAllSizeList()
+    {
+        $sql = "SELECT * FROM tbl_property_size_type WHERE status = 1";
+        $result	=Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+    }
 }

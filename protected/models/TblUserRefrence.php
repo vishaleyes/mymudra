@@ -260,7 +260,7 @@ class TblUserRefrence extends CActiveRecord
         if(isset($keyword) && $keyword != NULL )
         {
             $search .= " where (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
-            or loan_amount like '%".$keyword."%' or ltm.description like '%".$keyword."%' or lsm.loan_stage_name like '%".$keyword."%')";
+            or inv_amount like '%".$keyword."%' or itm.description like '%".$keyword."%' or ism.inv_stage_name like '%".$keyword."%')";
         }
 
         $sql = "SELECT ur.*, iatrans.*,itr.*,ism.inv_stage_name,iatrans.inv_id AS inv_transaction_id,
@@ -309,7 +309,7 @@ class TblUserRefrence extends CActiveRecord
         if(isset($keyword) && $keyword != NULL )
         {
             $search .= " where (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
-            or loan_amount like '%".$keyword."%' or ltm.description like '%".$keyword."%' or lsm.loan_stage_name like '%".$keyword."%')";
+            or ptrans.property_type like '%".$keyword."%' or ptm.description like '%".$keyword."%' or psm.prop_stage_name like '%".$keyword."%')";
         }
 
         $sql = "SELECT ur.*, ptrans.*,ptr.*,psm.prop_stage_name,ptrans.property_id AS prop_transaction_id,
