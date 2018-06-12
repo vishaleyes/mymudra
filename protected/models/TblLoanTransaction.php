@@ -168,4 +168,11 @@ class TblLoanTransaction extends CActiveRecord
         return $result;
     }
 
+    public function getTransactionDetailsById($loan_transaction_id=NULL)
+    {
+        $sql = "SELECT * FROM tbl_loan_transaction WHERE loan_id = ".$loan_transaction_id;
+        $result	=Yii::app()->db->createCommand($sql)->queryRow();
+        return $result;
+    }
+
 }

@@ -162,4 +162,11 @@ class TblInvestmentTransaction extends CActiveRecord
         return $result;
     }
 
+    public function getTransactionDetailsById($inv_id=NULL)
+    {
+        $sql = "SELECT * FROM tbl_investment_transaction WHERE inv_id = ".$inv_id;
+        $result	=Yii::app()->db->createCommand($sql)->queryRow();
+        return $result;
+    }
+
 }

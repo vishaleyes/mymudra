@@ -163,4 +163,11 @@ class TblPropertyTransaction extends CActiveRecord
         $result	=Yii::app()->db->createCommand($sql)->queryRow();
         return $result;
     }
+
+    public function getPropertyDetailsById($property_id=NULL)
+    {
+        $sql = "SELECT * FROM tbl_property_transaction WHERE property_id = ".$property_id;
+        $result	=Yii::app()->db->createCommand($sql)->queryRow();
+        return $result;
+    }
 }

@@ -2330,8 +2330,8 @@ class Validation extends CFormModel
         $generalObj	= new General();
 
         $validator->addValidation("name","req",'_REQ_NAME_');
-        $validator->addValidation("email","req",'_REQ_EMAIL_ID_');
-        $validator->addValidation("email","email",'_VALID_EMAIL_');
+        //$validator->addValidation("email","req",'_REQ_EMAIL_ID_');
+        //$validator->addValidation("email","email",'_VALID_EMAIL_');
         $validator->addValidation("mobile_number","req",'_REQ_MOBILE_NUMBER_');
         $validator->addValidation("employment_type","req",'_REQ_EMPLOYMENT_TYPE_');
         $validator->addValidation("annual_income","req",'_REQ_ANNUAL_INCOME_');
@@ -2362,7 +2362,7 @@ class Validation extends CFormModel
         $validator	=	new FormValidator();
         $generalObj	=	new General();
 
-        $validator->addValidation("email","req",'_REQ_EMAIL_');
+        //$validator->addValidation("email","req",'_REQ_EMAIL_');
         $validator->addValidation("password","req",'_REQ_PASSWORD_');
         //$validator->addValidation("device_token","req",'_REQ_DEVICE_TOKEN_');
         //$validator->addValidation("endpointArn","req",'_REQ_ENDPOINT_');
@@ -2407,8 +2407,8 @@ class Validation extends CFormModel
         $generalObj	= new General();
 
         $validator->addValidation("name","req",'_REQ_NAME_');
-        $validator->addValidation("email","req",'_REQ_EMAIL_ID_');
-        $validator->addValidation("email","email",'_VALID_EMAIL_');
+        //$validator->addValidation("email","req",'_REQ_EMAIL_ID_');
+        //$validator->addValidation("email","email",'_VALID_EMAIL_');
         $validator->addValidation("mobile_number","req",'_REQ_MOBILE_NUMBER_');
         $validator->addValidation("employment_type","req",'_REQ_EMPLOYMENT_TYPE_');
         $validator->addValidation("annual_income","req",'_REQ_ANNUAL_INCOME_');
@@ -2442,8 +2442,8 @@ class Validation extends CFormModel
         $generalObj	= new General();
 
         $validator->addValidation("name","req",'_REQ_NAME_');
-        $validator->addValidation("email","req",'_REQ_EMAIL_ID_');
-        $validator->addValidation("email","email",'_VALID_EMAIL_');
+        //$validator->addValidation("email","req",'_REQ_EMAIL_ID_');
+        //$validator->addValidation("email","email",'_VALID_EMAIL_');
         $validator->addValidation("mobile_number","req",'_REQ_MOBILE_NUMBER_');
         $validator->addValidation("employment_type","req",'_REQ_EMPLOYMENT_TYPE_');
         $validator->addValidation("annual_income","req",'_REQ_ANNUAL_INCOME_');
@@ -2478,8 +2478,8 @@ class Validation extends CFormModel
 
         $validator->addValidation("name","req",'_REQ_NAME_');
         $validator->addValidation("property_type_id","req",'_REQ_PROPERTY_TYPE_ID_');
-        $validator->addValidation("email","req",'_REQ_EMAIL_ID_');
-        $validator->addValidation("email","email",'_VALID_EMAIL_');
+        //$validator->addValidation("email","req",'_REQ_EMAIL_ID_');
+        //$validator->addValidation("email","email",'_VALID_EMAIL_');
         $validator->addValidation("mobile_number","req",'_REQ_MOBILE_NUMBER_');
         $validator->addValidation("employment_type","req",'_REQ_EMPLOYMENT_TYPE_');
         $validator->addValidation("annual_income","req",'_REQ_ANNUAL_INCOME_');

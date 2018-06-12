@@ -141,4 +141,11 @@ class TblPropertyTypeMaster extends CActiveRecord
         $result =  Yii::app()->db->createCommand($sql)->queryAll();
         return $result;
     }
+
+    function getPropertySubLoanTypeListById($property_type_id=NULL)
+    {
+        $sql = "SELECT * FROM tbl_property_type_master WHERE prop_type_parent_id = ".$property_type_id;
+        $result =  Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+    }
 }

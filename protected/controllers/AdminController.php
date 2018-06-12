@@ -250,13 +250,13 @@ class AdminController extends Controller {
     */
     function actionLogout()
     {
-        unset(Yii::app()->session[_SITENAME_.'_admin']);
+        //unset(Yii::app()->session[_SITENAME_.'_admin']);
         unset(Yii::app()->session[_SITENAME_.'_email']);
         unset(Yii::app()->session[_SITENAME_.'_name']);
-        unset(Yii::app()->session[_SITENAME_.'_avatar']);
-        unset(Yii::app()->session['itemData']);
+        //unset(Yii::app()->session[_SITENAME_.'_avatar']);
+        //unset(Yii::app()->session['itemData']);
         unset(Yii::app()->session['menu']);
-        unset(Yii::app()->session[_SITENAME_.'_role']);
+        //unset(Yii::app()->session[_SITENAME_.'_role']);
 
         //session_destroy();
         $this->redirect(array("admin/index"));
@@ -278,257 +278,35 @@ class AdminController extends Controller {
 
         $data = array();
 
-        if(date('Y-m-d', strtotime('this Monday')) == date('Y-m-d')) {
-            $first_date_this_week = date('Y-m-d');
-        } else {
-            $first_date_this_week = date('Y-m-d', strtotime('last monday'));
+        if(isset($_REQUEST['fromDate']) && $_REQUEST['fromDate'] != "")
+        {
+            $fromDate = date("Y-m-d",strtotime($_REQUEST['fromDate']));
+        }
+        else
+        {
+            $fromDate = "";
         }
 
-        $last_date_this_week = date('Y-m-d', strtotime('next sunday'));
-
-        $TblUserObj = new TblLoanTypeMaster();
-        /*$TblPartnerObj = new TblPartner();
-        $data['total_partner'] = $TblPartnerObj->getTotalPartner();*/
-
-        /*$TblStore = new TblStore();
-        $data['total_store'] = $TblStore->getTotalStore();*/
-
-        /*$TblCarrierObj = new TblCarrier();
-        $data['total_carrier'] = $TblCarrierObj->getTotalCarrier();*/
-
-        /*$TblStore = new TblStore();
-        $get_total_revenue = $TblStore->getTotalRevenueForAdminDashboard();*/
-
-        /*if(!empty($get_total_revenue) && $get_total_revenue['total'] > 0){
-            $data['revenue_data'] = $get_total_revenue['total'];
+        if(isset($_REQUEST['toDate']) && $_REQUEST['toDate'] != "")
+        {
+            $toDate = date("Y-m-d",strtotime($_REQUEST['toDate']));
         }
-        else{
-            $data['revenue_data'] = 0;
-        }*/
+        else
+        {
+            $toDate = "";
+        }
 
-        /*$TblCustomerObj = new TblCustomer();
-        $data['customer_data'] = $TblCustomerObj->getTotalCustomer();
+        $TblUserRefObj = new TblUserRefrence();
+        $data['bankUser'] = $TblUserRefObj->getBankUserListByDate($fromDate,$toDate);
 
-        $TblOrderObj = new TblOrder();
-        $data['monthly_partner_revenue'] = $TblOrderObj->getMonthlyPartnerRevenueDetails();
+        $TblUserRefObj = new TblUserRefrence();
+        $data['investmentUser'] = $TblUserRefObj->getInvestmentUserListByDate($fromDate,$toDate);
 
-        $TblOrderObj = new TblOrder();
-        $data['monthly_customer_revenue'] = $TblOrderObj->getMonthlyCustomerRevenueDetails();
+        $TblUserRefObj = new TblUserRefrence();
+        $data['realEstateUser'] = $TblUserRefObj->getRealEstateUserListByDate($fromDate,$toDate);
 
-        $TblOrderObj = new TblOrder();
-        $data['monthly_package_revenue'] = $TblOrderObj->getMonthlyPackageRevenueDetails();
+        //echo "<pre>"; print_r($data['realEstateUser']); die;
 
-        $TblOrderObj = new TblOrder();
-        $data['monthly_partner_order'] = $TblOrderObj->getMonthlyPartnerOrderDetails();
-
-        $TblOrderObj = new TblOrder();
-        $data['monthly_customer_order'] = $TblOrderObj->getMonthlyCustomerOrderDetails();
-
-        $TblOrderObj = new TblOrder();
-        $data['monthly_package_order'] = $TblOrderObj->getMonthlyPackageOrderDetails();*/
-
-        /*weekly partner order Revenue Data*/
-        /*$TblOrderObj = new TblOrder();
-        $data['weekly_partner_orderRevenueData'] = $TblOrderObj->getAdminWeeklyPartnerOrderRevenueDetails($first_date_this_week,$last_date_this_week);*/
-
-        $today = date('Y-m-d', strtotime('last sunday'));
-
-        /*$data['weekly_partner_revenueData'] = array();
-        for ($x=0; $x <= 6; $x++) {
-            $repeat = strtotime("+1 day",strtotime($today));
-            $today = date('Y-m-d',$repeat);
-            $dates[] = $today;
-            $data['dates'][] = $today;
-
-            $i=0;
-            foreach ($data['weekly_partner_orderRevenueData'] as $data_w){
-                if($data_w['created_date'] == $today){
-                    $i=1;
-                    $data['weekly_partner_revenueData'][] =$data_w['total'];
-                }
-            }
-            if($i==0){
-                $data['weekly_partner_revenueData'][] ='0.00';
-            }
-            if(!empty($data['weekly_partner_revenueData'])){
-                $data['weekly_partner_revenue_details'] = "'".implode("','", $data['weekly_partner_revenueData'])."'";
-            }
-        }*/
-        /*weekly partner order Revenue Data end*/
-
-        /*weekly customer order Revenue Data*/
-        /*$TblOtherOrderObj = new TblOtherOrder();
-        $data['weekly_customer_orderRevenueData'] = $TblOtherOrderObj->getAdminWeeklyCustomerOrderRevenueDetails($first_date_this_week,$last_date_this_week);*/
-
-        $today = date('Y-m-d', strtotime('last sunday'));
-
-        /*$data['weekly_customer_revenueData'] = array();
-        for ($x=0; $x <= 6; $x++) {
-            $repeat = strtotime("+1 day",strtotime($today));
-            $today = date('Y-m-d',$repeat);
-            $dates[] = $today;
-
-            $i=0;
-            foreach ($data['weekly_customer_orderRevenueData'] as $data_w_customer){
-                if($data_w_customer['created_date'] == $today){
-                    $i=1;
-                    $data['weekly_customer_revenueData'][] =$data_w_customer['total'];
-                }
-            }
-            if($i==0){
-                $data['weekly_customer_revenueData'][] ='0.00';
-            }
-
-
-            if(!empty($data['weekly_customer_revenueData'])){
-                $data['weekly_customer_revenue_details'] = "'".implode("','", $data['weekly_customer_revenueData'])."'";
-            }
-        }*/
-        /*weekly customer order Revenue Data end*/
-
-        /*weekly package order Revenue Data*/
-        /*$TblOtherOrderObj = new TblOtherOrder();
-        $data['weekly_package_orderRevenueData'] = $TblOtherOrderObj->getAdminWeeklyPackageOrderRevenueDetails($first_date_this_week,$last_date_this_week);*/
-
-        $today = date('Y-m-d', strtotime('last sunday'));
-
-        /*$data['weekly_package_revenueData'] = array();
-        for ($x=0; $x <= 6; $x++) {
-            $repeat = strtotime("+1 day",strtotime($today));
-            $today = date('Y-m-d',$repeat);
-            $dates[] = $today;
-            $i=0;
-            foreach ($data['weekly_package_orderRevenueData'] as $data_w_customer){
-                if($data_w_customer['created_date'] == $today){
-                    $i=1;
-                    $data['weekly_package_revenueData'][] =$data_w_customer['total'];
-                }
-            }
-            if($i==0){
-                $data['weekly_package_revenueData'][] ='0.00';
-            }
-
-
-            if(!empty($data['weekly_package_revenueData'])){
-                $data['weekly_package_revenue_details'] = "'".implode("','", $data['weekly_package_revenueData'])."'";
-            }
-        }*/
-        /*weekly package order Revenue Data end*/
-
-
-        /*weekly partner order Data*/
-        /*$TblOrderObj = new TblOrder();
-        $data['weekly_partner_orderData'] = $TblOrderObj->getAdminWeeklyPartnerOrderDetails($first_date_this_week,$last_date_this_week);*/
-
-        $today = date('Y-m-d', strtotime('last sunday'));
-
-        /*$data['weekly_partner_order'] = array();
-        for ($x=0; $x <= 6; $x++) {
-            $repeat = strtotime("+1 day",strtotime($today));
-            $today = date('Y-m-d',$repeat);
-            $dates[] = $today;
-            $i=0;
-
-            foreach ($data['weekly_partner_orderData'] as $data_w){
-                if($data_w['created_date'] == $today){
-                    $i=1;
-                    $data['weekly_partner_order'][] =$data_w['total'];
-                }
-            }
-
-            if($i==0){
-                $data['weekly_partner_order'][] ='0.00';
-            }
-
-            if(!empty($data['weekly_partner_order'])){
-                $data['weekly_partner_order_details'] = "'".implode("','", $data['weekly_partner_order'])."'";
-            }
-        }*/
-        /*weekly partner order Data end*/
-
-        /*weekly customer order Data*/
-        /*$TblOtherOrderObj = new TblOtherOrder();
-        $data['weekly_customer_orderData'] = $TblOtherOrderObj->getAdminWeeklyCustomerOrderDetails($first_date_this_week,$last_date_this_week);*/
-
-        $today = date('Y-m-d', strtotime('last sunday'));
-
-        /*$data['weekly_customer_order'] = array();
-        for ($x=0; $x <= 6; $x++) {
-            $repeat = strtotime("+1 day",strtotime($today));
-            $today = date('Y-m-d',$repeat);
-            $dates[] = $today;
-
-            $i=0;
-            foreach ($data['weekly_customer_orderData'] as $data_w_customer){
-                if($data_w_customer['created_date'] == $today){
-                    $i=1;
-                    $data['weekly_customer_order'][] =$data_w_customer['total'];
-                }
-            }
-            if($i==0){
-                $data['weekly_customer_order'][] ='0.00';
-            }
-
-
-            if(!empty($data['weekly_customer_order'])){
-                $data['weekly_customer_order_details'] = "'".implode("','", $data['weekly_customer_order'])."'";
-            }
-        }*/
-        /*weekly customer order Data end*/
-
-        /*weekly package order Revenue Data*/
-        /*$TblOtherOrderObj = new TblOtherOrder();
-        $data['weekly_package_orderData'] = $TblOtherOrderObj->getAdminWeeklyPackageOrderDetails($first_date_this_week,$last_date_this_week);*/
-
-        $today = date('Y-m-d', strtotime('last sunday'));
-
-        /*$data['weekly_package_order'] = array();
-        for ($x=0; $x <= 6; $x++) {
-            $repeat = strtotime("+1 day",strtotime($today));
-            $today = date('Y-m-d',$repeat);
-            $dates[] = $today;
-            //$data['dates'][] = $today;
-
-            $i=0;
-            foreach ($data['weekly_package_orderData'] as $data_w_customer){
-                if($data_w_customer['created_date'] == $today){
-                    $i=1;
-                    $data['weekly_package_order'][] =$data_w_customer['total'];
-                }
-            }
-            if($i==0){
-                $data['weekly_package_order'][] ='0.00';
-            }
-
-
-            if(!empty($data['weekly_package_order'])){
-                $data['weekly_package_order_details'] = "'".implode("','", $data['weekly_package_order'])."'";
-            }
-        }*/
-        /*weekly package order Revenue Data end*/
-
-
-        /*if(!empty($data['dates'])){
-            $data['dates_details'] = "'".implode("','", $data['dates'])."'";
-        }*/
-
-        /*echo "<pre/>";
-        print_r($data);
-        die;*/
-
-        $orderBY = "desc";
-
-        /*$TblCarrier = new TblCarrier();
-        $data['approve_carrierData'] = $TblCarrier->getCarrierListPaginated(10,$orderBY,"carrier_id","");
-        $data['approve_carrierData'] =  $data['approve_carrierData']['CarrierListing'];*/
-
-
-        /*$data['pending_carrierData'] = $TblCarrier->getNewCarrierListPaginated(10,$orderBY,"carrier_id","");
-        $data['pending_carrierData'] =  $data['pending_carrierData']['CarrierListing'];*/
-
-        /*$TblOrderObj = new TblOrder();
-        $data['last_orderData'] = $TblOrderObj->getDashboardLastOderDetails();*/
-        $data['total_partner'] = 53453434;
         if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             $this->renderPartial("dashboard",array("data" => $data));
             exit;
@@ -1712,7 +1490,7 @@ class AdminController extends Controller {
             {
                 $inv_tran_ref_id = $_REQUEST['inv_tran_ref_id'];
                 $invRefDetails['inv_id'] = $inv_id;
-                $invRefDetails['inv_stage_id'] = $_REQUEST['prop_stage'];
+                $invRefDetails['inv_stage_id'] = $_REQUEST['inv_stage'];
                 $invRefDetails['stage_transaction_date'] = date("Y-m-d H:i:s");
 
                 $invRefDetails['modified_at'] = date("Y-m-d H:i:s");
@@ -1724,7 +1502,7 @@ class AdminController extends Controller {
             else
             {
                 $invRefDetails['inv_id'] = $inv_id;
-                $invRefDetails['inv_stage_id'] = $_REQUEST['prop_stage'];
+                $invRefDetails['inv_stage_id'] = $_REQUEST['inv_stage'];
                 $invRefDetails['stage_transaction_date'] = date("Y-m-d H:i:s");
 
                 $propRefDetails['created_at'] = date("Y-m-d H:i:s");

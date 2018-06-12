@@ -101,6 +101,31 @@
                                         ?>
                                     </select>
                                 </div>
+                                <div class="form-group form-md-line-input  col-md-4">
+                                    <label class="control-label">Investment Stage<span class="text-error">*</span>:</label>
+                                    <select class="form-control edited bs-select" id="inv_stage" name="inv_stage" data-actions-box="true" data-search="true">
+                                        <option value="">Select Stage</option>
+                                        <?php
+                                        $TblInvStageObj = new TblInvStageMaster();
+                                        $invStageData = $TblInvStageObj->getInvStage();
+                                        foreach ($invStageData as $stage)
+                                        {
+                                            if($userData['inv_data']['inv_stage_id'] == $stage['inv_stage_id'])
+                                            {
+                                                $selected = "selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
+                                            ?>
+                                            <option value="<?php echo $stage['inv_stage_id']; ?>" <?php echo $selected; ?>>
+                                                <?php echo $stage['inv_stage_name']; ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                             </div>
 
                             <!--<div class="row">-->
@@ -193,7 +218,7 @@
             });
         });
 
-        $('.sort').click(function() {
+        $('.sort').click(function(e) {
             $("html, body").animate({ scrollTop: 0 }, "slow");
             e.preventDefault();
             e.stopPropagation();
@@ -244,7 +269,10 @@
                 invAmount : {
                     required: true,
                 },
-                bank_id : {
+                inv_stage : {
+                    required: true,
+                },
+                inv_type : {
                     required: true,
                 },
             },
@@ -278,8 +306,11 @@
                 invAmount : {
                     required: "Please enter investment amount",
                 },
-                bank_id : {
-                    required: "Please select bank",
+                inv_stage : {
+                    required: "Please select stage",
+                },
+                inv_type : {
+                    required: "Please select investment type",
                 },
             },
             invalidHandler: function (event, validator) { //display error alert on form submit

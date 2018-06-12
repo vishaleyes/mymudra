@@ -364,7 +364,7 @@ class ApiController extends Controller {
     /*=============================  User  Defined Function End===============================*/
 
     /*api for listing of bank loan type*/ /*not in use*/
-    public function actionbankLoanList()
+    public function actionbankLoanListOld()
     {
         if (!empty($_REQUEST) && isset($_REQUEST['user_id']) && $_REQUEST['user_id'] != '' && isset($_REQUEST['session_code']) && $_REQUEST['session_code'] != '' && isset($_REQUEST['loan_type_id']) && $_REQUEST['loan_type_id']!='')
         {
@@ -767,9 +767,18 @@ class ApiController extends Controller {
                 if ($res['status'] == 0) {
                     //$device_token = $_REQUEST['device_token'];
                     //$endpointArn['endpointArn'] = $_REQUEST['endpointArn'];
+                    if(isset($_REQUEST['email']) && $_REQUEST['email']!='')
+                    {
+                        $TblUserObj = new TblUser();
+                        $res = $TblUserObj->checkEmailExists($_REQUEST['email']);
+                    }
 
-                    $TblUserObj = new TblUser();
-                    $res = $TblUserObj->checkEmailExists($_REQUEST['email']);
+                    if(isset($_REQUEST['mobile_number']) && $_REQUEST['mobile_number']!='')
+                    {
+                        $TblUserObj = new TblUser();
+                        $res = $TblUserObj->checkMobilenumberExists($_REQUEST['mobile_number']);
+                    }
+
                     if (!empty($res)) {
 
                         $generalObj = new General();
@@ -1081,7 +1090,14 @@ class ApiController extends Controller {
                     {
                         $loanData['bank_id'] = $_REQUEST['bank_id'];
                     }
+
                     $loanData['loan_type'] = $_REQUEST['loan_type_id'];
+
+                    if(isset($_REQUEST['loan_sub_type_id']) && $_REQUEST['loan_sub_type_id']!='')
+                    {
+                        $loanData['loan_sub_type'] = $_REQUEST['loan_sub_type_id'];
+                    }
+
                     if(isset($_REQUEST['loan_amount']) && $_REQUEST['loan_amount']!='')
                     {
                         $loanData['loan_amount'] = $_REQUEST['loan_amount'];
@@ -1090,6 +1106,11 @@ class ApiController extends Controller {
                     {
                         $loanData['description'] = $_REQUEST['description'];
                     }
+                    if(isset($_REQUEST['bank_name']) && $_REQUEST['bank_name']!='')
+                    {
+                        $loanData['bank_name'] = $_REQUEST['bank_name'];
+                    }
+
                     $loanData['user_ref_id'] = $user_ref_id;
                     $loanData['load_transaction_date'] = date("Y-m-d H:i:s");
                     $loanData['status'] = 1;
@@ -1097,12 +1118,13 @@ class ApiController extends Controller {
 
                     $TblLoanTransactionObj = new TblLoanTransaction();
                     $TblLoanTransactionObj->setData($loanData);
-                    $loan_id = $TblLoanTransactionObj->insertData();
+                    $loan_transaction_id = $TblLoanTransactionObj->insertData();
                     //echo "<pre>"; print_r($loan_id); die;
 
                     $transaction->commit();
                     if ($user_ref_id != '') {
                         $user_Data = $TblUserRefObj->getUserdetailsbyId($user_ref_id);
+                        $user_Data['transaction_data'] = $TblLoanTransactionObj->getTransactionDetailsById($loan_transaction_id);
                         if (!empty($user_Data)) {
 
 
@@ -1210,12 +1232,13 @@ class ApiController extends Controller {
                     //echo "<pre>"; print_r($loanData); die;
                     $TblInvTransactionObj = new TblInvestmentTransaction();
                     $TblInvTransactionObj->setData($loanData);
-                    $loan_id = $TblInvTransactionObj->insertData();
+                    $inv_id = $TblInvTransactionObj->insertData();
 
                     $transaction->commit();
 
                     if ($user_ref_id != '') {
                         $user_Data = $TblUserRefObj->getUserdetailsbyId($user_ref_id);
+                        $user_Data['transaction_data'] = $TblInvTransactionObj->getTransactionDetailsById($inv_id);
                         if (!empty($user_Data)) {
                             $result['status'] = $this->errorCode['_SUCCESS_'];
                             $result['message'] = $this->msg['_SUCCESS_'];
@@ -1318,6 +1341,11 @@ class ApiController extends Controller {
                         $loanData['property_type'] = $_REQUEST['property_type'];
                     }
 
+                    if(isset($_REQUEST['property_sub_type']) && $_REQUEST['property_sub_type']!='')
+                    {
+                        $loanData['property_sub_type'] = $_REQUEST['property_sub_type'];
+                    }
+
                     if(isset($_REQUEST['description']) && $_REQUEST['description'])
                     {
                         $loanData['description'] = $_REQUEST['description'];
@@ -1329,12 +1357,13 @@ class ApiController extends Controller {
 
                     $TblPropertyTransactionObj = new TblPropertyTransaction();
                     $TblPropertyTransactionObj->setData($loanData);
-                    $loan_id = $TblPropertyTransactionObj->insertData();
+                    $property_id = $TblPropertyTransactionObj->insertData();
 
                     $transaction->commit();
 
                     if ($user_ref_id != '') {
                         $user_Data = $TblUserRefObj->getUserdetailsbyId($user_ref_id);
+                        $user_Data['transaction_data'] = $TblPropertyTransactionObj->getPropertyDetailsById($property_id);
                         if (!empty($user_Data)) {
 
                             $result['status'] = $this->errorCode['_SUCCESS_'];
@@ -1580,7 +1609,7 @@ class ApiController extends Controller {
                     $tblUserRefObj = new TblUserRefrence();
                     $propLoanUserData = $tblUserRefObj->getRegisteredUserForPropLoanListById($user_id);
 
-                    //echo "<pre>"; print_r($bankLoanUserData); die;
+                    //echo "<pre>"; print_r($propLoanUserData); die;
                     if (!empty($propLoanUserData)) {
                         $propArr = array();
                         $i = 0;
@@ -1620,4 +1649,139 @@ class ApiController extends Controller {
             $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
         }
     }
+
+    public function actiongetSubLoanTypeList()
+    {
+        if (!empty($_REQUEST) && isset($_REQUEST['user_id']) && $_REQUEST['user_id'] != '' && isset($_REQUEST['session_code']) && $_REQUEST['session_code'] != '' && isset($_REQUEST['loan_type_id']) && $_REQUEST['loan_type_id']!='')
+        {
+            $TblUserSessionObj = new TblUsersession();
+            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
+            //print_r($user);die;
+            if (!empty($user)){
+                $transaction = Yii::app()->db->beginTransaction();
+                try{
+                    $user_id = $_REQUEST['user_id'];
+
+                    if(isset($_REQUEST['loan_type_id']) && $_REQUEST['loan_type_id']==3)
+                    {
+                        $loan_type_id = $_REQUEST['loan_type_id'];
+
+                        $tblLoanTypeObj = new TblLoanTypeMaster();
+                        $LoanList = $tblLoanTypeObj->getBankSubLoanTypeListById($loan_type_id);
+                    }
+                    else if(isset($_REQUEST['loan_type_id']) && $_REQUEST['loan_type_id']==4)
+                    {
+                        $loan_type_id = $_REQUEST['loan_type_id'];
+
+                        $tblLoanTypeObj = new TblLoanTypeMaster();
+                        $LoanList = $tblLoanTypeObj->getBankSubLoanTypeListById($loan_type_id);
+                    }
+                    else
+                    {
+                        $loan_type_id = $_REQUEST['loan_type_id'];
+
+                        $tblLoanTypeObj = new TblLoanTypeMaster();
+                        $LoanList = $tblLoanTypeObj->getBankSubLoanTypeListById($loan_type_id);
+                    }
+                    /*$tblLoanTypeObj = new TblLoanTypeMaster();
+                    $LoanList = $tblLoanTypeObj->getLoanTypeList();*/
+                    if(!empty($LoanList))
+                    {
+                        $transaction->commit();
+                        $data = array();
+                        $data['status'] =  $this->errorCode['_SUCCESS_'];
+                        $data['message'] =  $this->msg['_SUCCESS_'];
+                        $data['data'] = $LoanList;
+                        $this->response($data);
+                    }
+                    else
+                    {
+                        $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" =>  $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
+                    }
+                }
+                catch(Exception $e)
+                {
+                    $transaction->rollback();
+                    $data = array();
+                    $data['status'] = -111;
+                    $data['message'] = $e->getMessage();
+                    $data['data'] = array();
+                    $this->response($data);
+                }
+            }
+            else
+            {
+                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
+            }
+        }else{
+            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
+        }
+    }
+
+    public function actiongetRealEstateSubLoanTypeList()
+    {
+        if (!empty($_REQUEST) && isset($_REQUEST['user_id']) && $_REQUEST['user_id'] != '' && isset($_REQUEST['session_code']) && $_REQUEST['session_code'] != '' && isset($_REQUEST['property_type_id']) && $_REQUEST['property_type_id']!='')
+        {
+            $TblUserSessionObj = new TblUsersession();
+            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
+            //print_r($user);die;
+            if (!empty($user)){
+                $transaction = Yii::app()->db->beginTransaction();
+                try{
+                    $user_id = $_REQUEST['user_id'];
+
+                    if(isset($_REQUEST['property_type_id']) && $_REQUEST['property_type_id']==1)
+                    {
+                        $property_type_id = $_REQUEST['property_type_id'];
+                    }
+                    else if(isset($_REQUEST['property_type_id']) && $_REQUEST['property_type_id']==2)
+                    {
+                        $property_type_id = $_REQUEST['property_type_id'];
+                    }
+                    else if(isset($_REQUEST['property_type_id']) && $_REQUEST['property_type_id']==3)
+                    {
+                        $property_type_id = $_REQUEST['property_type_id'];
+                    }
+                    else
+                    {
+                        $property_type_id = $_REQUEST['property_type_id'];
+                    }
+
+                    $tblPropertySubTypeObj = new TblPropertyTypeMaster();
+                    $PropertySubLoanList = $tblPropertySubTypeObj->getPropertySubLoanTypeListById($property_type_id);
+
+                    if(!empty($PropertySubLoanList))
+                    {
+                        $transaction->commit();
+                        $data = array();
+                        $data['status'] =  $this->errorCode['_SUCCESS_'];
+                        $data['message'] =  $this->msg['_SUCCESS_'];
+                        $data['data'] = $PropertySubLoanList;
+                        $this->response($data);
+                    }
+                    else
+                    {
+                        $this->response(array("status" => $this->errorCode['_DATA_NOT_FOUND_'], "message" =>  $this->msg['_DATA_NOT_FOUND_'], 'data' => array()));
+                    }
+                }
+                catch(Exception $e)
+                {
+                    $transaction->rollback();
+                    $data = array();
+                    $data['status'] = -111;
+                    $data['message'] = $e->getMessage();
+                    $data['data'] = array();
+                    $this->response($data);
+                }
+            }
+            else
+            {
+                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" => $this->msg['_INVALID_SESSION_'], 'data' => array()));
+            }
+        }else{
+            $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" => $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
+        }
+    }
+
+
 }

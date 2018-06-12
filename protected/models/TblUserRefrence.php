@@ -352,11 +352,13 @@ class TblUserRefrence extends CActiveRecord
     function getRegisteredUserForBankLoanListById($user_id=NULL)
     {
         $sql = "SELECT ur.*, ltrans.*,ltr.*,lsm.loan_stage_name,ltrans.loan_id AS loan_transaction_id,
-            ltm.description AS loan_type_name,ur.`created_at` AS createdDate
+            ltm.description AS loan_type_name,ur.`created_at` AS createdDate,ltm1.`description` AS loan_sub_type_name
             FROM `tbl_user_refrence` ur INNER JOIN `tbl_loan_transaction` ltrans
             ON ur.`user_ref_id` = ltrans.`user_ref_id`
             LEFT JOIN `tbl_loan_type_master` ltm
             ON ltm.loan_type_id = ltrans.`loan_type`
+            LEFT JOIN tbl_loan_type_master ltm1
+            ON ltm1.loan_type_id = ltrans.`loan_sub_type`
             LEFT JOIN `tbl_loan_trans_reference` ltr
             ON ltrans.`loan_id` = ltr.`loan_id`
             LEFT JOIN `tbl_loan_stage_master` lsm
@@ -385,19 +387,8 @@ class TblUserRefrence extends CActiveRecord
 
     function getRegisteredUserForPropLoanListById($user_id=NULL)
     {
-        /*$sql = "SELECT ur.*, ptrans.*,ptr.*,psm.prop_stage_name,ptrans.property_id AS prop_transaction_id,
-            ptm.description AS prop_type_name,ur.`created_at` AS createdDate
-            FROM `tbl_user_refrence` ur 
-            INNER JOIN `tbl_property_transaction` ptrans
-            ON ur.`user_ref_id` = ptrans.`user_ref_id`
-            LEFT JOIN `tbl_property_type_master` ptm
-            ON ptm.property_type_id = ptrans.`property_transaction_type`
-            LEFT JOIN `tbl_prop_trans_reference` ptr
-            ON ptrans.`property_id` = ptr.`property_id`
-            LEFT JOIN `tbl_property_stage_master` psm
-            ON psm.`property_stage_id` = ptr.`property_stage_id` WHERE ur.`user_id` = ".$user_id;*/
         $sql = "SELECT ur.*,ptrans.*,ptr.*,psm.prop_stage_name,ptrans.property_id AS prop_transaction_id,
-            ptm.description AS prop_type_name,ur.`created_at` AS createdDate,pst.`size_type_name`
+            ptm.description AS prop_type_name,ur.`created_at` AS createdDate,pst.`size_type_name`,ptm1.description AS prop_sub_type_name
             FROM `tbl_user_refrence` ur 
             INNER JOIN `tbl_property_transaction` ptrans
             ON ur.`user_ref_id` = ptrans.`user_ref_id`
@@ -405,10 +396,63 @@ class TblUserRefrence extends CActiveRecord
             ON pst.`property_size_type_id` = ptrans.`property_size_type`
             LEFT JOIN `tbl_property_type_master` ptm
             ON ptm.property_type_id = ptrans.`property_transaction_type`
+            LEFT JOIN tbl_property_type_master ptm1
+            ON ptm1.`property_type_id` = ptrans.`property_sub_type`
             LEFT JOIN `tbl_prop_trans_reference` ptr
             ON ptrans.`property_id` = ptr.`property_id`
             LEFT JOIN `tbl_property_stage_master` psm
             ON psm.`property_stage_id` = ptr.`property_stage_id` WHERE ur.`user_id` = ".$user_id;
+        $result	= Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+    }
+
+    function getBankUserListByDate($fromDate=NULL,$toDate=NULL)
+    {
+        if((isset($fromDate) && $fromDate != "") && (isset($toDate) && $toDate))
+        {
+            $condition = "AND (DATE_FORMAT(created_at, '%Y-%m-%d') BETWEEN '".$fromDate."' AND '".$toDate."')";
+        }
+        else
+        {
+            $condition = "";
+        }
+        $sql = "SELECT ur.* FROM tbl_user_refrence ur 
+                INNER JOIN tbl_loan_transaction ltrans 
+                ON ltrans.user_ref_id = ur.user_ref_id WHERE  ur.`status` =  1 ".$condition;
+        $result	= Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+    }
+
+    function getInvestmentUserListByDate($fromDate=NULL,$toDate=NULL)
+    {
+        if((isset($fromDate) && $fromDate != "") && (isset($toDate) && $toDate))
+        {
+            $condition = "AND (DATE_FORMAT(created_at, '%Y-%m-%d') BETWEEN '".$fromDate."' AND '".$toDate."')";
+        }
+        else
+        {
+            $condition = "";
+        }
+        $sql = "SELECT ur.* FROM tbl_user_refrence ur 
+                INNER JOIN tbl_investment_transaction itrans 
+                ON itrans.user_ref_id = ur.user_ref_id WHERE  ur.`status` =  1 ".$condition;
+        $result	= Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+    }
+
+    function getRealEstateUserListByDate($fromDate=NULL,$toDate=NULL)
+    {
+        if((isset($fromDate) && $fromDate != "") && (isset($toDate) && $toDate))
+        {
+            $condition = "AND (DATE_FORMAT(created_at, '%Y-%m-%d') BETWEEN '".$fromDate."' AND '".$toDate."')";
+        }
+        else
+        {
+            $condition = "";
+        }
+        $sql = "SELECT ur.* FROM tbl_user_refrence ur 
+                INNER JOIN tbl_property_transaction ptrans 
+                ON ptrans.user_ref_id = ur.user_ref_id WHERE  ur.`status` =  1 ".$condition;
         $result	= Yii::app()->db->createCommand($sql)->queryAll();
         return $result;
     }
