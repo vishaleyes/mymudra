@@ -204,17 +204,39 @@ class TblUserRefrence extends CActiveRecord
         return $result;
     }
 
-    function getAllBankLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL)
+    function getAllBankLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL,$filter=NULL)
     {
         $criteria = new CDbCriteria();
 
         $search = " ";
 
+        //echo "<pre>"; print_r($filter); die;
+
+        if(isset($filter['date_from']) && $filter['date_from']!='' && isset($filter['date_to']) && $filter['date_to']!='')
+        {   //echo "first if"; die;
+            if($filter['date_from'] == $filter['date_to']){
+                $search .= " WHERE ( ur.created_at LIKE '%".$filter['date_from']."%')";
+            }
+            else{
+                $search .= " WHERE ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
+                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+            }
+        }
+
         if(isset($keyword) && $keyword != NULL )
         {
-            $search .= " where (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
+
+                $search .= " WHERE (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
             or loan_amount like '%".$keyword."%' or ltm.description like '%".$keyword."%' or lsm.loan_stage_name like '%".$keyword."%')";
+            /*}
+            else
+            {   //echo "else"; die;
+                $search .= " WHERE (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
+            or loan_amount like '%".$keyword."%' or ltm.description like '%".$keyword."%' or lsm.loan_stage_name like '%".$keyword."%')";
+            }*/
+
         }
+
 
         $sql = "SELECT ur.*, ltrans.*,ltr.*,lsm.loan_stage_name,ltrans.loan_id As loan_transaction_id,
             ltm.description AS loan_type_name,ur.`created_at` AS createdDate
@@ -226,7 +248,7 @@ class TblUserRefrence extends CActiveRecord
             ON ltrans.`loan_id` = ltr.`loan_id`
             LEFT JOIN `tbl_loan_stage_master` lsm
             ON lsm.`loan_stage_id` = ltr.`loan_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
-
+        //echo $sql; die;
         $sql_count = "SELECT COUNT(*) FROM `tbl_user_refrence` ur INNER JOIN `tbl_loan_transaction` ltrans
             ON ur.`user_ref_id` = ltrans.`user_ref_id`
             LEFT JOIN `tbl_loan_type_master` ltm
@@ -251,15 +273,26 @@ class TblUserRefrence extends CActiveRecord
         return array('pagination'=>$result->pagination, 'bankUserList'=>$result->getData());
     }
 
-    function getAllinvAdvisoryLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL)
+    function getAllinvAdvisoryLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL,$filter=NULL)
     {
         $criteria = new CDbCriteria();
 
         $search = " ";
+        //echo "<pre>"; print_r($filter); die;
+        if(isset($filter['date_from']) && $filter['date_from']!='' && isset($filter['date_to']) && $filter['date_to']!='')
+        {   //echo "first if"; die;
+            if($filter['date_from'] == $filter['date_to']){
+                $search .= " WHERE ( ur.created_at LIKE '%".$filter['date_from']."%')";
+            }
+            else{
+                $search .= " WHERE ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
+                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+            }
+        }
 
         if(isset($keyword) && $keyword != NULL )
         {
-            $search .= " where (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
+            $search .= " WHERE (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
             or inv_amount like '%".$keyword."%' or itm.description like '%".$keyword."%' or ism.inv_stage_name like '%".$keyword."%')";
         }
 
@@ -274,7 +307,7 @@ class TblUserRefrence extends CActiveRecord
             ON iatrans.`inv_id` = itr.`inv_id`
             LEFT JOIN `tbl_inv_stage_master` ism
             ON ism.`inv_stage_id` = itr.`inv_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
-
+        //echo $sql; die;
         $sql_count = "SELECT COUNT(*) FROM `tbl_user_refrence` ur 
             INNER JOIN `tbl_investment_transaction` iatrans
             ON ur.`user_ref_id` = iatrans.`user_ref_id`
@@ -300,15 +333,26 @@ class TblUserRefrence extends CActiveRecord
         return array('pagination'=>$result->pagination, 'invAdvisoryUserList'=>$result->getData());
     }
 
-    function getAllrealEstateLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL)
+    function getAllrealEstateLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL,$filter=NULL)
     {
         $criteria = new CDbCriteria();
 
         $search = " ";
 
+        if(isset($filter['date_from']) && $filter['date_from']!='' && isset($filter['date_to']) && $filter['date_to']!='')
+        {   //echo "first if"; die;
+            if($filter['date_from'] == $filter['date_to']){
+                $search .= " WHERE ( ur.created_at LIKE '%".$filter['date_from']."%')";
+            }
+            else{
+                $search .= " WHERE ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
+                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+            }
+        }
+
         if(isset($keyword) && $keyword != NULL )
         {
-            $search .= " where (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
+            $search .= " WHERE (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
             or ptrans.property_type like '%".$keyword."%' or ptm.description like '%".$keyword."%' or psm.prop_stage_name like '%".$keyword."%')";
         }
 

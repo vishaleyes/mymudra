@@ -100,6 +100,49 @@
     </div>
     <div class="portlet-body">
         <div class="row">
+            <!--<div class="col-md-12">-->
+            <form class="form-horizontal"  id="inv_advisory_loan_filter" method="post" name="inv_advisory_loan_filter" novalidate="novalidate">
+                <div class="form-body">
+
+                    <div class="col-md-12  margin-bottom-30 ">
+                        <div class="col-md-2 ">
+                            <div class="input-group " data-date-format="dd-mm-yyyy">
+                                <input type="text" class="form-control form-filter input-sm" readonly name="date_from" id="date_from" placeholder="From"
+                                       value="<?php if(isset($ext['filterData']['date_from']) && $ext['filterData']['date_from'] !=''){ echo date("d-m-Y",strtotime($ext['filterData']['date_from'])); } elseif(!isset($ext['filterData']['date_from'])){ echo ''; }?>">
+                                <span class="input-group-btn" style="vertical-align: top;" id="date_from_btn">
+                                        <button class="btn btn-sm default" type="button" style="padding: 7px 10px;">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="input-group " data-date-format="dd-mm-yyyy">
+                                <input type="text" class="form-control form-filter input-sm" readonly name="date_to" id="date_to" placeholder="To"
+                                       value="<?php if(isset($ext['filterData']['date_to']) && $ext['filterData']['date_to'] !=''){ echo date("d-m-Y",strtotime($ext['filterData']['date_to']));} elseif(!isset($ext['filterData']['date_to'])){ echo ''; }?>">
+                                <span class="input-group-btn" style="vertical-align: top;" id="date_to_btn">
+                                        <button class="btn btn-sm default" type="button" style="padding: 7px 10px;">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+                            <a class="btn  btn-sm green btn-outline" onclick="searchinvAdvisoryLoanData();" data-toggle="tooltip" title="Search">
+                                <i class="fa fa-search"></i></a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+            <!--</div>-->
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div id="rideapprovmsg" class="margin-top-10px">
                     <?php //echo Yii::app()->admin->setFlash('error', "adsfasdfasfsadf");?>
@@ -387,7 +430,8 @@
                     if($cnt_page > 0 && $data['pagination']->getItemCount()  > $data['pagination']->getLimit()){?>
                         <div class="paginationDiv pull-right">
                             <?php
-                            $extraPaginationPara='&keyword='.$ext['keyword'];
+                            $extraPaginationPara='&keyword='.$ext['keyword'].'&date_from='.$ext['filterData']['date_from'].
+                                '&date_to='.$ext['filterData']['date_to'];
                             $this->widget('application.extensions.WebPager',
                                 array( 'cssFile'=>Yii::app()->params->base_url."themefiles/assets/admin/layout/css/pagination.css",
                                     'extraPara'=>$extraPaginationPara,
@@ -471,6 +515,52 @@
 <script>
     $(document).ready(function () {
 
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var today = yyyy + '-' + mm + '-' + dd + ' 00:00:00';
+
+        $('#date_to_btn').on('click', function (e) {
+            $('#date_to').focus();
+        });
+
+        $('#date_from_btn').on('click', function (e) {
+            $('#date_from').focus();
+        });
+
+        $('#date_from').datepicker({
+            /* startDate: today,*/
+            endDate: today,
+            autoclose: true,
+            format: 'dd-mm-yyyy',
+        }).on('changeDate', function (selected) {
+
+            var minDate = new Date(selected.date.valueOf());
+            $('#date_to').datepicker('setStartDate', minDate);
+            $('#date_from').closest('.form-group').removeClass('has-error');
+            $('#date_from-error').remove();
+        });
+
+        $('#date_to').datepicker({
+            endDate: today,
+            autoclose: true,
+            format: 'dd-mm-yyyy',
+        }).on('changeDate', function (selected) {
+            var minDate = new Date(selected.date.valueOf());
+            $('#date_from').datepicker('setEndDate', minDate);
+            $('#date_to').closest('.form-group').removeClass('has-error');
+            $('#date_to-error').remove();
+        });
+
+
         $('.bs-select').selectpicker('refresh');
 
     });
@@ -479,4 +569,43 @@
         $('.alert-success').fadeOut();
     }, 6000);
 
+    function searchinvAdvisoryLoanData()
+    {
+        //return false;
+        $("#date_from-error").remove();
+        $("#date_to-error").remove();
+
+        var date_from = $("#date_from").val();
+        var date_to = $("#date_to").val();
+
+        if(date_from !='' && date_to !='')
+        {
+            var formData = $("#inv_advisory_loan_filter").serialize();
+
+            $("#Loaderaction").css('display','inline-block');
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo Yii::app()->params->base_path;?>admin/invAdvisoryUserListing',
+                data: formData,
+                cache: false,
+                success: function(data)
+                {
+                    $("#mainContainer").html(data);
+                    $("#Loaderaction").css('display','none');
+                }
+            });
+
+        }else if(date_from == '')
+        {
+            $('<span id="date_from-error" class="help-block font-red">Please select the from date.</span>').insertAfter("#date_from");
+            return false;
+        }else if( date_to == ''){
+            $('<span id="date_to-error" class="help-block font-red">Please select the to date.</span>').insertAfter("#date_to");
+            return false;
+        }else {
+            $('<span id="date_from-error" class="help-block font-red">Please select the from and to date.</span>').insertAfter("#date_from");
+            return false;
+        }
+
+    }
 </script>

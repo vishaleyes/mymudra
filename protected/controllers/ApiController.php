@@ -1783,5 +1783,10 @@ class ApiController extends Controller {
         }
     }
 
+    /*public function actionaboutUs()
+    {
+        $this->render("about_us");
+    }*/
+
 
 }

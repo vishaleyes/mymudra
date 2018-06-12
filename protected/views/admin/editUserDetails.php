@@ -151,8 +151,12 @@
                                                 <?php echo $stage['loan_stage_name']; ?></option>
                                             <?php
                                         }
-                                        ?>
+                                        ?>s
                                     </select>
+                                </div>
+                                <div class="form-group form-md-line-input hidden col-md-4">
+                                    <label class="control-label">Bank Name<span class="text-error">*</span>:</label>
+                                    <div class="controls"><input type="text" class="form-control" name="bankName" placeholder="Enter bank name" value="<?php if(isset($userData['loan_data']['bank_name']) && $userData['loan_data']['bank_name'] != "") { echo $userData['loan_data']['bank_name']; } ?>" id="bankName" /><span id="bankNameErr"></span></div>
                                 </div>
                             </div>
 
@@ -293,6 +297,9 @@
                 bank_id : {
                     required: true,
                 },
+                bankName : {
+                    required: true,
+                },
             },
             messages: {
                 fullName: {
@@ -324,6 +331,9 @@
                 },
                 bank_id : {
                     required: "Please select bank",
+                },
+                bankName : {
+                    required: "Please enter bank name",
                 },
             },
             invalidHandler: function (event, validator) { //display error alert on form submit

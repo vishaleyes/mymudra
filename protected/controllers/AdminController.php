@@ -1023,6 +1023,10 @@ class AdminController extends Controller {
     {
         //echo "<pre>"; print_r($_REQUEST); die;
         $this->isLogin();
+
+        $filter=array();
+        $filter['date_from']='';$filter['date_to']='';
+
         if(isset($_REQUEST['menu_id']) && $_REQUEST['menu_id'] != "")
         {
             Yii::app()->session['current_menu_id'] = $_REQUEST['menu_id'];
@@ -1069,8 +1073,18 @@ class AdminController extends Controller {
         $ext['sortBy'] = $_REQUEST['sortBy'];
         $ext['currentSortType'] = $_REQUEST['currentSortType'];
 
+        if(isset($_REQUEST['date_from']) && $_REQUEST['date_from'] != "")
+        {
+            $filter['date_from'] = date("Y-m-d",strtotime($_REQUEST['date_from']));
+        }
+        if(isset($_REQUEST['date_to']) && $_REQUEST['date_to'] != "")
+        {
+            $filter['date_to'] = date("Y-m-d",strtotime($_REQUEST['date_to']));
+        }
+        $ext['filterData'] = $filter;
+
         $TbluserRefObj = new TblUserRefrence();
-        $bankLoanAppliedUserData = $TbluserRefObj->getAllBankLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword']);
+        $bankLoanAppliedUserData = $TbluserRefObj->getAllBankLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword'],$filter);
 
         $data['pagination']	= $bankLoanAppliedUserData['pagination'];
         $data['bankUserList'] = $bankLoanAppliedUserData['bankUserList'];
@@ -1277,6 +1291,10 @@ class AdminController extends Controller {
     {
         //echo "<pre>"; print_r($_REQUEST); die;
         $this->isLogin();
+
+        $filter=array();
+        $filter['date_from']='';$filter['date_to']='';
+
         if(isset($_REQUEST['menu_id']) && $_REQUEST['menu_id'] != "")
         {
             Yii::app()->session['current_menu_id'] = $_REQUEST['menu_id'];
@@ -1319,12 +1337,22 @@ class AdminController extends Controller {
             $ext['page'] = $_REQUEST['page'];
         }
 
+        if(isset($_REQUEST['date_from']) && $_REQUEST['date_from'] != "")
+        {
+            $filter['date_from'] = date("Y-m-d",strtotime($_REQUEST['date_from']));
+        }
+        if(isset($_REQUEST['date_to']) && $_REQUEST['date_to'] != "")
+        {
+            $filter['date_to'] = date("Y-m-d",strtotime($_REQUEST['date_to']));
+        }
+        $ext['filterData'] = $filter;
+
         $ext['keyword'] = $_REQUEST['keyword'];
         $ext['sortBy'] = $_REQUEST['sortBy'];
         $ext['currentSortType'] = $_REQUEST['currentSortType'];
 
         $TbluserRefObj = new TblUserRefrence();
-        $invAdvisoryAppliedUserData = $TbluserRefObj->getAllinvAdvisoryLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword']);
+        $invAdvisoryAppliedUserData = $TbluserRefObj->getAllinvAdvisoryLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword'],$filter);
 
         $data['pagination']	= $invAdvisoryAppliedUserData['pagination'];
         $data['invAdvisoryUserList'] = $invAdvisoryAppliedUserData['invAdvisoryUserList'];
@@ -1532,6 +1560,10 @@ class AdminController extends Controller {
     {
         //echo "<pre>"; print_r($_REQUEST); die;
         $this->isLogin();
+
+        $filter=array();
+        $filter['date_from']='';$filter['date_to']='';
+
         if(isset($_REQUEST['menu_id']) && $_REQUEST['menu_id'] != "")
         {
             Yii::app()->session['current_menu_id'] = $_REQUEST['menu_id'];
@@ -1574,12 +1606,22 @@ class AdminController extends Controller {
             $ext['page'] = $_REQUEST['page'];
         }
 
+        if(isset($_REQUEST['date_from']) && $_REQUEST['date_from'] != "")
+        {
+            $filter['date_from'] = date("Y-m-d",strtotime($_REQUEST['date_from']));
+        }
+        if(isset($_REQUEST['date_to']) && $_REQUEST['date_to'] != "")
+        {
+            $filter['date_to'] = date("Y-m-d",strtotime($_REQUEST['date_to']));
+        }
+        $ext['filterData'] = $filter;
+
         $ext['keyword'] = $_REQUEST['keyword'];
         $ext['sortBy'] = $_REQUEST['sortBy'];
         $ext['currentSortType'] = $_REQUEST['currentSortType'];
 
         $TbluserRefObj = new TblUserRefrence();
-        $realEstateAppliedUserData = $TbluserRefObj->getAllrealEstateLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword']);
+        $realEstateAppliedUserData = $TbluserRefObj->getAllrealEstateLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword'],$filter);
 
         $data['pagination']	= $realEstateAppliedUserData['pagination'];
         $data['realEstateUserList'] = $realEstateAppliedUserData['realEstateUserList'];
