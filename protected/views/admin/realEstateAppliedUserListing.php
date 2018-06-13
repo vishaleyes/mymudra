@@ -98,6 +98,61 @@
                 <input type="text" placeholder="Search" name="keyword" id="keyword" onkeyup="getSearch(event);" class="input-sm form-control" value="<?php if(isset($_REQUEST['keyword']) && $_REQUEST['keyword']!=''){ echo $_REQUEST['keyword'];}?>">
             </div>
         </div>
+        <div class="col-sm-3 col-xs-12 pull-right" style="margin-top:5px;">
+            <div class="">
+                <a class="btn btn-sm green  btn-outline pull-right margin-bottom-10 margin-right-10" data-toggle="modal" data-target="#myModalExportReport" title="Monthly Report"><i class="fa fa-file-excel-o"></i> Export </a>
+            </div>
+            <div id="myModalExportReport" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title  text-center">Bank Loan Applied Users Report</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?php echo Yii::app()->params->base_path; ?>admin/sendExportOfRealEstateLoanUser"
+                                  class="form-horizontal col-md-12" method="post" id="monthly_report_form"
+                                  name="monthly_report_form">
+
+                                <div class="col-md-12">
+                                    <div class="form-group form-md-line-input  ">
+                                        <label class="control-label">Start Date<span
+                                                    class="text-error">* &nbsp;</span>:</label>
+                                        <div class="controls"><input type="text" class="form-control date date-picker" name="fromExportDate" id="fromExportDate" placeholder="Select Start Date" value="" data-date-format="dd-mm-yyyy"/></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group form-md-line-input  ">
+                                        <label class="control-label">End Date<span
+                                                    class="text-error">* &nbsp;</span>:</label>
+                                        <div class="controls"><input type="text" class="form-control date date-picker" name="toExportDate" id="toExportDate" placeholder="Select End Date" value="" data-date-format="dd-mm-yyyy"/></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions text-right">
+
+                                    <a href="javascript:;" class=" btn btn-sm red btn-outline" data-dismiss="modal">
+                                        Cancel</a>
+
+                                    <a class="" style="margin-top:5px;" title="Save" type="submit">
+                                        <button type="submit" class="btn btn-sm green btn-outline">Export</button>
+                                    </a>
+
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
         <?php //if($permission['add'] == 1){ ?>
         <!--<a href="javascript:void(0);" class="btn btn-sm green btn-outline pull-right margin-bottom-10" data-toggle="modal" data-target="#myModalNewShift" style="margin-top:5px;"><i class="icon-plus"></i> New Shift </a>-->
         <?php //} ?>
@@ -172,7 +227,7 @@
                                 </label>
                             </th>-->
                             <th width="5%">
-                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/ur.user_ref_id/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>' style="text-decoration:none">#
+                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/ur.user_ref_id/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>/date_from/<?php echo $ext['filterData']['date_from'];?>/date_to/<?php echo $ext['filterData']['date_to'];?>' style="text-decoration:none">#
                                     <?php if($ext['sortType'] == 'asc' && $ext['sortBy'] =='ur.user_ref_id'){ ?>
                                         <i class="fa fa-sort-down" style="float:right !important"></i>
                                     <?php } else if($ext['sortType'] == 'desc' && $ext['sortBy'] =='ur.user_ref_id'){?>
@@ -183,10 +238,10 @@
                                 </a>
                             </th>
                             <th style="cursor:pointer; text-align: center;">
-                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/full_name/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>' style="text-decoration:none">User Name
-                                    <?php if($ext['sortType'] == 'asc' && $ext['sortBy'] == 'full_name'){ ?>
+                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/ur.full_name/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>/date_from/<?php echo $ext['filterData']['date_from'];?>/date_to/<?php echo $ext['filterData']['date_to'];?>' style="text-decoration:none">User Name
+                                    <?php if($ext['sortType'] == 'asc' && $ext['sortBy'] == 'ur.full_name'){ ?>
                                         <i class="fa fa-sort-down" style="float:right !important"></i>
-                                    <?php } else if($ext['sortType'] == 'desc' && $ext['sortBy'] =='full_name'){?>
+                                    <?php } else if($ext['sortType'] == 'desc' && $ext['sortBy'] =='ur.full_name'){?>
                                         <i class="fa fa-sort-up" style="float:right !important"></i>
                                     <?php } else { ?>
                                         <i class="fa fa-unsorted" style="float:right !important" ></i>
@@ -194,10 +249,10 @@
                                 </a>
                             </th>
                             <th style="cursor:pointer; text-align: center;">
-                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/phone_number/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>' style="text-decoration:none">Phone Number
-                                    <?php if($ext['sortType'] == 'asc' && $ext['sortBy'] == 'phone_number'){ ?>
+                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/u.full_name/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>/date_from/<?php echo $ext['filterData']['date_from'];?>/date_to/<?php echo $ext['filterData']['date_to'];?>' style="text-decoration:none">Reference By
+                                    <?php if($ext['sortType'] == 'asc' && $ext['sortBy'] == 'u.full_name'){ ?>
                                         <i class="fa fa-sort-down" style="float:right !important"></i>
-                                    <?php } else if($ext['sortType'] == 'desc' && $ext['sortBy'] =='phone_number'){?>
+                                    <?php } else if($ext['sortType'] == 'desc' && $ext['sortBy'] =='u.full_name'){?>
                                         <i class="fa fa-sort-up" style="float:right !important"></i>
                                     <?php } else { ?>
                                         <i class="fa fa-unsorted" style="float:right !important" ></i>
@@ -205,18 +260,29 @@
                                 </a>
                             </th>
                             <th style="cursor:pointer; text-align: center;">
-                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/annual_income/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>' style="text-decoration:none">Annual Income
-                                    <?php if($ext['sortType'] == 'asc' && $ext['sortBy'] == 'annual_income'){ ?>
+                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/ur.phone_number/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>/date_from/<?php echo $ext['filterData']['date_from'];?>/date_to/<?php echo $ext['filterData']['date_to'];?>' style="text-decoration:none">Phone Number
+                                    <?php if($ext['sortType'] == 'asc' && $ext['sortBy'] == 'ur.phone_number'){ ?>
                                         <i class="fa fa-sort-down" style="float:right !important"></i>
-                                    <?php } else if($ext['sortType'] == 'desc' && $ext['sortBy'] =='annual_income'){?>
+                                    <?php } else if($ext['sortType'] == 'desc' && $ext['sortBy'] =='ur.phone_number'){?>
                                         <i class="fa fa-sort-up" style="float:right !important"></i>
                                     <?php } else { ?>
                                         <i class="fa fa-unsorted" style="float:right !important" ></i>
                                     <?php }?>
                                 </a>
                             </th>
+                            <!--<th style="cursor:pointer; text-align: center;">
+                                <a href="javascript:;" class="sort" lang='<?php /*echo Yii::app()->params->base_path;*/?>admin/<?php /*echo $controller_action */?>/sortType/<?php /*echo $ext['sortType'];*/?>/sortBy/annual_income/keyword/<?php /*echo $ext['keyword'];*/?>/page/<?php /*echo $ext['page']; */?>' style="text-decoration:none">Annual Income
+                                    <?php /*if($ext['sortType'] == 'asc' && $ext['sortBy'] == 'annual_income'){ */?>
+                                        <i class="fa fa-sort-down" style="float:right !important"></i>
+                                    <?php /*} else if($ext['sortType'] == 'desc' && $ext['sortBy'] =='annual_income'){*/?>
+                                        <i class="fa fa-sort-up" style="float:right !important"></i>
+                                    <?php /*} else { */?>
+                                        <i class="fa fa-unsorted" style="float:right !important" ></i>
+                                    <?php /*}*/?>
+                                </a>
+                            </th>-->
                             <th style="cursor:pointer; text-align: center;">
-                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/property_type/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>' style="text-decoration:none">Property Type
+                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/property_type/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>/date_from/<?php echo $ext['filterData']['date_from'];?>/date_to/<?php echo $ext['filterData']['date_to'];?>' style="text-decoration:none">Property Type
                                     <?php if($ext['sortType'] == 'asc' && $ext['sortBy'] == 'property_type'){ ?>
                                         <i class="fa fa-sort-down" style="float:right !important"></i>
                                     <?php } else if($ext['sortType'] == 'desc' && $ext['sortBy'] =='property_type'){?>
@@ -227,7 +293,7 @@
                                 </a>
                             </th>
                             <th style="cursor:pointer; text-align: center;">
-                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/ptm.description/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>' style="text-decoration:none">Real Estate Type
+                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/ptm.description/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>/date_from/<?php echo $ext['filterData']['date_from'];?>/date_to/<?php echo $ext['filterData']['date_to'];?>' style="text-decoration:none">Real Estate Type
                                     <?php if($ext['sortType'] == 'asc' && $ext['sortBy'] == 'ptm.description'){ ?>
                                         <i class="fa fa-sort-down" style="float:right !important"></i>
                                     <?php } else if($ext['sortType'] == 'desc' && $ext['sortBy'] =='ptm.description'){?>
@@ -238,7 +304,7 @@
                                 </a>
                             </th>
                             <th style="cursor:pointer; text-align: center;">
-                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/prop_stage_name/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>' style="text-decoration:none">Real Estate Stage
+                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/prop_stage_name/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>/date_from/<?php echo $ext['filterData']['date_from'];?>/date_to/<?php echo $ext['filterData']['date_to'];?>' style="text-decoration:none">Real Estate Stage
                                     <?php if($ext['sortType'] == 'asc' && $ext['sortBy'] == 'prop_stage_name'){ ?>
                                         <i class="fa fa-sort-down" style="float:right !important"></i>
                                     <?php } else if($ext['sortType'] == 'desc' && $ext['sortBy'] =='prop_stage_name'){?>
@@ -289,6 +355,28 @@
 
                                     <td style="text-align: center;">
                                         <?php
+                                        if(isset($row['referenceBy']) && $row['referenceBy']!='') {
+                                            $full_name = trim($row['full_name']);
+                                            $reference = trim($row['referenceBy']);
+
+                                            if(0 == strcasecmp($full_name,$reference))
+                                            {
+                                                $reference_by_name = "Self";
+                                            }
+                                            else
+                                            {
+                                                $reference_by_name = $row['referenceBy'];
+                                            }
+                                            //$annual_income = $row['referenceBy'];
+                                        }
+                                        else
+                                        { $reference_by_name =  "---";}
+
+                                        echo $reference_by_name;
+                                        ?> </td>
+
+                                    <td style="text-align: center;">
+                                        <?php
                                         if(isset($row['phone_number']) && $row['phone_number']!='') {
                                             $state = $row['phone_number'];
                                         }
@@ -298,16 +386,16 @@
                                         echo $state;
                                         ?> </td>
 
-                                    <td style="text-align: center;">
+                                    <!--<td style="text-align: center;">
                                         <?php
-                                        if(isset($row['annual_income']) && $row['annual_income']!='') {
+/*                                        if(isset($row['annual_income']) && $row['annual_income']!='') {
                                             $annual_income = $row['annual_income'];
                                         }
                                         else
                                         { $annual_income =  "---";}
 
                                         echo $annual_income;
-                                        ?> </td>
+                                        */?> </td>-->
 
                                     <td style="text-align: center;">
                                         <?php
@@ -372,7 +460,10 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <form action="" class="form-horizontal col-md-12" method="post" id="stageStatus_form_<?php echo $row['user_ref_id']; ?>" name="stageStatus_form_<?php echo $row['user_ref_id']; ?>">
-
+                                                            <div class="row">
+                                                                <input type="hidden" name="user_ref_id" id="user_ref_id" value="<?= $row['user_ref_id']; ?>">
+                                                                <input type="hidden" name="prop_tran_ref_id" id="prop_tran_ref_id" value="<?= $row['prop_tran_ref_id']; ?>">
+                                                            </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <h4 class="text-left"><strong>Real Estate Stage</strong></h4>
@@ -482,13 +573,25 @@
             });
         });
 
-        $('.sort').on('click',function (e) {
+        $('.sort').click(function() {
+            var url	=	$(this).attr('lang');
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            $arr = $(this).attr('lang').split("*");
+            if($arr == '')
+            {
+                $arr = $(this).attr('lang').split("*");
+            }
+            loadBoxContent(url+'<?php echo $extraPaginationPara ; ?>','mainContainer');
+            history.pushState(null, null, $arr[0]);
+        });
+
+        /*$('.sort').on('click',function (e) {
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
             var url	=	$(this).attr('lang');
-            loadBoxContent(url+'<?php echo $extraPaginationPara ; ?>','mainContainer');
-        });
+            loadBoxContent(url+'?php echo $extraPaginationPara ; ?>','mainContainer');
+        });*/
 
     });
 
@@ -541,13 +644,14 @@
         $( "#mainContainer" ).css( 'opacity', '0.5' );
         $("html, body").animate({scrollTop: 0}, "slow");
 
-        var prop_stage_id = $('#prop_stage_id').val();
-        var datastring = "user_ref_id="+user_ref_id+"&prop_tran_ref_id="+prop_tran_ref_id+"&prop_stage_id="+prop_stage_id;
-        //alert(datastring);
-
+        var formdata = $("#stageStatus_form_"+user_ref_id).serialize();
+        //alert(formdata);
+        //var datastring = "user_ref_id="+user_ref_id+"&prop_tran_ref_id="+prop_tran_ref_id;
+        /*alert(datastring);*/
+        //return false;
         $.ajax ({
             url: '<?php echo Yii::app()->params->base_path; ?>admin/changeRealEstateStageStatus',
-            data: datastring,
+            data: formdata,
             method: 'post',
             cache: false,
             dataType: 'json',
@@ -655,6 +759,31 @@
             $('#date_to').closest('.form-group').removeClass('has-error');
             $('#date_to-error').remove();
         });
+
+        $('#fromExportDate').datepicker({
+            /* startDate: today,*/
+            endDate: today,
+            autoclose: true,
+            format: 'dd-mm-yyyy',
+        }).on('changeDate', function (selected) {
+
+            var minDate = new Date(selected.date.valueOf());
+            $('#toExportDate').datepicker('setStartDate', minDate);
+            $('#fromExportDate').closest('.form-group').removeClass('has-error');
+            $('#fromExportDate-error').remove();
+        });
+
+        $('#toExportDate').datepicker({
+            endDate: today,
+            autoclose: true,
+            format: 'dd-mm-yyyy',
+        }).on('changeDate', function (selected) {
+            var minDate = new Date(selected.date.valueOf());
+            $('#fromExportDate').datepicker('setEndDate', minDate);
+            $('#toExportDate').closest('.form-group').removeClass('has-error');
+            $('#toExportDate-error').remove();
+        });
+
 
         $('.bs-select').selectpicker('refresh');
 

@@ -155,10 +155,10 @@ class TblPropertyTransaction extends CActiveRecord
     public function getDetailsByUserRefId($user_ref_id=NULL)
     {
         //$sql = "select * from tbl_property_transaction where user_ref_id = ".$user_ref_id;
-        $sql = "SELECT ptrans.*,ptr.*,psm.prop_stage_name FROM tbl_property_transaction ptrans
-                INNER JOIN `tbl_prop_trans_reference` ptr 
+        $sql = "SELECT ptrans.*,ptr.*,psm.prop_stage_name,ptrans.property_id AS property_transaction_id FROM tbl_property_transaction ptrans
+                LEFT JOIN `tbl_prop_trans_reference` ptr 
                 ON ptrans.`property_id` = ptr.`property_id`
-                INNER JOIN `tbl_property_stage_master` psm
+                LEFT JOIN `tbl_property_stage_master` psm
                 ON psm.`property_stage_id` = ptr.`property_stage_id` WHERE ptrans.user_ref_id = ".$user_ref_id;
         $result	=Yii::app()->db->createCommand($sql)->queryRow();
         return $result;

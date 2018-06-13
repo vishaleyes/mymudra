@@ -137,7 +137,7 @@ class TblPropertyTypeMaster extends CActiveRecord
 
     function getPropertyTypeList()
     {
-        $sql = "SELECT * FROM  tbl_property_type_master where status = 1";
+        $sql = "SELECT * FROM  tbl_property_type_master where prop_type_parent_id = 0 AND status = 1";
         $result =  Yii::app()->db->createCommand($sql)->queryAll();
         return $result;
     }

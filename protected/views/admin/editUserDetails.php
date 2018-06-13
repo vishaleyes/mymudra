@@ -1,4 +1,71 @@
 <style>
+    .form-group.form-md-line-input .help-block
+    {
+        opacity: 10 !important;
+        color: #e73d4a;
+    }
+    .form-group .help-block
+    {
+        opacity: 10 !important;
+        color: #e73d4a;
+    }
+    .white-font
+    {
+        color: white !important;
+    }
+    .form-horizontal .control-label {
+        text-align: left !important;
+        font-weight: 600;
+    }
+    .mt-repeater .mt-repeater-title {
+        font-size: 18px;
+        text-transform: none !important;
+        margin-top: 0;
+        font-weight: 600;
+    }
+    .form-control {
+        border-radius: 0px !important;
+    }
+    .fileinput-button input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        opacity: 0;
+        -ms-filter: 'alpha(opacity=0)';
+        font-size: 200px;
+        direction: ltr;
+        cursor: pointer;
+    }
+
+    input[type=file] {
+        display: block;
+    }
+
+    b, optgroup, strong{
+        font-weight:600 !important;
+    }
+
+    .fileinput-preview.thumbnail.mb20 {
+        width: 50px;
+        height: 50px;
+    }
+    /*.img-responsive {
+        width: 50px;
+        height: 50px;
+    }*/
+
+    .btn.btn-outline.green-sharp {
+        margin-left: 05px;
+    }
+
+    .bootstrap-select.btn-group .dropdown-menu.inner {
+        max-width: 600px;
+        overflow-x: auto;
+        min-width: 200px;
+    }
+</style>
+<style>
     .text-error{
         color:red;
         margin-left: 2px;
@@ -39,7 +106,7 @@
                                     <div class="controls"><input type="text" class="form-control" name="phoneNumber" placeholder="Enter Phone Number" value="<?php if(isset($userData['phone_number']) && $userData['phone_number'] != "") { echo $userData['phone_number']; } ?>" id="phoneNumber" /><span id="phoneNumberErr"></span></div>
                                 </div>
                                 <div class="form-group form-md-line-input  col-md-4">
-                                    <label class="control-label">Email<span class="text-error">* &nbsp;</span>:</label>
+                                    <label class="control-label">Email:</label>
                                     <div class="controls"><input type="text" class="form-control" name="email" placeholder="Enter email" value="<?php if(isset($userData['email']) && $userData['email'] != "") { echo $userData['email']; } ?>" id="email" /><span id="emailErr"></span></div>
                                 </div>
                             </div>
@@ -78,7 +145,7 @@
                                 </div>
                                 <div class="form-group form-md-line-input  col-md-4">
                                     <label class="control-label">bank<span class="text-error">*</span>:</label>
-                                    <select class="form-control edited bs-select" id="bank_id" name="bank_id" data-actions-box="true" data-search="true">
+                                    <select class="form-control edited bs-select" id="bank_id" name="bank_id" data-actions-box="true" data-search="true" onchange="getBank(this.value);">
                                         <option value="">Select Bank</option>
                                         <?php
                                         $TblbankObj = new TblBankMaster();
@@ -103,7 +170,7 @@
                                 </div>
                                 <div class="form-group form-md-line-input  col-md-4">
                                     <label class="control-label">Loan Type<span class="text-error">*</span>:</label>
-                                    <select class="form-control edited bs-select" id="loan_type" name="loan_type" data-actions-box="true" data-search="true">
+                                    <select class="form-control bs-select" id="loan_type" name="loan_type" data-actions-box="true" data-search="true" onchange="getBankLoanSubType(this.value);">
                                         <option value="">Select Loan Type</option>
                                         <?php
                                         $TblBankLoanTypeObj = new TblLoanTypeMaster();
@@ -129,6 +196,23 @@
                             </div>
 
                             <div class="row">
+                                <div class="form-group form-md-line-input hidden col-md-4" id="loan_sub_type">
+                                    <label class="control-label">Loan Sub Type<span class="text-error">*</span>:</label>
+                                    <select class="form-control bs-select" id="loan_sub_type_id" name="loan_sub_type_id">
+                                        <!--<option value="">Select Sub Type</option>-->
+                                        <?php
+                                        /*$TblLoanTypeMasterObj = new TblLoanTypeMaster();
+                                        $loanStageData = $TblLoanTypeMasterObj->getBankLoanSubType();
+                                        foreach ($loanStageData as $loanSubType)
+                                        {
+                                            */?><!--
+                                            <option value="<?php /*echo $loanSubType['loan_type_id']; */?>">
+                                                <?php /*echo $loanSubType['description']; */?></option>
+                                            --><?php
+/*                                        }*/
+                                        ?>
+                                    </select>
+                                </div>
                                 <div class="form-group form-md-line-input  col-md-4">
                                     <label class="control-label">Stage<span class="text-error">*</span>:</label>
                                     <select class="form-control edited bs-select" id="loan_stage" name="loan_stage" data-actions-box="true" data-search="true">
@@ -154,8 +238,8 @@
                                         ?>s
                                     </select>
                                 </div>
-                                <div class="form-group form-md-line-input hidden col-md-4">
-                                    <label class="control-label">Bank Name<span class="text-error">*</span>:</label>
+                                <div class="form-group form-md-line-input hidden col-md-4" id="bank_name_div">
+                                    <label class="control-label">Bank Name:</label>
                                     <div class="controls"><input type="text" class="form-control" name="bankName" placeholder="Enter bank name" value="<?php if(isset($userData['loan_data']['bank_name']) && $userData['loan_data']['bank_name'] != "") { echo $userData['loan_data']['bank_name']; } ?>" id="bankName" /><span id="bankNameErr"></span></div>
                                 </div>
                             </div>
@@ -163,7 +247,8 @@
                             <!--<div class="row">-->
                             <div class="form-actions align-right col-md-6">
                                 <input type="hidden" name="user_ref_id" id="user_ref_id" value="<?php if(isset($userData['user_ref_id']) && $userData['user_ref_id'] != "") { echo $userData['user_ref_id'];}?>"/>
-                                <input type="hidden" name="loan_id" id="loan_id" value="<?php if(isset($userData['loan_data']['loan_id']) && $userData['loan_data']['loan_id'] != "") { echo $userData['loan_data']['loan_id'];}?>"/>
+                                <!--<input type="hidden" name="loan_id" id="loan_id" value="<?php /*if(isset($userData['loan_data']['loan_id']) && $userData['loan_data']['loan_id'] != "") { echo $userData['loan_data']['loan_id'];}*/?>"/>-->
+                                <input type="hidden" name="loan_id" id="loan_id" value="<?php if(isset($userData['loan_data']['loan_transaction_id']) && $userData['loan_data']['loan_transaction_id'] != "") { echo $userData['loan_data']['loan_transaction_id'];}?>"/>
                                 <input type="hidden" name="loan_tran_ref_id" id="loan_tran_ref_id" value="<?php if(isset($userData['loan_data']['loan_tran_ref_id']) && $userData['loan_data']['loan_tran_ref_id'] != "") { echo $userData['loan_data']['loan_tran_ref_id'];}?>"/>
 
 
@@ -185,8 +270,99 @@
 
 
 <script>
+    function loadBoxContent(urlData,boxid)
+    {
+        $("#Loaderaction").css('display','inline-block');
+        $("html, body").animate({scrollTop: 0}, "slow");
+        $( "#mainContainer" ).css( 'opacity', '0.5' );
+        $.ajax({
+            type: 'POST',
+            url: urlData,
+            data: '',
+            cache: true,
+            success: function(data)
+            {
+                if(data=="logout")
+                {
+                    window.location.href = '<?php echo Yii::app()->params->base_path;?>site';
+                    return false;
+                }
+                $("#mainContainer").html(data);
+                $(window).scrollTop(0);
+                $("#Loaderaction").css('display','none');
+                $( "#mainContainer" ).css( 'opacity', '1' );
+            }
+        });
+    }
+
+    function getBankLoanSubType(val)
+    {
+        if(val == 3)
+        {
+            $("#loan_sub_type").removeClass("hidden");
+        }
+        else if(val == 4)
+        {
+            $("#loan_sub_type").removeClass("hidden");
+        }
+        else
+        {
+            $("#loan_sub_type").addClass("hidden");
+        }
+        //return false;
+        $.ajax({
+            url:'<?php echo Yii::app()->params->base_path; ?>admin/getBankLoanSubType',
+            type:'POST',
+            data: 'loan_type='+val,
+            cache:false,
+            success:function(data)
+            {
+                //alert(data);
+                $('#loan_sub_type_id').html('<option value="">Select Sub Type</option>');
+                $("#loan_sub_type_id").append(data);
+
+                <?php
+                if(isset($userData['loan_data']['loan_sub_type']) && $userData['loan_data']['loan_sub_type']!='') {
+                ?>
+                $('#loan_sub_type_id option[value="<?php echo $userData['loan_data']['loan_sub_type'];?>"]').attr('selected','selected');
+                <?php
+                }?>
+                 //$("#Loaderaction").css('display','none');
+
+                 $('.bs-select #loan_sub_type_id').selectpicker('refresh');
+
+            }
+        });
+    }
+
+    function getBank(bank_id)
+    {
+        if(bank_id == 7)
+        {
+            $("#bank_name_div").removeClass("hidden");
+        }
+        else
+        {
+            $("#bank_name_div").addClass("hidden");
+        }
+    }
+
     $(document).ready(function()
     {
+        <?php
+            if(isset($userData['loan_data']['bank_id']) && $userData['loan_data']['bank_id'] == 7)
+            {
+        ?>
+                $("#bank_name_div").removeClass("hidden");
+        <?php
+            }
+            else
+            {
+        ?>
+                $("#bank_name_div").addClass("hidden");
+        <?php
+            }
+        ?>
         var i=0;
         jQuery("input,textarea").on('keypress',function(e){
             //alert();
@@ -273,9 +449,9 @@
                 phoneNumber : {
                     required: true,
                 },
-                email: {
+                /*email: {
                     required: true,
-                },
+                },*/
                 street: {
                     required: true,
                 },
@@ -294,12 +470,12 @@
                 loanAmount : {
                     required: true,
                 },
-                bank_id : {
+                /*bank_id : {
                     required: true,
                 },
                 bankName : {
                     required: true,
-                },
+                },*/
             },
             messages: {
                 fullName: {
@@ -308,9 +484,9 @@
                 phoneNumber : {
                     required: "Please enter phone number",
                 },
-                email: {
+                /*email: {
                     required: "Please enter email",
-                },
+                },*/
                 street: {
                     required: "Please enter address",
                 },
@@ -329,12 +505,12 @@
                 loanAmount : {
                     required: "Please enter loan amount",
                 },
-                bank_id : {
+                /*bank_id : {
                     required: "Please select bank",
                 },
                 bankName : {
                     required: "Please enter bank name",
-                },
+                },*/
             },
             invalidHandler: function (event, validator) { //display error alert on form submit
                 $('.alert-danger', $('.form-horizontal')).show();

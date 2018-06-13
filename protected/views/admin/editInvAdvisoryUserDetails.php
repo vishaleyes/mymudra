@@ -1,4 +1,71 @@
 <style>
+    .form-group.form-md-line-input .help-block
+    {
+        opacity: 10 !important;
+        color: #e73d4a;
+    }
+    .form-group .help-block
+    {
+        opacity: 10 !important;
+        color: #e73d4a;
+    }
+    .white-font
+    {
+        color: white !important;
+    }
+    .form-horizontal .control-label {
+        text-align: left !important;
+        font-weight: 600;
+    }
+    .mt-repeater .mt-repeater-title {
+        font-size: 18px;
+        text-transform: none !important;
+        margin-top: 0;
+        font-weight: 600;
+    }
+    .form-control {
+        border-radius: 0px !important;
+    }
+    .fileinput-button input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        opacity: 0;
+        -ms-filter: 'alpha(opacity=0)';
+        font-size: 200px;
+        direction: ltr;
+        cursor: pointer;
+    }
+
+    input[type=file] {
+        display: block;
+    }
+
+    b, optgroup, strong{
+        font-weight:600 !important;
+    }
+
+    .fileinput-preview.thumbnail.mb20 {
+        width: 50px;
+        height: 50px;
+    }
+    /*.img-responsive {
+        width: 50px;
+        height: 50px;
+    }*/
+
+    .btn.btn-outline.green-sharp {
+        margin-left: 05px;
+    }
+
+    .bootstrap-select.btn-group .dropdown-menu.inner {
+        max-width: 600px;
+        overflow-x: auto;
+        min-width: 200px;
+    }
+</style>
+<style>
     .text-error{
         color:red;
         margin-left: 2px;
@@ -39,7 +106,7 @@
                                     <div class="controls"><input type="text" class="form-control" name="phoneNumber" placeholder="Enter Phone Number" value="<?php if(isset($userData['phone_number']) && $userData['phone_number'] != "") { echo $userData['phone_number']; } ?>" id="phoneNumber" /><span id="phoneNumberErr"></span></div>
                                 </div>
                                 <div class="form-group form-md-line-input  col-md-4">
-                                    <label class="control-label">Email<span class="text-error">* &nbsp;</span>:</label>
+                                    <label class="control-label">Email:</label>
                                     <div class="controls"><input type="text" class="form-control" name="email" placeholder="Enter email" value="<?php if(isset($userData['email']) && $userData['email'] != "") { echo $userData['email']; } ?>" id="email" /><span id="emailErr"></span></div>
                                 </div>
                             </div>
@@ -131,7 +198,8 @@
                             <!--<div class="row">-->
                             <div class="form-actions align-right col-md-6">
                                 <input type="hidden" name="user_ref_id" id="user_ref_id" value="<?php if(isset($userData['user_ref_id']) && $userData['user_ref_id'] != "") { echo $userData['user_ref_id'];}?>"/>
-                                <input type="hidden" name="inv_id" id="inv_id" value="<?php if(isset($userData['inv_data']['inv_id']) && $userData['inv_data']['inv_id'] != "") { echo $userData['inv_data']['inv_id'];}?>"/>
+                                <!--<input type="hidden" name="inv_id" id="inv_id" value="<?php /*if(isset($userData['inv_data']['inv_id']) && $userData['inv_data']['inv_id'] != "") { echo $userData['inv_data']['inv_id'];}*/?>"/>-->
+                                <input type="hidden" name="inv_id" id="inv_id" value="<?php if(isset($userData['inv_data']['inv_transaction_id']) && $userData['inv_data']['inv_transaction_id'] != "") { echo $userData['inv_data']['inv_transaction_id'];}?>"/>
                                 <input type="hidden" name="inv_tran_ref_id" id="inv_tran_ref_id" value="<?php if(isset($userData['inv_data']['inv_tran_ref_id']) && $userData['inv_data']['inv_tran_ref_id'] != "") { echo $userData['inv_data']['inv_tran_ref_id'];}?>"/>
 
 
@@ -153,6 +221,31 @@
 
 
 <script>
+    function loadBoxContent(urlData,boxid)
+    {
+        $("#Loaderaction").css('display','inline-block');
+        $("html, body").animate({scrollTop: 0}, "slow");
+        $( "#mainContainer" ).css( 'opacity', '0.5' );
+        $.ajax({
+            type: 'POST',
+            url: urlData,
+            data: '',
+            cache: true,
+            success: function(data)
+            {
+                if(data=="logout")
+                {
+                    window.location.href = '<?php echo Yii::app()->params->base_path;?>site';
+                    return false;
+                }
+                $("#mainContainer").html(data);
+                $(window).scrollTop(0);
+                $("#Loaderaction").css('display','none');
+                $( "#mainContainer" ).css( 'opacity', '1' );
+            }
+        });
+    }
+
     $(document).ready(function()
     {
         var i=0;
@@ -248,9 +341,9 @@
                     maxlength: 10,
                     minlength: 10,
                 },
-                email: {
+                /*email: {
                     required: true,
-                },
+                },*/
                 street: {
                     required: true,
                 },
@@ -285,9 +378,9 @@
                     maxlength: "Please enter maximum 10 digits",
                     minlength: "Please enter minimum 10 digits",
                 },
-                email: {
+                /*email: {
                     required: "Please enter email",
-                },
+                },*/
                 street: {
                     required: "Please enter address",
                 },

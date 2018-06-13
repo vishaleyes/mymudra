@@ -9,6 +9,7 @@ require_once('aws.phar');
 require_once('aws/vendor/autoload.php');
 require_once('sns.class.php');
 require('protected/extensions/unifonic/Unifonic/Autoload.php');
+
 use \Unifonic\API\Client;
 
 use Aws\Sns\SnsClient;
@@ -249,9 +250,9 @@ class AdminController extends Controller {
     * Changed Date : 29-08-2017
     */
     function actionLogout()
-    {
-        //unset(Yii::app()->session[_SITENAME_.'_admin']);
-        unset(Yii::app()->session[_SITENAME_.'_email']);
+    {   //echo "<pre>"; print_r($_REQUEST); die;
+        unset(Yii::app()->session[_SITENAME_.'_admin']);
+        //unset(Yii::app()->session[_SITENAME_.'_email']);
         unset(Yii::app()->session[_SITENAME_.'_name']);
         //unset(Yii::app()->session[_SITENAME_.'_avatar']);
         //unset(Yii::app()->session['itemData']);
@@ -1018,6 +1019,8 @@ class AdminController extends Controller {
     /*not in use code end here*/
 
 
+
+
     /*bank loan applied user listing, edit, chnage stage status code start here*/
     function actionbankLoanUserListing()
     {
@@ -1105,52 +1108,62 @@ class AdminController extends Controller {
     public function actionchangeStageStatus()
     {
         //echo "<pre>"; print_r($_REQUEST); die;
-        try{
-            if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!="") {
-                $user_ref_id = $_REQUEST['user_ref_id'];
-                    //$loan_transaction_id = $_REQUEST['loan_transaction_id'];
-                $loan_stage_id = $_REQUEST['loan_stage_id'];
+        if(isset($_POST['FormSubmit'])){
+            try{
+                if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!="") {
+                    $user_ref_id = $_REQUEST['user_ref_id'];
+                    $loan_stage_id = $_REQUEST['loan_stage_id'];
 
-                $tblLoanTransObj = new TblLoanTransaction();
-                $data = $tblLoanTransObj->getDetailsByUserRefId($user_ref_id);
+                    $tblLoanTransObj = new TblLoanTransaction();
+                    $data = $tblLoanTransObj->getDetailsByUserRefId($user_ref_id);
                     //echo "<pre>"; print_r($data); die;
-                $transactionData = array();
-                $transactionData['loan_id'] = $data['loan_id'];
-                $transactionData['loan_stage_id'] = $loan_stage_id;
-                $transactionData['stage_transaction_date'] = date("Y-m-d H:i:s");
+                    $transactionData = array();
+                    $transactionData['loan_id'] = $data['loan_transaction_id'];
+                    $transactionData['loan_stage_id'] = $loan_stage_id;
+                    $transactionData['stage_transaction_date'] = date("Y-m-d H:i:s");
 
 
-                if(isset($_REQUEST['loan_tran_ref_id']) && $_REQUEST['loan_tran_ref_id']!='')
-                {   //echo "if"; die;
-                    $loan_tran_ref_id = $_REQUEST['loan_tran_ref_id'];
-                    $transactionData['created_at'] = date("Y-m-d H:i:s");
+                    if(isset($_REQUEST['loan_tran_ref_id']) && $_REQUEST['loan_tran_ref_id']!='')
+                    {   //echo "if"; die;
+                        $loan_tran_ref_id = $_REQUEST['loan_tran_ref_id'];
+                        $transactionData['created_at'] = date("Y-m-d H:i:s");
 
-                    $tblTransRefObj = new TblLoanTransReference();
-                    $tblTransRefObj->setData($transactionData);
-                    $tblTransRefObj->insertData($loan_tran_ref_id);
+                        $tblTransRefObj = new TblLoanTransReference();
+                        $tblTransRefObj->setData($transactionData);
+                        $tblTransRefObj->insertData($loan_tran_ref_id);
+                    }
+                    else {  //echo "else"; die;
+                        $transactionData['modified_at'] = date("Y-m-d H:i:s");
+
+                        $tblTransRefObj = new TblLoanTransReference();
+                        $tblTransRefObj->setData($transactionData);
+                        $loan_tran_ref_id = $tblTransRefObj->insertData();
+                    }
+                    //echo $loan_tran_ref_id; die;
                 }
-                else {  //echo "else"; die;
-                    $transactionData['modified_at'] = date("Y-m-d H:i:s");
-
-                    $tblTransRefObj = new TblLoanTransReference();
-                    $tblTransRefObj->setData($transactionData);
-                    $loan_tran_ref_id = $tblTransRefObj->insertData();
-                }
+                $this->response(array("message" => "Successfully changed status", "message_type" => "success"));
+                //Yii::app()->user->setFlash('success', "Successfully changed status");
+                $this->redirect(array("admin/bankLoanUserListing"));
             }
-                Yii::app()->user->setFlash('success', "Successfully changed status");
-            $this->redirect(array("admin/bankLoanUserListing"));
+            catch(Exception $e)
+            {
+                //$transaction->rollback();
+                $this->response(array("message" => $e->getMessage(), "message_type" => "error"));
+                //Yii::app()->user->setFlash('error', $e->getMessage());
+                $this->redirect(array("admin/bankLoanUserListing"));
+            }
         }
-        catch(Exception $e)
+        else
         {
-            //$transaction->rollback();
-            Yii::app()->user->setFlash('error', $e->getMessage());
-            $this->redirect(array("admin/bankLoanUserListing"));
+            $this->response(array("message" => "Error while change stage,Please try again.", "message_type" => "error"));
         }
+
     }
 
     public function actioneditUserDetails()
     {
         $this->isLogin();
+        //echo "<pre>"; print_r($_REQUEST); die;
         Yii::app()->session['current'] = 'userDetails';
         Yii::app()->session['breadcums'] = 'userDetails';
 
@@ -1193,7 +1206,7 @@ class AdminController extends Controller {
             {
                 $user_ref_id = $_REQUEST['user_ref_id'];
 
-                $userDetails['user_ref_id'] = $user_ref_id;
+                //$userDetails['user_ref_id'] = $user_ref_id;
                 $userDetails['full_name'] = $_REQUEST['fullName'];
                 $userDetails['phone_number'] = $_REQUEST['phoneNumber'];
                 $userDetails['email'] = $_REQUEST['email'];
@@ -1221,6 +1234,16 @@ class AdminController extends Controller {
                 $loanDetails['user_ref_id'] = $_REQUEST['user_ref_id'];
                 $loanDetails['loan_type'] = $_REQUEST['loan_type'];
 
+                if(isset($_REQUEST['loan_sub_type_id']) && $_REQUEST['loan_sub_type_id']!='')
+                {
+                    $loanDetails['loan_sub_type'] = $_REQUEST['loan_sub_type_id'];
+                }
+
+                if(isset($_REQUEST['bankName']) && $_REQUEST['bankName']!='')
+                {
+                    $loanDetails['bank_name'] = $_REQUEST['bankName'];
+                }
+
                 if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
                 {
                     $loanDetails['description'] = $_REQUEST['description'];
@@ -1239,6 +1262,21 @@ class AdminController extends Controller {
                 $loanDetails['created_at'] = date("Y-m-d H:i:s");
                 $loanDetails['user_ref_id'] = $_REQUEST['user_ref_id'];
                 $loanDetails['loan_type'] = $_REQUEST['loan_type'];
+
+                if(isset($_REQUEST['loan_sub_type_id']) && $_REQUEST['loan_sub_type_id']!='')
+                {
+                    $loanDetails['loan_sub_type'] = $_REQUEST['loan_sub_type_id'];
+                }
+
+                if(isset($_REQUEST['bankName']) && $_REQUEST['bankName']!='')
+                {
+                    $loanDetails['bank_name'] = $_REQUEST['bankName'];
+                }
+
+                if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
+                {
+                    $loanDetails['description'] = $_REQUEST['description'];
+                }
 
                 $tblLoanTransObj = new TblLoanTransaction();
                 $tblLoanTransObj->setData($loanDetails);
@@ -1373,46 +1411,54 @@ class AdminController extends Controller {
     public function actionchangeinvStageStatus()
     {
         //echo "<pre>"; print_r($_REQUEST); die;
-        try{
-            if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!="") {
-                $user_ref_id = $_REQUEST['user_ref_id'];
-                //$loan_transaction_id = $_REQUEST['loan_transaction_id'];
-                $inv_stage_id = $_REQUEST['inv_stage_id'];
+        if(isset($_POST['FormSubmit'])) {
 
-                $tblInvTransObj = new TblInvestmentTransaction();
-                $data = $tblInvTransObj->getDetailsByUserRefId($user_ref_id);
-                //echo "<pre>"; print_r($data); die;
-                $transactionData = array();
-                $transactionData['inv_id'] = $data['inv_id'];
-                $transactionData['inv_stage_id'] = $inv_stage_id;
-                $transactionData['stage_transaction_date'] = date("Y-m-d H:i:s");
-                $transactionData['status'] = 1;
+            try {
+                if (isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id'] != "") {
+                    $user_ref_id = $_REQUEST['user_ref_id'];
+                    $inv_stage_id = $_REQUEST['inv_stage_id'];
 
-                if(isset($_REQUEST['inv_tran_ref_id']) && $_REQUEST['inv_tran_ref_id']!='')
-                {   //echo "if"; die;
-                    $inv_tran_ref_id = $_REQUEST['inv_tran_ref_id'];
-                    $transactionData['created_at'] = date("Y-m-d H:i:s");
+                    $tblInvTransObj = new TblInvestmentTransaction();
+                    $data = $tblInvTransObj->getDetailsByUserRefId($user_ref_id);
+                    //echo "<pre>"; print_r($data); die;
+                    $transactionData = array();
+                    $transactionData['inv_id'] = $data['inv_transaction_id'];
+                    $transactionData['inv_stage_id'] = $inv_stage_id;
+                    $transactionData['stage_transaction_date'] = date("Y-m-d H:i:s");
+                    $transactionData['status'] = 1;
 
-                    $tblTransRefObj = new TblInvTransReference();
-                    $tblTransRefObj->setData($transactionData);
-                    $tblTransRefObj->insertData($inv_tran_ref_id);
+                    if (isset($_REQUEST['inv_tran_ref_id']) && $_REQUEST['inv_tran_ref_id'] != '') {   //echo "if"; die;
+
+                        $inv_tran_ref_id = $_REQUEST['inv_tran_ref_id'];
+                        $transactionData['modified_at'] = date("Y-m-d H:i:s");
+
+                        $tblTransRefObj = new TblInvTransReference();
+                        $tblTransRefObj->setData($transactionData);
+                        $tblTransRefObj->insertData($inv_tran_ref_id);
+                    } else {  //echo "else"; die;
+                        $transactionData['created_at'] = date("Y-m-d H:i:s");
+
+                        $tblTransRefObj = new TblInvTransReference();
+                        $tblTransRefObj->setData($transactionData);
+                        $inv_tran_ref_id = $tblTransRefObj->insertData();
+                    }
                 }
-                else {  //echo "else"; die;
-                    $transactionData['modified_at'] = date("Y-m-d H:i:s");
 
-                    $tblTransRefObj = new TblInvTransReference();
-                    $tblTransRefObj->setData($transactionData);
-                    $inv_tran_ref_id = $tblTransRefObj->insertData();
-                }
+                $this->response(array("message" => "Successfully changed status", "message_type" => "success"));
+                //Yii::app()->user->setFlash('success', "Successfully changed status");
+                $this->redirect(array("admin/invAdvisoryUserListing"));
+
+            } catch (Exception $e) {
+
+                //$transaction->rollback();
+                $this->response(array("message" => $e->getMessage(), "message_type" => "error"));
+                //Yii::app()->user->setFlash('error', $e->getMessage());
+                $this->redirect(array("admin/invAdvisoryUserListing"));
             }
-            Yii::app()->user->setFlash('success', "Successfully changed status");
-            $this->redirect(array("admin/invAdvisoryUserListing"));
         }
-        catch(Exception $e)
+        else
         {
-            //$transaction->rollback();
-            Yii::app()->user->setFlash('error', $e->getMessage());
-            $this->redirect(array("admin/invAdvisoryUserListing"));
+            $this->response(array("message" => "Error while change stage,Please try again.", "message_type" => "error"));
         }
     }
 
@@ -1434,7 +1480,7 @@ class AdminController extends Controller {
 
             $tblInvTransactionObj = new TblInvestmentTransaction();
             $userData['inv_data'] = $tblInvTransactionObj->getDetailsByUserRefId($user_ref_id);
-
+            //echo "<pre>"; print_r($userData); die;
             if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
                 $this->renderPartial("editInvAdvisoryUserDetails", array('userData' => $userData));
@@ -1462,7 +1508,12 @@ class AdminController extends Controller {
                 $userDetails['user_ref_id'] = $user_ref_id;
                 $userDetails['full_name'] = $_REQUEST['fullName'];
                 $userDetails['phone_number'] = $_REQUEST['phoneNumber'];
-                $userDetails['email'] = $_REQUEST['email'];
+
+                if(isset($_REQUEST['email']) && $_REQUEST['email']!='')
+                {
+                    $userDetails['email'] = $_REQUEST['email'];
+                }
+
                 $userDetails['annual_income'] = $_REQUEST['annualIncome'];
                 $userDetails['street'] = $_REQUEST['street'];
                 $userDetails['city'] = $_REQUEST['city'];
@@ -1513,7 +1564,7 @@ class AdminController extends Controller {
                 $tblInvTransObj->setData($loanDetails);
                 $inv_id = $tblInvTransObj->insertData();
             }
-
+            //echo $inv_id; die;
             if(isset($_REQUEST['inv_tran_ref_id']) && $_REQUEST['inv_tran_ref_id']!='')
             {
                 $inv_tran_ref_id = $_REQUEST['inv_tran_ref_id'];
@@ -1528,15 +1579,15 @@ class AdminController extends Controller {
                 $tblInvTransRefObj->insertData($inv_tran_ref_id);
             }
             else
-            {
+            {   //echo "else"; die;
                 $invRefDetails['inv_id'] = $inv_id;
                 $invRefDetails['inv_stage_id'] = $_REQUEST['inv_stage'];
                 $invRefDetails['stage_transaction_date'] = date("Y-m-d H:i:s");
 
-                $propRefDetails['created_at'] = date("Y-m-d H:i:s");
+                $invRefDetails['created_at'] = date("Y-m-d H:i:s");
 
                 $tblInvTransRefObj = new TblInvTransReference();
-                $tblInvTransRefObj->setData($propRefDetails);
+                $tblInvTransRefObj->setData($invRefDetails);
                 $inv_tran_ref_id = $tblInvTransRefObj->insertData();
             }
 
@@ -1640,41 +1691,42 @@ class AdminController extends Controller {
     }
 
     public function actionchangeRealEstateStageStatus()
-    {   //echo "<pre>"; print_r($_REQUEST); die;
-        if(!empty($_REQUEST))
+    {
+        if(isset($_POST['FormSubmit']))
         {
             try{
                 if(isset($_REQUEST['user_ref_id']) && $_REQUEST['user_ref_id']!="") {
+
                     $user_ref_id = $_REQUEST['user_ref_id'];
-                    //$loan_transaction_id = $_REQUEST['loan_transaction_id'];
-                    $prop_stage_id = $_REQUEST['prop_stage_id'];
+                    $prop_stage_id = $_POST['prop_stage_id'];
 
                     $tblpropTransObj = new TblPropertyTransaction();
                     $data = $tblpropTransObj->getDetailsByUserRefId($user_ref_id);
-                    //echo "<pre>"; print_r($data); die;
+
                     $transactionData = array();
-                    $transactionData['property_id'] = $data['property_id'];
+                    $transactionData['property_id'] = $data['property_transaction_id'];
                     $transactionData['property_stage_id'] = $prop_stage_id;
                     $transactionData['prop_stage_transaction_date'] = date("Y-m-d H:i:s");
                     //$transactionData['status'] = 1;
 
                     if(isset($_REQUEST['prop_tran_ref_id']) && $_REQUEST['prop_tran_ref_id']!='')
-                    {   //echo "if"; die;
+                    {
                         $prop_tran_ref_id = $_REQUEST['prop_tran_ref_id'];
-                        $transactionData['created_at'] = date("Y-m-d H:i:s");
-
+                        $transactionData['modified_at'] = date("Y-m-d H:i:s");
+                        //echo "<pre>"; print_r($transactionData); die;
                         $tblTransRefObj = new TblPropTransReference();
                         $tblTransRefObj->setData($transactionData);
                         $tblTransRefObj->insertData($prop_tran_ref_id);
                     }
-                    else {  //echo "else"; die;
-                        $transactionData['modified_at'] = date("Y-m-d H:i:s");
+                    else {
+                        $transactionData['created_at'] = date("Y-m-d H:i:s");
 
                         $tblTransRefObj = new TblPropTransReference();
                         $tblTransRefObj->setData($transactionData);
                         $prop_tran_ref_id = $tblTransRefObj->insertData();
                     }
                 }
+
                 $this->response(array("message" => "Successfully changed status", "message_type" => "success"));
                 //Yii::app()->user->setFlash('success', "Successfully changed status");
                 $this->redirect(array("admin/realEstateUserListing"));
@@ -1687,11 +1739,15 @@ class AdminController extends Controller {
                 $this->redirect(array("admin/realEstateUserListing"));
             }
         }
+        else
+        {
+            $this->response(array("message" => "Error while change stage,Please try again.", "message_type" => "error"));
+        }
 
     }
 
     public function actioneditRealEstateUserDetails()
-    {
+    {   //echo "<pre>"; print_r($_REQUEST); die;
         $this->isLogin();
         Yii::app()->session['current'] = 'userDetails';
         Yii::app()->session['breadcums'] = 'userDetails';
@@ -1708,6 +1764,7 @@ class AdminController extends Controller {
 
             $tblPropTransactionObj = new TblPropertyTransaction();
             $userData['prop_data'] = $tblPropTransactionObj->getDetailsByUserRefId($user_ref_id);
+            //echo "<pre>"; print_r($userData['prop_data']); die;
 
             if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
@@ -1735,7 +1792,12 @@ class AdminController extends Controller {
                 $userDetails['user_ref_id'] = $user_ref_id;
                 $userDetails['full_name'] = $_REQUEST['fullName'];
                 $userDetails['phone_number'] = $_REQUEST['phoneNumber'];
-                $userDetails['email'] = $_REQUEST['email'];
+
+                if(isset($_REQUEST['email']) && $_REQUEST['email']!='')
+                {
+                    $userDetails['email'] = $_REQUEST['email'];
+                }
+
                 $userDetails['annual_income'] = $_REQUEST['annualIncome'];
                 $userDetails['street'] = $_REQUEST['street'];
                 $userDetails['city'] = $_REQUEST['city'];
@@ -1761,14 +1823,20 @@ class AdminController extends Controller {
                 $propDetails['property_size'] = $_REQUEST['propSize'];
                 $propDetails['property_size_type'] = $_REQUEST['prop_size_type'];
                 $propDetails['property_type'] = $_REQUEST['prop_type'];
-                $propDetails['user_ref_id'] = $_REQUEST['user_ref_id'];
+                //$propDetails['user_ref_id'] = $_REQUEST['user_ref_id'];
                 $propDetails['property_transaction_type'] = $_REQUEST['loan_type'];
                 $propDetails['status'] = 1;
+
+                if(isset($_REQUEST['prop_sub_type_id']) && $_REQUEST['prop_sub_type_id']!='')
+                {
+                    $propDetails['property_sub_type'] = $_REQUEST['prop_sub_type_id'];
+                }
 
                 if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
                 {
                     $propDetails['description'] = $_REQUEST['description'];
                 }
+
                 $propDetails['modified_at'] = date("Y-m-d H:i:s");
 
                 $tblPropertyTransObj = new TblPropertyTransaction();
@@ -1783,6 +1851,11 @@ class AdminController extends Controller {
                 $propDetails['user_ref_id'] = $_REQUEST['user_ref_id'];
                 $propDetails['property_transaction_type'] = $_REQUEST['loan_type'];
                 $propDetails['status'] = 1;
+
+                if(isset($_REQUEST['prop_sub_type_id']) && $_REQUEST['prop_sub_type_id']!='')
+                {
+                    $propDetails['property_sub_type'] = $_REQUEST['prop_sub_type_id'];
+                }
 
                 if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
                 {
@@ -1836,6 +1909,470 @@ class AdminController extends Controller {
 
     /*Real estate or property applied user listing, edit, change stage status code end here*/
 
+    public function actiongetBankLoanSubType()
+    {   //echo "<pre>"; print_r($_REQUEST['loan_type']); die;
+        $this->isLogin();
+        if (isset($_REQUEST['loan_type']) && $_REQUEST['loan_type'] != '') {
+            $result = "";
+            //if ($_REQUEST['loan_type'] == 3) {
+                $TblLoanTypeMasterObj = new TblLoanTypeMaster();
+                $get_loan_sub_type_list = $TblLoanTypeMasterObj->getBankSubLoanTypeListById($_REQUEST['loan_type']);
+
+                if (!empty($get_loan_sub_type_list)) {
+                    foreach ($get_loan_sub_type_list as $row_sub_list) {
+                        $result .= '<option value="' . $row_sub_list["loan_type_id"] . '">' . $row_sub_list["description"] . '</option>';
+                    }
+                }
+            echo $result;
+        }
+        else{
+            echo "false";
+        }
+    }
+
+    public function actiongetRealEstateLoanSubType()
+    {   //echo "<pre>"; print_r($_REQUEST['loan_type']); die;
+        $this->isLogin();
+        if (isset($_REQUEST['loan_type']) && $_REQUEST['loan_type'] != '') {
+            $result = "";
+            //if ($_REQUEST['loan_type'] == 3) {
+            $TblPropertyTypeMasterObj = new TblPropertyTypeMaster();
+            $get_loan_sub_type_list = $TblPropertyTypeMasterObj->getPropertySubLoanTypeListById($_REQUEST['loan_type']);
+            //echo "<pre>"; print_r($get_loan_sub_type_list); die;
+            if (!empty($get_loan_sub_type_list)) {
+                foreach ($get_loan_sub_type_list as $row_sub_list) {
+                    $result .= '<option value="' . $row_sub_list["property_type_id"] . '">' . $row_sub_list["description"] . '</option>';
+                }
+            }
+            echo $result;
+        }
+        else{
+            echo "false";
+        }
+    }
+
+
+    /* export report functionality*/
+
+    public function actionsendExportOfBankLoanUser()
+    {
+        error_reporting(E_ALL);
+        $from_date = $_REQUEST['fromExportDate'];
+        $to_date = $_REQUEST['toExportDate'];
+
+        $this->actionbankLoanAppliedUserOfSelectedMonth($from_date, $to_date);
+
+        $file = "assets/reports/monthlyBankLoanReport/monthlyBankLoanAppliedUsers_" . date("M-Y") . ".xlsx";
+
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="'.basename($file).'"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        flush(); // Flush system output buffer
+        readfile($file);
+        $this->redirect(array("admin/bankLoanUserListing"));
+
+
+    }
+
+    function actionbankLoanAppliedUserOfSelectedMonth($from_date = NULL, $to_date = NULL) {
+
+        $body = '<table cellpadding="5" cellspacing="5">
+				<tr><td><b>Bank Loan Applied Users</b></td>
+				</tr>
+		';
+
+        $resolvedTasksData = '<tr><td><table align="center" width="100%"><tr>
+                               <td colspan="2" style="line-height:20px;padding:10px 0 10px 10px;font-weight:bold;color:#666;font-size:14px;vertical-align:top;">
+                                <table border="1" bordercolor="#CED7E0" width="100%" cellpadding="1" cellspacing="1" style="text-align:center">
+                                <tr style="font-size:12px">
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                </tr>
+								<tr style="font-size:18px;background-color:#CED7E0;">
+									<td style="text-align:center"><b>User ID<b></td>
+									<td style="text-align:center">User Name</td>
+									<td style="text-align:center">Reference By</td>
+									<td style="text-align:center">Phone Number</td>
+									<td style="text-align:center">Annual Income</td>
+									<td style="text-align:center">Loan Amount</td>
+									<td style="text-align:center">Loan Type</td>
+									<td style="text-align:center">Loan Sub Type</td>
+									<td style="text-align:center">Loan Stage</td>
+									<td style="text-align:center">Created Date</td>
+                                </tr>';
+
+        $tblUserRefObj = new TblUserRefrence();
+        $bank_loan_user_data = $tblUserRefObj->getBankLoanUsersForReport($from_date, $to_date);
+        //echo "<pre>"; print_r($bank_loan_user_data); die;
+
+        if (!empty($bank_loan_user_data)) {
+            foreach ($bank_loan_user_data as $val) {
+                $resolvedTasksData .= '<tr style="font-size:14px">
+                                        <td style="text-align:center">' . $val['user_ref_id'] . '</td>
+                                        <td style="text-align:center">' . $val['full_name'] . '</td>
+                                        <td style="text-align:center">' . $val['referenceBy'] . '</td>
+                                        <td style="text-align:center">' . $val['phone_number'] . '</td>
+                                        <td style="text-align:center">' . $val['annual_income'] . '</td>
+                                        <td style="text-align:center">' . $val['loan_amount'] . '</td>
+                                        <td style="text-align:center">' . $val['loan_type_name'] . '</td>
+                                        <td style="text-align:center">' . $val['loan_sub_type_name'] . '</td>
+                                        
+                                        <td style="text-align:center">' . $val['loan_stage_name']  . '</td>
+                                        <td style="text-align:center">' . date("Y-m-d",strtotime($val['createdDate'])) . '</td>      
+                                    </tr>';
+                }
+            }
+
+
+            $resolvedTasksData .= '</table></td></tr></table></td></tr>';
+
+        $body .= $resolvedTasksData;
+        $body .= "</table>";
+        //echo $body;die;
+
+        if (!file_exists('assets/reports/monthlyBankLoanReport')) {
+            mkdir('assets/reports/monthlyBankLoanReport', 0777, true);
+        }
+        $file = "assets/reports/monthlyBankLoanReport/monthlyBankLoanAppliedUsers_" . date("M-Y") . ".xlsx";
+
+        // save $table inside temporary file that will be deleted later
+        $tmpfile = tempnam(sys_get_temp_dir(), 'html');
+        file_put_contents($tmpfile, $body);
+
+        //Code added by priyank on 22-sep-16
+        $styleArray = array(
+            'font' => array(
+                'bold' => true,
+                'color' => array('rgb' => '666666'),
+                'size' => 12,
+                'name' => 'Verdana'
+            ),
+            'alignment' => array('horizontal' => \PHPExcel_Style_Alignment::HORIZONTAL_CENTER,),
+        );
+        //Code end
+        // insert $table into $objPHPExcel's Active Sheet through $excelHTMLReader
+        error_reporting(0);
+        $objPHPExcel = new PHPExcel();
+
+        $excelHTMLReader = PHPExcel_IOFactory::createReader('HTML');
+        $excelHTMLReader->loadIntoExisting($tmpfile, $objPHPExcel);
+        $objPHPExcel->getActiveSheet()->setTitle('Monthly Employee Effrots'); // Change sheet's title if you want
+        //Code added by priyank on 22-sep-16
+        for ($col = 'A'; $col !== 'Q'; $col++) {
+            $objPHPExcel->getActiveSheet()
+                ->getColumnDimension($col)
+                ->setAutoSize(true);
+            $lastrow = $objPHPExcel->getActiveSheet()->getHighestRow();
+
+            $objPHPExcel->getActiveSheet()
+                ->getStyle($col . '1:' . $col . $lastrow)
+                ->getAlignment()
+                ->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+            $objPHPExcel->getActiveSheet()->getStyle($col . "1")->applyFromArray($styleArray);
+        }
+        //Code end
+
+        unlink($tmpfile); // delete temporary file because it isn't needed anymore
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter->save($file);
+
+        return $file;
+    }
+
+
+    public function actionsendExportOfInvestmentLoanUser()
+    {
+        error_reporting(E_ALL);
+        $from_date = $_REQUEST['fromExportDate'];
+        $to_date = $_REQUEST['toExportDate'];
+
+        $this->actionInvestmentLoanAppliedUserOfSelectedMonth($from_date, $to_date);
+
+        $file = "assets/reports/monthlyInvestmentLoanReport/monthlyInvestmentLoanAppliedUsers_" . date("M-Y") . ".xlsx";
+
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="'.basename($file).'"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        flush(); // Flush system output buffer
+        readfile($file);
+        $this->redirect(array("admin/invAdvisoryUserListing"));
+    }
+
+    function actionInvestmentLoanAppliedUserOfSelectedMonth($from_date = NULL, $to_date = NULL) {
+
+        $body = '<table cellpadding="5" cellspacing="5">
+				<tr><td><b>Investment Advisory Loan Applied Users</b></td>
+				</tr>
+		';
+
+        $resolvedTasksData = '<tr><td><table align="center" width="100%"><tr>
+                               <td colspan="2" style="line-height:20px;padding:10px 0 10px 10px;font-weight:bold;color:#666;font-size:14px;vertical-align:top;">
+                                <table border="1" bordercolor="#CED7E0" width="100%" cellpadding="1" cellspacing="1" style="text-align:center">
+                                <tr style="font-size:12px">
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                </tr>
+								<tr style="font-size:18px;background-color:#CED7E0;">
+									<td style="text-align:center"><b>User Reference ID<b></td>
+									<td style="text-align:center">User Name</td>
+									<td style="text-align:center">Reference By</td>
+									<td style="text-align:center">Phone Number</td>
+									<td style="text-align:center">Annual Income</td>
+									<td style="text-align:center">Investment Amount</td>
+									<td style="text-align:center">Investment Type</td>
+									<td style="text-align:center">Investment Advisory Stage</td>
+									<td style="text-align:center">Created Date</td>
+                                </tr>';
+
+        $tblUserRefObj = new TblUserRefrence();
+        $inv_loan_user_data = $tblUserRefObj->getInvLoanUsersForReport($from_date, $to_date);
+        //echo "<pre>"; print_r($inv_loan_user_data); die;
+
+        if (!empty($inv_loan_user_data)) {
+            foreach ($inv_loan_user_data as $val) {
+                $resolvedTasksData .= '<tr style="font-size:14px">
+                                        <td style="text-align:center">' . $val['user_ref_id'] . '</td>
+                                        <td style="text-align:center">' . $val['full_name'] . '</td>
+                                        <td style="text-align:center">' . $val['referenceBy'] . '</td>
+                                        <td style="text-align:center">' . $val['phone_number'] . '</td>
+                                        <td style="text-align:center">' . $val['annual_income'] . '</td>
+                                        <td style="text-align:center">' . $val['inv_amount'] . '</td>
+                                        <td style="text-align:center">' . $val['inv_type_name'] . '</td>
+                                        <td style="text-align:center">' . $val['inv_stage_name'] . '</td>
+                                        <td style="text-align:center">' . date("Y-m-d",strtotime($val['createdDate'])) . '</td>      
+                                    </tr>';
+            }
+        }
+
+
+        $resolvedTasksData .= '</table></td></tr></table></td></tr>';
+
+        $body .= $resolvedTasksData;
+        $body .= "</table>";
+        //echo $body;die;
+
+        if (!file_exists('assets/reports/monthlyInvestmentLoanReport')) {
+            mkdir('assets/reports/monthlyInvestmentLoanReport', 0777, true);
+        }
+        $file = "assets/reports/monthlyInvestmentLoanReport/monthlyInvestmentLoanAppliedUsers_" . date("M-Y") . ".xlsx";
+
+        // save $table inside temporary file that will be deleted later
+        $tmpfile = tempnam(sys_get_temp_dir(), 'html');
+        file_put_contents($tmpfile, $body);
+
+        //Code added by priyank on 22-sep-16
+        $styleArray = array(
+            'font' => array(
+                'bold' => true,
+                'color' => array('rgb' => '666666'),
+                'size' => 12,
+                'name' => 'Verdana'
+            ),
+            'alignment' => array('horizontal' => \PHPExcel_Style_Alignment::HORIZONTAL_CENTER,),
+        );
+        //Code end
+        // insert $table into $objPHPExcel's Active Sheet through $excelHTMLReader
+        error_reporting(0);
+        $objPHPExcel = new PHPExcel();
+
+        $excelHTMLReader = PHPExcel_IOFactory::createReader('HTML');
+        $excelHTMLReader->loadIntoExisting($tmpfile, $objPHPExcel);
+        $objPHPExcel->getActiveSheet()->setTitle('Monthly Employee Effrots'); // Change sheet's title if you want
+        //Code added by priyank on 22-sep-16
+        for ($col = 'A'; $col !== 'Q'; $col++) {
+            $objPHPExcel->getActiveSheet()
+                ->getColumnDimension($col)
+                ->setAutoSize(true);
+            $lastrow = $objPHPExcel->getActiveSheet()->getHighestRow();
+
+            $objPHPExcel->getActiveSheet()
+                ->getStyle($col . '1:' . $col . $lastrow)
+                ->getAlignment()
+                ->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+            $objPHPExcel->getActiveSheet()->getStyle($col . "1")->applyFromArray($styleArray);
+        }
+        //Code end
+
+        unlink($tmpfile); // delete temporary file because it isn't needed anymore
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter->save($file);
+
+        return $file;
+    }
+
+
+    public function actionsendExportOfRealEstateLoanUser()
+    {
+        error_reporting(E_ALL);
+        $from_date = $_REQUEST['fromExportDate'];
+        $to_date = $_REQUEST['toExportDate'];
+
+        $this->actionRealEstateLoanAppliedUserOfSelectedMonth($from_date, $to_date);
+
+        $file = "assets/reports/monthlyRealEstateLoanReport/monthlyRealEstateLoanAppliedUsers_" . date("M-Y") . ".xlsx";
+
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="'.basename($file).'"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        flush(); // Flush system output buffer
+        readfile($file);
+        $this->redirect(array("admin/realEstateUserListing"));
+    }
+
+    function actionRealEstateLoanAppliedUserOfSelectedMonth($from_date = NULL, $to_date = NULL) {
+
+        $body = '<table cellpadding="5" cellspacing="5">
+				<tr><td><b>Real Estate Loan Applied Users</b></td>
+				</tr>
+		';
+
+        $resolvedTasksData = '<tr><td><table align="center" width="100%"><tr>
+                               <td colspan="2" style="line-height:20px;padding:10px 0 10px 10px;font-weight:bold;color:#666;font-size:14px;vertical-align:top;">
+                                <table border="1" bordercolor="#CED7E0" width="100%" cellpadding="1" cellspacing="1" style="text-align:center">
+                                <tr style="font-size:12px">
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
+                                </tr>
+								<tr style="font-size:18px;background-color:#CED7E0;">
+									<td style="text-align:center"><b>User Reference ID<b></td>
+									<td style="text-align:center">User Name</td>
+									<td style="text-align:center">Reference By</td>
+									<td style="text-align:center">Phone Number</td>
+									<td style="text-align:center">Annual Income</td>
+									<td style="text-align:center">Property Type</td>
+									<td style="text-align:center">Property Size</td>
+									<td style="text-align:center">Property Size Unit</td>
+									<td style="text-align:center">Real Estate Loan Type</td>
+									<td style="text-align:center">Stage</td>
+									<td style="text-align:center">Created Date</td>
+                                </tr>';
+
+        $tblUserRefObj = new TblUserRefrence();
+        $prop_loan_user_data = $tblUserRefObj->getRealEstateLoanUsersForReport($from_date, $to_date);
+        //echo "<pre>"; print_r($prop_loan_user_data); die;
+
+        if (!empty($prop_loan_user_data)) {
+            foreach ($prop_loan_user_data as $val) {
+
+                if(isset($val['property_type']) && $val['property_type']=1)
+                {
+                    $property_type = "New";
+                }
+                else
+                {
+                    $property_type = "Old";
+                }
+
+                $resolvedTasksData .= '<tr style="font-size:14px">
+                                        <td style="text-align:center">' . $val['user_ref_id'] . '</td>
+                                        <td style="text-align:center">' . $val['full_name'] . '</td>
+                                        <td style="text-align:center">' . $val['referenceBy'] . '</td>
+                                        <td style="text-align:center">' . $val['phone_number'] . '</td>
+                                        <td style="text-align:center">' . $val['annual_income'] . '</td>
+                                        <td style="text-align:center">' . $property_type . '</td>
+                                        <td style="text-align:center">' . $val['property_size'] . '</td>
+                                        <td style="text-align:center">' . $property_type . '</td>
+                                        <td style="text-align:center">' . $val['size_type_name'] . '</td>
+                                        <td style="text-align:center">' . $val['prop_stage_name'] . '</td>
+                                        <td style="text-align:center">' . date("Y-m-d",strtotime($val['createdDate'])) . '</td>      
+                                    </tr>';
+            }
+        }
+
+
+        $resolvedTasksData .= '</table></td></tr></table></td></tr>';
+
+        $body .= $resolvedTasksData;
+        $body .= "</table>";
+        //echo $body;die;
+
+        if (!file_exists('assets/reports/monthlyRealEstateLoanReport')) {
+            mkdir('assets/reports/monthlyRealEstateLoanReport', 0777, true);
+        }
+        $file = "assets/reports/monthlyRealEstateLoanReport/monthlyRealEstateLoanAppliedUsers_" . date("M-Y") . ".xlsx";
+
+        // save $table inside temporary file that will be deleted later
+        $tmpfile = tempnam(sys_get_temp_dir(), 'html');
+        file_put_contents($tmpfile, $body);
+
+        //Code added by priyank on 22-sep-16
+        $styleArray = array(
+            'font' => array(
+                'bold' => true,
+                'color' => array('rgb' => '666666'),
+                'size' => 12,
+                'name' => 'Verdana'
+            ),
+            'alignment' => array('horizontal' => \PHPExcel_Style_Alignment::HORIZONTAL_CENTER,),
+        );
+        //Code end
+        // insert $table into $objPHPExcel's Active Sheet through $excelHTMLReader
+        error_reporting(0);
+        $objPHPExcel = new PHPExcel();
+
+        $excelHTMLReader = PHPExcel_IOFactory::createReader('HTML');
+        $excelHTMLReader->loadIntoExisting($tmpfile, $objPHPExcel);
+        $objPHPExcel->getActiveSheet()->setTitle('Monthly Employee Effrots'); // Change sheet's title if you want
+        //Code added by priyank on 22-sep-16
+        for ($col = 'A'; $col !== 'Q'; $col++) {
+            $objPHPExcel->getActiveSheet()
+                ->getColumnDimension($col)
+                ->setAutoSize(true);
+            $lastrow = $objPHPExcel->getActiveSheet()->getHighestRow();
+
+            $objPHPExcel->getActiveSheet()
+                ->getStyle($col . '1:' . $col . $lastrow)
+                ->getAlignment()
+                ->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+            $objPHPExcel->getActiveSheet()->getStyle($col . "1")->applyFromArray($styleArray);
+        }
+        //Code end
+
+        unlink($tmpfile); // delete temporary file because it isn't needed anymore
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter->save($file);
+
+        return $file;
+    }
 }
 
 

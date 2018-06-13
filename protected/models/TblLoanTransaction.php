@@ -158,10 +158,10 @@ class TblLoanTransaction extends CActiveRecord
 
     public function getDetailsByUserRefId($user_ref_id=NULL)
     {
-        $sql = "SELECT ltrans.*,ltr.*,lsm.loan_stage_name FROM tbl_loan_transaction ltrans
-                INNER JOIN `tbl_loan_trans_reference` ltr
+        $sql = "SELECT ltrans.*,ltr.*,lsm.loan_stage_name,ltrans.loan_id as loan_transaction_id FROM tbl_loan_transaction ltrans 
+                LEFT JOIN `tbl_loan_trans_reference` ltr
                 ON ltrans.`loan_id` = ltr.`loan_id`
-                INNER JOIN `tbl_loan_stage_master` lsm
+                LEFT JOIN `tbl_loan_stage_master` lsm
                 ON lsm.`loan_stage_id` = ltr.`loan_stage_id` WHERE ltrans.user_ref_id = ".$user_ref_id;
         //$sql = "select * from tbl_loan_transaction where user_ref_id = ".$user_ref_id;
         $result	=Yii::app()->db->createCommand($sql)->queryRow();

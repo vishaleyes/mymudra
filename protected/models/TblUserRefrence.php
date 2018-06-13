@@ -226,8 +226,7 @@ class TblUserRefrence extends CActiveRecord
         if(isset($keyword) && $keyword != NULL )
         {
 
-                $search .= " WHERE (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
-            or loan_amount like '%".$keyword."%' or ltm.description like '%".$keyword."%' or lsm.loan_stage_name like '%".$keyword."%')";
+                $search .= " WHERE (ur.full_name like '%".$keyword."%' or ur.phone_number like '%".$keyword."%' or ur.annual_income like '%".$keyword."%' or loan_amount like '%".$keyword."%' or ltm.description like '%".$keyword."%' or lsm.loan_stage_name like '%".$keyword."%' or ltm1.description like '%".$keyword."%' or u.full_name like '%".$keyword."%')";
             /*}
             else
             {   //echo "else"; die;
@@ -238,25 +237,58 @@ class TblUserRefrence extends CActiveRecord
         }
 
 
-        $sql = "SELECT ur.*, ltrans.*,ltr.*,lsm.loan_stage_name,ltrans.loan_id As loan_transaction_id,
-            ltm.description AS loan_type_name,ur.`created_at` AS createdDate
+        /*$sql = "SELECT ur.*, ltrans.*,ltr.*,lsm.loan_stage_name,ltrans.loan_id As loan_transaction_id,
+            ltm.description AS loan_type_name,ur.`created_at` AS createdDate, ltm1.description AS loan_sub_type_name
             FROM `tbl_user_refrence` ur INNER JOIN `tbl_loan_transaction` ltrans
             ON ur.`user_ref_id` = ltrans.`user_ref_id`
             LEFT JOIN `tbl_loan_type_master` ltm
             ON ltm.loan_type_id = ltrans.`loan_type`
+            LEFT JOIN `tbl_loan_type_master` ltm1
+            ON ltm1.loan_type_id = ltrans.`loan_sub_type`
             LEFT JOIN `tbl_loan_trans_reference` ltr
             ON ltrans.`loan_id` = ltr.`loan_id`
             LEFT JOIN `tbl_loan_stage_master` lsm
-            ON lsm.`loan_stage_id` = ltr.`loan_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
+            ON lsm.`loan_stage_id` = ltr.`loan_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";*/
+
+        $sql = "SELECT ur.*, ltrans.*,ltr.*,lsm.loan_stage_name,ltrans.loan_id AS loan_transaction_id,
+            ltm.description AS loan_type_name,ur.`created_at` AS createdDate, ltm1.description AS loan_sub_type_name,
+            u.full_name AS referenceBy
+            FROM `tbl_user_refrence` ur INNER JOIN `tbl_loan_transaction` ltrans
+            ON ur.`user_ref_id` = ltrans.`user_ref_id`
+            LEFT JOIN `tbl_loan_type_master` ltm
+            ON ltm.loan_type_id = ltrans.`loan_type`
+            LEFT JOIN `tbl_loan_type_master` ltm1
+            ON ltm1.loan_type_id = ltrans.`loan_sub_type`
+            LEFT JOIN `tbl_loan_trans_reference` ltr
+            ON ltrans.`loan_id` = ltr.`loan_id`
+            LEFT JOIN `tbl_loan_stage_master` lsm
+            ON lsm.`loan_stage_id` = ltr.`loan_stage_id`
+            INNER JOIN `tbl_user` u
+            ON u.user_id = ur.user_id ".$search." order by ".$sortBy." ".$sortType." ";
         //echo $sql; die;
+        /*$sql_count = "SELECT COUNT(*) FROM `tbl_user_refrence` ur INNER JOIN `tbl_loan_transaction` ltrans
+            ON ur.`user_ref_id` = ltrans.`user_ref_id`
+            LEFT JOIN `tbl_loan_type_master` ltm
+            ON ltm.loan_type_id = ltrans.`loan_type`
+            LEFT JOIN `tbl_loan_type_master` ltm1
+            ON ltm1.loan_type_id = ltrans.`loan_sub_type`
+            LEFT JOIN `tbl_loan_trans_reference` ltr
+            ON ltrans.`loan_id` = ltr.`loan_id`
+            LEFT JOIN `tbl_loan_stage_master` lsm
+            ON lsm.`loan_stage_id` = ltr.`loan_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";*/
+
         $sql_count = "SELECT COUNT(*) FROM `tbl_user_refrence` ur INNER JOIN `tbl_loan_transaction` ltrans
             ON ur.`user_ref_id` = ltrans.`user_ref_id`
             LEFT JOIN `tbl_loan_type_master` ltm
             ON ltm.loan_type_id = ltrans.`loan_type`
+            LEFT JOIN `tbl_loan_type_master` ltm1
+            ON ltm1.loan_type_id = ltrans.`loan_sub_type`
             LEFT JOIN `tbl_loan_trans_reference` ltr
             ON ltrans.`loan_id` = ltr.`loan_id`
             LEFT JOIN `tbl_loan_stage_master` lsm
-            ON lsm.`loan_stage_id` = ltr.`loan_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
+            ON lsm.`loan_stage_id` = ltr.`loan_stage_id`
+            INNER JOIN `tbl_user` u
+            ON u.user_id = ur.user_id  ".$search." order by ".$sortBy." ".$sortType." ";
 
         //echo $sql_count; die;
 
@@ -292,12 +324,12 @@ class TblUserRefrence extends CActiveRecord
 
         if(isset($keyword) && $keyword != NULL )
         {
-            $search .= " WHERE (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
-            or inv_amount like '%".$keyword."%' or itm.description like '%".$keyword."%' or ism.inv_stage_name like '%".$keyword."%')";
+            $search .= " WHERE (ur.full_name like '%".$keyword."%' or ur.phone_number like '%".$keyword."%' or ur.annual_income like '%".$keyword."%'
+            or inv_amount like '%".$keyword."%' or itm.description like '%".$keyword."%' or ism.inv_stage_name like '%".$keyword."%' or u.full_name like '%".$keyword."%')";
         }
 
         $sql = "SELECT ur.*, iatrans.*,itr.*,ism.inv_stage_name,iatrans.inv_id AS inv_transaction_id,
-            itm.description AS inv_type_name,ur.`created_at` AS createdDate
+            itm.description AS inv_type_name,ur.`created_at` AS createdDate, u.full_name AS referenceBy
             FROM `tbl_user_refrence` ur 
             INNER JOIN `tbl_investment_transaction` iatrans
             ON ur.`user_ref_id` = iatrans.`user_ref_id`
@@ -306,7 +338,9 @@ class TblUserRefrence extends CActiveRecord
             LEFT JOIN `tbl_inv_trans_reference` itr
             ON iatrans.`inv_id` = itr.`inv_id`
             LEFT JOIN `tbl_inv_stage_master` ism
-            ON ism.`inv_stage_id` = itr.`inv_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
+            ON ism.`inv_stage_id` = itr.`inv_stage_id` 
+            INNER JOIN `tbl_user` u
+            ON u.user_id = ur.user_id  ".$search." order by ".$sortBy." ".$sortType." ";
         //echo $sql; die;
         $sql_count = "SELECT COUNT(*) FROM `tbl_user_refrence` ur 
             INNER JOIN `tbl_investment_transaction` iatrans
@@ -316,7 +350,9 @@ class TblUserRefrence extends CActiveRecord
             LEFT JOIN `tbl_inv_trans_reference` itr
             ON iatrans.`inv_id` = itr.`inv_id`
             LEFT JOIN `tbl_inv_stage_master` ism
-            ON ism.`inv_stage_id` = itr.`inv_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
+            ON ism.`inv_stage_id` = itr.`inv_stage_id` 
+            INNER JOIN `tbl_user` u
+            ON u.user_id = ur.user_id  ".$search." order by ".$sortBy." ".$sortType." ";
 
         //echo $sql_count; die;
 
@@ -352,12 +388,12 @@ class TblUserRefrence extends CActiveRecord
 
         if(isset($keyword) && $keyword != NULL )
         {
-            $search .= " WHERE (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
-            or ptrans.property_type like '%".$keyword."%' or ptm.description like '%".$keyword."%' or psm.prop_stage_name like '%".$keyword."%')";
+            $search .= " WHERE (ur.full_name like '%".$keyword."%' or ur.phone_number like '%".$keyword."%' or ur.annual_income like '%".$keyword."%'
+            or ptrans.property_type like '%".$keyword."%' or ptm.description like '%".$keyword."%' or psm.prop_stage_name like '%".$keyword."%' or u.full_name like '%".$keyword."%')";
         }
 
         $sql = "SELECT ur.*, ptrans.*,ptr.*,psm.prop_stage_name,ptrans.property_id AS prop_transaction_id,
-            ptm.description AS prop_type_name,ur.`created_at` AS createdDate
+            ptm.description AS prop_type_name,ur.`created_at` AS createdDate, u.full_name AS referenceBy
             FROM `tbl_user_refrence` ur 
             INNER JOIN `tbl_property_transaction` ptrans
             ON ur.`user_ref_id` = ptrans.`user_ref_id`
@@ -366,7 +402,9 @@ class TblUserRefrence extends CActiveRecord
             LEFT JOIN `tbl_prop_trans_reference` ptr
             ON ptrans.`property_id` = ptr.`property_id`
             LEFT JOIN `tbl_property_stage_master` psm
-            ON psm.`property_stage_id` = ptr.`property_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
+            ON psm.`property_stage_id` = ptr.`property_stage_id`
+            INNER JOIN `tbl_user` u
+            ON u.user_id = ur.user_id ".$search." order by ".$sortBy." ".$sortType." ";
 
         $sql_count = "SELECT COUNT(*) FROM `tbl_user_refrence` ur 
             INNER JOIN `tbl_property_transaction` ptrans
@@ -376,7 +414,9 @@ class TblUserRefrence extends CActiveRecord
             LEFT JOIN `tbl_prop_trans_reference` ptr
             ON ptrans.`property_id` = ptr.`property_id`
             LEFT JOIN `tbl_property_stage_master` psm
-            ON psm.`property_stage_id` = ptr.`property_stage_id` ".$search." order by ".$sortBy." ".$sortType." ";
+            ON psm.`property_stage_id` = ptr.`property_stage_id` 
+            INNER JOIN `tbl_user` u
+            ON u.user_id = ur.user_id ".$search." order by ".$sortBy." ".$sortType." ";
 
         //echo $sql_count; die;
 
@@ -497,6 +537,136 @@ class TblUserRefrence extends CActiveRecord
         $sql = "SELECT ur.* FROM tbl_user_refrence ur 
                 INNER JOIN tbl_property_transaction ptrans 
                 ON ptrans.user_ref_id = ur.user_ref_id WHERE  ur.`status` =  1 ".$condition;
+        $result	= Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+    }
+
+
+    /*export report query*/
+
+    function getBankLoanUsersForReport($from_date=NULL,$to_date=NULL)
+    {
+        if($from_date != NULL)
+        {
+            $from_day = date("Y-m-d",strtotime($from_date));
+        }
+        else
+        {
+            $from_day = date("Y-m-d");
+        }
+
+        if($to_date != NULL)
+        {
+            $to_day = date("Y-m-d",strtotime($to_date));
+        }
+        else
+        {
+            $to_day = date("Y-m-d");
+        }
+
+        $sql = "SELECT ur.*, ltrans.*,ltr.*,lsm.loan_stage_name,
+                    ltrans.loan_id AS loan_transaction_id,
+                    ltm.description AS loan_type_name,
+                    ur.`created_at` AS createdDate, 
+                    ltm1.description AS loan_sub_type_name,
+                    u.full_name AS referenceBy
+                    FROM `tbl_user_refrence` ur 
+                    INNER JOIN `tbl_loan_transaction` ltrans
+                    ON ur.`user_ref_id` = ltrans.`user_ref_id`
+                    LEFT JOIN `tbl_loan_type_master` ltm
+                    ON ltm.loan_type_id = ltrans.`loan_type`
+                    LEFT JOIN `tbl_loan_type_master` ltm1
+                    ON ltm1.loan_type_id = ltrans.`loan_sub_type`
+                    LEFT JOIN `tbl_loan_trans_reference` ltr
+                    ON ltrans.`loan_id` = ltr.`loan_id`
+                    LEFT JOIN `tbl_loan_stage_master` lsm
+                    ON lsm.`loan_stage_id` = ltr.`loan_stage_id`
+                    INNER JOIN `tbl_user` u
+                    ON u.user_id = ur.user_id WHERE DATE(ur.`created_at`) BETWEEN '".$from_day."' AND '".$to_day."' ORDER BY ur.user_ref_id ASC ";
+        $result	= Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+    }
+
+    function getInvLoanUsersForReport($from_date=NULL,$to_date=NULL)
+    {
+        if($from_date != NULL)
+        {
+            $from_day = date("Y-m-d",strtotime($from_date));
+        }
+        else
+        {
+            $from_day = date("Y-m-d");
+        }
+
+        if($to_date != NULL)
+        {
+            $to_day = date("Y-m-d",strtotime($to_date));
+        }
+        else
+        {
+            $to_day = date("Y-m-d");
+        }
+
+        $sql = "SELECT ur.*, iatrans.*,itr.*,ism.inv_stage_name,
+            iatrans.inv_id AS inv_transaction_id,
+            itm.description AS inv_type_name,
+            ur.`created_at` AS createdDate, 
+            u.full_name AS referenceBy
+            FROM `tbl_user_refrence` ur 
+            INNER JOIN `tbl_investment_transaction` iatrans
+            ON ur.`user_ref_id` = iatrans.`user_ref_id`
+            LEFT JOIN `tbl_inv_type_master` itm
+            ON itm.inv_type_id = iatrans.`inv_type`
+            LEFT JOIN `tbl_inv_trans_reference` itr
+            ON iatrans.`inv_id` = itr.`inv_id`
+            LEFT JOIN `tbl_inv_stage_master` ism
+            ON ism.`inv_stage_id` = itr.`inv_stage_id` 
+            INNER JOIN `tbl_user` u
+            ON u.user_id = ur.user_id WHERE DATE(ur.`created_at`) BETWEEN '".$from_day."' AND '".$to_day."' ORDER BY ur.user_ref_id ASC ";
+        $result	= Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+    }
+
+    function getRealEstateLoanUsersForReport($from_date=NULL,$to_date=NULL)
+    {
+        if($from_date != NULL)
+        {
+            $from_day = date("Y-m-d",strtotime($from_date));
+        }
+        else
+        {
+            $from_day = date("Y-m-d");
+        }
+
+        if($to_date != NULL)
+        {
+            $to_day = date("Y-m-d",strtotime($to_date));
+        }
+        else
+        {
+            $to_day = date("Y-m-d");
+        }
+
+        $sql = "SELECT ur.*, ptrans.*,ptr.*,
+            psm.prop_stage_name,
+            ptrans.property_id AS prop_transaction_id,
+            ptm.description AS prop_type_name,
+            ur.`created_at` AS createdDate, 
+            u.full_name AS referenceBy,
+            pst.`size_type_name`
+            FROM `tbl_user_refrence` ur 
+            INNER JOIN `tbl_property_transaction` ptrans
+            ON ur.`user_ref_id` = ptrans.`user_ref_id`
+            LEFT JOIN `tbl_property_size_type` pst
+            ON pst.`property_size_type_id` = ptrans.`property_size_type`
+            LEFT JOIN `tbl_property_type_master` ptm
+            ON ptm.property_type_id = ptrans.`property_transaction_type`
+            LEFT JOIN `tbl_prop_trans_reference` ptr
+            ON ptrans.`property_id` = ptr.`property_id`
+            LEFT JOIN `tbl_property_stage_master` psm
+            ON psm.`property_stage_id` = ptr.`property_stage_id`
+            INNER JOIN `tbl_user` u
+            ON u.user_id = ur.user_id  WHERE DATE(ur.`created_at`) BETWEEN '".$from_day."' AND '".$to_day."' ORDER BY ur.user_ref_id ASC ";
         $result	= Yii::app()->db->createCommand($sql)->queryAll();
         return $result;
     }

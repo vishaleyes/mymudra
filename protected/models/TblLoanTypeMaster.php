@@ -194,4 +194,11 @@ class TblLoanTypeMaster extends CActiveRecord
         return $result;
     }
 
+    function getBankLoanSubType()
+    {
+        $sql = "SELECT * FROM tbl_loan_type_master WHERE loan_type_parent_id != 0";
+        $result =  Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+    }
+
 }
