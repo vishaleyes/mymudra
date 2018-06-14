@@ -205,8 +205,11 @@ class AdminController extends Controller {
                 $email = $_POST['email'];
                 $pwd = $_POST['password'];
 
-                $TblUserObj	= new TblUser();
-                $admin_data	= $TblUserObj->getadminDetailsByEmail($email);
+                $TblAdminObj = new TblAdmin();
+                $admin_data = $TblAdminObj->getadminDetailsByEmail($email);
+
+                /*$TblUserObj	= new TblUser();
+                $admin_data	= $TblUserObj->getadminDetailsByEmail($email);*/
             }
 
             if(isset($admin_data['status']) && $admin_data['status'] == 0)
@@ -220,7 +223,7 @@ class AdminController extends Controller {
             $isValid	=	$generalObj->validate_password($_POST['password'], $admin_data['password']);
             if($isValid === true)
             {
-                Yii::app()->session[_SITENAME_.'_admin'] = $admin_data['user_id'];
+                Yii::app()->session[_SITENAME_.'_admin'] = $admin_data['admin_id'];
                 Yii::app()->session[_SITENAME_.'_email'] = $admin_data['email'];
                 Yii::app()->session[_SITENAME_.'full_name'] = $admin_data['full_name'];
                 //Yii::app()->session[_SITENAME_.'_avatar'] = $admin_data['avatar'];
@@ -305,6 +308,9 @@ class AdminController extends Controller {
 
         $TblUserRefObj = new TblUserRefrence();
         $data['realEstateUser'] = $TblUserRefObj->getRealEstateUserListByDate($fromDate,$toDate);
+
+        $TblUserObj = new TblUser();
+        $data['registeredUser'] = $TblUserObj->getUserListByDate($fromDate,$toDate);
 
         //echo "<pre>"; print_r($data['realEstateUser']); die;
 
@@ -609,7 +615,7 @@ class AdminController extends Controller {
     }
 
     function actionchangePassword()
-    {
+    {   //echo "<pre>"; print_r($_REQUEST); die;
         $this->isLogin();
         Yii::app()->session['current'] = 'changePassword';
 
@@ -618,7 +624,7 @@ class AdminController extends Controller {
             $data = array();
             $generalObj = new General;
             $data['password'] = $generalObj->encrypt_password($_POST['new_password']);
-            $data['updatedAt'] = date("Y-m-d H:i:s");
+            $data['modified_at'] = date("Y-m-d H:i:s");
 
             $TblAdminObj = new TblAdmin();
             $TblAdminObj->setData($data);
@@ -745,74 +751,6 @@ class AdminController extends Controller {
     }
 
     /*not in use*/
-    function actionuserListing()
-    {
-        $this->isLogin();
-        if(isset($_REQUEST['menu_id']) && $_REQUEST['menu_id'] != "")
-        {
-            Yii::app()->session['current_menu_id'] = $_REQUEST['menu_id'];
-        }
-
-        if(isset($_REQUEST['menu_id']) && $_REQUEST['menu_id']  != '')
-        {
-            Yii::app()->session['menu_id'] = $_REQUEST['menu_id'];
-        }
-
-        Yii::app()->session['current'] = 'userList';
-        Yii::app()->session['breadcums'] = 'userList';
-        if(!isset($_REQUEST['sortType']))
-        {
-            $_REQUEST['sortType']='asc';
-        }
-        if(!isset($_REQUEST['sortBy']))
-        {
-            $_REQUEST['sortBy']='user_id';
-        }
-        if(!isset($_REQUEST['keyword']))
-        {
-            $_REQUEST['keyword']='';
-        }
-
-        $_REQUEST['currentSortType'] = $_REQUEST['sortType'];
-
-        if($_REQUEST['sortType'] == 'asc')
-        {
-            $ext['sortType']='desc';
-        }
-        if($_REQUEST['sortType'] == 'desc')
-        {
-            $ext['sortType']='asc';
-        }
-
-        $ext['page'] = "";
-
-        if(isset($_REQUEST['page']) && $_REQUEST['page']!=''){
-            $ext['page'] = $_REQUEST['page'];
-        }
-
-        $ext['keyword'] = $_REQUEST['keyword'];
-        $ext['sortBy'] = $_REQUEST['sortBy'];
-        $ext['currentSortType'] = $_REQUEST['currentSortType'];
-
-        $TblUserObj = new TblUser();
-        $userData = $TblUserObj->getAllUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword']);
-
-        $data['pagination']	= $userData['pagination'];
-        $data['userList'] = $userData['userList'];
-
-        //print "<pre>"; print_r($data); die;
-
-        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
-        {
-            //$this->renderPartial("projectListingAjax", array('data'=>$data,'ext'=>$ext));
-            $this->renderPartial("userListing", array('data'=>$data,'ext'=>$ext));
-        }
-        else
-        {
-            $this->render("userListing", array("data"=>$data,'ext'=>$ext ));
-        }
-    }
-
     function actionbankLoanListing()
     {
         $this->isLogin();
@@ -1086,8 +1024,21 @@ class AdminController extends Controller {
         }
         $ext['filterData'] = $filter;
 
+        $stage_id = "";
+        if(isset($_REQUEST['loan_stage_id']) && $_REQUEST['loan_stage_id'] != "")
+        {
+            $stage_id = $_REQUEST['loan_stage_id'];
+            $ext['loan_stage_id'] = $_REQUEST['loan_stage_id'];
+        }
+        else
+        {
+            $stage_id = "";
+            $ext['loan_stage_id'] = "";
+        }
+
+
         $TbluserRefObj = new TblUserRefrence();
-        $bankLoanAppliedUserData = $TbluserRefObj->getAllBankLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword'],$filter);
+        $bankLoanAppliedUserData = $TbluserRefObj->getAllBankLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword'],$filter,$stage_id);
 
         $data['pagination']	= $bankLoanAppliedUserData['pagination'];
         $data['bankUserList'] = $bankLoanAppliedUserData['bankUserList'];
@@ -1121,7 +1072,10 @@ class AdminController extends Controller {
                     $transactionData['loan_id'] = $data['loan_transaction_id'];
                     $transactionData['loan_stage_id'] = $loan_stage_id;
                     $transactionData['stage_transaction_date'] = date("Y-m-d H:i:s");
-
+                    if (isset($_REQUEST['comment']) && $_REQUEST['comment']!='')
+                    {
+                        $transactionData['comment'] = $_REQUEST['comment'];
+                    }
 
                     if(isset($_REQUEST['loan_tran_ref_id']) && $_REQUEST['loan_tran_ref_id']!='')
                     {   //echo "if"; die;
@@ -1385,12 +1339,24 @@ class AdminController extends Controller {
         }
         $ext['filterData'] = $filter;
 
+        $stage_id = "";
+        if(isset($_REQUEST['inv_stage_id']) && $_REQUEST['inv_stage_id'] != "")
+        {
+            $stage_id = $_REQUEST['inv_stage_id'];
+            $ext['inv_stage_id'] = $_REQUEST['inv_stage_id'];
+        }
+        else
+        {
+            $stage_id = "";
+            $ext['inv_stage_id'] = "";
+        }
+
         $ext['keyword'] = $_REQUEST['keyword'];
         $ext['sortBy'] = $_REQUEST['sortBy'];
         $ext['currentSortType'] = $_REQUEST['currentSortType'];
 
         $TbluserRefObj = new TblUserRefrence();
-        $invAdvisoryAppliedUserData = $TbluserRefObj->getAllinvAdvisoryLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword'],$filter);
+        $invAdvisoryAppliedUserData = $TbluserRefObj->getAllinvAdvisoryLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword'],$filter,$stage_id);
 
         $data['pagination']	= $invAdvisoryAppliedUserData['pagination'];
         $data['invAdvisoryUserList'] = $invAdvisoryAppliedUserData['invAdvisoryUserList'];
@@ -1425,6 +1391,11 @@ class AdminController extends Controller {
                     $transactionData['inv_id'] = $data['inv_transaction_id'];
                     $transactionData['inv_stage_id'] = $inv_stage_id;
                     $transactionData['stage_transaction_date'] = date("Y-m-d H:i:s");
+
+                    if(isset($_REQUEST['comment']) && $_REQUEST['comment']!='')
+                    {
+                        $transactionData['comment'] = $_REQUEST['comment'];
+                    }
                     $transactionData['status'] = 1;
 
                     if (isset($_REQUEST['inv_tran_ref_id']) && $_REQUEST['inv_tran_ref_id'] != '') {   //echo "if"; die;
@@ -1667,12 +1638,24 @@ class AdminController extends Controller {
         }
         $ext['filterData'] = $filter;
 
+        $stage_id = "";
+        if(isset($_REQUEST['prop_stage_id']) && $_REQUEST['prop_stage_id'] != "")
+        {
+            $stage_id = $_REQUEST['prop_stage_id'];
+            $ext['prop_stage_id'] = $_REQUEST['prop_stage_id'];
+        }
+        else
+        {
+            $stage_id = "";
+            $ext['prop_stage_id'] = "";
+        }
+
         $ext['keyword'] = $_REQUEST['keyword'];
         $ext['sortBy'] = $_REQUEST['sortBy'];
         $ext['currentSortType'] = $_REQUEST['currentSortType'];
 
         $TbluserRefObj = new TblUserRefrence();
-        $realEstateAppliedUserData = $TbluserRefObj->getAllrealEstateLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword'],$filter);
+        $realEstateAppliedUserData = $TbluserRefObj->getAllrealEstateLoanAppliedUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword'],$filter,$stage_id);
 
         $data['pagination']	= $realEstateAppliedUserData['pagination'];
         $data['realEstateUserList'] = $realEstateAppliedUserData['realEstateUserList'];
@@ -1691,7 +1674,7 @@ class AdminController extends Controller {
     }
 
     public function actionchangeRealEstateStageStatus()
-    {
+    {   //echo "<pre>"; print_r($_REQUEST); die;
         if(isset($_POST['FormSubmit']))
         {
             try{
@@ -1707,7 +1690,12 @@ class AdminController extends Controller {
                     $transactionData['property_id'] = $data['property_transaction_id'];
                     $transactionData['property_stage_id'] = $prop_stage_id;
                     $transactionData['prop_stage_transaction_date'] = date("Y-m-d H:i:s");
-                    //$transactionData['status'] = 1;
+                    $transactionData['status'] = 1;
+
+                    if(isset($_REQUEST['comment']) && $_REQUEST['comment']!='')
+                    {
+                        $transactionData['comment'] = $_REQUEST['comment'];
+                    }
 
                     if(isset($_REQUEST['prop_tran_ref_id']) && $_REQUEST['prop_tran_ref_id']!='')
                     {
@@ -1908,6 +1896,7 @@ class AdminController extends Controller {
     }
 
     /*Real estate or property applied user listing, edit, change stage status code end here*/
+
 
     public function actiongetBankLoanSubType()
     {   //echo "<pre>"; print_r($_REQUEST['loan_type']); die;
@@ -2372,6 +2361,176 @@ class AdminController extends Controller {
         $objWriter->save($file);
 
         return $file;
+    }
+
+    /* export report functionality end here*/
+
+
+    /*registered user listing*/
+
+    function actionuserListing()
+    {
+        $this->isLogin();
+
+        $filter=array();
+        $filter['date_from']='';$filter['date_to']='';
+
+        if(isset($_REQUEST['menu_id']) && $_REQUEST['menu_id'] != "")
+        {
+            Yii::app()->session['current_menu_id'] = $_REQUEST['menu_id'];
+        }
+
+        if(isset($_REQUEST['menu_id']) && $_REQUEST['menu_id']  != '')
+        {
+            Yii::app()->session['menu_id'] = $_REQUEST['menu_id'];
+        }
+
+        Yii::app()->session['current'] = 'userList';
+        Yii::app()->session['breadcums'] = 'userList';
+        if(!isset($_REQUEST['sortType']))
+        {
+            $_REQUEST['sortType']='asc';
+        }
+        if(!isset($_REQUEST['sortBy']))
+        {
+            $_REQUEST['sortBy']='user_id';
+        }
+        if(!isset($_REQUEST['keyword']))
+        {
+            $_REQUEST['keyword']='';
+        }
+
+        $_REQUEST['currentSortType'] = $_REQUEST['sortType'];
+
+        if($_REQUEST['sortType'] == 'asc')
+        {
+            $ext['sortType']='desc';
+        }
+        if($_REQUEST['sortType'] == 'desc')
+        {
+            $ext['sortType']='asc';
+        }
+
+        $ext['page'] = "";
+
+        if(isset($_REQUEST['page']) && $_REQUEST['page']!=''){
+            $ext['page'] = $_REQUEST['page'];
+        }
+
+        if(isset($_REQUEST['date_from']) && $_REQUEST['date_from'] != "")
+        {
+            $filter['date_from'] = date("Y-m-d",strtotime($_REQUEST['date_from']));
+        }
+        if(isset($_REQUEST['date_to']) && $_REQUEST['date_to'] != "")
+        {
+            $filter['date_to'] = date("Y-m-d",strtotime($_REQUEST['date_to']));
+        }
+        $ext['filterData'] = $filter;
+
+        $ext['keyword'] = $_REQUEST['keyword'];
+        $ext['sortBy'] = $_REQUEST['sortBy'];
+        $ext['currentSortType'] = $_REQUEST['currentSortType'];
+
+        $TblUserObj = new TblUser();
+        $userData = $TblUserObj->getAllUserPaginated(LIMIT_10,$_REQUEST['sortType'],$_REQUEST['sortBy'],$_REQUEST['keyword'],$filter);
+
+        $data['pagination']	= $userData['pagination'];
+        $data['userList'] = $userData['userList'];
+
+        //print "<pre>"; print_r($data); die;
+
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
+        {
+            //$this->renderPartial("projectListingAjax", array('data'=>$data,'ext'=>$ext));
+            $this->renderPartial("userListing", array('data'=>$data,'ext'=>$ext));
+        }
+        else
+        {
+            $this->render("userListing", array("data"=>$data,'ext'=>$ext ));
+        }
+    }
+
+    function actioneditRegisteredUserDetails()
+    {
+        $this->isLogin();
+        Yii::app()->session['current'] = 'registeredUserDetails';
+        Yii::app()->session['breadcums'] = 'registeredUserDetails';
+
+        $userData = array();
+        $user_id = Yii::app()->session[_SITENAME_ . '_admin'];
+
+        if(isset($_REQUEST['user_id']) && $_REQUEST['user_id']!='')
+        {
+            $user_id = $_REQUEST['user_id'];
+
+            $tblUserObj = new TblUser();
+            $userData = $tblUserObj->getUserdetailsbyId($user_id);
+
+            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+
+                $this->renderPartial("editRegisteredUserDetails", array('userData' => $userData));
+            } else {
+                $this->render("editRegisteredUserDetails", array('userData' => $userData));
+            }
+            //echo "<pre>"; print_r($userData); die;
+
+        }
+    }
+
+    function actionupdateRegisteredUserDetails()
+    {
+        $this->isLogin();
+        if(!empty($_REQUEST))
+        {
+            try {
+                $userDetails = array();
+
+                if(isset($_REQUEST['user_id']) && $_REQUEST['user_id']!='')
+                {
+                    $user_id = $_REQUEST['user_id'];
+
+                   // $userDetails['user_id'] = $user_id;
+                    $userDetails['full_name'] = $_REQUEST['fullName'];
+                    $userDetails['phone_number'] = $_REQUEST['phoneNumber'];
+
+                    if(isset($_REQUEST['email']) && $_REQUEST['email']!='')
+                    {
+                        $userDetails['email'] = $_REQUEST['email'];
+                    }
+
+                    $userDetails['annual_income'] = $_REQUEST['annualIncome'];
+                    $userDetails['street'] = $_REQUEST['street'];
+                    $userDetails['city'] = $_REQUEST['city'];
+                    $userDetails['state'] = $_REQUEST['state'];
+                    $userDetails['pincode'] = $_REQUEST['pincode'];
+                    $userDetails['modified_at'] = date("Y-m-d H:i:s");
+
+                    $tblUserObj = new TblUser();
+                    $tblUserObj->setData($userDetails);
+                    $tblUserObj->insertData($user_id);
+                }
+                else
+                {
+                    Yii::app()->user->setFlash('error', "User Does not exist");
+                    $this->redirect(array("admin/userListing"));
+                }
+
+                Yii::app()->user->setFlash('success', "Successfully updated user details");
+                $this->redirect(array("admin/userListing"));
+            }
+            catch(Exception $e)
+            {
+                //$transaction->rollback();
+                Yii::app()->user->setFlash('error', $e->getMessage());
+                $this->redirect(array("admin/userListing"));
+            }
+        }
+        else
+        {
+            Yii::app()->user->setFlash('error', "Error in update details of user");
+        }
+
+
     }
 }
 

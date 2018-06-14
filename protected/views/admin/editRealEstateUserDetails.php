@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-md-9">
                             <h4>
-                                <b>Bank Loan User Details
+                                <b>Real Estate Loan Applied User Details
                             </h4>
                         </div>
                         <div class="col-md-3 margin-top-10" style="text-align: right;">
@@ -94,7 +94,7 @@
 
                 <div class="body">
                     <!-- Default form -->
-                    <form id="update_user_details_form" name="update_user_details_form" action="<?php echo Yii::app()->params->base_path;?>admin/updateUserDetails" method="post" enctype="multipart/form-data">
+                    <form id="update_user_details_form" name="update_user_details_form" action="<?php echo Yii::app()->params->base_path;?>admin/updateRealEstateUserDetails" method="post" enctype="multipart/form-data">
                         <div class="widget">
                             <div class="row">
                                 <div class="form-group form-md-line-input  col-md-4">
@@ -134,25 +134,25 @@
                                     <div class="controls"><input type="text" class="form-control" name="annualIncome" placeholder="Enter annual income" value="<?php if(isset($userData['annual_income']) && $userData['annual_income'] != "") { echo $userData['annual_income']; } ?>" id="annualIncome" /><span id="annualIncomeErr"></span></div>
                                 </div>
                                 <div class="form-group form-md-line-input  col-md-4">
-                                    <label class="control-label">Loan Amount<span class="text-error">*</span>:</label>
-                                    <div class="controls"><input type="text" class="form-control" name="loanAmount" placeholder="Enter loan amount" value="<?php if(isset($userData['loan_data']['loan_amount']) && $userData['loan_data']['loan_amount'] != "") { echo $userData['loan_data']['loan_amount']; } ?>" id="loanAmount" /><span id="loanAmountErr"></span></div>
+                                    <label class="control-label">Property Size<span class="text-error">*</span>:</label>
+                                    <div class="controls"><input type="text" class="form-control" name="propSize" placeholder="Enter property size" value="<?php if(isset($userData['prop_data']['property_size']) && $userData['prop_data']['property_size'] != "") { echo $userData['prop_data']['property_size']; } ?>" id="propSize" /><span id="propSizeErr"></span></div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group form-md-line-input  col-md-4">
                                     <label class="control-label">Description:</label>
-                                    <div class="controls"><input type="text" class="form-control" name="description" placeholder="Enter description" value="<?php if(isset($userData['loan_data']['description']) && $userData['loan_data']['description'] != "") { echo $userData['loan_data']['description']; } ?>" id="description" /><span id="descriptionErr"></span></div>
+                                    <div class="controls"><input type="text" class="form-control" name="description" placeholder="Enter description" value="<?php if(isset($userData['prop_data']['description']) && $userData['prop_data']['description'] != "") { echo $userData['prop_data']['description']; } ?>" id="description" /><span id="descriptionErr"></span></div>
                                 </div>
                                 <div class="form-group form-md-line-input  col-md-4">
-                                    <label class="control-label">bank<span class="text-error">*</span>:</label>
-                                    <select class="form-control edited bs-select" id="bank_id" name="bank_id" data-actions-box="true" data-search="true" onchange="getBank(this.value);">
-                                        <option value="">Select Bank</option>
+                                    <label class="control-label">Property Size Type<span class="text-error">*</span>:</label>
+                                    <select class="form-control edited bs-select" id="prop_size_type" name="prop_size_type" data-actions-box="true" data-search="true">
+                                        <option value="">Select Property Size Type</option>
                                         <?php
-                                        $TblbankObj = new TblBankMaster();
-                                        $bankData = $TblbankObj->getAllBankList();
-                                        foreach ($bankData as $bank)
+                                        $TblPropSizeTypeObj = new TblPropertySizeType();
+                                        $propSizeData = $TblPropSizeTypeObj->getAllSizeList();
+                                        foreach ($propSizeData as $size)
                                         {
-                                            if($userData['loan_data']['bank_id'] == $bank['bank_id'])
+                                            if($userData['prop_data']['property_size_type'] == $size['property_size_type_id'])
                                             {
                                                 $selected = "selected";
                                             }
@@ -161,8 +161,44 @@
                                                 $selected = "";
                                             }
                                             ?>
-                                            <option value="<?php echo $bank['bank_id']; ?>" <?php echo $selected; ?>>
-                                                <?php echo $bank['bank_name']; ?></option>
+                                            <option value="<?php echo $size['property_size_type_id']; ?>" <?php echo $selected; ?>>
+                                                <?php echo $size['size_type_name']; ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="form-group form-md-line-input  col-md-4">
+                                    <label class="control-label">Property Type<span class="text-error">*</span>:</label>
+                                    <select class="form-control edited bs-select" id="prop_type" name="prop_type" data-actions-box="true" data-search="true">
+                                        <option value="">Select Property Type</option>
+                                        <option value="1" <?=$userData['prop_data']['property_type'] == '1' ? ' selected="selected"' : '';?>>New</option>
+                                        <option value="2" <?=$userData['prop_data']['property_type'] == '2' ? ' selected="selected"' : '';?>>Old</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group form-md-line-input  col-md-4">
+                                    <label class="control-label">Stage<span class="text-error">*</span>:</label>
+                                    <select class="form-control edited bs-select" id="prop_stage" name="prop_stage" data-actions-box="true" data-search="true">
+                                        <option value="">Select Stage</option>
+                                        <?php
+                                        $TblPropStageObj = new TblPropertyStageMaster();
+                                        $propStageData = $TblPropStageObj->getStageList();
+                                        foreach ($propStageData as $stage)
+                                        {
+                                            if($userData['prop_data']['property_stage_id'] == $stage['property_stage_id'])
+                                            {
+                                                $selected = "selected";
+                                            }
+                                            else
+                                            {
+                                                $selected = "";
+                                            }
+                                            ?>
+                                            <option value="<?php echo $stage['property_stage_id']; ?>" <?php echo $selected; ?>>
+                                                <?php echo $stage['prop_stage_name']; ?></option>
                                             <?php
                                         }
                                         ?>
@@ -170,14 +206,14 @@
                                 </div>
                                 <div class="form-group form-md-line-input  col-md-4">
                                     <label class="control-label">Loan Type<span class="text-error">*</span>:</label>
-                                    <select class="form-control bs-select" id="loan_type" name="loan_type" data-actions-box="true" data-search="true" onchange="getBankLoanSubType(this.value);">
+                                    <select class="form-control bs-select" id="loan_type" name="loan_type" onchange="getRealEstateLoanSubType(this.value);">
                                         <option value="">Select Loan Type</option>
                                         <?php
-                                        $TblBankLoanTypeObj = new TblLoanTypeMaster();
-                                        $loanTypeData = $TblBankLoanTypeObj->getLoanTypeList();
-                                        foreach ($loanTypeData as $type)
+                                        $TblPropTypeObj = new TblPropertyTypeMaster();
+                                        $propTypeData = $TblPropTypeObj->getPropertyTypeList();
+                                        foreach ($propTypeData as $type)
                                         {
-                                            if($userData['loan_data']['loan_type'] == $type['loan_type_id'])
+                                            if($userData['prop_data']['property_transaction_type'] == $type['property_type_id'])
                                             {
                                                 $selected = "selected";
                                             }
@@ -186,75 +222,31 @@
                                                 $selected = "";
                                             }
                                             ?>
-                                            <option value="<?php echo $type['loan_type_id']; ?>" <?php echo $selected; ?>>
+                                            <option value="<?php echo $type['property_type_id']; ?>" <?php echo $selected; ?>>
                                                 <?php echo $type['description']; ?></option>
                                             <?php
                                         }
                                         ?>
                                     </select>
                                 </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="form-group form-md-line-input hidden col-md-4" id="loan_sub_type">
                                     <label class="control-label">Loan Sub Type<span class="text-error">*</span>:</label>
-                                    <select class="form-control bs-select" id="loan_sub_type_id" name="loan_sub_type_id">
-                                        <!--<option value="">Select Sub Type</option>-->
-                                        <?php
-                                        /*$TblLoanTypeMasterObj = new TblLoanTypeMaster();
-                                        $loanStageData = $TblLoanTypeMasterObj->getBankLoanSubType();
-                                        foreach ($loanStageData as $loanSubType)
-                                        {
-                                            */?><!--
-                                            <option value="<?php /*echo $loanSubType['loan_type_id']; */?>">
-                                                <?php /*echo $loanSubType['description']; */?></option>
-                                            --><?php
-/*                                        }*/
-                                        ?>
+                                    <select class="form-control bs-select" id="prop_sub_type_id" name="prop_sub_type_id">
                                     </select>
-                                </div>
-                                <div class="form-group form-md-line-input  col-md-4">
-                                    <label class="control-label">Stage<span class="text-error">*</span>:</label>
-                                    <select class="form-control edited bs-select" id="loan_stage" name="loan_stage" data-actions-box="true" data-search="true">
-                                        <option value="">Select Stage</option>
-                                        <?php
-                                        $TblLoanStageObj = new TblLoanStageMaster();
-                                        $loanStageData = $TblLoanStageObj->getLoanStage();
-                                        foreach ($loanStageData as $stage)
-                                        {
-                                            if($userData['loan_data']['loan_stage_id'] == $stage['loan_stage_id'])
-                                            {
-                                                $selected = "selected";
-                                            }
-                                            else
-                                            {
-                                                $selected = "";
-                                            }
-                                            ?>
-                                            <option value="<?php echo $stage['loan_stage_id']; ?>" <?php echo $selected; ?>>
-                                                <?php echo $stage['loan_stage_name']; ?></option>
-                                            <?php
-                                        }
-                                        ?>s
-                                    </select>
-                                </div>
-                                <div class="form-group form-md-line-input hidden col-md-4" id="bank_name_div">
-                                    <label class="control-label">Bank Name:</label>
-                                    <div class="controls"><input type="text" class="form-control" name="bankName" placeholder="Enter bank name" value="<?php if(isset($userData['loan_data']['bank_name']) && $userData['loan_data']['bank_name'] != "") { echo $userData['loan_data']['bank_name']; } ?>" id="bankName" /><span id="bankNameErr"></span></div>
                                 </div>
                             </div>
 
                             <!--<div class="row">-->
                             <div class="form-actions align-right col-md-6">
                                 <input type="hidden" name="user_ref_id" id="user_ref_id" value="<?php if(isset($userData['user_ref_id']) && $userData['user_ref_id'] != "") { echo $userData['user_ref_id'];}?>"/>
-                                <!--<input type="hidden" name="loan_id" id="loan_id" value="<?php /*if(isset($userData['loan_data']['loan_id']) && $userData['loan_data']['loan_id'] != "") { echo $userData['loan_data']['loan_id'];}*/?>"/>-->
-                                <input type="hidden" name="loan_id" id="loan_id" value="<?php if(isset($userData['loan_data']['loan_transaction_id']) && $userData['loan_data']['loan_transaction_id'] != "") { echo $userData['loan_data']['loan_transaction_id'];}?>"/>
-                                <input type="hidden" name="loan_tran_ref_id" id="loan_tran_ref_id" value="<?php if(isset($userData['loan_data']['loan_tran_ref_id']) && $userData['loan_data']['loan_tran_ref_id'] != "") { echo $userData['loan_data']['loan_tran_ref_id'];}?>"/>
+                                <!--<input type="hidden" name="property_id" id="property_id" value="<?php /*if(isset($userData['prop_data']['property_id']) && $userData['prop_data']['property_id'] != "") { echo $userData['prop_data']['property_id'];}*/?>"/>-->
+                                <input type="hidden" name="property_id" id="property_id" value="<?php if(isset($userData['prop_data']['property_transaction_id']) && $userData['prop_data']['property_transaction_id'] != "") { echo $userData['prop_data']['property_transaction_id'];}?>"/>
+                                <input type="hidden" name="prop_tran_ref_id" id="prop_tran_ref_id" value="<?php if(isset($userData['prop_data']['prop_tran_ref_id']) && $userData['prop_data']['prop_tran_ref_id'] != "") { echo $userData['prop_data']['prop_tran_ref_id'];}?>"/>
 
 
                                 <a class="" style="margin-top:5px;" title="Save" type="submit">
-                                    <button type="submit" class="btn btn-sm green btn-outline margin-bottom-10 margin-right-10 " name="FormSubmit">Save</button></a>
-                                <a href="javascript:;" class=" btn btn-sm red btn-outline margin-bottom-10 margin-right-10 sort" lang="<?php echo Yii::app()->params->base_path;?>admin/bankLoanUserListing"> Cancel</a>
+                                    <button type="submit" class="btn btn-sm green btn-outline margin-bottom-10 margin-right-10" name="FormSubmit">Save</button></a>
+                                <a href="javascript:;" class=" btn btn-sm red btn-outline margin-bottom-10 margin-right-10 sort" lang="<?php echo Yii::app()->params->base_path;?>admin/realEstateUserListing"> Cancel</a>
 
                             </div>
                             <!--</div>-->
@@ -270,6 +262,51 @@
 
 
 <script>
+
+    function getRealEstateLoanSubType(val)
+    {
+        if(val == 1)
+        {
+            $("#loan_sub_type").removeClass("hidden");
+        }
+        else if(val == 2)
+        {
+            $("#loan_sub_type").removeClass("hidden");
+        }
+        else if(val == 3)
+        {
+            $("#loan_sub_type").removeClass("hidden");
+        }
+        else
+        {
+            $("#loan_sub_type").addClass("hidden");
+        }
+        //return false;
+        $.ajax({
+            url:'<?php echo Yii::app()->params->base_path; ?>admin/getRealEstateLoanSubType',
+            type:'POST',
+            data: 'loan_type='+val,
+            cache:false,
+            success:function(data)
+            {
+                //alert(data);
+                $('#prop_sub_type_id').html('<option value="">Select Sub Type</option>');
+                $("#prop_sub_type_id").append(data);
+
+                <?php
+                if(isset($userData['prop_data']['property_sub_type']) && $userData['prop_data']['property_sub_type']!='') {
+                ?>
+                $('#prop_sub_type_id option[value="<?php echo $userData['prop_data']['property_sub_type'];?>"]').attr('selected','selected');
+                <?php
+                }?>
+                //$("#Loaderaction").css('display','none');
+
+                $('.bs-select #prop_sub_type_id').selectpicker('refresh');
+
+            }
+        });
+    }
+
     function loadBoxContent(urlData,boxid)
     {
         $("#Loaderaction").css('display','inline-block');
@@ -295,74 +332,24 @@
         });
     }
 
-    function getBankLoanSubType(val)
-    {
-        if(val == 3)
-        {
-            $("#loan_sub_type").removeClass("hidden");
-        }
-        else if(val == 4)
-        {
-            $("#loan_sub_type").removeClass("hidden");
-        }
-        else
-        {
-            $("#loan_sub_type").addClass("hidden");
-        }
-        //return false;
-        $.ajax({
-            url:'<?php echo Yii::app()->params->base_path; ?>admin/getBankLoanSubType',
-            type:'POST',
-            data: 'loan_type='+val,
-            cache:false,
-            success:function(data)
-            {
-                //alert(data);
-                $('#loan_sub_type_id').html('<option value="">Select Sub Type</option>');
-                $("#loan_sub_type_id").append(data);
-
-                <?php
-                if(isset($userData['loan_data']['loan_sub_type']) && $userData['loan_data']['loan_sub_type']!='') {
-                ?>
-                $('#loan_sub_type_id option[value="<?php echo $userData['loan_data']['loan_sub_type'];?>"]').attr('selected','selected');
-                <?php
-                }?>
-                 //$("#Loaderaction").css('display','none');
-
-                 $('.bs-select #loan_sub_type_id').selectpicker('refresh');
-
-            }
-        });
-    }
-
-    function getBank(bank_id)
-    {
-        if(bank_id == 7)
-        {
-            $("#bank_name_div").removeClass("hidden");
-        }
-        else
-        {
-            $("#bank_name_div").addClass("hidden");
-        }
-    }
-
     $(document).ready(function()
     {
         <?php
-            if(isset($userData['loan_data']['bank_id']) && $userData['loan_data']['bank_id'] == 7)
-            {
+        if(isset($userData['prop_data']['property_sub_type']) && $userData['prop_data']['property_sub_type'] != '')
+        {
         ?>
-                $("#bank_name_div").removeClass("hidden");
+        //$("#loan_sub_type").removeClass("hidden");
+        $('#prop_sub_type_id option[value="<?php echo $userData['prop_data']['property_sub_type'];?>"]').attr('selected','selected');
         <?php
-            }
-            else
-            {
+        }
+        else
+        {
         ?>
-                $("#bank_name_div").addClass("hidden");
+        $("#loan_sub_type").addClass("hidden");
         <?php
-            }
+        }
         ?>
+
         var i=0;
         jQuery("input,textarea").on('keypress',function(e){
             //alert();
@@ -467,15 +454,21 @@
                 annualIncome : {
                     required: true,
                 },
-                loanAmount : {
+                propSize : {
                     required: true,
                 },
-                /*bank_id : {
+                prop_size_type : {
                     required: true,
                 },
-                bankName : {
+                prop_stage : {
                     required: true,
-                },*/
+                },
+                prop_type : {
+                    required: true,
+                },
+                loan_type : {
+                    required: true,
+                },
             },
             messages: {
                 fullName: {
@@ -502,15 +495,21 @@
                 annualIncome : {
                     required: "Please enter annual income",
                 },
-                loanAmount : {
-                    required: "Please enter loan amount",
+                propSize : {
+                    required: "Please enter property size",
                 },
-                /*bank_id : {
-                    required: "Please select bank",
+                prop_size_type : {
+                    required: "Please select property size type",
                 },
-                bankName : {
-                    required: "Please enter bank name",
-                },*/
+                prop_stage : {
+                    required: "Please select stage",
+                },
+                prop_type : {
+                    required: "Please select property type",
+                },
+                loan_type : {
+                    required: "Please select loan type",
+                },
             },
             invalidHandler: function (event, validator) { //display error alert on form submit
                 $('.alert-danger', $('.form-horizontal')).show();

@@ -13,14 +13,11 @@
 
                 </div>
                 <div class="body">
-                    <form action="<?php echo Yii::app()->params->base_path; ?>admin/changePassword"
-                          id="form_change_password" name="form_change_password"
-                          class="bs-example form-horizontal" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo Yii::app()->params->base_path; ?>admin/changePassword" id="form_change_password" name="form_change_password" class="bs-example form-horizontal" method="post" enctype="multipart/form-data">
 
                         <div class="form-body">
 
                             <div class="row">
-
                                 <div class="col-md-12">
                                     <div class="form-group form-md-line-input  col-md-8">
                                         <div class="form-line">
@@ -40,29 +37,20 @@
                                     </div>
 
                                     <div class="form-group form-md-line-input col-md-8">
-                                            <div class="form-line ">
+                                        <div class="form-line ">
                                                 <input type="password" name="re_enter_password"
                                                        value="" id="re_enter_password" class="form-control"
                                                        placeholder="Confirm Password" data-required="1"/>
                                             </div>
-                                        </div>
-
                                     </div>
-
-
                                 </div>
-
                             </div>
 
-                        </div>
-                        <div class="row">&nbsp;</div>
-                        <div class="row">
+                            <div class="row">
                             <div class="col-md-12">
-                                <input type="hidden" name="adminId"
-                                       value="<?php echo Yii::app()->session[_SITENAME_.'_admin']; ?>"/>
+                                <input type="hidden" name="adminId" value="<?php echo Yii::app()->session[_SITENAME_.'_admin']; ?>"/>
 
-                                <button type="submit" name="FormSubmit" id="btn_submit"
-                                        class="btn m-b-xs w-xs btn-primary waves-effect">Submit
+                                <button type="submit" name="FormSubmit" id="btn_submit" class="btn m-b-xs w-xs btn-primary waves-effect">Submit
                                 </button>
                                 <a href="<?php echo Yii::app()->params->base_path; ?>admin/changePassword">
                                     <button type="button" class="btn m-b-xs w-xs btn-danger waves-effect">
@@ -71,10 +59,6 @@
                                 </a>
                             </div>
                         </div>
-
-                        </div>
-                        <div class="form-actions fluid">
-
                         </div>
                     </form>
                 </div>

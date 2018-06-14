@@ -767,16 +767,17 @@ class ApiController extends Controller {
                 if ($res['status'] == 0) {
                     //$device_token = $_REQUEST['device_token'];
                     //$endpointArn['endpointArn'] = $_REQUEST['endpointArn'];
-                    if(isset($_REQUEST['email']) && $_REQUEST['email']!='')
+
+                    /*if(isset($_REQUEST['email']) && $_REQUEST['email']!='')
                     {
                         $TblUserObj = new TblUser();
                         $res = $TblUserObj->checkEmailExists($_REQUEST['email']);
-                    }
+                    }*/
 
                     if(isset($_REQUEST['mobile_number']) && $_REQUEST['mobile_number']!='')
                     {
                         $TblUserObj = new TblUser();
-                        $res = $TblUserObj->checkMobilenumberExists($_REQUEST['mobile_number']);
+                        $res = $TblUserObj->checkEmailMobilenumberExists($_REQUEST['mobile_number']);
                     }
 
                     if (!empty($res)) {

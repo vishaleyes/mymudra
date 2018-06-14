@@ -204,6 +204,20 @@ class TblUser extends CActiveRecord
         return $result;
     }
 
+    function checkEmailMobilenumberExists($mobile_number=NULL,$user_id=NULL)
+    {
+        if($user_id != "")
+        {
+            $user_id = "And user_id != ".$user_id." ";
+        } else{
+            $user_id = "";
+        }
+        $mobile_number =addslashes($mobile_number);
+        $sql = "select * from tbl_user where (email = '".$mobile_number."' or phone_number = '".$mobile_number."') ".$user_id." ";
+        $result	=Yii::app()->db->createCommand($sql)->queryRow();
+        return $result;
+    }
+
     function checkEmailExists($email=NULL,$user_id=NULL)
     {
         if($user_id != "")
@@ -269,22 +283,53 @@ class TblUser extends CActiveRecord
         return $admindata;
     }
 
-    function getAllUserPaginated($limit=10,$sortType="asc",$sortBy="user_id",$keyword=NULL)
+    function getAllUserPaginated($limit=10,$sortType="asc",$sortBy="user_id",$keyword=NULL,$filter=NULL)
     {
         $criteria = new CDbCriteria();
+        /*echo $keyword;
+        echo "<pre>"; print_r($filter); die;*/
+        $search = " ";$con = " ";
 
-        $search = " ";
-
-        if(isset($keyword) && $keyword != NULL )
+        if(isset($keyword) && $keyword!= NULL )
         {
-            $search .= " where (full_name like '%".$keyword."%')";
+            $search .= " WHERE (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%' or city like '%".$keyword."%' or state like '%".$keyword."%' or created_at like '%".$keyword."%')";
         }
-
+        else
+        {
+            $search .= "";
+        }
+        //echo $search; die;
+        if(isset($filter['date_from']) && $filter['date_from']!='' && isset($filter['date_to']) && $filter['date_to']!='')
+        {
+            if(isset($search) && $search != "")
+            {
+                $search .= " AND ";
+                if($filter['date_from'] == $filter['date_to']){
+                    $search .= " ( created_at LIKE '%".$filter['date_from']."%')";
+                }
+                else{
+                    $search .= " ( (created_at >= '".$filter['date_from']."' OR created_at LIKE '%".$filter['date_from']."%' )
+                AND (created_at <= '".$filter['date_to']."' OR created_at LIKE '%".$filter['date_to']."%'  ) )";
+                }
+            }
+            else
+            {
+                $search .= " WHERE ";
+                if($filter['date_from'] == $filter['date_to']){
+                    $search .= " ( created_at LIKE '%".$filter['date_from']."%')";
+                }
+                else{
+                    $search .= " ( (created_at >= '".$filter['date_from']."' OR created_at LIKE '%".$filter['date_from']."%' )
+                AND (created_at <= '".$filter['date_to']."' OR created_at LIKE '%".$filter['date_to']."%'  ) )";
+                }
+            }
+        }
+            //echo $search; die;
         $sql = "SELECT * FROM tbl_user ".$search." order by ".$sortBy." ".$sortType." ";
 
         $sql_count = "SELECT count(*) FROM tbl_user ".$search." order by ".$sortBy." ".$sortType." ";
 
-        //echo $sql;
+        //echo $sql; die;
 
         $count	=	Yii::app()->db->createCommand($sql_count)->queryScalar();
         //echo $sql_count;
@@ -375,5 +420,19 @@ class TblUser extends CActiveRecord
         return $result;
     }
 
+    function getUserListByDate()
+    {
+        if((isset($fromDate) && $fromDate != "") && (isset($toDate) && $toDate))
+        {
+            $condition = "AND (DATE_FORMAT(created_at, '%Y-%m-%d') BETWEEN '".$fromDate."' AND '".$toDate."')";
+        }
+        else
+        {
+            $condition = "";
+        }
+        $sql = "SELECT * FROM tbl_user WHERE `status` =  1 ".$condition;
+        $result	= Yii::app()->db->createCommand($sql)->queryAll();
+        return $result;
+    }
 
 }

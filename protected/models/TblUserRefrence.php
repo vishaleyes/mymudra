@@ -204,38 +204,71 @@ class TblUserRefrence extends CActiveRecord
         return $result;
     }
 
-    function getAllBankLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL,$filter=NULL)
+    function getAllBankLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL,$filter=NULL,$stage_id=NULL)
     {
         $criteria = new CDbCriteria();
 
         $search = " ";
-
-        //echo "<pre>"; print_r($filter); die;
-
-        if(isset($filter['date_from']) && $filter['date_from']!='' && isset($filter['date_to']) && $filter['date_to']!='')
-        {   //echo "first if"; die;
-            if($filter['date_from'] == $filter['date_to']){
-                $search .= " WHERE ( ur.created_at LIKE '%".$filter['date_from']."%')";
-            }
-            else{
-                $search .= " WHERE ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
-                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
-            }
+        if(isset($stage_id) && $stage_id != "")
+        {
+            $project_con = "WHERE lsm.`loan_stage_id` = ". $stage_id;
+        }
+        else
+        {
+            $project_con = "";
         }
 
         if(isset($keyword) && $keyword != NULL )
         {
-
-                $search .= " WHERE (ur.full_name like '%".$keyword."%' or ur.phone_number like '%".$keyword."%' or ur.annual_income like '%".$keyword."%' or loan_amount like '%".$keyword."%' or ltm.description like '%".$keyword."%' or lsm.loan_stage_name like '%".$keyword."%' or ltm1.description like '%".$keyword."%' or u.full_name like '%".$keyword."%')";
-            /*}
+            if(isset($project_con) && $project_con!='')
+            {
+                $search .= $project_con." AND ";
+            }
             else
-            {   //echo "else"; die;
-                $search .= " WHERE (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%'
-            or loan_amount like '%".$keyword."%' or ltm.description like '%".$keyword."%' or lsm.loan_stage_name like '%".$keyword."%')";
-            }*/
-
+            {
+                $search .= " WHERE ";
+            }
+            $search .= " (ur.full_name like '%".$keyword."%' or ur.phone_number like '%".$keyword."%' or ur.annual_income like '%".$keyword."%' or loan_amount like '%".$keyword."%' or ltm.description like '%".$keyword."%' or lsm.loan_stage_name like '%".$keyword."%' or ltm1.description like '%".$keyword."%' or u.full_name like '%".$keyword."%')";
+        }
+        else
+        {
+            if(isset($project_con) && $project_con!='')
+            {
+                $search .= $project_con;
+            }
+            else
+            {
+                $search .= '';
+            }
         }
 
+        if(isset($filter['date_from']) && $filter['date_from']!='' && isset($filter['date_to']) && $filter['date_to']!='')
+        {   //echo "first if"; die;
+            if(isset($search) && $search!='')
+            {
+                $search .= " AND ";
+
+                if($filter['date_from'] == $filter['date_to']){
+                    $search .= "  ( ur.created_at LIKE '%".$filter['date_from']."%')";
+                }
+                else{
+                    $search .= "  ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
+                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+                }
+            }
+            else
+            {
+                $search .= " WHERE ";
+
+                if($filter['date_from'] == $filter['date_to']){
+                    $search .= "  ( ur.created_at LIKE '%".$filter['date_from']."%')";
+                }
+                else{
+                    $search .= "  ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
+                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+                }
+            }
+        }
 
         /*$sql = "SELECT ur.*, ltrans.*,ltr.*,lsm.loan_stage_name,ltrans.loan_id As loan_transaction_id,
             ltm.description AS loan_type_name,ur.`created_at` AS createdDate, ltm1.description AS loan_sub_type_name
@@ -305,27 +338,71 @@ class TblUserRefrence extends CActiveRecord
         return array('pagination'=>$result->pagination, 'bankUserList'=>$result->getData());
     }
 
-    function getAllinvAdvisoryLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL,$filter=NULL)
+    function getAllinvAdvisoryLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL,$filter=NULL,$stage_id=NULL)
     {
         $criteria = new CDbCriteria();
 
-        $search = " ";
-        //echo "<pre>"; print_r($filter); die;
-        if(isset($filter['date_from']) && $filter['date_from']!='' && isset($filter['date_to']) && $filter['date_to']!='')
-        {   //echo "first if"; die;
-            if($filter['date_from'] == $filter['date_to']){
-                $search .= " WHERE ( ur.created_at LIKE '%".$filter['date_from']."%')";
-            }
-            else{
-                $search .= " WHERE ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
-                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
-            }
+        $search = " ";$con = " ";
+
+        if(isset($stage_id) && $stage_id!='')
+        {
+            $project_con = " WHERE ism.inv_stage_id = ".$stage_id;
+        }
+        else
+        {
+            $project_con = " ";
         }
 
         if(isset($keyword) && $keyword != NULL )
         {
-            $search .= " WHERE (ur.full_name like '%".$keyword."%' or ur.phone_number like '%".$keyword."%' or ur.annual_income like '%".$keyword."%'
+            if(isset($project_con) && $project_con!='')
+            {
+                $search .= $project_con." AND ";
+            }
+            else
+            {
+                $search .= " WHERE ";
+            }
+            $search .= "  (ur.full_name like '%".$keyword."%' or ur.phone_number like '%".$keyword."%' or ur.annual_income like '%".$keyword."%'
             or inv_amount like '%".$keyword."%' or itm.description like '%".$keyword."%' or ism.inv_stage_name like '%".$keyword."%' or u.full_name like '%".$keyword."%')";
+        }
+        else
+        {
+            if(isset($project_con) && $project_con!='')
+            {
+                $search .= $project_con;
+            }
+            else
+            {
+                $search .= " ";
+            }
+        }
+
+        if(isset($filter['date_from']) && $filter['date_from']!='' && isset($filter['date_to']) && $filter['date_to']!='')
+        {   //echo "first if"; die;
+            if(isset($search) && $search!='')
+            {
+                $search .= " AND ";
+                if($filter['date_from'] == $filter['date_to']){
+                    $search .= "  ( ur.created_at LIKE '%".$filter['date_from']."%')";
+                }
+                else{
+                    $search .= "  ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
+                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+                }
+            }
+            else
+            {
+                //$search .= " AND ";
+                if($filter['date_from'] == $filter['date_to']){
+                    $search .= " WHERE ( ur.created_at LIKE '%".$filter['date_from']."%')";
+                }
+                else{
+                    $search .= " WHERE ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
+                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+                }
+            }
+
         }
 
         $sql = "SELECT ur.*, iatrans.*,itr.*,ism.inv_stage_name,iatrans.inv_id AS inv_transaction_id,
@@ -369,27 +446,71 @@ class TblUserRefrence extends CActiveRecord
         return array('pagination'=>$result->pagination, 'invAdvisoryUserList'=>$result->getData());
     }
 
-    function getAllrealEstateLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL,$filter=NULL)
+    function getAllrealEstateLoanAppliedUserPaginated($limit=10,$sortType="asc",$sortBy="user_ref_id",$keyword=NULL,$filter=NULL,$stage_id=NULL)
     {
         $criteria = new CDbCriteria();
 
-        $search = " ";
-
-        if(isset($filter['date_from']) && $filter['date_from']!='' && isset($filter['date_to']) && $filter['date_to']!='')
-        {   //echo "first if"; die;
-            if($filter['date_from'] == $filter['date_to']){
-                $search .= " WHERE ( ur.created_at LIKE '%".$filter['date_from']."%')";
-            }
-            else{
-                $search .= " WHERE ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
-                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
-            }
+        $search = " ";$con = " ";
+        //echo $keyword;
+        if(isset($stage_id) && $stage_id!='')
+        {
+            $project_con = " WHERE psm.property_stage_id = ".$stage_id;
+        }
+        else
+        {
+            $project_con = " ";
         }
 
         if(isset($keyword) && $keyword != NULL )
         {
-            $search .= " WHERE (ur.full_name like '%".$keyword."%' or ur.phone_number like '%".$keyword."%' or ur.annual_income like '%".$keyword."%'
+            if(isset($project_con) && $project_con!='')
+            {
+                $search .= $project_con." AND ";
+            }
+            else
+            {
+                $search .= " WHERE ";
+            }
+            $search .= "  (ur.full_name like '%".$keyword."%' or ur.phone_number like '%".$keyword."%' or ur.annual_income like '%".$keyword."%'
             or ptrans.property_type like '%".$keyword."%' or ptm.description like '%".$keyword."%' or psm.prop_stage_name like '%".$keyword."%' or u.full_name like '%".$keyword."%')";
+        }
+        else
+        {
+            if(isset($project_con) && $project_con!='')
+            {
+                $search .= $project_con;
+            }
+            else
+            {
+                $search .= " ";
+            }
+        }
+
+        if(isset($filter['date_from']) && $filter['date_from']!='' && isset($filter['date_to']) && $filter['date_to']!='')
+        {   //echo "first if"; die;
+            if(isset($search) && $search!='')
+            {
+                $search .= " AND ";
+                if($filter['date_from'] == $filter['date_to']){
+                    $search .= "  ( ur.created_at LIKE '%".$filter['date_from']."%')";
+                }
+                else{
+                    $search .= "  ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
+                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+                }
+            }
+            else
+            {
+                //$search .= " AND ";
+                if($filter['date_from'] == $filter['date_to']){
+                    $search .= " WHERE ( ur.created_at LIKE '%".$filter['date_from']."%')";
+                }
+                else{
+                    $search .= " WHERE ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
+                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+                }
+            }
+
         }
 
         $sql = "SELECT ur.*, ptrans.*,ptr.*,psm.prop_stage_name,ptrans.property_id AS prop_transaction_id,

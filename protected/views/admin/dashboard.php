@@ -27,7 +27,7 @@
 
 
 <div class="row">
-    <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <a class="dashboard-stat dashboard-stat-v2 blue" href="<?php echo Yii::app()->params->base_path; ?>admin/bankLoanUserListing">
             <div class="visual">
                 <i class="fa fa-users"></i>
@@ -52,7 +52,7 @@
             </div>
         </a>
     </div>-->
-    <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <a class="dashboard-stat dashboard-stat-v2 yellow-casablanca" href="<?php echo Yii::app()->params->base_path; ?>admin/invAdvisoryUserListing">
             <div class="visual">
                 <i class="fa fa-suitcase"></i>
@@ -64,7 +64,7 @@
             </div>
         </a>
     </div>
-    <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <a class="dashboard-stat dashboard-stat-v2 green" href="<?php echo Yii::app()->params->base_path; ?>admin/realEstateUserListing">
             <div class="visual">
                 <i class="fa fa-usd"></i>
@@ -76,18 +76,18 @@
             </div>
         </a>
     </div>
-    <!--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <a class="dashboard-stat dashboard-stat-v2 yellow-crusta" href="#">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 yellow-crusta" href="<?php echo Yii::app()->params->base_path; ?>admin/userListing">
             <div class="visual">
                 <i class="fa fa-user"></i>
             </div>
             <div class="details">
                 <div class="number">
-                    <span data-counter="counterup" data-value="12,5" id="total_customer"><?php /*echo $data['customer_data']['total_customer'];*/?></span></div>
-                <div class="desc"> Total Customer </div>
+                    <span data-counter="counterup" data-value="12,5" id="total_customer"><?php echo count($data['registeredUser']);?></span></div>
+                <div class="desc"> Users </div>
             </div>
         </a>
-    </div>-->
+    </div>
 </div>
 
 

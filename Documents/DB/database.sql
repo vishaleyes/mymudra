@@ -75,3 +75,13 @@ ALTER TABLE `mymudra`.`tbl_loan_transaction` ADD COLUMN `loan_sub_type` BIGINT(2
 
 ALTER TABLE `mymudra`.`tbl_property_transaction` ADD COLUMN `property_sub_type` BIGINT(22) NULL AFTER `description`;
 ALTER TABLE `mymudra`.`tbl_loan_transaction` ADD COLUMN `bank_name` VARCHAR(255) NULL AFTER `loan_sub_type`;
+
+
+/*14-06-2018*/
+ALTER TABLE `mymudra`.`tbl_loan_trans_reference` ADD COLUMN `comment` TEXT NULL AFTER `stage_transaction_date`;
+
+ALTER TABLE `mymudra`.`tbl_inv_trans_reference` ADD COLUMN `comment` TEXT NULL AFTER `stage_transaction_date`;
+
+ALTER TABLE `mymudra`.`tbl_prop_trans_reference` ADD COLUMN `status` TINYINT(1) NULL AFTER `prop_stage_transaction_date`, ADD COLUMN `comment` TEXT NULL AFTER `status`;
+
+CREATE TABLE `mymudra`.`tbl_admin`( `admin_id` BIGINT(22) NOT NULL AUTO_INCREMENT, `full_name` VARCHAR(255), `phone_number` VARCHAR(20), `email` VARCHAR(255), `password` VARCHAR(350), `avatar` VARCHAR(255), `is_verified` VARCHAR(300), `fConfirmPasscode` VARCHAR(150), `status` TINYINT(1), `created_at` DATETIME, `modified_at` DATETIME, PRIMARY KEY (`admin_id`) );
