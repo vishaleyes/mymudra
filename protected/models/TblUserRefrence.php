@@ -228,7 +228,7 @@ class TblUserRefrence extends CActiveRecord
             {
                 $search .= " WHERE ";
             }
-            $search .= " (ur.full_name like '%".$keyword."%' or ur.phone_number like '%".$keyword."%' or ur.annual_income like '%".$keyword."%' or loan_amount like '%".$keyword."%' or ltm.description like '%".$keyword."%' or lsm.loan_stage_name like '%".$keyword."%' or ltm1.description like '%".$keyword."%' or u.full_name like '%".$keyword."%')";
+            $search .= " (ur.full_name like '%".addslashes($keyword)."%' or ur.phone_number like '%".addslashes($keyword)."%' or ur.annual_income like '%".addslashes($keyword)."%' or loan_amount like '%".addslashes($keyword)."%' or ltm.description like '%".addslashes($keyword)."%' or lsm.loan_stage_name like '%".addslashes($keyword)."%' or ltm1.description like '%".addslashes($keyword)."%' or u.full_name like '%".addslashes($keyword)."%')";
         }
         else
         {
@@ -249,11 +249,10 @@ class TblUserRefrence extends CActiveRecord
                 $search .= " AND ";
 
                 if($filter['date_from'] == $filter['date_to']){
-                    $search .= "  ( ur.created_at LIKE '%".$filter['date_from']."%')";
+                    $search .= "  ( ur.created_at LIKE '%".addslashes($filter['date_from'])."%')";
                 }
                 else{
-                    $search .= "  ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
-                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+                    $search .= "  ( (ur.created_at >= '".addslashes($filter['date_from'])."' OR ur.created_at LIKE '%".addslashes($filter['date_from'])."%' ) AND (ur.created_at <= '".addslashes($filter['date_to'])."' OR ur.created_at LIKE '%".addslashes($filter['date_to'])."%'  ) )";
                 }
             }
             else
@@ -261,11 +260,10 @@ class TblUserRefrence extends CActiveRecord
                 $search .= " WHERE ";
 
                 if($filter['date_from'] == $filter['date_to']){
-                    $search .= "  ( ur.created_at LIKE '%".$filter['date_from']."%')";
+                    $search .= "  ( ur.created_at LIKE '%".addslashes($filter['date_from'])."%')";
                 }
                 else{
-                    $search .= "  ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
-                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+                    $search .= "  ( (ur.created_at >= '".addslashes($filter['date_from'])."' OR ur.created_at LIKE '%".addslashes($filter['date_from'])."%' ) AND (ur.created_at <= '".addslashes($filter['date_to'])."' OR ur.created_at LIKE '%".addslashes($filter['date_to'])."%'  ) )";
                 }
             }
         }
@@ -363,8 +361,7 @@ class TblUserRefrence extends CActiveRecord
             {
                 $search .= " WHERE ";
             }
-            $search .= "  (ur.full_name like '%".$keyword."%' or ur.phone_number like '%".$keyword."%' or ur.annual_income like '%".$keyword."%'
-            or inv_amount like '%".$keyword."%' or itm.description like '%".$keyword."%' or ism.inv_stage_name like '%".$keyword."%' or u.full_name like '%".$keyword."%')";
+            $search .= "  (ur.full_name like '%".addslashes($keyword)."%' or ur.phone_number like '%".addslashes($keyword)."%' or ur.annual_income like '%".addslashes($keyword)."%' or inv_amount like '%".addslashes($keyword)."%' or itm.description like '%".addslashes($keyword)."%' or ism.inv_stage_name like '%".addslashes($keyword)."%' or u.full_name like '%".addslashes($keyword)."%')";
         }
         else
         {
@@ -384,22 +381,20 @@ class TblUserRefrence extends CActiveRecord
             {
                 $search .= " AND ";
                 if($filter['date_from'] == $filter['date_to']){
-                    $search .= "  ( ur.created_at LIKE '%".$filter['date_from']."%')";
+                    $search .= "  ( ur.created_at LIKE '%".addslashes($filter['date_from'])."%')";
                 }
                 else{
-                    $search .= "  ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
-                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+                    $search .= "  ( (ur.created_at >= '".addslashes($filter['date_from'])."' OR ur.created_at LIKE '%".addslashes($filter['date_from'])."%' ) AND (ur.created_at <= '".addslashes($filter['date_to'])."' OR ur.created_at LIKE '%".addslashes($filter['date_to'])."%'  ) )";
                 }
             }
             else
             {
                 //$search .= " AND ";
                 if($filter['date_from'] == $filter['date_to']){
-                    $search .= " WHERE ( ur.created_at LIKE '%".$filter['date_from']."%')";
+                    $search .= " WHERE ( ur.created_at LIKE '%".addslashes($filter['date_from'])."%')";
                 }
                 else{
-                    $search .= " WHERE ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
-                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+                    $search .= " WHERE ( (ur.created_at >= '".addslashes($filter['date_from'])."' OR ur.created_at LIKE '%".addslashes($filter['date_from'])."%' ) AND (ur.created_at <= '".addslashes($filter['date_to'])."' OR ur.created_at LIKE '%".addslashes($filter['date_to'])."%'  ) )";
                 }
             }
 
@@ -471,8 +466,7 @@ class TblUserRefrence extends CActiveRecord
             {
                 $search .= " WHERE ";
             }
-            $search .= "  (ur.full_name like '%".$keyword."%' or ur.phone_number like '%".$keyword."%' or ur.annual_income like '%".$keyword."%'
-            or ptrans.property_type like '%".$keyword."%' or ptm.description like '%".$keyword."%' or psm.prop_stage_name like '%".$keyword."%' or u.full_name like '%".$keyword."%')";
+            $search .= "  (ur.full_name like '%".addslashes($keyword)."%' or ur.phone_number like '%".addslashes($keyword)."%' or ur.annual_income like '%".addslashes($keyword)."%' or ptrans.property_type like '%".addslashes($keyword)."%' or ptm.description like '%".addslashes($keyword)."%' or psm.prop_stage_name like '%".addslashes($keyword)."%' or u.full_name like '%".addslashes($keyword)."%')";
         }
         else
         {
@@ -492,22 +486,20 @@ class TblUserRefrence extends CActiveRecord
             {
                 $search .= " AND ";
                 if($filter['date_from'] == $filter['date_to']){
-                    $search .= "  ( ur.created_at LIKE '%".$filter['date_from']."%')";
+                    $search .= "  ( ur.created_at LIKE '%".addslashes($filter['date_from'])."%')";
                 }
                 else{
-                    $search .= "  ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
-                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+                    $search .= "  ( (ur.created_at >= '".addslashes($filter['date_from'])."' OR ur.created_at LIKE '%".addslashes($filter['date_from'])."%' ) AND (ur.created_at <= '".addslashes($filter['date_to'])."' OR ur.created_at LIKE '%".addslashes($filter['date_to'])."%'  ) )";
                 }
             }
             else
             {
                 //$search .= " AND ";
                 if($filter['date_from'] == $filter['date_to']){
-                    $search .= " WHERE ( ur.created_at LIKE '%".$filter['date_from']."%')";
+                    $search .= " WHERE ( ur.created_at LIKE '%".addslashes($filter['date_from'])."%')";
                 }
                 else{
-                    $search .= " WHERE ( (ur.created_at >= '".$filter['date_from']."' OR ur.created_at LIKE '%".$filter['date_from']."%' )
-                AND (ur.created_at <= '".$filter['date_to']."' OR ur.created_at LIKE '%".$filter['date_to']."%'  ) )";
+                    $search .= " WHERE ( (ur.created_at >= '".addslashes($filter['date_from'])."' OR ur.created_at LIKE '%".addslashes($filter['date_from'])."%' ) AND (ur.created_at <= '".addslashes($filter['date_to'])."' OR ur.created_at LIKE '%".addslashes($filter['date_to'])."%'  ) )";
                 }
             }
 
@@ -556,10 +548,27 @@ class TblUserRefrence extends CActiveRecord
 
     function getRegisteredUserForBankLoanListById($user_id=NULL)
     {
-        $sql = "SELECT ur.*, ltrans.*,ltr.*,lsm.loan_stage_name,ltrans.loan_id AS loan_transaction_id,
+        /*$sql = "SELECT ur.*, ltrans.*,ltr.*,lsm.loan_stage_name,ltrans.loan_id AS loan_transaction_id,
             ltm.description AS loan_type_name,ur.`created_at` AS createdDate,ltm1.`description` AS loan_sub_type_name
             FROM `tbl_user_refrence` ur INNER JOIN `tbl_loan_transaction` ltrans
             ON ur.`user_ref_id` = ltrans.`user_ref_id`
+            LEFT JOIN `tbl_loan_type_master` ltm
+            ON ltm.loan_type_id = ltrans.`loan_type`
+            LEFT JOIN tbl_loan_type_master ltm1
+            ON ltm1.loan_type_id = ltrans.`loan_sub_type`
+            LEFT JOIN `tbl_loan_trans_reference` ltr
+            ON ltrans.`loan_id` = ltr.`loan_id`
+            LEFT JOIN `tbl_loan_stage_master` lsm
+            ON lsm.`loan_stage_id` = ltr.`loan_stage_id` WHERE ur.user_id = ".$user_id;*/
+
+        $sql = "SELECT ur.*, ltrans.*,ltr.*,lsm.loan_stage_name,ltrans.loan_id AS loan_transaction_id,
+            ltm.description AS loan_type_name,ur.`created_at` AS createdDate,ltm1.`description` AS loan_sub_type_name,
+            bm.bank_name AS BankName
+            FROM `tbl_user_refrence` ur 
+            INNER JOIN `tbl_loan_transaction` ltrans
+            ON ur.`user_ref_id` = ltrans.`user_ref_id`
+            INNER JOIN `tbl_bank_master` bm
+            ON ltrans.`bank_id` = bm.`bank_id`
             LEFT JOIN `tbl_loan_type_master` ltm
             ON ltm.loan_type_id = ltrans.`loan_type`
             LEFT JOIN tbl_loan_type_master ltm1

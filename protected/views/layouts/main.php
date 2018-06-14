@@ -717,9 +717,9 @@
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
-    <div class="page-footer-inner"> <?php echo date("Y"); ?> &copy; Mymudra  |&nbsp;
+    <!--<div class="page-footer-inner"> <?php /*echo date("Y"); */?> &copy; Mymudra  |&nbsp;
         <a href="https://www.bypeopletechnologies.com/" title="Developed by byPeople Technologies" target="_blank">byPeople Technologies</a>
-    </div>
+    </div>-->
     <div class="scroll-to-top">
         <i class="icon-arrow-up"></i>
     </div>

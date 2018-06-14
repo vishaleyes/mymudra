@@ -2483,6 +2483,8 @@ class Validation extends CFormModel
         $validator->addValidation("mobile_number","req",'_REQ_MOBILE_NUMBER_');
         $validator->addValidation("employment_type","req",'_REQ_EMPLOYMENT_TYPE_');
         $validator->addValidation("annual_income","req",'_REQ_ANNUAL_INCOME_');
+        $validator->addValidation("property_amount","req",'_REQ_PROPERTY_AMOUNT_');
+
         //$validator->addValidation("password","maxlen=50",'_REQ_PASSWORD_');
         //$validator->addValidation("confirm_password","maxlen=50",'_REQ_CONFIRM_PASSWORD_');
         $validator->addValidation("street","req",'_REQ_ADDRESS_');

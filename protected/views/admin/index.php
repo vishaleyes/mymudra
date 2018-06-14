@@ -17,7 +17,7 @@
         </div>
         <div class="col-md-6 login-container bs-reset mt-login-5-bsfix">
             <div class="login-content" style="margin-top:15%; ">
-                <div class="row"><div class="right-head pull-right">Don't Have Account? - <a href="http://localhost/mymudra/index.php?r=admin/signUp" title="sign up" class="login-link">Sign Up</a></div></div>
+                <!--<div class="row"><div class="right-head pull-right">Don't Have Account? - <a href="http://localhost/mymudra/index.php?r=admin/signUp" title="sign up" class="login-link">Sign Up</a></div></div>-->
 
                 <div class="row"><h1><img class="login-logo img-responsive" style="position: relative; top:0px; left:0px;height: 150px;width:200px;" src="<?php echo Yii::app()->params->base_url ; ?>assets/pages/img/login_logo.png" /></h1></div>
                 <h3 class="hidden-sm hidden-md uppercase" style="font-weight: 600; color: #f17342;"> Admin </h3>
@@ -73,7 +73,7 @@
                 <!-- END FORGOT PASSWORD FORM -->
 
             </div>
-            <div class="login-footer">
+            <!--<div class="login-footer">
                 <div class="row bs-reset">
                     <div class="col-xs-5 bs-reset">
                         <ul class="login-social">
@@ -96,11 +96,11 @@
                     </div>
                     <div class="col-xs-7 bs-reset">
                         <div class="login-copyright text-right">
-                            <p>Copyright &copy; ViiA <?php $year = (new DateTime)->format("Y"); echo $year;?></p>
+                            <p>Copyright &copy; ViiA <?php /*$year = (new DateTime)->format("Y"); echo $year;*/?></p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

@@ -288,40 +288,51 @@ class TblUser extends CActiveRecord
         $criteria = new CDbCriteria();
         /*echo $keyword;
         echo "<pre>"; print_r($filter); die;*/
-        $search = " ";$con = " ";
+        $search = " ";
 
         if(isset($keyword) && $keyword!= NULL )
         {
-            $search .= " WHERE (full_name like '%".$keyword."%' or phone_number like '%".$keyword."%' or annual_income like '%".$keyword."%' or city like '%".$keyword."%' or state like '%".$keyword."%' or created_at like '%".$keyword."%')";
+            $con = " WHERE (full_name like '%".addslashes($keyword)."%' or phone_number like '%".addslashes($keyword)."%' or annual_income like '%".addslashes($keyword)."%' or city like '%".addslashes($keyword)."%' or state like '%".addslashes($keyword)."%' or created_at like '%".addslashes($keyword)."%')";
         }
         else
         {
-            $search .= "";
+            $con = "";
         }
-        //echo $search; die;
+        //echo $con; die;
         if(isset($filter['date_from']) && $filter['date_from']!='' && isset($filter['date_to']) && $filter['date_to']!='')
-        {
-            if(isset($search) && $search != "")
-            {
-                $search .= " AND ";
+        {   //echo "filter if"; die;
+            if(isset($con) && $con != "")
+            {   //echo "inner if"; die;
+                $search .= $con." AND ";
                 if($filter['date_from'] == $filter['date_to']){
-                    $search .= " ( created_at LIKE '%".$filter['date_from']."%')";
+                    $search .= " ( created_at LIKE '%".addslashes($filter['date_from'])."%')";
                 }
                 else{
-                    $search .= " ( (created_at >= '".$filter['date_from']."' OR created_at LIKE '%".$filter['date_from']."%' )
-                AND (created_at <= '".$filter['date_to']."' OR created_at LIKE '%".$filter['date_to']."%'  ) )";
+                    $search .= " ( (created_at >= '".addslashes($filter['date_from'])."' OR created_at LIKE '%".addslashes($filter['date_from'])."%' )
+                AND (created_at <= '".addslashes($filter['date_to'])."' OR created_at LIKE '%".addslashes($filter['date_to'])."%'  ) )";
                 }
             }
             else
-            {
+            {   //echo "inner else"; die;
                 $search .= " WHERE ";
                 if($filter['date_from'] == $filter['date_to']){
-                    $search .= " ( created_at LIKE '%".$filter['date_from']."%')";
+                    $search .= " ( created_at LIKE '%".addslashes($filter['date_from'])."%')";
                 }
                 else{
-                    $search .= " ( (created_at >= '".$filter['date_from']."' OR created_at LIKE '%".$filter['date_from']."%' )
-                AND (created_at <= '".$filter['date_to']."' OR created_at LIKE '%".$filter['date_to']."%'  ) )";
+                    $search .= " ( (created_at >= '".addslashes($filter['date_from'])."' OR created_at LIKE '%".addslashes($filter['date_from'])."%' )
+                AND (created_at <= '".addslashes($filter['date_to'])."' OR created_at LIKE '%".addslashes($filter['date_to'])."%'  ) )";
                 }
+            }
+        }
+        else
+        {
+            if(isset($con) && $con != "")
+            {   //echo "inner if"; die;
+                $search .= $con;
+            }
+            else
+            {
+                $search .= "";
             }
         }
             //echo $search; die;

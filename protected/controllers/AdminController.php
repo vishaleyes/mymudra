@@ -1811,6 +1811,8 @@ class AdminController extends Controller {
                 $propDetails['property_size'] = $_REQUEST['propSize'];
                 $propDetails['property_size_type'] = $_REQUEST['prop_size_type'];
                 $propDetails['property_type'] = $_REQUEST['prop_type'];
+                $propDetails['property_amount'] = $_REQUEST['propAmount'];
+
                 //$propDetails['user_ref_id'] = $_REQUEST['user_ref_id'];
                 $propDetails['property_transaction_type'] = $_REQUEST['loan_type'];
                 $propDetails['status'] = 1;
@@ -2259,6 +2261,7 @@ class AdminController extends Controller {
                                     <td style="text-align:center"></td>
                                     <td style="text-align:center"></td>
                                     <td style="text-align:center"></td>
+                                    <td style="text-align:center"></td>
                                 </tr>
 								<tr style="font-size:18px;background-color:#CED7E0;">
 									<td style="text-align:center"><b>User Reference ID<b></td>
@@ -2266,6 +2269,7 @@ class AdminController extends Controller {
 									<td style="text-align:center">Reference By</td>
 									<td style="text-align:center">Phone Number</td>
 									<td style="text-align:center">Annual Income</td>
+									<td style="text-align:center">Property Amount</td>
 									<td style="text-align:center">Property Type</td>
 									<td style="text-align:center">Property Size</td>
 									<td style="text-align:center">Property Size Unit</td>
@@ -2296,6 +2300,7 @@ class AdminController extends Controller {
                                         <td style="text-align:center">' . $val['referenceBy'] . '</td>
                                         <td style="text-align:center">' . $val['phone_number'] . '</td>
                                         <td style="text-align:center">' . $val['annual_income'] . '</td>
+                                        <td style="text-align:center">' . $val['property_amount'] . '</td>
                                         <td style="text-align:center">' . $property_type . '</td>
                                         <td style="text-align:center">' . $val['property_size'] . '</td>
                                         <td style="text-align:center">' . $property_type . '</td>
@@ -2371,7 +2376,7 @@ class AdminController extends Controller {
     function actionuserListing()
     {
         $this->isLogin();
-
+        //echo "<pre>"; print_r($_REQUEST); die;
         $filter=array();
         $filter['date_from']='';$filter['date_to']='';
 
@@ -2426,7 +2431,7 @@ class AdminController extends Controller {
             $filter['date_to'] = date("Y-m-d",strtotime($_REQUEST['date_to']));
         }
         $ext['filterData'] = $filter;
-
+        //echo "<pre>"; print_r($filter); die;
         $ext['keyword'] = $_REQUEST['keyword'];
         $ext['sortBy'] = $_REQUEST['sortBy'];
         $ext['currentSortType'] = $_REQUEST['currentSortType'];

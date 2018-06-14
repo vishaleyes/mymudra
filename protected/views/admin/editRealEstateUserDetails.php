@@ -140,6 +140,10 @@
                             </div>
                             <div class="row">
                                 <div class="form-group form-md-line-input  col-md-4">
+                                    <label class="control-label">Property Amount:</label>
+                                    <div class="controls"><input type="text" class="form-control" name="propAmount" placeholder="Enter property amount" value="<?php if(isset($userData['prop_data']['property_amount']) && $userData['prop_data']['property_amount'] != "") { echo $userData['prop_data']['property_amount']; } ?>" id="propAmount" /><span id="propAmountErr"></span></div>
+                                </div>
+                                <div class="form-group form-md-line-input  col-md-4">
                                     <label class="control-label">Description:</label>
                                     <div class="controls"><input type="text" class="form-control" name="description" placeholder="Enter description" value="<?php if(isset($userData['prop_data']['description']) && $userData['prop_data']['description'] != "") { echo $userData['prop_data']['description']; } ?>" id="description" /><span id="descriptionErr"></span></div>
                                 </div>
@@ -168,6 +172,9 @@
                                         ?>
                                     </select>
                                 </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="form-group form-md-line-input  col-md-4">
                                     <label class="control-label">Property Type<span class="text-error">*</span>:</label>
                                     <select class="form-control edited bs-select" id="prop_type" name="prop_type" data-actions-box="true" data-search="true">
@@ -176,9 +183,6 @@
                                         <option value="2" <?=$userData['prop_data']['property_type'] == '2' ? ' selected="selected"' : '';?>>Old</option>
                                     </select>
                                 </div>
-                            </div>
-
-                            <div class="row">
                                 <div class="form-group form-md-line-input  col-md-4">
                                     <label class="control-label">Stage<span class="text-error">*</span>:</label>
                                     <select class="form-control edited bs-select" id="prop_stage" name="prop_stage" data-actions-box="true" data-search="true">
@@ -229,13 +233,15 @@
                                         ?>
                                     </select>
                                 </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="form-group form-md-line-input hidden col-md-4" id="loan_sub_type">
                                     <label class="control-label">Loan Sub Type<span class="text-error">*</span>:</label>
                                     <select class="form-control bs-select" id="prop_sub_type_id" name="prop_sub_type_id">
                                     </select>
                                 </div>
                             </div>
-
                             <!--<div class="row">-->
                             <div class="form-actions align-right col-md-6">
                                 <input type="hidden" name="user_ref_id" id="user_ref_id" value="<?php if(isset($userData['user_ref_id']) && $userData['user_ref_id'] != "") { echo $userData['user_ref_id'];}?>"/>
@@ -469,6 +475,9 @@
                 loan_type : {
                     required: true,
                 },
+                propAmount : {
+                    required: true,
+                },
             },
             messages: {
                 fullName: {
@@ -509,6 +518,9 @@
                 },
                 loan_type : {
                     required: "Please select loan type",
+                },
+                propAmount : {
+                    required: "Please enter property amount",
                 },
             },
             invalidHandler: function (event, validator) { //display error alert on form submit

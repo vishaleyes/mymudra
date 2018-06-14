@@ -113,7 +113,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title  text-center">Bank Loan Applied Users Report</h4>
+                            <h4 class="modal-title  text-center">Real Estate Loan Applied Users Report</h4>
                         </div>
                         <div class="modal-body">
                             <form action="<?php echo Yii::app()->params->base_path; ?>admin/sendExportOfRealEstateLoanUser"
@@ -124,7 +124,7 @@
                                     <div class="form-group form-md-line-input  ">
                                         <label class="control-label">Start Date<span
                                                     class="text-error">* &nbsp;</span>:</label>
-                                        <div class="controls"><input type="text" class="form-control date date-picker" name="fromExportDate" id="fromExportDate" placeholder="Select Start Date" value="" data-date-format="dd-mm-yyyy"/></div>
+                                        <div class="controls"><input type="text" class="form-control" name="fromExportDate" id="fromExportDate" placeholder="Select Start Date" value="" data-date-format="dd-mm-yyyy"/></div>
                                     </div>
                                 </div>
 
@@ -132,7 +132,7 @@
                                     <div class="form-group form-md-line-input  ">
                                         <label class="control-label">End Date<span
                                                     class="text-error">* &nbsp;</span>:</label>
-                                        <div class="controls"><input type="text" class="form-control date date-picker" name="toExportDate" id="toExportDate" placeholder="Select End Date" value="" data-date-format="dd-mm-yyyy"/></div>
+                                        <div class="controls"><input type="text" class="form-control" name="toExportDate" id="toExportDate" placeholder="Select End Date" value="" data-date-format="dd-mm-yyyy"/></div>
                                     </div>
                                 </div>
 
@@ -324,6 +324,17 @@
                                 </a>
                             </th>
                             <th style="cursor:pointer; text-align: center;">
+                                <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/property_amount/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>/date_from/<?php echo $ext['filterData']['date_from'];?>/date_to/<?php echo $ext['filterData']['date_to'];?>/prop_stage_id/<?php echo $ext['prop_stage_id']; ?>' style="text-decoration:none">Property Amount
+                                    <?php if($ext['sortType'] == 'asc' && $ext['sortBy'] == 'property_amount'){ ?>
+                                        <i class="fa fa-sort-down" style="float:right !important"></i>
+                                    <?php } else if($ext['sortType'] == 'desc' && $ext['sortBy'] =='property_amount'){?>
+                                        <i class="fa fa-sort-up" style="float:right !important"></i>
+                                    <?php } else { ?>
+                                        <i class="fa fa-unsorted" style="float:right !important" ></i>
+                                    <?php }?>
+                                </a>
+                            </th>
+                            <th style="cursor:pointer; text-align: center;">
                                 <a href="javascript:;" class="sort" lang='<?php echo Yii::app()->params->base_path;?>admin/<?php echo $controller_action ?>/sortType/<?php echo $ext['sortType'];?>/sortBy/ptm.description/keyword/<?php echo $ext['keyword'];?>/page/<?php echo $ext['page']; ?>/date_from/<?php echo $ext['filterData']['date_from'];?>/date_to/<?php echo $ext['filterData']['date_to'];?>/prop_stage_id/<?php echo $ext['prop_stage_id']; ?>' style="text-decoration:none">Real Estate Type
                                     <?php if($ext['sortType'] == 'asc' && $ext['sortBy'] == 'ptm.description'){ ?>
                                         <i class="fa fa-sort-down" style="float:right !important"></i>
@@ -442,6 +453,17 @@
 
                                         echo $prop_type;
                                         ?> </td>
+
+                                    <td style="text-align: center;">
+                                        <?php
+                                        if(isset($row['property_amount']) && $row['property_amount']!='') {
+                                            $prop_type = $row['property_amount'];
+                                        }else
+                                        { $prop_type =  "---";}
+
+                                        echo $prop_type;
+                                        ?> </td>
+
 
                                     <td style="text-align: center;">
                                         <?php
@@ -753,6 +775,52 @@
 </script>
 <script>
     $(document).ready(function () {
+
+        $('#monthly_report_form').validate({
+            errorElement: 'span', //default input error message container
+            errorClass: 'help-block', // default input error message class
+            focusInvalid: false, // do not focus the last invalid input
+            rules: {
+                fromExportDate: {
+                    required: true,
+                },
+                toExportDate: {
+                    required: true,
+                }
+            },
+            messages: {
+                fromExportDate: {
+                    required: "Please select start date",
+                },
+                toExportDate: {
+                    required: "Please select end date",
+                }
+            },
+            invalidHandler: function (event, validator) { //display error alert on form submit
+                $('.alert-danger', $('.form-horizontal')).show();
+            },
+            highlight: function (element) { // hightlight error inputs
+                $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+            },
+            onfocusout: function (element) {
+                $(element).valid();
+            },
+            success: function (label) {
+                label.closest('.form-group').removeClass('has-error');
+                label.remove();
+            },
+            errorPlacement: function (error, element) {
+                error.insertAfter(element.closest('.form-control'));
+                $("#name-error").css("position", "absolute");
+            },
+            submitHandler: function (form) {
+
+                //sendEffortMail();
+                //$('.form-horizontal').submit();
+                form.submit(); // form validation success, call ajax form submit
+                //submitForm();
+            }
+        });
 
         var today = new Date();
         var dd = today.getDate();

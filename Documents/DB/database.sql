@@ -85,3 +85,9 @@ ALTER TABLE `mymudra`.`tbl_inv_trans_reference` ADD COLUMN `comment` TEXT NULL A
 ALTER TABLE `mymudra`.`tbl_prop_trans_reference` ADD COLUMN `status` TINYINT(1) NULL AFTER `prop_stage_transaction_date`, ADD COLUMN `comment` TEXT NULL AFTER `status`;
 
 CREATE TABLE `mymudra`.`tbl_admin`( `admin_id` BIGINT(22) NOT NULL AUTO_INCREMENT, `full_name` VARCHAR(255), `phone_number` VARCHAR(20), `email` VARCHAR(255), `password` VARCHAR(350), `avatar` VARCHAR(255), `is_verified` VARCHAR(300), `fConfirmPasscode` VARCHAR(150), `status` TINYINT(1), `created_at` DATETIME, `modified_at` DATETIME, PRIMARY KEY (`admin_id`) );
+
+INSERT INTO `mymudra`.`tbl_admin` (`full_name`, `phone_number`, `email`, `password`, `is_verified`, `status`, `created_at`) VALUES ('Admin', '5656565656', 'admin@mymudra.com', 'bdaf5d15aabb46232ef2afa8a8cea77c:44', '1', '1', '2018-06-14 16:00:46');
+
+
+/*upload on live server*/
+ALTER TABLE `mymudra`.`tbl_property_transaction` ADD COLUMN `property_amount` DOUBLE NULL AFTER `property_sub_type`;

@@ -45,6 +45,7 @@ $messages['_REQ_SIZE_TYPE_'] = "property size type is mandatory.";
 $messages['_REQ_PROPERTY_TYPE_'] = "property type is mandatory.";
 $messages['_REQ_LOAN_TYPE_ID_'] = "loan type id parameter is mandatory.";
 $messages['_REQ_INV_TYPE_ID_'] = "Investment type id parameter is mandatory.";
+$messages['_REQ_PROPERTY_AMOUNT_'] = "Property amount is mandatory.";
 
 return $messages;
 

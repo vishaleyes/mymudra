@@ -1342,6 +1342,11 @@ class ApiController extends Controller {
                         $loanData['property_type'] = $_REQUEST['property_type'];
                     }
 
+                    if(isset($_REQUEST['property_amount']) && $_REQUEST['property_amount']!='')
+                    {
+                        $loanData['property_amount'] = $_REQUEST['property_amount'];
+                    }
+
                     if(isset($_REQUEST['property_sub_type']) && $_REQUEST['property_sub_type']!='')
                     {
                         $loanData['property_sub_type'] = $_REQUEST['property_sub_type'];

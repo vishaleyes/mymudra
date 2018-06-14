@@ -124,7 +124,7 @@
                                     <div class="form-group form-md-line-input  ">
                                         <label class="control-label">Start Date<span
                                                     class="text-error">* &nbsp;</span>:</label>
-                                        <div class="controls"><input type="text" class="form-control date date-picker" name="fromExportDate" id="fromExportDate" placeholder="Select Start Date" value="" data-date-format="dd-mm-yyyy"/></div>
+                                        <div class="controls"><input type="text" class="form-control " name="fromExportDate" id="fromExportDate" placeholder="Select Start Date" value="" data-date-format="dd-mm-yyyy"/></div>
                                     </div>
                                 </div>
 
@@ -132,7 +132,7 @@
                                     <div class="form-group form-md-line-input  ">
                                         <label class="control-label">End Date<span
                                                     class="text-error">* &nbsp;</span>:</label>
-                                        <div class="controls"><input type="text" class="form-control date date-picker" name="toExportDate" id="toExportDate" placeholder="Select End Date" value="" data-date-format="dd-mm-yyyy"/></div>
+                                        <div class="controls"><input type="text" class="form-control " name="toExportDate" id="toExportDate" placeholder="Select End Date" value="" data-date-format="dd-mm-yyyy"/></div>
                                     </div>
                                 </div>
 
@@ -749,6 +749,53 @@
 </script>
 <script>
     $(document).ready(function () {
+
+        $('#monthly_report_form').validate({
+            errorElement: 'span', //default input error message container
+            errorClass: 'help-block', // default input error message class
+            focusInvalid: false, // do not focus the last invalid input
+            rules: {
+                fromExportDate: {
+                    required: true,
+                },
+                toExportDate: {
+                    required: true,
+                }
+            },
+            messages: {
+                fromExportDate: {
+                    required: "Please select start date",
+                },
+                toExportDate: {
+                    required: "Please select end date",
+                }
+            },
+            invalidHandler: function (event, validator) { //display error alert on form submit
+                $('.alert-danger', $('.form-horizontal')).show();
+            },
+            highlight: function (element) { // hightlight error inputs
+                $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+            },
+            onfocusout: function (element) {
+                $(element).valid();
+            },
+            success: function (label) {
+                label.closest('.form-group').removeClass('has-error');
+                label.remove();
+            },
+            errorPlacement: function (error, element) {
+                error.insertAfter(element.closest('.form-control'));
+                $("#name-error").css("position", "absolute");
+            },
+            submitHandler: function (form) {
+
+                //sendEffortMail();
+                //$('.form-horizontal').submit();
+                form.submit(); // form validation success, call ajax form submit
+                //submitForm();
+            }
+        });
+
 
         var today = new Date();
         var dd = today.getDate();
