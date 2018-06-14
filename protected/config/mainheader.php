@@ -1,7 +1,7 @@
 <?php
 
-define("MANDRILL_USERNAME","test");
-define("MANDRILL_PASSWORD","test");
+define("MANDRILL_USERNAME","sujal.bandhara.bypt");
+define("MANDRILL_PASSWORD","Bypt@2016");
 
 define("MANDRILL_HOST","smtp.sendgrid.net");
 define("MANDRILL_PORT","587");
@@ -145,11 +145,11 @@ define('USE_PCONNECT', 'false');
 define('STORE_SESSIONS', 'db');
 define('SQL_CACHE_METHOD', 'none');
 
-define('PAGINATE_LIMIT', '5');
-define('ADMIN_PAGINATE_LIMIT', '10');
+define('PAGINATE_LIMIT', '15');
+define('ADMIN_PAGINATE_LIMIT', '15');
 define('SEEKER_PAGINATE_LIMIT', '6');
-define('RECENT_ACTIVITY_PAGINATE_LIMIT', '10');
-define('LIMIT_10', '3');
+define('RECENT_ACTIVITY_PAGINATE_LIMIT', '15');
+define('LIMIT_10', '15');
 
 define('IMAGESIZE','2');
 
