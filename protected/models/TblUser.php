@@ -227,7 +227,7 @@ class TblUser extends CActiveRecord
             $user_id = "";
         }
         $email = addslashes($email);
-        $sql = "select * from tbl_user where email  = '".$email."'  ".$user_id."    ";
+        $sql = "select * from tbl_user where email = '".$email."'  ".$user_id."    ";
         $result	=Yii::app()->db->createCommand($sql)->queryRow();
         return $result;
     }

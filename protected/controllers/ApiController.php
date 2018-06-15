@@ -691,16 +691,19 @@ class ApiController extends Controller {
                     $generalObj = new General();
                     $algoObj = new Algoencryption();
                     $everify_code = $generalObj->encrypt_password(rand(0, 99) . rand(0, 99) . rand(0, 99) . rand(0, 99));
+
                     if (isset($postData['password']) && $postData['password'] != '') {
                         $Password = $generalObj->encrypt_password($postData['password']);
                         $TblUserObj = new TblUser();
                         $new_password = $TblUserObj->genPassword();
                         $postData['password'] = $Password;
                     }
+
                     $postData['is_verified'] = $everify_code;
                     $postData['status'] = 1;
                     $postData['created_at'] = date("Y-m-d H:i:s");
                     $postData['modified_at'] = date("Y-m-d H:i:s");
+
                     $TblUserObj = new TblUser();
                     $TblUserObj->setData($postData);
                     $user_id = $TblUserObj->insertData();
@@ -761,18 +764,10 @@ class ApiController extends Controller {
 
             $validationObj = new Validation();
             $res = $validationObj->login($_REQUEST);
-
+            //echo "<pre>"; print_r($res); die;
             $transaction = Yii::app()->db->beginTransaction();
             try{
                 if ($res['status'] == 0) {
-                    //$device_token = $_REQUEST['device_token'];
-                    //$endpointArn['endpointArn'] = $_REQUEST['endpointArn'];
-
-                    /*if(isset($_REQUEST['email']) && $_REQUEST['email']!='')
-                    {
-                        $TblUserObj = new TblUser();
-                        $res = $TblUserObj->checkEmailExists($_REQUEST['email']);
-                    }*/
 
                     if(isset($_REQUEST['mobile_number']) && $_REQUEST['mobile_number']!='')
                     {
@@ -784,7 +779,7 @@ class ApiController extends Controller {
 
                         $generalObj = new General();
                         $isValid  = $generalObj->validate_password($_REQUEST['password'], $res['password']);
-
+                        //echo "<pre>"; print_r($isValid); die;
                         if($isValid == true){
 
                             if ($res['status'] != 1) {
@@ -916,7 +911,7 @@ class ApiController extends Controller {
                             /* ---------------------------------------------email finish------------------------------------------------ */
                             if (!empty($send_email)) {
                                 //echo "if"; die;
-                                $this->response(array("status" => $this->errorCode['_SUCCESS_'], "message" => $this->msg['_SUCCESS_'], 'data' => $data));
+                                $this->response(array("status" => $this->errorCode['_MAIL_SEND_SUCCESS_'], "message" => $this->msg['_MAIL_SEND_SUCCESS_'], 'data' => $data));
 
                             } else { //echo "else"; die;
                                 $this->response(array("status" => $this->errorCode['_MAIL_SEND_FAIL_'], "message" =>  $this->msg['_MAIL_SEND_FAIL_'], 'data' => $data));
@@ -1053,121 +1048,132 @@ class ApiController extends Controller {
     {   //echo "<pre>"; print_r($_REQUEST); die;
         if (isset($_REQUEST['user_id']) && $_REQUEST['user_id']!='' && isset($_REQUEST['session_code']) && $_REQUEST['session_code']!='' && isset($_REQUEST['loan_type_id']) && $_REQUEST['loan_type_id']!='') {
 
-            $postData = array();
-            $transaction = Yii::app()->db->beginTransaction();
-            try {
+            $TblUserSessionObj = new TblUsersession();
+            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
 
-                $validationObj = new Validation();
-                $res = $validationObj->userReferenceSignUp($_REQUEST);
+            if(!empty($user))
+            {
+                $postData = array();
+                $transaction = Yii::app()->db->beginTransaction();
+                try {
 
-                if ($res['status'] == 0)
-                {
-                    $postData['full_name'] = $_REQUEST['name'];
-                    if (isset($_REQUEST['email']) && $_REQUEST['email'] != '') {
-                        $postData['email'] = $_REQUEST['email'];
+                    $validationObj = new Validation();
+                    $res = $validationObj->userReferenceSignUp($_REQUEST);
 
-                    }
-                    //$postData['password'] = $_REQUEST['password'];
-                    $postData['street'] = $_REQUEST['street'];
-                    $postData['city'] = $_REQUEST['city'];
-                    $postData['state'] = $_REQUEST['state'];
-                    $postData['pincode'] = $_REQUEST['pincode'];
-                    $postData['phone_number'] = $_REQUEST['mobile_number'];
-                    $postData['employment_type'] = $_REQUEST['employment_type'];
-                    $postData['annual_income'] = $_REQUEST['annual_income'];
-                    $postData['user_id'] = $_REQUEST['user_id'];
-
-                    $postData['status'] = 1;
-                    $postData['created_at'] = date("Y-m-d H:i:s");
-                    //$postData['modified_at'] = date("Y-m-d H:i:s");
-                    //echo "<pre>"; print_r($postData); die;
-                    $TblUserRefObj = new TblUserRefrence();
-                    $TblUserRefObj->setData($postData);
-                    $user_ref_id = $TblUserRefObj->insertData();
-
-                    //echo "<pre>"; print_r($user_ref_id); die;
-                    $loanData = array();
-                    if(isset($_REQUEST['bank_id']) && $_REQUEST['bank_id']!='')
+                    if ($res['status'] == 0)
                     {
-                        $loanData['bank_id'] = $_REQUEST['bank_id'];
-                    }
+                        $postData['full_name'] = $_REQUEST['name'];
+                        if (isset($_REQUEST['email']) && $_REQUEST['email'] != '') {
+                            $postData['email'] = $_REQUEST['email'];
 
-                    $loanData['loan_type'] = $_REQUEST['loan_type_id'];
+                        }
+                        //$postData['password'] = $_REQUEST['password'];
+                        $postData['street'] = $_REQUEST['street'];
+                        $postData['city'] = $_REQUEST['city'];
+                        $postData['state'] = $_REQUEST['state'];
+                        $postData['pincode'] = $_REQUEST['pincode'];
+                        $postData['phone_number'] = $_REQUEST['mobile_number'];
+                        $postData['employment_type'] = $_REQUEST['employment_type'];
+                        $postData['annual_income'] = $_REQUEST['annual_income'];
+                        $postData['user_id'] = $_REQUEST['user_id'];
 
-                    if(isset($_REQUEST['loan_sub_type_id']) && $_REQUEST['loan_sub_type_id']!='')
-                    {
-                        $loanData['loan_sub_type'] = $_REQUEST['loan_sub_type_id'];
-                    }
+                        $postData['status'] = 1;
+                        $postData['created_at'] = date("Y-m-d H:i:s");
+                        //$postData['modified_at'] = date("Y-m-d H:i:s");
+                        //echo "<pre>"; print_r($postData); die;
+                        $TblUserRefObj = new TblUserRefrence();
+                        $TblUserRefObj->setData($postData);
+                        $user_ref_id = $TblUserRefObj->insertData();
 
-                    if(isset($_REQUEST['loan_amount']) && $_REQUEST['loan_amount']!='')
-                    {
-                        $loanData['loan_amount'] = $_REQUEST['loan_amount'];
-                    }
-                    if(isset($_REQUEST['description']) && $_REQUEST['description'])
-                    {
-                        $loanData['description'] = $_REQUEST['description'];
-                    }
-                    if(isset($_REQUEST['bank_name']) && $_REQUEST['bank_name']!='')
-                    {
-                        $loanData['bank_name'] = $_REQUEST['bank_name'];
-                    }
+                        //echo "<pre>"; print_r($user_ref_id); die;
+                        $loanData = array();
+                        if(isset($_REQUEST['bank_id']) && $_REQUEST['bank_id']!='')
+                        {
+                            $loanData['bank_id'] = $_REQUEST['bank_id'];
+                        }
 
-                    $loanData['user_ref_id'] = $user_ref_id;
-                    $loanData['load_transaction_date'] = date("Y-m-d H:i:s");
-                    $loanData['status'] = 1;
-                    $loanData['created_at'] = date("Y-m-d H:i:s");
+                        $loanData['loan_type'] = $_REQUEST['loan_type_id'];
 
-                    $TblLoanTransactionObj = new TblLoanTransaction();
-                    $TblLoanTransactionObj->setData($loanData);
-                    $loan_transaction_id = $TblLoanTransactionObj->insertData();
-                    //echo "<pre>"; print_r($loan_id); die;
+                        if(isset($_REQUEST['loan_sub_type_id']) && $_REQUEST['loan_sub_type_id']!='')
+                        {
+                            $loanData['loan_sub_type'] = $_REQUEST['loan_sub_type_id'];
+                        }
 
-                    $transaction->commit();
-                    if ($user_ref_id != '') {
-                        $user_Data = $TblUserRefObj->getUserdetailsbyId($user_ref_id);
-                        $user_Data['transaction_data'] = $TblLoanTransactionObj->getTransactionDetailsById($loan_transaction_id);
-                        if (!empty($user_Data)) {
+                        if(isset($_REQUEST['loan_amount']) && $_REQUEST['loan_amount']!='')
+                        {
+                            $loanData['loan_amount'] = $_REQUEST['loan_amount'];
+                        }
+                        if(isset($_REQUEST['description']) && $_REQUEST['description'])
+                        {
+                            $loanData['description'] = $_REQUEST['description'];
+                        }
+                        if(isset($_REQUEST['bank_name']) && $_REQUEST['bank_name']!='')
+                        {
+                            $loanData['bank_name'] = $_REQUEST['bank_name'];
+                        }
+
+                        $loanData['user_ref_id'] = $user_ref_id;
+                        $loanData['load_transaction_date'] = date("Y-m-d H:i:s");
+                        $loanData['status'] = 1;
+                        $loanData['created_at'] = date("Y-m-d H:i:s");
+
+                        $TblLoanTransactionObj = new TblLoanTransaction();
+                        $TblLoanTransactionObj->setData($loanData);
+                        $loan_transaction_id = $TblLoanTransactionObj->insertData();
+                        //echo "<pre>"; print_r($loan_id); die;
+
+                        $transaction->commit();
+                        if ($user_ref_id != '') {
+                            $user_Data = $TblUserRefObj->getUserdetailsbyId($user_ref_id);
+                            $user_Data['transaction_data'] = $TblLoanTransactionObj->getTransactionDetailsById($loan_transaction_id);
+                            if (!empty($user_Data)) {
 
 
-                            $result['status'] = $this->errorCode['_SUCCESS_'];
-                            $result['message'] = $this->msg['_SUCCESS_'];
-                            $result['data'] = $user_Data;
-                            $this->response($result);
-                        } else {
-                            $result['status'] = $this->errorCode['_DATA_NOT_FOUND_'];
-                            $result['message'] = $this->msg['_DATA_NOT_FOUND_'];
+                                $result['status'] = $this->errorCode['_BANK_LOAN_USER_SUCCESS_'];
+                                $result['message'] = $this->msg['_BANK_LOAN_USER_SUCCESS_'];
+                                $result['data'] = $user_Data;
+                                $this->response($result);
+                            } else {
+                                $result['status'] = $this->errorCode['_DATA_NOT_FOUND_'];
+                                $result['message'] = $this->msg['_DATA_NOT_FOUND_'];
+                                $result['data'] = array();
+                                $this->response($result);
+                            }
+                        }
+                        else {
+                            $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
+                            $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'];
                             $result['data'] = array();
                             $this->response($result);
                         }
+
                     }
-                    else {
-                        $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
-                        $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'];
-                        $result['data'] = array();
+                    else
+                    {
+                        $this->response(array("status" => $res['status'], "message" => $res['message'], 'data' => array()));
+
+                    }
+                }
+                catch (Exception $ex) {
+                    $transaction->rollback();
+                    //echo $ex->getMessage();
+                    if (strpos($ex->getMessage(), '1062') !== false) {
+                        $result['status'] = -8;
+                        $result['message'] = $this->msg['_EMAIL_ALREADY_REGISTER_'];
+                        $result['data'] = (object) array();
                         $this->response($result);
+                    } else {
+                        $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
+                        $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'] . $ex->getMessage();
+                        $this->response(array("status" =>  $result['status'] , "message" =>  $result['message'], 'data' => array()));
                     }
-
-                }
-                else
-                {
-                    $this->response(array("status" => $res['status'], "message" => $res['message'], 'data' => array()));
-
                 }
             }
-            catch (Exception $ex) {
-                $transaction->rollback();
-                //echo $ex->getMessage();
-                if (strpos($ex->getMessage(), '1062') !== false) {
-                    $result['status'] = -8;
-                    $result['message'] = $this->msg['_EMAIL_ALREADY_REGISTER_'];
-                    $result['data'] = (object) array();
-                    $this->response($result);
-                } else {
-                    $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
-                    $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'] . $ex->getMessage();
-                    $this->response(array("status" =>  $result['status'] , "message" =>  $result['message'], 'data' => array()));
-                }
+            else
+            {
+                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" =>  $this->msg['_INVALID_SESSION_'], 'data' => array()));
             }
+
         } else {
             $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" =>  $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
         }
@@ -1179,106 +1185,116 @@ class ApiController extends Controller {
     {
         if (isset($_REQUEST['user_id']) && $_REQUEST['user_id']!='' && isset($_REQUEST['session_code']) && $_REQUEST['session_code']!='' && isset($_REQUEST['inv_type_id']) && $_REQUEST['inv_type_id']!='') {
 
-            $postData = array();
-            $transaction = Yii::app()->db->beginTransaction();
-            try {
+            $TblUserSessionObj = new TblUsersession();
+            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
 
-                $validationObj = new Validation();
-                $res = $validationObj->invUserReferenceSignUp($_REQUEST);
+            if(!empty($user))
+            {
+                $postData = array();
+                $transaction = Yii::app()->db->beginTransaction();
+                try {
 
-                if ($res['status'] == 0)
-                {
-                    $postData['full_name'] = $_REQUEST['name'];
-                    if (isset($_REQUEST['email']) && $_REQUEST['email'] != '') {
-                        $postData['email'] = $_REQUEST['email'];
-                    }
-                    //$postData['password'] = $_REQUEST['password'];
-                    $postData['street'] = $_REQUEST['street'];
-                    $postData['city'] = $_REQUEST['city'];
-                    $postData['state'] = $_REQUEST['state'];
-                    $postData['pincode'] = $_REQUEST['pincode'];
-                    $postData['phone_number'] = $_REQUEST['mobile_number'];
-                    $postData['employment_type'] = $_REQUEST['employment_type'];
-                    $postData['annual_income'] = $_REQUEST['annual_income'];
-                    $postData['user_id'] = $_REQUEST['user_id'];
+                    $validationObj = new Validation();
+                    $res = $validationObj->invUserReferenceSignUp($_REQUEST);
 
-                    $postData['status'] = 1;
-                    $postData['created_at'] = date("Y-m-d H:i:s");
-                    $postData['modified_at'] = date("Y-m-d H:i:s");
-
-                    $TblUserRefObj = new TblUserRefrence();
-                    $TblUserRefObj->setData($postData);
-                    $user_ref_id = $TblUserRefObj->insertData();
-                    //echo "<pre>"; print_r($user_ref_id); die;
-
-                    $loanData = array();
-                    if(isset($_REQUEST['inv_type_id']) && $_REQUEST['inv_type_id']!='')
+                    if ($res['status'] == 0)
                     {
-                        $loanData['inv_type'] = $_REQUEST['inv_type_id'];
-                    }
+                        $postData['full_name'] = $_REQUEST['name'];
+                        if (isset($_REQUEST['email']) && $_REQUEST['email'] != '') {
+                            $postData['email'] = $_REQUEST['email'];
+                        }
+                        //$postData['password'] = $_REQUEST['password'];
+                        $postData['street'] = $_REQUEST['street'];
+                        $postData['city'] = $_REQUEST['city'];
+                        $postData['state'] = $_REQUEST['state'];
+                        $postData['pincode'] = $_REQUEST['pincode'];
+                        $postData['phone_number'] = $_REQUEST['mobile_number'];
+                        $postData['employment_type'] = $_REQUEST['employment_type'];
+                        $postData['annual_income'] = $_REQUEST['annual_income'];
+                        $postData['user_id'] = $_REQUEST['user_id'];
 
-                    if(isset($_REQUEST['inv_amount']) && $_REQUEST['inv_amount']!='')
-                    {
-                        $loanData['inv_amount'] = $_REQUEST['inv_amount'];
-                    }
+                        $postData['status'] = 1;
+                        $postData['created_at'] = date("Y-m-d H:i:s");
+                        $postData['modified_at'] = date("Y-m-d H:i:s");
 
-                    if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
-                    {
-                        $loanData['description'] = $_REQUEST['description'];
-                    }
-                    $loanData['user_ref_id'] = $user_ref_id;
-                    $loanData['inv_transaction_date'] = date("Y-m-d H:i:s");
-                    $loanData['status'] = 1;
-                    $loanData['created_at'] = date("Y-m-d H:i:s");
-                    //echo "<pre>"; print_r($loanData); die;
-                    $TblInvTransactionObj = new TblInvestmentTransaction();
-                    $TblInvTransactionObj->setData($loanData);
-                    $inv_id = $TblInvTransactionObj->insertData();
+                        $TblUserRefObj = new TblUserRefrence();
+                        $TblUserRefObj->setData($postData);
+                        $user_ref_id = $TblUserRefObj->insertData();
+                        //echo "<pre>"; print_r($user_ref_id); die;
 
-                    $transaction->commit();
+                        $loanData = array();
+                        if(isset($_REQUEST['inv_type_id']) && $_REQUEST['inv_type_id']!='')
+                        {
+                            $loanData['inv_type'] = $_REQUEST['inv_type_id'];
+                        }
 
-                    if ($user_ref_id != '') {
-                        $user_Data = $TblUserRefObj->getUserdetailsbyId($user_ref_id);
-                        $user_Data['transaction_data'] = $TblInvTransactionObj->getTransactionDetailsById($inv_id);
-                        if (!empty($user_Data)) {
-                            $result['status'] = $this->errorCode['_SUCCESS_'];
-                            $result['message'] = $this->msg['_SUCCESS_'];
-                            $result['data'] = $user_Data;
-                            $this->response($result);
-                        } else {
-                            $result['status'] = $this->errorCode['_DATA_NOT_FOUND_'];
-                            $result['message'] = $this->msg['_DATA_NOT_FOUND_'];
+                        if(isset($_REQUEST['inv_amount']) && $_REQUEST['inv_amount']!='')
+                        {
+                            $loanData['inv_amount'] = $_REQUEST['inv_amount'];
+                        }
+
+                        if(isset($_REQUEST['description']) && $_REQUEST['description']!='')
+                        {
+                            $loanData['description'] = $_REQUEST['description'];
+                        }
+                        $loanData['user_ref_id'] = $user_ref_id;
+                        $loanData['inv_transaction_date'] = date("Y-m-d H:i:s");
+                        $loanData['status'] = 1;
+                        $loanData['created_at'] = date("Y-m-d H:i:s");
+                        //echo "<pre>"; print_r($loanData); die;
+                        $TblInvTransactionObj = new TblInvestmentTransaction();
+                        $TblInvTransactionObj->setData($loanData);
+                        $inv_id = $TblInvTransactionObj->insertData();
+
+                        $transaction->commit();
+
+                        if ($user_ref_id != '') {
+                            $user_Data = $TblUserRefObj->getUserdetailsbyId($user_ref_id);
+                            $user_Data['transaction_data'] = $TblInvTransactionObj->getTransactionDetailsById($inv_id);
+                            if (!empty($user_Data)) {
+                                $result['status'] = $this->errorCode['_INV_LOAN_DETAILS_SUCCESS_'];
+                                $result['message'] = $this->msg['_INV_LOAN_DETAILS_SUCCESS_'];
+                                $result['data'] = $user_Data;
+                                $this->response($result);
+                            } else {
+                                $result['status'] = $this->errorCode['_DATA_NOT_FOUND_'];
+                                $result['message'] = $this->msg['_DATA_NOT_FOUND_'];
+                                $result['data'] = array();
+                                $this->response($result);
+                            }
+                        }
+                        else {
+                            $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
+                            $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'];
                             $result['data'] = array();
                             $this->response($result);
                         }
-                    }
-                    else {
-                        $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
-                        $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'];
-                        $result['data'] = array();
-                        $this->response($result);
-                    }
 
+                    }
+                    else
+                    {
+                        $this->response(array("status" => $res['status'], "message" => $res['message'], 'data' => array()));
+
+                    }
                 }
-                else
-                {
-                    $this->response(array("status" => $res['status'], "message" => $res['message'], 'data' => array()));
-
+                catch (Exception $ex) {
+                    $transaction->rollback();
+                    //echo $ex->getMessage();
+                    if (strpos($ex->getMessage(), '1062') !== false) {
+                        $result['status'] = -8;
+                        $result['message'] = $this->msg['_EMAIL_ALREADY_REGISTER_'];
+                        $result['data'] = (object) array();
+                        $this->response($result);
+                    } else {
+                        $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
+                        $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'] . $ex->getMessage();
+                        $this->response(array("status" =>  $result['status'] , "message" =>  $result['message'], 'data' => array()));
+                    }
                 }
             }
-            catch (Exception $ex) {
-                $transaction->rollback();
-                //echo $ex->getMessage();
-                if (strpos($ex->getMessage(), '1062') !== false) {
-                    $result['status'] = -8;
-                    $result['message'] = $this->msg['_EMAIL_ALREADY_REGISTER_'];
-                    $result['data'] = (object) array();
-                    $this->response($result);
-                } else {
-                    $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
-                    $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'] . $ex->getMessage();
-                    $this->response(array("status" =>  $result['status'] , "message" =>  $result['message'], 'data' => array()));
-                }
+            else
+            {
+                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" =>  $this->msg['_INVALID_SESSION_'], 'data' => array()));
             }
         } else {
             $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" =>  $this->msg['_PERMISSION_DENIED_'], 'data' => array()));
@@ -1290,125 +1306,135 @@ class ApiController extends Controller {
     {
         if (isset($_REQUEST['user_id']) && $_REQUEST['user_id']!='' && isset($_REQUEST['session_code']) && $_REQUEST['session_code']!='' && isset($_REQUEST['property_type_id']) && $_REQUEST['property_type_id']!='') {
 
-            $postData = array();
-            $transaction = Yii::app()->db->beginTransaction();
-            try {
+            $TblUserSessionObj = new TblUsersession();
+            $user = $TblUserSessionObj->checksession($_REQUEST['user_id'], $_REQUEST['session_code'], 1);
 
-                $validationObj = new Validation();
-                $res = $validationObj->propertyUserReference($_REQUEST);
+            if(!empty($user))
+            {
+                $postData = array();
+                $transaction = Yii::app()->db->beginTransaction();
+                try {
 
-                if ($res['status'] == 0)
-                {
-                    $postData['full_name'] = $_REQUEST['name'];
-                    if (isset($_REQUEST['email']) && $_REQUEST['email'] != '') {
-                        $postData['email'] = $_REQUEST['email'];
-                    }
+                    $validationObj = new Validation();
+                    $res = $validationObj->propertyUserReference($_REQUEST);
 
-                    $postData['street'] = $_REQUEST['street'];
-                    $postData['city'] = $_REQUEST['city'];
-                    $postData['state'] = $_REQUEST['state'];
-                    $postData['pincode'] = $_REQUEST['pincode'];
-                    $postData['phone_number'] = $_REQUEST['mobile_number'];
-                    $postData['employment_type'] = $_REQUEST['employment_type'];
-                    $postData['annual_income'] = $_REQUEST['annual_income'];
-                    $postData['user_id'] = $_REQUEST['user_id'];
-
-                    $postData['status'] = 1;
-                    $postData['created_at'] = date("Y-m-d H:i:s");
-                    $postData['modified_at'] = date("Y-m-d H:i:s");
-
-                    $TblUserRefObj = new TblUserRefrence();
-                    $TblUserRefObj->setData($postData);
-                    $user_ref_id = $TblUserRefObj->insertData();
-
-                    $loanData = array();
-                    if(isset($_REQUEST['property_type_id']) && $_REQUEST['property_type_id']!='')
+                    if ($res['status'] == 0)
                     {
-                        $loanData['property_transaction_type'] = $_REQUEST['property_type_id'];
-                    }
+                        $postData['full_name'] = $_REQUEST['name'];
+                        if (isset($_REQUEST['email']) && $_REQUEST['email'] != '') {
+                            $postData['email'] = $_REQUEST['email'];
+                        }
 
-                    if(isset($_REQUEST['size']) && $_REQUEST['size']!='')
-                    {
-                        $loanData['property_size'] = $_REQUEST['size'];
-                    }
+                        $postData['street'] = $_REQUEST['street'];
+                        $postData['city'] = $_REQUEST['city'];
+                        $postData['state'] = $_REQUEST['state'];
+                        $postData['pincode'] = $_REQUEST['pincode'];
+                        $postData['phone_number'] = $_REQUEST['mobile_number'];
+                        $postData['employment_type'] = $_REQUEST['employment_type'];
+                        $postData['annual_income'] = $_REQUEST['annual_income'];
+                        $postData['user_id'] = $_REQUEST['user_id'];
 
-                    if(isset($_REQUEST['size_type']) && $_REQUEST['size_type']!='')
-                    {
-                        $loanData['property_size_type'] = $_REQUEST['size_type'];
-                    }
+                        $postData['status'] = 1;
+                        $postData['created_at'] = date("Y-m-d H:i:s");
+                        $postData['modified_at'] = date("Y-m-d H:i:s");
 
-                    if(isset($_REQUEST['property_type']) && $_REQUEST['property_type']!='')
-                    {
-                        $loanData['property_type'] = $_REQUEST['property_type'];
-                    }
+                        $TblUserRefObj = new TblUserRefrence();
+                        $TblUserRefObj->setData($postData);
+                        $user_ref_id = $TblUserRefObj->insertData();
 
-                    if(isset($_REQUEST['property_amount']) && $_REQUEST['property_amount']!='')
-                    {
-                        $loanData['property_amount'] = $_REQUEST['property_amount'];
-                    }
+                        $loanData = array();
+                        if(isset($_REQUEST['property_type_id']) && $_REQUEST['property_type_id']!='')
+                        {
+                            $loanData['property_transaction_type'] = $_REQUEST['property_type_id'];
+                        }
 
-                    if(isset($_REQUEST['property_sub_type']) && $_REQUEST['property_sub_type']!='')
-                    {
-                        $loanData['property_sub_type'] = $_REQUEST['property_sub_type'];
-                    }
+                        if(isset($_REQUEST['size']) && $_REQUEST['size']!='')
+                        {
+                            $loanData['property_size'] = $_REQUEST['size'];
+                        }
 
-                    if(isset($_REQUEST['description']) && $_REQUEST['description'])
-                    {
-                        $loanData['description'] = $_REQUEST['description'];
-                    }
-                    $loanData['user_ref_id'] = $user_ref_id;
-                    $loanData['property_transaction_date'] = date("Y-m-d H:i:s");
-                    $loanData['status'] = 1;
-                    $loanData['created_at'] = date("Y-m-d H:i:s");
+                        if(isset($_REQUEST['size_type']) && $_REQUEST['size_type']!='')
+                        {
+                            $loanData['property_size_type'] = $_REQUEST['size_type'];
+                        }
 
-                    $TblPropertyTransactionObj = new TblPropertyTransaction();
-                    $TblPropertyTransactionObj->setData($loanData);
-                    $property_id = $TblPropertyTransactionObj->insertData();
+                        if(isset($_REQUEST['property_type']) && $_REQUEST['property_type']!='')
+                        {
+                            $loanData['property_type'] = $_REQUEST['property_type'];
+                        }
 
-                    $transaction->commit();
+                        if(isset($_REQUEST['property_amount']) && $_REQUEST['property_amount']!='')
+                        {
+                            $loanData['property_amount'] = $_REQUEST['property_amount'];
+                        }
 
-                    if ($user_ref_id != '') {
-                        $user_Data = $TblUserRefObj->getUserdetailsbyId($user_ref_id);
-                        $user_Data['transaction_data'] = $TblPropertyTransactionObj->getPropertyDetailsById($property_id);
-                        if (!empty($user_Data)) {
+                        if(isset($_REQUEST['property_sub_type']) && $_REQUEST['property_sub_type']!='')
+                        {
+                            $loanData['property_sub_type'] = $_REQUEST['property_sub_type'];
+                        }
 
-                            $result['status'] = $this->errorCode['_SUCCESS_'];
-                            $result['message'] = $this->msg['_SUCCESS_'];
-                            $result['data'] = $user_Data;
-                            $this->response($result);
-                        } else {
-                            $result['status'] = $this->errorCode['_DATA_NOT_FOUND_'];
-                            $result['message'] = $this->msg['_DATA_NOT_FOUND_'];
+                        if(isset($_REQUEST['description']) && $_REQUEST['description'])
+                        {
+                            $loanData['description'] = $_REQUEST['description'];
+                        }
+                        $loanData['user_ref_id'] = $user_ref_id;
+                        $loanData['property_transaction_date'] = date("Y-m-d H:i:s");
+                        $loanData['status'] = 1;
+                        $loanData['created_at'] = date("Y-m-d H:i:s");
+
+                        $TblPropertyTransactionObj = new TblPropertyTransaction();
+                        $TblPropertyTransactionObj->setData($loanData);
+                        $property_id = $TblPropertyTransactionObj->insertData();
+
+                        $transaction->commit();
+
+                        if ($user_ref_id != '') {
+                            $user_Data = $TblUserRefObj->getUserdetailsbyId($user_ref_id);
+                            $user_Data['transaction_data'] = $TblPropertyTransactionObj->getPropertyDetailsById($property_id);
+                            if (!empty($user_Data)) {
+
+                                $result['status'] = $this->errorCode['_REAL_ESTATE_DETAILS_SUCCESS_'];
+                                $result['message'] = $this->msg['_REAL_ESTATE_DETAILS_SUCCESS_'];
+                                $result['data'] = $user_Data;
+                                $this->response($result);
+                            } else {
+                                $result['status'] = $this->errorCode['_DATA_NOT_FOUND_'];
+                                $result['message'] = $this->msg['_DATA_NOT_FOUND_'];
+                                $result['data'] = array();
+                                $this->response($result);
+                            }
+                        }
+                        else {
+                            $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
+                            $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'];
                             $result['data'] = array();
                             $this->response($result);
                         }
                     }
-                    else {
-                        $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
-                        $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'];
-                        $result['data'] = array();
-                        $this->response($result);
+                    else
+                    {
+                        $this->response(array("status" => $res['status'], "message" => $res['message'], 'data' => array()));
+
                     }
                 }
-                else
-                {
-                    $this->response(array("status" => $res['status'], "message" => $res['message'], 'data' => array()));
-
+                catch (Exception $ex) {
+                    $transaction->rollback();
+                    //echo $ex->getMessage();
+                    if (strpos($ex->getMessage(), '1062') !== false) {
+                        $result['status'] = -8;
+                        $result['message'] = $this->msg['_EMAIL_ALREADY_REGISTER_'];
+                        $result['data'] = (object) array();
+                        $this->response($result);
+                    } else {
+                        $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
+                        $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'] . $ex->getMessage();
+                        $this->response(array("status" =>  $result['status'] , "message" =>  $result['message'], 'data' => array()));
+                    }
                 }
             }
-            catch (Exception $ex) {
-                $transaction->rollback();
-                //echo $ex->getMessage();
-                if (strpos($ex->getMessage(), '1062') !== false) {
-                    $result['status'] = -8;
-                    $result['message'] = $this->msg['_EMAIL_ALREADY_REGISTER_'];
-                    $result['data'] = (object) array();
-                    $this->response($result);
-                } else {
-                    $result['status'] = $this->errorCode['_GETTING_ERROR_REGISTRATION_'];
-                    $result['message'] = $this->msg['_GETTING_ERROR_REGISTRATION_'] . $ex->getMessage();
-                    $this->response(array("status" =>  $result['status'] , "message" =>  $result['message'], 'data' => array()));
-                }
+            else
+            {
+                $this->response(array("status" => $this->errorCode['_INVALID_SESSION_'], "message" =>  $this->msg['_INVALID_SESSION_'], 'data' => array()));
             }
         } else {
             $this->response(array("status" => $this->errorCode['_PERMISSION_DENIED_'], "message" =>  $this->msg['_PERMISSION_DENIED_'], 'data' => array()));

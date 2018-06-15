@@ -2335,7 +2335,8 @@ class Validation extends CFormModel
         $validator->addValidation("mobile_number","req",'_REQ_MOBILE_NUMBER_');
         $validator->addValidation("employment_type","req",'_REQ_EMPLOYMENT_TYPE_');
         $validator->addValidation("annual_income","req",'_REQ_ANNUAL_INCOME_');
-        $validator->addValidation("password","maxlen=50",'_REQ_PASSWORD_');
+        $validator->addValidation("password","req",'_REQ_PASSWORD_');
+        $validator->addValidation("password","minlen=7",'_REQ_MIN_LENGTH_');
         //$validator->addValidation("confirm_password","maxlen=50",'_REQ_CONFIRM_PASSWORD_');
         $validator->addValidation("street","req",'_REQ_ADDRESS_');
         $validator->addValidation("city","req",'_REQ_CITY_');
@@ -2364,6 +2365,8 @@ class Validation extends CFormModel
 
         //$validator->addValidation("email","req",'_REQ_EMAIL_');
         $validator->addValidation("password","req",'_REQ_PASSWORD_');
+        $validator->addValidation("password","minlen=7",'_REQ_MIN_LENGTH_');
+        $validator->addValidation("mobile_number","req",'_REQ_EMAIL_OR_MOBILE_');
         //$validator->addValidation("device_token","req",'_REQ_DEVICE_TOKEN_');
         //$validator->addValidation("endpointArn","req",'_REQ_ENDPOINT_');
 

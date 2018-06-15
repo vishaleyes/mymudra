@@ -144,7 +144,7 @@
                                     <div class="controls"><input type="text" class="form-control" name="description" placeholder="Enter description" value="<?php if(isset($userData['loan_data']['description']) && $userData['loan_data']['description'] != "") { echo $userData['loan_data']['description']; } ?>" id="description" /><span id="descriptionErr"></span></div>
                                 </div>
                                 <div class="form-group form-md-line-input  col-md-4">
-                                    <label class="control-label">bank<span class="text-error">*</span>:</label>
+                                    <label class="control-label">bank:</label>
                                     <select class="form-control edited bs-select" id="bank_id" name="bank_id" data-actions-box="true" data-search="true" onchange="getBank(this.value);">
                                         <option value="">Select Bank</option>
                                         <?php
@@ -470,10 +470,19 @@
                 loanAmount : {
                     required: true,
                 },
-                /*bank_id : {
+                loan_type : {
                     required: true,
                 },
-                bankName : {
+                loan_sub_type_id : {
+                    required: true,
+                },
+                loan_stage : {
+                    required: true,
+                },
+                /*bank_id : {
+                    required: true,
+                },*/
+                /*bankName : {
                     required: true,
                 },*/
             },
@@ -505,10 +514,19 @@
                 loanAmount : {
                     required: "Please enter loan amount",
                 },
+                loan_type : {
+                    required: "Please select loan type",
+                },
+                loan_sub_type_id : {
+                    required: "Please select loan sub type",
+                },
+                loan_stage : {
+                    required: "Please select loan stage",
+                },
                 /*bank_id : {
                     required: "Please select bank",
-                },
-                bankName : {
+                },*/
+                /*bankName : {
                     required: "Please enter bank name",
                 },*/
             },

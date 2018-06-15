@@ -567,7 +567,7 @@ class TblUserRefrence extends CActiveRecord
             FROM `tbl_user_refrence` ur 
             INNER JOIN `tbl_loan_transaction` ltrans
             ON ur.`user_ref_id` = ltrans.`user_ref_id`
-            INNER JOIN `tbl_bank_master` bm
+            LEFT JOIN `tbl_bank_master` bm
             ON ltrans.`bank_id` = bm.`bank_id`
             LEFT JOIN `tbl_loan_type_master` ltm
             ON ltm.loan_type_id = ltrans.`loan_type`
