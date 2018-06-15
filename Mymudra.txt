@@ -1,5 +1,5 @@
 
-<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 13:57:46</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 08:28:34</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
 
 <b>PARAMS</b> : Array
 (
@@ -8,7 +8,7 @@
 
 <b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
 
-<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 13:59:57</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 08:28:36</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
 
 <b>PARAMS</b> : Array
 (
@@ -17,7 +17,136 @@
 
 <b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
 
-<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 14:00:06</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 08:38:50</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [device_type] => 1
+    [os_version] => 6.0.0
+    [device_model] => MG3
+    [app_version] => 1.0.0
+    [name] => foram
+    [email] => foram1@bypeopletechnologies.com
+    [mobile_number] => 4324435879
+    [password] => 111111
+    [street] => navarangpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 100000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 08:40:18</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [device_type] => 1
+    [os_version] => 6.0.0
+    [device_model] => MG3
+    [app_version] => 1.0.0
+    [name] => foram
+    [email] => foram1@bypeopletechnologies.com
+    [mobile_number] => 4324435879
+    [password] => 111111
+    [street] => navarangpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 100000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 08:43:11</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [email] => foram1@bypeopletechnologies.com
+    [password] => 111111
+    [device_token] => 6654600a55673951465280ad55d4f055d2
+    [endpointArn] => efRTMT9KTco:APA91bFFS6ynB3Nf2zf76JGRHfAoZQBVW1tlOBAnD9L6RgC0CqjyuGnUmxYyb5kdfuchxZbENWcG9iXJS_vGbPTL-RGTgstJES1huLfhyzwYsQ8EsnYvKyiWvJEpjwcnq2nsdi7QbwBY
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 08:45:54</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 08:46:16</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 08:49:06</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 08:51:08</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 08:52:28</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 08:53:07</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 08:54:24</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 08:57:15</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
 
 <b>PARAMS</b> : Array
 (
@@ -26,7 +155,7 @@
 
 <b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
 
-<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 14:00:16</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:28:59</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
 
 <b>PARAMS</b> : Array
 (
@@ -35,7 +164,7 @@
 
 <b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
 
-<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 14:00:16</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:40:21</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
 
 <b>PARAMS</b> : Array
 (
@@ -44,7 +173,17 @@
 
 <b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
 
-<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 14:00:37</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:42:49</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:46:50</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
 
 <b>PARAMS</b> : Array
 (
@@ -53,20 +192,3234 @@
 
 <b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
 
-<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 14:01:11</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:47:39</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>logout</i></b></font>
 
 <b>PARAMS</b> : Array
 (
-    [r] => api
+    [r] => api/logout
+    [user_id] => 7
+    [session_code] => 6tEFs6tEFse4EQl6tEFs6tEFse4EQlLv6Li
 )
 
-<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/logout'> http://localhost/mymudra/index.php?r=api/logout</a></div>
 
-<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-04 14:01:33</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>index</i></b></font>
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:47:47</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanList</i></b></font>
 
 <b>PARAMS</b> : Array
 (
-    [r] => api
+    [r] => api/bankLoanList
+    [user_id] => 4
+    [session_code] => iLsnKiLsnKiiJPAiLsnKiLsnKiiJPAog8m4
+    [loan_type_id] => 6
 )
 
-<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api'> http://localhost/mymudra/index.php?r=api</a></div>
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanList'> http://localhost/mymudra/index.php?r=api/bankLoanList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:47:55</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanList
+    [user_id] => 4
+    [session_code] => iLsnKiLsnKiiJPAiLsnKiLsnKiiJPAog8m4
+    [loan_type_id] => 1
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanList'> http://localhost/mymudra/index.php?r=api/bankLoanList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:47:58</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanList
+    [user_id] => 4
+    [session_code] => iLsnKiLsnKiiJPAiLsnKiLsnKiiJPAog8m4
+    [loan_type_id] => 2
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanList'> http://localhost/mymudra/index.php?r=api/bankLoanList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:48:25</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>loanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/loanTypeList
+    [user_id] => 4
+    [session_code] => iLsnKiLsnKiiJPAiLsnKiLsnKiiJPAog8m4
+    [loan_type] => 1
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/loanTypeList'> http://localhost/mymudra/index.php?r=api/loanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:48:29</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>loanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/loanTypeList
+    [user_id] => 4
+    [session_code] => iLsnKiLsnKiiJPAiLsnKiLsnKiiJPAog8m4
+    [loan_type] => 2
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/loanTypeList'> http://localhost/mymudra/index.php?r=api/loanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:48:32</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>loanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/loanTypeList
+    [user_id] => 4
+    [session_code] => iLsnKiLsnKiiJPAiLsnKiLsnKiiJPAog8m4
+    [loan_type] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/loanTypeList'> http://localhost/mymudra/index.php?r=api/loanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:48:46</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>invAdvisoryUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/invAdvisoryUserReference
+    [user_id] => 1
+    [session_code] => ofVLCofVLCrn3fzofVLCofVLCrn3fz5VnOV
+    [inv_type_id] => 2
+    [name] => testtwo
+    [email] => testone142@gmail.com
+    [mobile_number] => 3452654577
+    [street] => cgroad , swastik society
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 4567686
+    [employment_type] => 1
+    [annual_income] => 46577
+    [inv_amount] => 45545455
+    [description] => for investment
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference'> http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:48:57</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 1
+    [session_code] => ofVLCofVLCrn3fzofVLCofVLCrn3fz5VnOV
+    [property_type_id] => 1
+    [name] => ankita
+    [email] => ankita12@bypt.in
+    [mobile_number] => 3452474675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 2
+    [property_type] => 2
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 09:49:14</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 4
+    [session_code] => iLsnKiLsnKiiJPAiLsnKiLsnKiiJPAog8m4
+    [loan_type_id] => 1
+    [name] => test
+    [email] => testone1@ymail.com
+    [mobile_number] => 5674573356
+    [street] => jay prakash
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 789567
+    [employment_type] => 2
+    [annual_income] => 500000
+    [loan_amount] => 600000
+    [bank_id] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 10:54:42</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>loanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/loanTypeList
+    [user_id] => 4
+    [session_code] => iLsnKiLsnKiiJPAiLsnKiLsnKiiJPAog8m4
+    [loan_type] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/loanTypeList'> http://localhost/mymudra/index.php?r=api/loanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 11:06:48</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 4
+    [session_code] => iLsnKiLsnKiiJPAiLsnKiLsnKiiJPAog8m4
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 11:06:56</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => iLsnKiLsnKiiJPAiLsnKiLsnKiiJPAog8m4
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 12:52:29</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [device_type] => 1
+    [os_version] => 6.0.0
+    [device_model] => MG3
+    [app_version] => 1.0.0
+    [name] => foram
+    [email] => foram@bypeopletechnologies.com
+    [mobile_number] => 4323435879
+    [password] => 111111
+    [street] => navarangpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 100000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 12:52:36</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [device_type] => 1
+    [os_version] => 6.0.0
+    [device_model] => MG3
+    [app_version] => 1.0.0
+    [name] => foram
+    [email] => foram1@bypeopletechnologies.com
+    [mobile_number] => 4323455879
+    [password] => 111111
+    [street] => navarangpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 100000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 12:52:41</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [device_type] => 1
+    [os_version] => 6.0.0
+    [device_model] => MG3
+    [app_version] => 1.0.0
+    [name] => foram
+    [email] => foram12@bypeopletechnologies.com
+    [mobile_number] => 4323455879
+    [password] => 111111
+    [street] => navarangpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 100000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-05 13:51:07</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [email] => foram@bypeopletechnologies.com
+    [password] => 111111
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 06:47:53</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>logout</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/logout
+    [user_id] => 4
+    [session_code] => iLsnKiLsnKiiJPAiLsnKiLsnKiiJPAog8m4
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/logout'> http://localhost/mymudra/index.php?r=api/logout</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 07:21:17</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [email] => foram@bypeopletechnologies.com
+    [password] => 111111
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 07:21:37</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankList
+    [user_id] => 4
+    [session_code] => JGjrAJGjrAgB6dUJGjrAJGjrAgB6dUTnrDM
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankList'> http://localhost/mymudra/index.php?r=api/bankList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 07:22:27</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>logout</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/logout
+    [user_id] => 4
+    [session_code] => JGjrAJGjrAgB6dUJGjrAJGjrAgB6dUTnrDM
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/logout'> http://localhost/mymudra/index.php?r=api/logout</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 07:22:34</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [email] => foram@bypeopletechnologies.com
+    [password] => 111111
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 07:24:34</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [loan_type_id] => 1
+    [name] => test
+    [email] => testone@ymail.com
+    [mobile_number] => 5674573456
+    [street] => jay prakash
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 789567
+    [employment_type] => 2
+    [annual_income] => 500000
+    [loan_amount] => 600000
+    [bank_id] => 3
+    [description] => test description
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 07:24:43</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [loan_type_id] => 1
+    [name] => test
+    [email] => testone1@ymail.com
+    [mobile_number] => 5674576456
+    [street] => jay prakash
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 789567
+    [employment_type] => 2
+    [annual_income] => 500000
+    [loan_amount] => 600000
+    [bank_id] => 3
+    [description] => test description
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 07:24:52</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [loan_type_id] => 1
+    [name] => test
+    [email] => testone61@ymail.com
+    [mobile_number] => 5674576456
+    [street] => jay prakash
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 789567
+    [employment_type] => 2
+    [annual_income] => 500000
+    [loan_amount] => 600000
+    [bank_id] => 3
+    [description] => test description
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 07:27:57</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>invAdvisoryUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/invAdvisoryUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [inv_type_id] => 2
+    [name] => testtwo
+    [email] => testone12@gmail.com
+    [mobile_number] => 3452354577
+    [street] => cgroad , swastik society
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 4567686
+    [employment_type] => 1
+    [annual_income] => 46577
+    [inv_amount] => 45545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference'> http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 07:28:04</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>invAdvisoryUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/invAdvisoryUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [inv_type_id] => 2
+    [name] => testtwo
+    [email] => testone126@gmail.com
+    [mobile_number] => 3452355577
+    [street] => cgroad , swastik society
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 4567686
+    [employment_type] => 1
+    [annual_income] => 46577
+    [inv_amount] => 45545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference'> http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 07:29:10</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [property_type_id] => 1
+    [name] => ankita
+    [email] => ankita15@bypt.in
+    [mobile_number] => 6452674675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 2
+    [property_type] => 2
+    [description] => fgdfgdfg
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 07:30:06</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>invAdvisoryUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/invAdvisoryUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [inv_type_id] => 2
+    [name] => testtwo
+    [email] => testone127@gmail.com
+    [mobile_number] => 3452354577
+    [street] => cgroad , swastik society
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 4567686
+    [employment_type] => 1
+    [annual_income] => 46577
+    [inv_amount] => 45545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference'> http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 07:30:11</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>invAdvisoryUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/invAdvisoryUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [inv_type_id] => 2
+    [name] => testtwo
+    [email] => testone127@gmail.com
+    [mobile_number] => 3452354579
+    [street] => cgroad , swastik society
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 4567686
+    [employment_type] => 1
+    [annual_income] => 46577
+    [inv_amount] => 45545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference'> http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 07:30:30</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [property_type_id] => 1
+    [name] => ankita
+    [email] => ankita55@bypt.in
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 2
+    [property_type] => 2
+    [description] => fgdfgdfg
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 08:28:00</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 08:28:28</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => iLsnKiLsnKiiJPAiLsnKiLsnKiiJPAog8m4
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 08:28:38</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 08:29:54</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForPropertyLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForPropertyLoan
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 08:37:06</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>logout</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/logout
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/logout'> http://localhost/mymudra/index.php?r=api/logout</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 09:04:59</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [email] => foram@bypeopletechnologies.com
+    [password] => 111111
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 09:05:09</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 09:05:33</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 09:05:54</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 09:09:44</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>testone</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/testone
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/testone'> http://localhost/mymudra/index.php?r=api/testone</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:12:56</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [email] => foram@bypeopletechnologies.com
+    [password] => 111111
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:13:05</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:14:41</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:14:54</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:17:09</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:17:22</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:19:21</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:20:47</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>resetPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/resetPassword/fConfirmPasscode/ZzYLh/user_id/1
+    [fConfirmPasscode] => ZzYLh
+    [user_id] => 1
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/resetPassword/fConfirmPasscode/ZzYLh/user_id/1'> http://localhost/mymudra/index.php?r=api/resetPassword/fConfirmPasscode/ZzYLh/user_id/1</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:25:41</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:26:11</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>resetPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/resetPassword/fConfirmPasscode/EjMXI/user_id/1
+    [fConfirmPasscode] => EjMXI
+    [user_id] => 1
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/resetPassword/fConfirmPasscode/EjMXI/user_id/1'> http://localhost/mymudra/index.php?r=api/resetPassword/fConfirmPasscode/EjMXI/user_id/1</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:26:50</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>saveResetPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/saveResetPassword
+    [token] => EjMXI
+    [new_password] => bhoomi@2017
+    [new_password_confirm] => bhoomi@2017
+    [user_type] => 
+    [submit_reset_password_btn] => 
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/saveResetPassword'> http://localhost/mymudra/index.php?r=api/saveResetPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:26:51</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>resetPasswordSuccess</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/resetPasswordSuccess
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/resetPasswordSuccess'> http://localhost/mymudra/index.php?r=api/resetPasswordSuccess</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:30:09</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:30:40</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>resetPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/resetPassword/fConfirmPasscode/x0pSk/user_id/1
+    [fConfirmPasscode] => x0pSk
+    [user_id] => 1
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/resetPassword/fConfirmPasscode/x0pSk/user_id/1'> http://localhost/mymudra/index.php?r=api/resetPassword/fConfirmPasscode/x0pSk/user_id/1</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:30:51</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>saveResetPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/saveResetPassword
+    [token] => x0pSk
+    [new_password] => 111111
+    [new_password_confirm] => 111111
+    [user_type] => 
+    [submit_reset_password_btn] => 
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/saveResetPassword'> http://localhost/mymudra/index.php?r=api/saveResetPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:30:51</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>resetPasswordSuccess</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/resetPasswordSuccess
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/resetPasswordSuccess'> http://localhost/mymudra/index.php?r=api/resetPasswordSuccess</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:34:16</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>resetPasswordSuccess</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/resetPasswordSuccess
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/resetPasswordSuccess'> http://localhost/mymudra/index.php?r=api/resetPasswordSuccess</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:39:10</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:39:46</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>resetPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/resetPassword/fConfirmPasscode/Dszr6/user_id/1
+    [fConfirmPasscode] => Dszr6
+    [user_id] => 1
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/resetPassword/fConfirmPasscode/Dszr6/user_id/1'> http://localhost/mymudra/index.php?r=api/resetPassword/fConfirmPasscode/Dszr6/user_id/1</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:39:56</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>saveResetPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/saveResetPassword
+    [token] => Dszr6
+    [new_password] => 111111
+    [new_password_confirm] => 111111
+    [user_type] => 
+    [submit_reset_password_btn] => 
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/saveResetPassword'> http://localhost/mymudra/index.php?r=api/saveResetPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 10:39:56</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>resetPasswordSuccess</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/resetPasswordSuccess
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/resetPasswordSuccess'> http://localhost/mymudra/index.php?r=api/resetPasswordSuccess</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 11:05:54</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [loan_type_id] => 1
+    [name] => test
+    [email] => testone61@ymail.com
+    [mobile_number] => 5674576456
+    [street] => jay prakash
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 789567
+    [employment_type] => 2
+    [annual_income] => 500000
+    [loan_amount] => 600000
+    [bank_id] => 3
+    [description] => test description
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 11:05:59</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [loan_type_id] => 1
+    [name] => test
+    [email] => testone61@ymail.com
+    [mobile_number] => 5674576456
+    [street] => jay prakash
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 789567
+    [employment_type] => 2
+    [annual_income] => 500000
+    [loan_amount] => 600000
+    [bank_id] => 3
+    [description] => test description
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 11:06:08</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [loan_type_id] => 2
+    [name] => test
+    [email] => testone61@ymail.com
+    [mobile_number] => 5674576456
+    [street] => jay prakash
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 789567
+    [employment_type] => 2
+    [annual_income] => 500000
+    [loan_amount] => 600000
+    [bank_id] => 3
+    [description] => test description
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 11:07:04</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>invAdvisoryUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/invAdvisoryUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [inv_type_id] => 1
+    [name] => testtwo
+    [email] => testone127@gmail.com
+    [mobile_number] => 3452354579
+    [street] => cgroad , swastik society
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 4567686
+    [employment_type] => 1
+    [annual_income] => 46577
+    [inv_amount] => 45545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference'> http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 11:07:11</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [property_type_id] => 1
+    [name] => ankita
+    [email] => ankita55@bypt.in
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 2
+    [property_type] => 2
+    [description] => fgdfgdfg
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 11:07:15</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [property_type_id] => 2
+    [name] => ankita
+    [email] => ankita55@bypt.in
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 2
+    [property_type] => 2
+    [description] => fgdfgdfg
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 13:36:18</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 13:36:39</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 13:40:40</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 13:41:09</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 13:46:12</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 13:47:06</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 13:48:11</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 13:49:07</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForPropertyLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForPropertyLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-06 13:49:43</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForPropertyLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForPropertyLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 08:49:55</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => rohan
+    [email] => rohan.varma@bypeopletechnologies.com
+    [mobile_number] => 4323676879
+    [password] => 111111
+    [street] => Isanpur
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 345000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 08:50:28</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => rohan
+    [email] => rohan.varma@bypeopletechnologies.com
+    [mobile_number] => 4323676879
+    [password] => 111111
+    [street] => Isanpur
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 345000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 08:51:57</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 10
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 08:52:33</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 08:57:50</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 10
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+    [loan_type_id] => 3
+    [name] => Rohan
+    [email] => rohan.varma@bypeopletechnologies.com
+    [mobile_number] => 4323676879
+    [street] => Isanpur
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 345000
+    [loan_amount] => 600000
+    [bank_id] => 1
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 09:01:50</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 10
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+    [loan_type_id] => 3
+    [name] => Rohan
+    [email] => rohan.varma@bypeopletechnologies.com
+    [mobile_number] => 4323676879
+    [street] => Isanpur
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 345000
+    [loan_amount] => 600000
+    [bank_id] => 1
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 09:02:02</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 09:02:22</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 10
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 09:03:04</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 10
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 09:04:05</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 10
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+    [loan_type_id] => 3
+    [name] => test one
+    [email] => testone@bypeopletechnologies.com
+    [mobile_number] => 4323676879
+    [street] => naranpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 455000
+    [loan_amount] => 700000
+    [bank_id] => 4
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 09:04:08</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 10
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 09:07:56</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 09:08:14</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 09:10:25</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 09:10:36</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 09:10:51</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 1
+    [session_code] => 3QyYt3QyYtW7Mb13QyYt3QyYtW7Mb1soyAG
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 09:15:10</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 10
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+    [property_type_id] => 2
+    [name] => Payal
+    [email] => payal.jogu@bypt.in
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 2
+    [property_type] => 2
+    [description] => fgdfgdfg
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 09:16:55</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForPropertyLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForPropertyLoan
+    [user_id] => 10
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 10:13:23</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForPropertyLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForPropertyLoan
+    [user_id] => 10
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 10:14:01</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 10
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+    [property_type_id] => 2
+    [name] => bhoomi
+    [email] => bhoomi.patel@bypt.in
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 1
+    [property_type] => 1
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-08 10:14:07</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForPropertyLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForPropertyLoan
+    [user_id] => 10
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-11 12:24:13</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => jagruti
+    [mobile_number] => 4534256478
+    [password] => 111111
+    [street] => cgroad, commerce six road
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 500000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-11 12:29:53</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => 4534256478
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-11 12:30:33</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => jagruti
+    [email] => jagruti@bypeopletechnologies.com
+    [mobile_number] => 4534256478
+    [password] => 111111
+    [street] => cgroad, commerce six road
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 500000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-11 12:30:38</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => jagruti
+    [email] => jagruti@bypeopletechnologies.com
+    [mobile_number] => 4534276478
+    [password] => 111111
+    [street] => cgroad, commerce six road
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 500000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-11 12:30:53</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [email] => jagruti@bypeopletechnologies.com
+    [password] => 111111
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-11 12:31:08</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [email] => jagruti@bypeopletechnologies.com
+    [password] => 111111
+    [mobile_number] => 4534276478
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-11 12:31:19</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => 4534276478
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-11 12:51:53</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 12
+    [session_code] => hZzz4hZzz4vACG5hZzz4hZzz4vACG5lcP3k
+    [loan_type_id] => 9
+    [name] => test one
+    [email] => testone@bypeopletechnologies.com
+    [mobile_number] => 4323676879
+    [street] => naranpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 455000
+    [loan_amount] => 700000
+    [bank_id] => 4
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:34:57</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 4Md2W4Md2Ww439O4Md2W4Md2Ww439Ob6o00
+    [loan_type_id] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:35:02</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => 4534276478
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:35:09</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [loan_type_id] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:35:16</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [loan_type_id] => 4
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:37:36</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [loan_type_id] => 2
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:54:43</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:55:49</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [loan_type_id] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:55:53</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getRealEstateSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getRealEstateSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:56:02</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getRealEstateSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getRealEstateSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:56:10</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getRealEstateSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getRealEstateSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 1
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:56:16</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getRealEstateSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getRealEstateSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 2
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:56:21</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getRealEstateSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getRealEstateSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:56:37</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getRealEstateSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getRealEstateSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 4
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 04:56:42</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getRealEstateSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getRealEstateSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:05:20</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [loan_type_id] => 1
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:06:52</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [loan_type_id] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:07:24</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getRealEstateSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getRealEstateSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 2
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:13:19</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 12
+    [session_code] => hZzz4hZzz4vACG5hZzz4hZzz4vACG5lcP3k
+    [loan_type_id] => 3
+    [name] => test one
+    [email] => testone@bypeopletechnologies.com
+    [mobile_number] => 4323676879
+    [street] => naranpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 455000
+    [loan_amount] => 700000
+    [bank_id] => 4
+    [loan_sub_type_id] => 6
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:16:45</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 12
+    [session_code] => hZzz4hZzz4vACG5hZzz4hZzz4vACG5lcP3k
+    [loan_type_id] => 3
+    [name] => test one
+    [email] => testone@bypeopletechnologies.com
+    [mobile_number] => 4323676879
+    [street] => naranpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 455000
+    [loan_amount] => 700000
+    [bank_id] => 4
+    [loan_sub_type_id] => 6
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:17:49</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankList'> http://localhost/mymudra/index.php?r=api/bankList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:20:28</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 12
+    [session_code] => hZzz4hZzz4vACG5hZzz4hZzz4vACG5lcP3k
+    [loan_type_id] => 3
+    [name] => vishal
+    [email] => vishal@bypeopletechnologies.com
+    [mobile_number] => 4783676879
+    [street] => usmanpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 600000
+    [loan_amount] => 700000
+    [bank_id] => 7
+    [loan_sub_type_id] => 6
+    [bank_name] => karnataka Bank
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:23:18</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 2
+    [name] => bhoomi
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 1
+    [property_type] => 1
+    [property_sub_type] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:25:40</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 2
+    [name] => bhoomi
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 1
+    [property_type] => 1
+    [property_sub_type] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:33:25</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>invAdvisoryUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/invAdvisoryUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [inv_type_id] => 1
+    [name] => testtwo
+    [email] => testone127@gmail.com
+    [mobile_number] => 3452354579
+    [street] => cgroad , swastik society
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 4567686
+    [employment_type] => 1
+    [annual_income] => 46577
+    [inv_amount] => 45545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference'> http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:36:07</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:39:37</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 12
+    [session_code] => hZzz4hZzz4vACG5hZzz4hZzz4vACG5lcP3k
+    [loan_type_id] => 4
+    [name] => vishaltest
+    [email] => vishal@bypeopletechnologies.com
+    [mobile_number] => 4783676879
+    [street] => usmanpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 600000
+    [loan_amount] => 700000
+    [bank_id] => 7
+    [loan_sub_type_id] => 10
+    [bank_name] => karnataka Bank
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:40:25</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:40:43</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:42:15</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:43:18</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForPropertyLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForPropertyLoan
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:47:02</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForPropertyLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForPropertyLoan
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:47:48</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForPropertyLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForPropertyLoan
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:47:56</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [loan_type_id] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:48:00</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [loan_type_id] => 4
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:48:05</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getRealEstateSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getRealEstateSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 2
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:48:09</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getRealEstateSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getRealEstateSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 1
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:48:14</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>getRealEstateSubLoanTypeList</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/getRealEstateSubLoanTypeList
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList'> http://localhost/mymudra/index.php?r=api/getRealEstateSubLoanTypeList</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:48:51</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 10
+    [session_code] => 2bKw02bKw01MRmF2bKw02bKw01MRmF9ipAY
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 05:49:09</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 06:01:01</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 12
+    [session_code] => hZzz4hZzz4vACG5hZzz4hZzz4vACG5lcP3k
+    [loan_type_id] => 4
+    [name] => vishaltest
+    [email] => vishal@bypeopletechnologies.com
+    [mobile_number] => 4783676879
+    [street] => usmanpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 600000
+    [loan_amount] => 700000
+    [bank_id] => 7
+    [loan_sub_type_id] => 10
+    [bank_name] => karnataka Bank
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 06:01:31</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>invAdvisoryUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/invAdvisoryUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [inv_type_id] => 1
+    [name] => testtwo
+    [email] => testone127@gmail.com
+    [mobile_number] => 3452354579
+    [street] => cgroad , swastik society
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 4567686
+    [employment_type] => 1
+    [annual_income] => 46577
+    [inv_amount] => 45545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference'> http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 06:01:49</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 2
+    [name] => bhoomi
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 1
+    [property_type] => 1
+    [property_sub_type] => 3
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 06:02:03</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 06:18:42</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 13
+    [session_code] => uqWYuuqWYuF3aaCuqWYuuqWYuF3aaCqYqQP
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 06:19:05</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 13
+    [session_code] => uqWYuuqWYuF3aaCuqWYuuqWYuF3aaCqYqQP
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 06:19:16</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 13
+    [session_code] => uqWYuuqWYuF3aaCuqWYuuqWYuF3aaCqYqQP
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 06:19:42</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForInvestmentLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForInvestmentLoan
+    [user_id] => 13
+    [session_code] => XZ3fgXZ3fgxBPTgXZ3fgXZ3fgxBPTg9bJ9E
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForInvestmentLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 06:46:35</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>logout</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/logout
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/logout'> http://localhost/mymudra/index.php?r=api/logout</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 06:47:10</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>logout</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/logout
+    [user_id] => 13
+    [session_code] => i9ibsi9ibsVGo9Bi9ibsi9ibsVGo9BRAVO9
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/logout'> http://localhost/mymudra/index.php?r=api/logout</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 06:47:31</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => 4534276478
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 06:50:43</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>logout</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/logout
+    [user_id] => 12
+    [session_code] => Avqe6Avqe642fMiAvqe6Avqe642fMiGCIpb
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/logout'> http://localhost/mymudra/index.php?r=api/logout</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 06:51:09</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [email] => jagruti@bypeopletechnologies.com
+    [password] => 111111
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 11:16:20</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>aboutUs</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/aboutUs
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/aboutUs'> http://localhost/mymudra/index.php?r=api/aboutUs</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 11:58:29</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>aboutUs</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/aboutUs
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/aboutUs'> http://localhost/mymudra/index.php?r=api/aboutUs</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-12 12:14:02</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>aboutUs</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/aboutUs
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/aboutUs'> http://localhost/mymudra/index.php?r=api/aboutUs</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-13 10:47:27</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-13 10:47:42</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 12
+    [session_code] => hu7TJhu7TJdFFWuhu7TJhu7TJdFFWuLPmnC
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-13 10:51:05</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 10:08:30</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => 4534276478
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 10:09:03</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>logout</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/logout
+    [user_id] => 12
+    [session_code] => 2GNTg2GNTgAS0aE2GNTg2GNTgAS0aEuXO7s
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/logout'> http://localhost/mymudra/index.php?r=api/logout</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 10:09:20</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => jagruti@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 10:09:47</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => jagruti@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 10:10:54</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => 4534276478
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 10:11:12</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => 4534276478
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 10:11:22</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => jagruti@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 10:11:30</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>logout</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/logout
+    [user_id] => 12
+    [session_code] => 9QAG09QAG0Nh9Rp9QAG09QAG0Nh9RpzGjmP
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/logout'> http://localhost/mymudra/index.php?r=api/logout</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 12:34:41</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 12:38:11</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 12:38:52</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 12:39:44</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForPropertyLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForPropertyLoan
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 12:40:10</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForPropertyLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForPropertyLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 12:44:24</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForPropertyLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForPropertyLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 13:13:46</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 13:16:16</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 2
+    [name] => bhoomi
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 1
+    [property_type] => 1
+    [property_sub_type] => 3
+    [property_amount] => 700000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 13:16:36</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 13:17:04</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => 6452774675
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-14 13:17:23</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForPropertyLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForPropertyLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForPropertyLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 07:59:41</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 08:05:43</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 08:10:56</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomipatel32@gmail.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 08:14:08</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomipatel32@gmail.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 08:20:12</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => 6452774675
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 08:21:09</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => 6452774675
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 08:21:33</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => 6452774675
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 08:25:20</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomipatel32@gmail.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 08:26:29</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => 111111
+    [mobile_number] => 6452774675
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 09:14:26</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>registeredUserListForBankLoan</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/registeredUserListForBankLoan
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan'> http://localhost/mymudra/index.php?r=api/registeredUserListForBankLoan</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 09:48:27</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => shraddha mistry
+    [mobile_number] => 5454545454
+    [password] => bypt@123
+    [street] => cgroad, commerce six road
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 5600000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 09:49:35</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@123
+    [mobile_number] => 5454545454
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 09:50:00</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@123
+    [mobile_number] => 5454545454
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 09:50:33</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@123
+    [mobile_number] => 5454545454
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 09:51:29</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@123
+    [mobile_number] => 5454545454
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 09:52:17</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@123
+    [mobile_number] => 5454545454
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 09:53:11</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@123
+    [mobile_number] => 5454545454
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 09:53:35</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@123
+    [mobile_number] => 5454545454
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 09:54:39</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@123
+    [mobile_number] => 5454545454
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 09:55:04</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@123
+    [mobile_number] => 5454545454
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 09:55:09</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@1234
+    [mobile_number] => 5454545454
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 09:55:20</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@123
+    [mobile_number] => bhoomi
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:01:53</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 13
+    [session_code] => wSE5FwSE5FlGSrAwSE5FwSE5FlGSrAXRqiP
+    [loan_type_id] => 4
+    [name] => parth
+    [email] => parth@bypeopletechnologies.com
+    [mobile_number] => 4444444444
+    [street] => usmanpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 600000
+    [loan_amount] => 700000
+    [bank_id] => 7
+    [loan_sub_type_id] => 10
+    [bank_name] => karnataka Bank
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:02:20</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>bankLoanUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/bankLoanUserReference
+    [user_id] => 13
+    [session_code] => wSE5FwSE5FlGSrAwSE5FwSE5FlGSrAXRqiP
+    [loan_type_id] => 4
+    [name] => parth
+    [email] => parth@bypeopletechnologies.com
+    [mobile_number] => 4444444444
+    [street] => usmanpura
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 600000
+    [loan_amount] => 700000
+    [bank_id] => 7
+    [loan_sub_type_id] => 10
+    [bank_name] => karnataka Bank
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/bankLoanUserReference'> http://localhost/mymudra/index.php?r=api/bankLoanUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:06:49</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:15:03</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => shraddha mistry
+    [email] => shraddha.mistry@bypeopletechnologies.com
+    [mobile_number] => 5454545455
+    [password] => bypt@123
+    [street] => cgroad, commerce six road
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 5600000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:15:47</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => shraddha mistry
+    [email] => shraddha.mistry@bypeopletechnologies.com
+    [mobile_number] => 5454545455
+    [password] => bypt@123
+    [street] => cgroad, commerce six road
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 5600000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:16:17</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => shraddha mistry
+    [email] => shraddha.mistry@bypeopletechnologies.com
+    [mobile_number] => 5454545455
+    [password] => bypt@123
+    [street] => cgroad, commerce six road
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 5600000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:16:58</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => shraddha mistry
+    [email] => shraddha.mistry@bypeopletechnologies.com
+    [mobile_number] => 5454545455
+    [password] => bypt@123
+    [street] => cgroad, commerce six road
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 5600000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:19:11</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => shraddha mistry
+    [email] => shraddha.mistry@bypeopletechnologies.com
+    [mobile_number] => 5454545455
+    [password] => 1234
+    [street] => cgroad, commerce six road
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 5600000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:19:33</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => shraddha mistry
+    [email] => shraddha.mistry@bypeopletechnologies.com
+    [mobile_number] => 5454545455
+    [password] => 1234
+    [street] => cgroad, commerce six road
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 5600000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:21:35</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => shraddha mistry
+    [email] => shraddha.mistry@bypeopletechnologies.com
+    [mobile_number] => 5454545455
+    [password] => bypt@12345
+    [street] => cgroad, commerce six road
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 5600000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:21:40</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>userSignUp</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/userSignUp
+    [name] => shraddha mistry
+    [email] => shraddha.mistry@bypeopletechnologies.com
+    [mobile_number] => 5454545455
+    [password] => bypt@12345
+    [street] => cgroad, commerce six road
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 380009
+    [employment_type] => 1
+    [annual_income] => 5600000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/userSignUp'> http://localhost/mymudra/index.php?r=api/userSignUp</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:22:28</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@123
+    [mobile_number] => 5454545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:23:19</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt
+    [mobile_number] => 5454545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:23:38</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt
+    [mobile_number] => 5454545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:23:58</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@1234567
+    [mobile_number] => 5454545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:24:03</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>login</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/login
+    [password] => bypt@12345
+    [mobile_number] => 5454545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/login'> http://localhost/mymudra/index.php?r=api/login</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:27:02</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>invAdvisoryUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/invAdvisoryUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [inv_type_id] => 1
+    [name] => testtwo
+    [email] => testone127@gmail.com
+    [mobile_number] => 3452354579
+    [street] => cgroad , swastik society
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 4567686
+    [employment_type] => 1
+    [annual_income] => 46577
+    [inv_amount] => 45545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference'> http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:27:15</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>invAdvisoryUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/invAdvisoryUserReference
+    [user_id] => 4
+    [session_code] => pgqvqpgqvq9lyU3pgqvqpgqvq9lyU3sGHXn
+    [inv_type_id] => 1
+    [name] => testtwo
+    [email] => testone127@gmail.com
+    [mobile_number] => 3452354579
+    [street] => cgroad , swastik society
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 4567686
+    [employment_type] => 1
+    [annual_income] => 46577
+    [inv_amount] => 45545455
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference'> http://localhost/mymudra/index.php?r=api/invAdvisoryUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:29:28</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 2
+    [name] => bhoomi
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 1
+    [property_type] => 1
+    [property_sub_type] => 3
+    [property_amount] => 700000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:34:32</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 2
+    [name] => bhoomi
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 1
+    [property_type] => 1
+    [property_sub_type] => 3
+    [property_amount] => 700000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:34:52</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 12
+    [session_code] => 6NHza6NHzaL2a2n6NHza6NHzaL2a2nQDUu5
+    [property_type_id] => 2
+    [name] => bhoomi
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 1
+    [property_type] => 1
+    [property_sub_type] => 3
+    [property_amount] => 700000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:35:11</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+    [property_type_id] => 2
+    [name] => bhoomi
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 1
+    [property_type] => 1
+    [property_sub_type] => 3
+    [property_amount] => 700000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:35:30</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>propertyUserReference</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/propertyUserReference
+    [user_id] => 4
+    [session_code] => 18D0P18D0PiDZV318D0P18D0PiDZV3978mL
+    [property_type_id] => 2
+    [name] => bhoomi
+    [mobile_number] => 6452774675
+    [street] => test street
+    [city] => ahmedabad
+    [state] => gujarat
+    [pincode] => 456374
+    [employment_type] => 1
+    [annual_income] => 45678
+    [size] => 34343
+    [size_type] => 1
+    [property_type] => 1
+    [property_sub_type] => 3
+    [property_amount] => 700000
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/propertyUserReference'> http://localhost/mymudra/index.php?r=api/propertyUserReference</a></div>
+
+<div style='background-color:#F2F2F2; color:#222279; font-weight: bold; padding:10px;box-shadow: 0 5px 2px rgba(0, 0, 0, 0.25);'><b>API Call Time</b> : <font size='6' style='color:orange;'><b><i>2018-06-15 10:36:29</i></b></font> <br><b>Function Name</b> : <font size='6' style='color:orange;'><b><i>forgotPassword</i></b></font>
+
+<b>PARAMS</b> : Array
+(
+    [r] => api/forgotPassword
+    [email] => bhoomi.patel@bypeopletechnologies.com
+)
+
+<b>URL</b> :<a style='text-decoration:none;color:#4285F4' target='_blank' href='http://localhost/mymudra/index.php?r=api/forgotPassword'> http://localhost/mymudra/index.php?r=api/forgotPassword</a></div>

@@ -77,7 +77,7 @@ else
     define('WEB_HOST_NAME','localhost');
     define('SITE_NAME','mymudra');
     $baseUrl.=WEB_HOST_NAME.'/mymudra';
-    $filename="D:/wamp/www/mymudra";
+    $filename="C:/wamp/www/mymudra";
     if (file_exists($filename)) {
 
         /*define('FILE_UPLOAD', 'C:/wamp64/www/viia/assets/upload/');
@@ -85,10 +85,10 @@ else
         define('LOGS_PATH','C:/wamp64/www/viia/dlogs/');
         define('DEFAULT_FILE_PATH','C:/wamp64/www/viia/');*/
 
-        define('FILE_UPLOAD', 'D:/wamp/www/mymudra/assets/upload/');
-        define('FILE_PATH','D:/wamp/www/mymudra/');
-        define('LOGS_PATH','D:/wamp/www/mymudra/dlogs/');
-        define('DEFAULT_FILE_PATH','D:/wamp/www/mymudra/');
+        define('FILE_UPLOAD', 'C:/wamp/www/mymudra/assets/upload/');
+        define('FILE_PATH','C:/wamp/www/mymudra/');
+        define('LOGS_PATH','C:/wamp/www/mymudra/dlogs/');
+        define('DEFAULT_FILE_PATH','C:/wamp/www/mymudra/');
     }
     /*else
     {
@@ -145,10 +145,10 @@ define('USE_PCONNECT', 'false');
 define('STORE_SESSIONS', 'db');
 define('SQL_CACHE_METHOD', 'none');
 
-define('PAGINATE_LIMIT', '15');
-define('ADMIN_PAGINATE_LIMIT', '15');
+define('PAGINATE_LIMIT', '5');
+define('ADMIN_PAGINATE_LIMIT', '10');
 define('SEEKER_PAGINATE_LIMIT', '6');
-define('RECENT_ACTIVITY_PAGINATE_LIMIT', '15');
+define('RECENT_ACTIVITY_PAGINATE_LIMIT', '10');
 define('LIMIT_10', '15');
 
 define('IMAGESIZE','2');
