@@ -1,7 +1,7 @@
 <?php
 
-define("MANDRILL_USERNAME","sujal.bandhara.bypt");
-define("MANDRILL_PASSWORD","Bypt@2016");
+define("MANDRILL_USERNAME","test");
+define("MANDRILL_PASSWORD","111111");
 
 define("MANDRILL_HOST","smtp.sendgrid.net");
 define("MANDRILL_PORT","587");
